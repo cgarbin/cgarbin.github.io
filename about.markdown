@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-More about me in [LinkedId](https://www.linkedin.com/in/christiangarbin/).
+More about me in [LinkedIn](https://www.linkedin.com/in/christiangarbin/).
 
 My personal [GitHub repositories are here](https://github.com/cgarbin).
 
