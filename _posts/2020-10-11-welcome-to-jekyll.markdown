@@ -1,29 +1,23 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Who am I"
 date:   2020-10-11 14:20:52 -0400
-categories: jekyll update
+categories: bio
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-Jekyll requires blog post files to be named according to the following format:
+I'm a software architect at [Atos Unify](https://unify.com/en/). More about me in
+[LinkedIn](https://www.linkedin.com/in/christiangarbin/).
 
-`YEAR-MONTH-DAY-title.MARKUP`
+Over the years, with the help of my colleagues, we were granted
+[a few patents](https://scholar.google.com/citations?user=q1ZmDvYAAAAJ&hl=en).
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+I'm finishing my Computer Science master's at [Florida Atlantic University](https://www.fau.edu/),
+focusing on machine learning.
 
-Jekyll also offers powerful support for code snippets:
+The work I did for the master's is [collected here](https://github.com/fau-masters-collected-works-cgarbin).
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+The [dropout vs. batch normalization term project](https://github.com/fau-masters-collected-works-cgarbin/cap6619-deep-learning-term-project)
+became a [peer-reviewed paper](https://link.springer.com/article/10.1007/s11042-019-08453-9)
+(with much help from the professors listed as co-authors).
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+I will start the Ph.D. program in 2021, also in machine learning.
