@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Who am I"
+title:  "About me"
 date:   2020-10-11 14:20:52 -0400
 categories: bio
 ---
