@@ -15,6 +15,6 @@ focusing on machine learning. The work I did for the master's is [collected here
 
 The [dropout vs. batch normalization term project](https://github.com/fau-masters-collected-works-cgarbin/cap6619-deep-learning-term-project)
 became a [peer-reviewed paper](https://link.springer.com/article/10.1007/s11042-019-08453-9)
-(with much help from the professors listed as co-authors).
+(with much help from the professors listed as co-authors). The free version of the paper is [available here](https://drive.google.com/file/d/1PyRUgSXqpl_OvJkWrR4HCWLDaEexzWd9/view).
 
 I'm now a Ph.D. candidate, also focusing on machine learning, continuing the work I did for the master's degree.
