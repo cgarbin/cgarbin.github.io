@@ -1,6 +1,4 @@
-# The site is built locally and pushed to GitHub because the theme uses custom Liquid tags
-#_site
-
+_site
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
