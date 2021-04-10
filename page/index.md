@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Why use Tufte's theme?"
+title: Posts
 ---
 
 I picked this Jekyll theme because I admire the work of [Edward Tutfe](https://www.edwardtufte.com/tufte/).
