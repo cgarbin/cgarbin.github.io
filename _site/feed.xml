@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Christian Garbin's blog</title>
+    <description>Christian Garbin's blog</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 09 Apr 2021 21:17:58 -0400</pubDate>
+    <lastBuildDate>Fri, 09 Apr 2021 21:17:58 -0400</lastBuildDate>
+    <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>About</title>
+        <description>&lt;p&gt;I’m a software architect at &lt;a href=&quot;https://unify.com/en/&quot;&gt;Atos Unify&lt;/a&gt;. More about me in
+&lt;a href=&quot;https://www.linkedin.com/in/christiangarbin/&quot;&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Over the years, with the help of my colleagues, we were granted
+&lt;a href=&quot;https://scholar.google.com/citations?user=q1ZmDvYAAAAJ&amp;amp;hl=en&quot;&gt;a few patents&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In December of 2020 I completed a Computer Science master’s degree at &lt;a href=&quot;https://www.fau.edu/&quot;&gt;Florida Atlantic University&lt;/a&gt;,
+focusing on machine learning. The work I did for the master’s is &lt;a href=&quot;https://github.com/fau-masters-collected-works-cgarbin&quot;&gt;collected here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://github.com/fau-masters-collected-works-cgarbin/cap6619-deep-learning-term-project&quot;&gt;dropout vs. batch normalization term project&lt;/a&gt;
+became a &lt;a href=&quot;https://link.springer.com/article/10.1007/s11042-019-08453-9&quot;&gt;peer-reviewed paper&lt;/a&gt;
+(with much help from the professors listed as co-authors). The free version of the paper is &lt;a href=&quot;https://drive.google.com/file/d/1PyRUgSXqpl_OvJkWrR4HCWLDaEexzWd9/view&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I’m now a Ph.D. candidate, also focusing on machine learning, continuing the work I did for the master’s degree.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 01 Jan 2021 00:00:00 -0500</pubDate>
+        <link>/about/</link>
+        <guid isPermaLink="true">/about/</guid>
+        
+        
+        <category>post</category>
+        
+      </item>
+    
+  </channel>
+</rss>
