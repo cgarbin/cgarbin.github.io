@@ -74,7 +74,7 @@ p > a, cite > a, span > a { @if $link-style == underline
       background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
       background-repeat: no-repeat, no-repeat, repeat-x;
       text-shadow: 0.03em 0 $bg-color, -0.03em 0 $bg-color, 0 0.03em $bg-color, 0 -0.03em $bg-color, 0.06em 0 $bg-color, -0.06em 0 $bg-color, 0.09em 0 $bg-color, -0.09em 0 $bg-color, 0.12em 0 $bg-color, -0.12em 0 $bg-color, 0.15em 0 $bg-color, -0.15em 0 $bg-color;
-      background-position: 0% 93%, 100% 93%, 0% 93%; 
+      background-position: 0% 93%, 100% 93%, 0% 93%;
     }
     @else
     {
@@ -134,16 +134,16 @@ p, li { line-height: 2rem;
         vertical-align: baseline; }
 
 /* Chapter Epigraphs */
-div.epigraph { margin: 3.5636rem 0; }
+div.epigraph { margin: 2rem 0; }
 
-div.epigraph > blockquote { margin-top: 3rem;
-                            margin-bottom: 3rem;
+div.epigraph > blockquote { margin-top: 2rem;
+                            margin-bottom: 2rem;
                              }
 
 div.epigraph > blockquote, div.epigraph > blockquote > p { font-style: italic; }
 
 div.epigraph > blockquote > footer {  font-style: normal;
-                                      width: 45%;
+                                      width: 66%;
                                       padding-left: 2.5%;
                                       padding-right: 2.5%;
                                       padding-top: 0;
@@ -153,7 +153,7 @@ div.epigraph > blockquote > footer {  font-style: normal;
 div.epigraph > blockquote > footer > cite { font-style: italic; }
 /* end chapter epigraphs styles */
 
-blockquote p, blockquote footer{  width: 45%;
+blockquote p, blockquote footer{  width: 66%;
                                   padding-left: 2.5%;
                                   padding-right: 2.5%;}
 
@@ -190,7 +190,7 @@ table, table.booktabs { width: auto;  //making booktabs style tables the unstyle
 .booktabs th, th { border-bottom: 1px solid $border-color;
                padding: 0.65ex 0.5em 0.4ex 0.5em;
                font-weight: normal;
-               //text-align: center; 
+               //text-align: center;
                }
 
 th, td{ font-size: 1.2rem;
@@ -204,7 +204,7 @@ th, td{ font-size: 1.2rem;
 
 .booktabs td, td {  padding-left: 0.5em;
                     padding-right: 0.5em;
-                    text-align: left; }            
+                    text-align: left; }
 
 .booktabs caption, caption { font-size: 90%;
                     text-align: left;
@@ -238,7 +238,7 @@ article { position: relative;
 section { padding-top: 1rem;
           padding-bottom: 1rem; }
 
-ul,ol { width: 45%;
+ul,ol { width: 66%;
      -webkit-padding-start: 5%;
      -webkit-padding-end: 5%;
      list-style-type: none; }
@@ -359,7 +359,7 @@ label.margin-toggle:not(.sidenote-number) { display: none; }
                                              position: relative; }
                             div.table-wrapper, table, table.booktabs { width: 85%; }
                             div.table-wrapper { border-right: 1px solid #efefef; }
-                            img { max-width: 100%; } 
+                            img { max-width: 100%; }
                             figcaption.maincolumn-figure, figure.fullwidth figcaption { float:none; text-align: center;}
                             figure.fullwidth figcaption { margin-left: 0; }
                           }
