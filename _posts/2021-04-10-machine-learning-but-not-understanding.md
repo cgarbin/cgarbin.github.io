@@ -91,7 +91,7 @@ First, we ask the neural network to predict what the pictures are (more details 
 
 Our neural network classified 65 out 67 pictures correctly, for an accuracy of 97%. This is a pretty good accuracy for a relatively small neural network that can be trained quickly.
 
-Let's visualize where the neural network made the mistakes. The picture below shows the mistakes with a red background. All other pictures were classified correctly. Below each picture is the neural network's classification.
+Let's visualize where the neural network made the mistakes. The picture below shows the mistakes with a red border. All other pictures were classified correctly. Below each picture is the neural network's classification.
 
 {% maincolumn 'images/2021-04-10/output_25_0.png' ''%}
 
@@ -111,7 +111,7 @@ Using the neural network, we classify the rotated squares and calculate the accu
 
 But this time, out of 80 rotated squares, only 23 of them are classified as squares. The other 57 are classified as triangles. The accuracy is now a paltry 26%.
 
-Below are all the squares in this set and how the neural network classified them. The ones with the red(ish) background were incorrectly classified as triangles.
+Below are all the squares in this set and how the neural network classified them. The ones with the red border were incorrectly classified as triangles (there are many of them).
 
 {% maincolumn 'images/2021-04-10/output_34_0.png' ''%}
 
@@ -181,7 +181,7 @@ This is how the squares look like in the darker environment.
 
 When we ask the neural network to classify these squares, we find out that the the performance is now abysmal. The accuracy is 0%. All squares are misclassified as triangles.
 
-To confirm, we can visualize the predictions. The wrong predictions have an orange(ish) background (all of them are wrong, so this is a sea of orange).
+To confirm, we can visualize the predictions. The wrong predictions have a red frame around them (all of them are wrong in this case).
 
 {% maincolumn 'images/2021-04-10/output_52_0.png' ''%}
 
