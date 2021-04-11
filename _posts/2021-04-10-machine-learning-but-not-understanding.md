@@ -7,11 +7,11 @@ categories: post
 
 {% newthought 'In the expression _machine learning_' %}, are the machines actually learning anything?
 
-In the book "Artifical Intelligence, a guide for thinking humans" Melanie Mitchell explains that
+In the book "Artificial Intelligence, a guide for thinking humans" Melanie Mitchell explains that
 
 {% epigraph
 "Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples."
-"Melanie Mitchell" "Artifical Intelligence, a guide for thinking humans" %}
+"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
 Let's explore what "learning" means for machine learning, guided by Mitchell's book. More specifically, we will concentrate on "deep learning", a branch of machine learning that has powered most of the recent advances in artificial intelligence.
 
@@ -21,12 +21,12 @@ Let's explore what "learning" means for machine learning, guided by Mitchell's b
 
 In the following figure (from Mitchell's book), a neural network comprised of several hidden layers (only one shown) was trained to classify handwritten digits. The output layer has ten units, one for each possible digit.
 
-{% maincolumn 'images/2021-04-10/neural-network.png' 'From Mitchell, _Artifical Intelligence_, chapter 2' %}
+{% maincolumn 'images/2021-04-10/neural-network.png' 'From Mitchell, _Artificial Intelligence_, chapter 2' %}
 
 How does a neural network learn? Back to Mitchell's quote:
 
 {% epigraph "Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples."
-"Melanie Mitchell" "Artifical Intelligence, a guide for thinking humans" %}
+"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
 Going through the sentence pieces:
 
@@ -37,22 +37,22 @@ Going through the sentence pieces:
 
 # An important consequence of this process
 
-{% epigraph "The machine learns what it observes in the data rather than what you (the human) might observe. If there are statistical associations in the training data, even if irrelevant to the task at hand, the machine will happily learn those instead of what you wanted it to learn." "Melanie Mitchell" "Artifical Intelligence, a guide for thinking humans" %}
+{% epigraph "The machine learns what it observes in the data rather than what you (the human) might observe. If there are statistical associations in the training data, even if irrelevant to the task at hand, the machine will happily learn those instead of what you wanted it to learn." "Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
 Thus, neural networks are not "learning" in the sense that we would understand the term. They are not learning higher-level concepts from the samples used to train them. They are extracting patterns from the data presented to them during training (and they assume that the labels are correct). That's all.
 
 Or, as Mitchell puts more eloquently:
 
 {% epigraph  "The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge; ... The barrier of meaning between AI and human-level intelligence still stands today."
-"Melanie Mitchell" "Artifical Intelligence, a guide for thinking humans" %}
+"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
 Should we be concerned that deep learning is not "learning"? We should, if we don't understand what it implies for real-life applications.
 
-In the next sections we will explore how neural networks lack the grasp of "rich meanings we humans bring to bear in perception", illustrating it with some "un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge".{% sidenote 'id' 'You can run the examples used in the text with the Jupyter notebook on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding). The examples use small pictures ro tun quickly on any computer.' %}
+In the next sections we will explore how neural networks lack the grasp of "rich meanings we humans bring to bear in perception", illustrating it with some "un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge".{% sidenote '' 'You can run the examples used in the text with the Jupyter notebook on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding). The examples use small pictures ro tun quickly on any computer.' %}
 
 # Telling squares and triangles apart
 
-We will see how a neural network trained to tell squares and triangles apart behaves.
+{% newthought 'We will see how a neural network' %} trained to tell squares and triangles apart behaves.
 
 For human beings, the pictures below show squares and triangles. Some are upright, some are rotated, some are in a light background, some are in a darker background. But they are all clearly either a square or a triangle in a frame.
 
@@ -124,12 +124,12 @@ But this does not address the fundamental problem: ***the neural network does no
 Quoting Mitchell again (emphasis added):
 
 {% epigraph "The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, <b>these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;</b> ... The barrier of meaning between AI and human-level intelligence still stands today."
-"Melanie Mitchell" "Artifical Intelligence, a guide for thinking humans" %}
+"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
 Even if we collect lots and lots and lots of example, we are confronted with ***the long-tail problem***:
 
 {% epigraph "[T]he vast range of possible unexpected situations an AI system could be faced with."
-"Melanie Mitchell" "Artifical Intelligence, a guide for thinking humans" %}
+"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
 For example, let's say we trained our autonomous driving system to recognize a school zone by the warning sign painted on the road:
 
@@ -149,13 +149,13 @@ But no matter how comprehensive we make the training and test sets and how metho
 The autonomous driving system lacks common sense.
 
 {% epigraph "...humans also have a fundamental competence lacking in all current AI systems: common sense. We have vast background knowledge of the world, both its physical and its social aspects."
-"Melanie Mitchell" "Artifical Intelligence, a guide for thinking humans" %}
+"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
 The neural network may be _learning_, but it is definitely not _understanding_.
 
 # Not understanding "squares" - part 2
 
-In the first section we changed the shape of an object. In this section we will not change the object. We will change the environment instead.
+{% newthought 'In the first section' %} we changed the shape of an object. In this section we will not change the object. We will change the environment instead.
 
 We will train a neural network to classify squares and triangles again. This time they are in different environments, represented by different background colors. The squares are in a lighter background and the triangles are on a dark(er) background (we can think of the background as "twilight" and "night").
 
@@ -190,7 +190,7 @@ To confirm, we can visualize the predictions. The wrong predictions have an oran
 The neural network we just trained fails in the same way the first neural network failed. This neural network...
 
 {% epigraph "(...) lack(s) a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;"
-"Melanie Mitchell" "Artifical Intelligence, a guide for thinking humans" %}
+"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
 In this case, the neural network is very likely learning not from the shape, but from the background {% sidenote '' 'A case of [spurious correlation](https://arxiv.org/abs/1907.02893).' %}. It is assuming that a darker background means "triangle" because it doesn't really understand the concept of what makes a triangle a triangle.
 
@@ -202,21 +202,31 @@ Other times the mistakes are more consequential, for example, when neural networ
 
 {% maincolumn 'images/2021-04-10/x-ray-pen-marks.png' 'From [Google&#39;s AI Explanations Whitepaper](https://storage.googleapis.com/cloud-ai-whitepapers/AI%20Explainability%20Whitepaper.pdf)'%}
 
-
 # Should we be concerned that deep "learning" is not "understanding"?
 
-Mitchell asks the following question in her book:
+{% newthought 'Mitchell asks'%} the following question in her book:
 
 {% epigraph "but the question remains: Will the fact that these systems lack humanlike understanding inevitably render them fragile, unreliable, and vulnerable to attacks? And how should this factor into our decisions about applying AI systems in the real world?"
-"Melanie Mitchell" "Artifical Intelligence, a guide for thinking humans" %}
+"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
 Until we achieve humanlike understanding, we should be concerned that neural networks do not generalize well.
 
 Does it mean we need to stop using neural networks until then? No.
 
 {% epigraph "I think the most worrisome aspect of AI systems in the short term is that we will give them too much autonomy without being fully aware of their limitations and vulnerabilities."
-"Melanie Mitchell" "Artifical Intelligence, a guide for thinking humans" %}
+"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
 Deep learning has successfully improved our lives. It's "just" a matter of understanding its limitations, applying it judiciously, for the tasks that it's well suited.
 
 To do that we need to educate the general public and, more importantly, the technical community. Too often we hype the next "AI has achieved humanlike performance in (some task here)", when in fact we should say "under these specific circumstances, for this specific application, AI has performed well".
+
+# Source code for the experiments
+
+{% newthought 'The source code'%} for the experiments described here is on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding). It uses small pictures to run quickly on a regular computer.
+
+Feel free to modify the pictures, the neural network model, and other parameters that affect the results.
+
+But remember that when the results improve, it's not the neural network that is learning more all of a sudden. _You_ are improving it.
+
+{% epigraph "Because of the open-ended nature of designing these networks, in general it is not possible to automatically set all the parameters and designs, even with automated search. Often it takes a kind of cabalistic knowledge that students of machine learning gain both from their apprenticeships with experts and from hard-won experience."
+"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
