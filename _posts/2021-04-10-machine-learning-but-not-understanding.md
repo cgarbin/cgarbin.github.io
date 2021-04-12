@@ -30,9 +30,9 @@ How does a neural network learn? Back to Mitchell's quote:
 
 Going through the sentence pieces:
 
-- _training examples_: The labeled examples we present to the network to train it. For example, we present a picture of a square or a triangle and its corresponding label, "square" or "triangle", respectively.
+- _training examples_: The labeled examples we present to the network to train it. For example, we present a picture of a square or a triangle and its corresponding label, "square" or "triangle".
 - _output's error_: How far the network's prediction is from the correct label of the example picture.
-- _weights on connections_: A fine-precision decimal number (several digits after the dot) that adjusts the output of a unit in one layer to the input of a unit in the next layer. The weights are where the "knowledge" of the neural network is encoded.
+- _weights on connections_: A large-precision decimal number (several digits after the dot) that adjusts the output of a unit in one layer to the input of a unit in the next layer. The weights are where the "knowledge" of the neural network is encoded.
 - _gradually modifying_: This is the neural network learning process. An algorithm carefully modifies the weights on the connections to get closer to the expected output. Repeating the adjustment step over time (many, many times) allows the network to learn from the training examples.
 
 # An important consequence of this process
@@ -63,7 +63,7 @@ In this section we will go through the typical process of training a neural netw
 1. Get a dataset with labeled pictures of squares and triangles
 1. Split the dataset into a training set and a test set
 1. Train the network with the training set
-1. Validate its accuracy with the test set
+1. Validate the neural network accuracy with the test set
 
 After we are done with that, we will predict similar images to see how the network handles them.
 
@@ -126,7 +126,7 @@ Quoting Mitchell again (emphasis added):
 {% epigraph "The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, <b>these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;</b> ... The barrier of meaning between AI and human-level intelligence still stands today."
 "Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
 
-Even if we collect lots and lots and lots of example, we are confronted with ***the long-tail problem***:
+Even if we collect lots and lots and lots of examples, we are confronted with ***the long-tail problem***:
 
 {% epigraph "[T]he vast range of possible unexpected situations an AI system could be faced with."
 "Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
@@ -157,7 +157,7 @@ The neural network may be _learning_, but it is definitely not _understanding_.
 
 {% newthought 'In the first section' %} we changed the shape of an object. In this section we will not change the object. We will change the environment instead.
 
-We will train a neural network to classify squares and triangles again. This time they are in different environments, represented by different background colors. The squares are in a lighter background and the triangles are on a dark(er) background (we can think of the background as "twilight" and "night").
+We will train a neural network to classify squares and triangles again. This time they are in different environments, represented by different background colors. The squares are in a lighter background and the triangles are on a dark(er) background (we can think of the backgrounds as "twilight" and "night").
 
 The picture below shows how they look like.
 
@@ -198,7 +198,7 @@ Sometimes this leads to some funny examples, like the neural network that "learn
 
 {% maincolumn 'images/2021-04-10/land-and-waterbirds.png' 'From [An Investigation of Why Overparameterization Exacerbates Spurious Correlations](https://arxiv.org/abs/2005.04345)'%}
 
-Other times the mistakes are more consequential, for example, when neural networks misclassify X-rays based on markings left by radiologists in the images. Instead of learning actual attributes of a disease, the neural network "learned" from the marks left behind in the images ([source](https://storage.googleapis.com/cloud-ai-whitepapers/AI%20Explainability%20Whitepaper.pdf)). Images without such marks may be classified as "healthy". The consequences can be catastrophic.
+Other times the mistakes are more consequential, for example, when neural networks misclassify X-rays based on markings left by radiologists in the images. Instead of learning actual attributes of a disease, the neural network "learned" from the marks left behind in the images. Images without such marks may be classified as "healthy". The consequences can be catastrophic.
 
 {% maincolumn 'images/2021-04-10/x-ray-pen-marks.png' 'From [Google&#39;s AI Explanations Whitepaper](https://storage.googleapis.com/cloud-ai-whitepapers/AI%20Explainability%20Whitepaper.pdf)'%}
 
@@ -218,7 +218,7 @@ Does it mean we need to stop using neural networks until then? No.
 
 Deep learning has successfully improved our lives. It's "just" a matter of understanding its limitations, applying it judiciously, for the tasks that it's well suited.
 
-To do that we need to educate the general public and, more importantly, the technical community. Too often we hype the next "AI has achieved humanlike performance in (some task here)", when in fact we should say "under these specific circumstances, for this specific application, AI has performed well".
+To do that we need to educate the general public and, more importantly, the technical community. Too often we hype the next "AI has achieved humanlike performance in _some task here_", when in fact we should say "under these specific circumstances, for this specific application, AI has performed well".
 
 # Source code for the experiments
 
