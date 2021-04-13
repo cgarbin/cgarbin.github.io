@@ -13,7 +13,14 @@ title: blog
       <h3 class="contrast">{{ post.title }}</h3>
     </a>
     <br><span class="smaller">{{ post.date | date: "%B %-d, %Y" }}</span> <br />
-    <div>{{ post.excerpt }}</div>
+    <div>
+      {{ post.excerpt }}
+
+      {% if post.content.size > post.excerpt.size %}
+      <p><a href="{{ post.url }}">Read more...</a></p>
+      {% endif %}
+
+    </div>
   </li>
   {% endfor %}
 </ul>

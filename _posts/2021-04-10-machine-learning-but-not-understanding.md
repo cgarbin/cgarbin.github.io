@@ -15,6 +15,8 @@ In the book "Artificial Intelligence, a guide for thinking humans" Melanie Mitch
 
 Let's explore what "learning" means for machine learning, guided by Mitchell's book. More specifically, we will concentrate on "deep learning", a branch of machine learning that has powered most of the recent advances in artificial intelligence.
 
+<!--more-->
+
 # An extremely short explanation of deep learning
 
 {% newthought 'Deep learning uses layers of "units"'%}{% sidenote 'mn-id-units' 'Also called _neurons_, but some people, including Mitchell and I, prefer the more generic _units_ term, to not confuse with biological neurons.' %} to extract patterns from labeled data. The internal layers are called "hidden layers". The last layer is called the "output layer", or the classification layer.
@@ -32,7 +34,7 @@ Going through the sentence pieces:
 
 - _training examples_: The labeled examples we present to the network to train it. For example, we present a picture of a square or a triangle and its corresponding label, "square" or "triangle".
 - _output's error_: How far the network's prediction is from the correct label of the example picture.
-- _weights on connections_: A large-precision decimal number (several digits after the dot) that adjusts the output of a unit in one layer to the input of a unit in the next layer. The weights are where the "knowledge" of the neural network is encoded.
+- _weights on connections_: A large-precision decimal number that adjusts the output of a unit in one layer to the input of a unit in the next layer. The weights are where the "knowledge" of the neural network is encoded.
 - _gradually modifying_: This is the neural network learning process. An algorithm carefully modifies the weights on the connections to get closer to the expected output. Repeating the adjustment step over time (many, many times) allows the network to learn from the training examples.
 
 # An important consequence of this process
