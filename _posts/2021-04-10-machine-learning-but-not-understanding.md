@@ -56,7 +56,7 @@ In the next sections we will explore how neural networks lack the grasp of "rich
 
 {% newthought 'We will see how a neural network' %} trained to tell squares and triangles apart behaves.
 
-For human beings, the pictures below show squares and triangles. Some are upright, some are rotated, some are in a light background, some are in a darker background. But they are all clearly either a square or a triangle in a frame.
+For human beings, the pictures below show squares and triangles. Some are small, some are large, some are in a light background, some are in a darker background. But they are all clearly either a square or a triangle in a frame.
 
 {% maincolumn 'images/2021-04-10/squares-triangles.png' ''%}
 
@@ -75,7 +75,7 @@ This is how some of the training images look like. Each picture is a square or a
 
 {% maincolumn 'images/2021-04-10/output_12_0.png' ''%}
 
-## The "square vs. triangle" neural network
+## The "squares vs. triangles" neural network
 
 {% marginfigure 'mf-id-cnn' 'images/2021-04-10/cnn.png' 'Typical representation of a CNN. From the excellent _[Stanford CS231n: Convolutional Neural Networks for Visual Recognition](https://cs231n.github.io/convolutional-networks/)_ class.' %}
 
@@ -101,17 +101,17 @@ Despite the good accuracy, does the neural network understand the concept of wha
 
 ## When are squares not squares?
 
-When they are rotated. At least for this neural network.
+When they are larger. At least for this neural network.
 
-In this section we will use the neural network we just trained to classify a set of squares. But there is a twist to these squares: they are rotated by about 45 degreees.
+In this section we will use the neural network we just trained to classify a set of squares. But there is a twist to these squares: they are larger than the ones we used in the training set.
 
 This is how they look like.
 
 {% maincolumn 'images/2021-04-10/output_28_0.png' ''%}
 
-Using the neural network, we classify the rotated squares and calculate the accuracy, just like we did with the test set.
+Using the neural network, we classify the large squares and calculate the accuracy, just like we did with the test set.
 
-But this time, out of 80 rotated squares, only 23 of them are classified as squares. The other 57 are classified as triangles. The accuracy is now a paltry 26%.
+But this time, out of 77 large squares, only 43 of them are classified as squares. The other 34 are classified as triangles. With an accuracy of 55.8%, the neural network is barely better than flipping a coin.
 
 Below are all the squares in this set and how the neural network classified them. The ones with the red border were incorrectly classified as triangles (there are many of them).
 
@@ -119,7 +119,7 @@ Below are all the squares in this set and how the neural network classified them
 
 ## Why does this experiment matter?
 
-The simplest and fastest way to improve this neural network is to increase the size of the training and test sets. In this case, we should add rotated squares to the training set and retrain the neural network. It will very likely perform better.
+The simplest and fastest way to improve this neural network is to increase the size of the training and test sets. In this case, we should add larger squares to the training set and retrain the neural network. It will very likely perform better.
 
 But this does not address the fundamental problem: ***the neural network does not understand the concept of "square".***
 
