@@ -50,7 +50,7 @@ Or, as Mitchell puts more eloquently:
 
 Should we be concerned that deep learning is not "learning"? We should, if we don't understand what it implies for real-life applications.
 
-In the next sections we will explore how neural networks lack the grasp of "rich meanings we humans bring to bear in perception", illustrating it with some "un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge".{% sidenote '' 'You can run the examples used in the text with the Jupyter notebook on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding). The examples use small pictures ro tun quickly on any computer.' %}
+In the next sections we will explore how neural networks lack the grasp of "rich meanings we humans bring to bear in perception", illustrating it with some "un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge".{% sidenote '' 'You can run the examples used in the text with the Jupyter notebook on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding). The examples use small pictures to run quickly on any computer.' %}
 
 # Telling squares and triangles apart
 
