@@ -1,31 +1,275 @@
----
-layout: null
-nav_exclude: true
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}{{ site.baseurl }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
-    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts limit:10 %}
+    <title>Christian Garbin's blog</title>
+    <description>Christian Garbin's blog</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 10 May 2021 06:19:44 -0400</pubDate>
+    <lastBuildDate>Mon, 10 May 2021 06:19:44 -0400</lastBuildDate>
+    <generator>Jekyll v4.2.0</generator>
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
-        {% for tag in post.tags %}
-        <category>{{ tag | xml_escape }}</category>
-        {% endfor %}
-        {% for cat in post.categories %}
-        <category>{{ cat | xml_escape }}</category>
-        {% endfor %}
+        <title>Machine learning, but not understanding</title>
+        <description>&lt;p&gt;&lt;span class=&quot;newthought&quot;&gt;In the expression &lt;em&gt;machine learning&lt;/em&gt;&lt;/span&gt; , are the machines actually learning anything?&lt;/p&gt;
+
+&lt;p&gt;In the book “Artificial Intelligence, a guide for thinking humans” Melanie Mitchell explains that&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples.&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s explore what “learning” means for machine learning, guided by Mitchell’s book. More specifically, we will concentrate on “deep learning”, a branch of machine learning that has powered most of the recent advances in artificial intelligence.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;an-extremely-short-explanation-of-deep-learning&quot;&gt;An extremely short explanation of deep learning&lt;/h1&gt;
+
+&lt;p&gt;&lt;span class=&quot;newthought&quot;&gt;Deep learning uses layers of “units”&lt;/span&gt; &lt;label for=&quot;mn-id-units&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mn-id-units&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Also called &lt;em&gt;neurons&lt;/em&gt;, but some people, including Mitchell and I, prefer the more generic &lt;em&gt;units&lt;/em&gt; term, to not confuse with biological neurons. &lt;/span&gt; to extract patterns from labeled data. The internal layers are called “hidden layers”. The last layer is called the “output layer”, or the classification layer.&lt;/p&gt;
+
+&lt;p&gt;In the following figure (from Mitchell’s book), a neural network comprised of several hidden layers (only one shown) was trained to classify handwritten digits. The output layer has ten units, one for each possible digit.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/neural-network.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;From Mitchell, &lt;em&gt;Artificial Intelligence&lt;/em&gt;, chapter 2&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;How does a neural network learn? Back to Mitchell’s quote:&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples.&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;Going through the sentence pieces:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;training examples&lt;/em&gt;: The labeled examples we present to the network to train it. For example, we present a picture of a square or a triangle and its corresponding label, “square” or “triangle”.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;output’s error&lt;/em&gt;: How far the network’s prediction is from the correct label of the example picture.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;weights on connections&lt;/em&gt;: A large-precision decimal number that adjusts the output of a unit in one layer to the input of a unit in the next layer. The weights are where the “knowledge” of the neural network is encoded.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;gradually modifying&lt;/em&gt;: This is the neural network learning process. An algorithm carefully modifies the weights on the connections to get closer to the expected output. Repeating the adjustment step over time (many, many times) allows the network to learn from the training examples.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;an-important-consequence-of-this-process&quot;&gt;An important consequence of this process&lt;/h1&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;The machine learns what it observes in the data rather than what you (the human) might observe. If there are statistical associations in the training data, even if irrelevant to the task at hand, the machine will happily learn those instead of what you wanted it to learn.&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;Thus, neural networks are not “learning” in the sense that we would understand the term. They are not learning higher-level concepts from the samples used to train them. They are extracting patterns from the data presented to them during training (and they assume that the labels are correct). That’s all.&lt;/p&gt;
+
+&lt;p&gt;Or, as Mitchell puts more eloquently:&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge; ... The barrier of meaning between AI and human-level intelligence still stands today.&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;Should we be concerned that deep learning is not “learning”? We should, if we don’t understand what it implies for real-life applications.&lt;/p&gt;
+
+&lt;p&gt;In the next sections we will explore how neural networks lack the grasp of “rich meanings we humans bring to bear in perception”, illustrating it with some “un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge”.&lt;label for=&quot;&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;You can run the examples used in the text with the Jupyter notebook on &lt;a href=&quot;https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding&quot;&gt;this GitHub repository&lt;/a&gt;. The examples use small pictures to run quickly on any computer. &lt;/span&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;telling-squares-and-triangles-apart&quot;&gt;Telling squares and triangles apart&lt;/h1&gt;
+
+&lt;p&gt;&lt;span class=&quot;newthought&quot;&gt;We will see how a neural network&lt;/span&gt;  trained to tell squares and triangles apart behaves.&lt;/p&gt;
+
+&lt;p&gt;For human beings, the pictures below show squares and triangles. Some are small, some are large, some are in a light background, some are in a darker background. But they are all clearly either a square or a triangle in a frame.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/squares-triangles.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;In this section we will go through the typical process of training a neural network to classify squares and triangles:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Get a dataset with labeled pictures of squares and triangles&lt;/li&gt;
+  &lt;li&gt;Split the dataset into a training set and a test set&lt;/li&gt;
+  &lt;li&gt;Train the network with the training set&lt;/li&gt;
+  &lt;li&gt;Validate the neural network accuracy with the test set&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After we are done with that, we will predict similar images to see how the network handles them.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-squares-vs-triangles-training-examples&quot;&gt;The “squares vs. triangles” training examples&lt;/h2&gt;
+
+&lt;p&gt;This is how some of the training images look like. Each picture is a square or a triangle in different positions. The dataset has hundreds of these pictures.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/output_12_0.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;the-squares-vs-triangles-neural-network&quot;&gt;The “squares vs. triangles” neural network&lt;/h2&gt;
+
+&lt;p&gt;&lt;label for=&quot;mf-id-cnn&quot; class=&quot;margin-toggle&quot;&gt;⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mf-id-cnn&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;&lt;img class=&quot;fullwidth&quot; src=&quot;/images/2021-04-10/cnn.png&quot; /&gt;&lt;br /&gt;Typical representation of a CNN. From the excellent &lt;em&gt;&lt;a href=&quot;https://cs231n.github.io/convolutional-networks/&quot;&gt;Stanford CS231n: Convolutional Neural Networks for Visual Recognition&lt;/a&gt;&lt;/em&gt; class.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;We train a &lt;a href=&quot;https://cs231n.github.io/convolutional-networks/&quot;&gt;convolutional neural network&lt;/a&gt; (CNN) to classify a picture as a “square” or as a “triangle”, using the training examples. We chose a CNN architecture because it is well suited to image classification.&lt;/p&gt;
+
+&lt;p&gt;If you would like to see the details of the training process, see the Jupyter notebook on &lt;a href=&quot;https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding&quot;&gt;this GitHub repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-does-the-neural-network-perform&quot;&gt;How does the neural network perform?&lt;/h2&gt;
+
+&lt;p&gt;Before we started the training process, we set aside 10% of the pictures to use later (67 pictures). They are pictures that the neural network was not trained on. This is the &lt;em&gt;test set&lt;/em&gt;. We use the test set to measure the performance of the neural network.&lt;/p&gt;
+
+&lt;p&gt;A traditional measure of performance is “accuracy”. It measures the percentage of pictures in the test set that were correctly classified.&lt;/p&gt;
+
+&lt;p&gt;First, we ask the neural network to predict what the pictures are (more details on how that happens &lt;a href=&quot;https://github.com/fau-masters-collected-works-cgarbin/decision-threshold-effect-on-accuracy&quot;&gt;here&lt;/a&gt;), then we compare with the actual labels and calculate the accuracy.&lt;/p&gt;
+
+&lt;p&gt;Our neural network classified 65 out 67 pictures correctly, for an accuracy of 97%. This is a pretty good accuracy for a relatively small neural network that can be trained quickly.&lt;/p&gt;
+
+&lt;p&gt;Let’s visualize where the neural network made the mistakes. The picture below shows the mistakes with a red border. All other pictures were classified correctly. Below each picture is the neural network’s classification.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/output_25_0.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;Despite the good accuracy, does the neural network understand the concept of what it is learning?&lt;/p&gt;
+
+&lt;h2 id=&quot;when-are-squares-not-squares&quot;&gt;When are squares not squares?&lt;/h2&gt;
+
+&lt;p&gt;When they are larger. At least for this neural network.&lt;/p&gt;
+
+&lt;p&gt;In this section we will use the neural network we just trained to classify a set of squares. But there is a twist to these squares: they are larger than the ones we used in the training set.&lt;/p&gt;
+
+&lt;p&gt;This is how they look like.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/output_28_0.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;Using the neural network, we classify the large squares and calculate the accuracy, just like we did with the test set.&lt;/p&gt;
+
+&lt;p&gt;But this time, out of 77 large squares, only 43 of them are classified as squares. The other 34 are classified as triangles. With an accuracy of 55.8%, the neural network is barely better than flipping a coin.&lt;/p&gt;
+
+&lt;p&gt;Below are all the squares in this set and how the neural network classified them. The ones with the red border were incorrectly classified as triangles (there are many of them).&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/output_34_0.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;why-does-this-experiment-matter&quot;&gt;Why does this experiment matter?&lt;/h2&gt;
+
+&lt;p&gt;The simplest and fastest way to improve this neural network is to increase the size of the training and test sets. In this case, we should add larger squares to the training set and retrain the neural network. It will very likely perform better.&lt;/p&gt;
+
+&lt;p&gt;But this does not address the fundamental problem: &lt;strong&gt;&lt;em&gt;the neural network does not understand the concept of “square”.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Quoting Mitchell again (emphasis added):&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, &lt;b&gt;these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;&lt;/b&gt; ... The barrier of meaning between AI and human-level intelligence still stands today.&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;Even if we collect lots and lots and lots of examples, we are confronted with &lt;strong&gt;&lt;em&gt;the long-tail problem&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;[T]he vast range of possible unexpected situations an AI system could be faced with.&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;For example, let’s say we trained our autonomous driving system to recognize a school zone by the warning sign painted on the road:&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/school-spelled-right.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;a href=&quot;https://virtualdriveoftexas.com/texas-school-zones/&quot;&gt;Image source&lt;/a&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then, one day our autonomous driving system comes across these real-life examples:&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/school-spelled-wrong-1.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;a href=&quot;https://www.anyvan.com/blog/whats-going-on/back-to-shcool-for-some/&quot;&gt;Image source&lt;/a&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/school-spelled-wrong-2.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;a href=&quot;https://www.wibw.com/content/news/School-misspelled-at-Florida-crosswalk-508798331.html?ref=331&quot;&gt;Image source&lt;/a&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;Any (well, most) human beings would still identify them as warning signs for school zones&lt;label for=&quot;&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;Presumably, the human would chuckle, then - hopefully - slow down &lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;Would the autonomous driving system identify them correctly? The honest answer is “we don’t know”. It depends on how it was trained. Was it given these examples in the training set? In enough quantities to identify the pattern? Did the test set have examples? Were they classified correctly?&lt;/p&gt;
+
+&lt;p&gt;But no matter how comprehensive we make the training and test sets and how methodically we inspect the classification results, we are faced with the fundamental problem: &lt;strong&gt;&lt;em&gt;the neural network does not understand the concept of “school zone warning”&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The autonomous driving system lacks common sense.&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;...humans also have a fundamental competence lacking in all current AI systems: common sense. We have vast background knowledge of the world, both its physical and its social aspects.&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;The neural network may be &lt;em&gt;learning&lt;/em&gt;, but it is definitely not &lt;em&gt;understanding&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;not-understanding-squares---part-2&quot;&gt;Not understanding “squares” - part 2&lt;/h1&gt;
+
+&lt;p&gt;&lt;span class=&quot;newthought&quot;&gt;In the first section&lt;/span&gt;  we changed the shape of an object. In this section we will not change the object. We will change the environment instead.&lt;/p&gt;
+
+&lt;p&gt;We will train a neural network to classify squares and triangles again. This time they are in different environments, represented by different background colors. The squares are in a lighter background and the triangles are on a dark(er) background (we can think of the backgrounds as “twilight” and “night”).&lt;/p&gt;
+
+&lt;p&gt;The picture below shows how they look like.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/output_38_0.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;Following the same steps we used in the first section, we train a neural network to classify the squares and triangles.&lt;/p&gt;
+
+&lt;p&gt;Once the network is trained, we use the test set to calculate the neural network accuracy and find out that it is a perfect 100% accuracy score. All squares and triangles in the test set were classified correctly.&lt;/p&gt;
+
+&lt;p&gt;If you would like to see the details of the training process, see the Jupyter notebook on &lt;a href=&quot;https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding&quot;&gt;this GitHub repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So far, so good, but…&lt;/p&gt;
+
+&lt;h2 id=&quot;in-the-dark-all-squares-are-triangles&quot;&gt;In the dark, all squares are triangles&lt;/h2&gt;
+
+&lt;p&gt;What happens if the squares are now in the same environment as the triangles (all squares are in the “night” environment)?&lt;/p&gt;
+
+&lt;p&gt;This is how the squares look like in the darker environment.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/output_47_0.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;When we ask the neural network to classify these squares, we find out that the the performance is now abysmal. The accuracy is 0%. All squares are misclassified as triangles.&lt;/p&gt;
+
+&lt;p&gt;To confirm, we can visualize the predictions. The wrong predictions have a red frame around them (all of them are wrong in this case).&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/output_52_0.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;why-does-this-experiment-matter-1&quot;&gt;Why does this experiment matter?&lt;/h2&gt;
+
+&lt;p&gt;The neural network we just trained fails in the same way the first neural network failed. This neural network…&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;(...) lack(s) a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;In this case, the neural network is very likely learning not from the shape, but from the background &lt;label for=&quot;&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;A case of &lt;a href=&quot;https://arxiv.org/abs/1907.02893&quot;&gt;spurious correlation&lt;/a&gt;. &lt;/span&gt;. It is assuming that a darker background means “triangle” because it doesn’t really understand the concept of what makes a triangle a triangle.&lt;/p&gt;
+
+&lt;p&gt;Sometimes this leads to some funny examples, like the neural network that “learned” to classify land vs. water birds based on the background. The duck on the right was misclassified as a land bird, simply because it was not in its usual water environment.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/land-and-waterbirds.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;From &lt;a href=&quot;https://arxiv.org/abs/2005.04345&quot;&gt;An Investigation of Why Overparameterization Exacerbates Spurious Correlations&lt;/a&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;Other times the mistakes are more consequential, for example, when neural networks misclassify X-rays based on markings left by radiologists in the images. Instead of learning actual attributes of a disease, the neural network “learned” from the marks left behind in the images. Images without such marks may be classified as “healthy”. The consequences can be catastrophic.&lt;/p&gt;
+
+&lt;figure&gt;&lt;img src=&quot;/images/2021-04-10/x-ray-pen-marks.png&quot; /&gt;&lt;figcaption class=&quot;maincolumn-figure&quot;&gt;From &lt;a href=&quot;https://storage.googleapis.com/cloud-ai-whitepapers/AI%20Explainability%20Whitepaper.pdf&quot;&gt;Google's AI Explanations Whitepaper&lt;/a&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;should-we-be-concerned-that-deep-learning-is-not-understanding&quot;&gt;Should we be concerned that deep “learning” is not “understanding”?&lt;/h1&gt;
+
+&lt;p&gt;&lt;span class=&quot;newthought&quot;&gt;Mitchell asks&lt;/span&gt;  the following question in her book:&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;but the question remains: Will the fact that these systems lack humanlike understanding inevitably render them fragile, unreliable, and vulnerable to attacks? And how should this factor into our decisions about applying AI systems in the real world?&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;Until we achieve humanlike understanding, we should be concerned that neural networks do not generalize well.&lt;/p&gt;
+
+&lt;p&gt;Does it mean we need to stop using neural networks until then? No.&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;I think the most worrisome aspect of AI systems in the short term is that we will give them too much autonomy without being fully aware of their limitations and vulnerabilities.&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+
+&lt;p&gt;Deep learning has successfully improved our lives. It’s “just” a matter of understanding its limitations, applying it judiciously, for the tasks that it’s well suited.&lt;/p&gt;
+
+&lt;p&gt;To do that we need to educate the general public and, more importantly, the technical community. Too often we hype the next “AI has achieved humanlike performance in &lt;em&gt;some task here&lt;/em&gt;”, when in fact we should say “under these specific circumstances, for this specific application, AI has performed well”.&lt;/p&gt;
+
+&lt;h1 id=&quot;source-code-for-the-experiments&quot;&gt;Source code for the experiments&lt;/h1&gt;
+
+&lt;p&gt;&lt;span class=&quot;newthought&quot;&gt;The source code&lt;/span&gt;  for the experiments described here is on &lt;a href=&quot;https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding&quot;&gt;this GitHub repository&lt;/a&gt;. It uses small pictures to run quickly on a regular computer.&lt;/p&gt;
+
+&lt;p&gt;Feel free to modify the pictures, the neural network model, and other parameters that affect the results.&lt;/p&gt;
+
+&lt;p&gt;But remember that when the results improve, it’s not the neural network that is learning more all of a sudden. &lt;em&gt;You&lt;/em&gt; are improving it.&lt;/p&gt;
+
+&lt;div class=&quot;epigraph&quot;&gt;&lt;blockquote&gt;&lt;p&gt;Because of the open-ended nature of designing these networks, in general it is not possible to automatically set all the parameters and designs, even with automated search. Often it takes a kind of cabalistic knowledge that students of machine learning gain both from their apprenticeships with experts and from hard-won experience.&lt;/p&gt;&lt;footer&gt;Melanie Mitchell, &lt;cite&gt;Artificial Intelligence, a guide for thinking humans&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;&lt;/div&gt;
+</description>
+        <pubDate>Sat, 10 Apr 2021 00:00:00 -0400</pubDate>
+        <link>/machine-learning-but-not-understanding/</link>
+        <guid isPermaLink="true">/machine-learning-but-not-understanding/</guid>
+        
+        
+        <category>post</category>
+        
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>About</title>
+        <description>&lt;p&gt;I’m a software architect at &lt;a href=&quot;https://unify.com/en/&quot;&gt;Atos Unify&lt;/a&gt;. More about my professional life on
+&lt;a href=&quot;https://www.linkedin.com/in/christiangarbin/&quot;&gt;LinkedIn&lt;/a&gt;. Over the years, with the help of my colleagues, we were granted
+&lt;a href=&quot;https://scholar.google.com/citations?user=q1ZmDvYAAAAJ&amp;amp;hl=en&quot;&gt;a few patents&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In December of 2020 I completed a Computer Science master’s degree at &lt;a href=&quot;https://www.fau.edu/&quot;&gt;Florida Atlantic University&lt;/a&gt;,
+focusing on machine learning. The work I did for the master’s is &lt;a href=&quot;https://github.com/fau-masters-collected-works-cgarbin&quot;&gt;collected here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I’m now a Ph.D. candidate, also focusing on machine learning, continuing the work I did for the master’s degree.&lt;/p&gt;
+
+&lt;p&gt;Publications from the master’s and Ph.D. work:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;My &lt;a href=&quot;https://fau.digital.flvc.org/islandora/object/fau%3A64688&quot;&gt;master’s thesis&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/fau-masters-collected-works-cgarbin/cap6619-deep-learning-term-project&quot;&gt;Dropout vs. batch normalization term project&lt;/a&gt;
+started as a class project and was eventually published as a &lt;a href=&quot;https://link.springer.com/article/10.1007/s11042-019-08453-9&quot;&gt;peer-reviewed paper&lt;/a&gt;
+(with much help from the professors listed as co-authors). The free version of the paper is &lt;a href=&quot;https://drive.google.com/file/d/1PyRUgSXqpl_OvJkWrR4HCWLDaEexzWd9/view&quot;&gt;available here&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;In collaboration with the &lt;a href=&quot;https://stanfordmlgroup.github.io/competitions/chexpert/&quot;&gt;Stanford CheXpert team&lt;/a&gt;, we created a &lt;a href=&quot;https://arxiv.org/abs/1803.09010&quot;&gt;dataset datasheet&lt;/a&gt; for CheXPert and published it &lt;a href=&quot;https://arxiv.org/abs/2105.03020&quot;&gt;on arXiv&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 01 Jan 2021 00:00:00 -0500</pubDate>
+        <link>/about/</link>
+        <guid isPermaLink="true">/about/</guid>
+        
+        
+        <category>post</category>
+        
+      </item>
+    
   </channel>
 </rss>
