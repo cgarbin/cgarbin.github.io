@@ -1,7 +1,7 @@
 #!/bin/bash
-# Publish the site to the GitHub pages branch
+# Publish the site to the GitHub pages branch, making it public
 
-echo "Remember to update the local page:"
+echo "Remember to test locally first:"
 echo "  bundle exec jekyll serve"
 
 set -xe

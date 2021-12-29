@@ -1,6 +1,6 @@
 # Christian Garbin blog
 
-Personal blocg
+Personal blog
 
 ## Jekyll Theme
 
