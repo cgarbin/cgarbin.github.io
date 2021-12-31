@@ -142,7 +142,7 @@ Then, one day our autonomous driving system comes across these real-life example
 {% maincolumn 'images/2021-04-10/school-spelled-wrong-1.png' '[Image source](https://www.anyvan.com/blog/whats-going-on/back-to-shcool-for-some/)'%}
 {% maincolumn 'images/2021-04-10/school-spelled-wrong-2.png' '[Image source](https://www.wibw.com/content/news/School-misspelled-at-Florida-crosswalk-508798331.html?ref=331)'%}
 
-Any (well, most) human beings would still identify them as warning signs for school zones{% marginnote '' 'Presumably, the human would chuckle, then - hopefully - slow down' %}.
+Any (well, most) human beings would still identify them as warning signs for school zones{% marginnote 'mg-stop-sign ' 'Presumably, the human would chuckle, then - hopefully - slow down' %}.
 
 Would the autonomous driving system identify them correctly? The honest answer is "we don't know". It depends on how it was trained. Was it given these examples in the training set? In enough quantities to identify the pattern? Did the test set have examples? Were they classified correctly?
 
