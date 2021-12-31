@@ -26,8 +26,8 @@ number of instances in the test set.
 
 $$ Accuracy = {Number\ of\ correct\ predictions \over Number\ of\ instances\ predicted} $$
 
-To illustrate the discussion, we will use an image classification model. {%marginnote 'mg-simplification' 'Simplification disclaimer: there are other types of problems, e.g. regression, and other types of
-models -- we are making simplifications to expose the main concept.' %}
+To illustrate the discussion, we will use an image classification model{%sidenote 'mg-simplification' 'Simplification disclaimer: there are other types of problems, e.g. regression, and other types of
+models -- we are making simplifications to expose the main concept.' %}.
 
 A typical image classification problem, taught early in machine learning, is digit classification with the
 [MNIST dataset](http://yann.lecun.com/exdb/mnist/). The dataset looks like this (a small sample -

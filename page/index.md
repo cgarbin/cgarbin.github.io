@@ -3,7 +3,7 @@ layout: post
 title: Posts
 ---
 
-I picked this Jekyll theme because I admire the work of [Edward Tutfe](https://www.edwardtufte.com/tufte/).
+I picked this Jekyll theme because I admire the work of [Edward Tufte](https://www.edwardtufte.com/tufte/).
 
 One thing the particularly annoys me when reading papers and books, are references that switch context. They force you to go to the bottom of the page or, even worse, to some later section of the paper or book.
 
