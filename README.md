@@ -1,5 +1,5 @@
 # Christian Garbin blog
 
-Personal blog
+Personal blog - published [here](https://cgarbin.github.io/).
 
-This site uses [Jekyll](http://jekyllrb.com/) and the [Tufte theme](https://github.com/clayh53/tufte-jekyll).
+The blog uses [Jekyll](http://jekyllrb.com/) and the [Tufte theme](https://github.com/clayh53/tufte-jekyll).
