@@ -4,6 +4,11 @@
 echo "Remember to publish and test locally first:"
 echo "  bundle exec jekyll serve"
 
+if [ -n "$(git status --porcelain)" ]; then
+    echo ""
+    echo "There are uncommited changes - commit them first"
+fi
+
 set -xe
 
 mv _site ../_site-ghio
