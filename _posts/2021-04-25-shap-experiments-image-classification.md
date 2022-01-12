@@ -68,8 +68,10 @@ The experiments are as follows:
 
 ### An important caveat
 
-{% newthought
- '"Explanations must be wrong."'%}{% sidenote 'mn-id-units' '[Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead](https://arxiv.org/abs/1811.10154), Cynthia Rudin' %}
+{% epigraph
+'"Explanations must be wrong."'
+'Cynthia Rudin' '<a href="https://arxiv.org/abs/1811.10154">Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead</a>'
+%}
 
 As we are going through the exploration of the feature attributions, we must keep in my mind that we are analyzing two items at the same time:
 
