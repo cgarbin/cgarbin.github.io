@@ -2,7 +2,8 @@
 layout: post
 title:  "Exploring SHAP explanations for image classification"
 date:   2021-04-25
-categories: post
+categories: machine-learning
+tags: [shap, image-classification, explanation]
 ---
 
 {% newthought 'This article explores' %} how to interpret predictions of an image classification neural network using [SHAP (SHapley Additive exPlanations)](https://arxiv.org/abs/1705.07874).
