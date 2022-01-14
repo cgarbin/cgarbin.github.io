@@ -87,7 +87,7 @@ The flaw in this thought process is that disadvantaged communities spend less on
 {% newthought "Some biases" %} can be detected with analytical methods and tools. These tools usually explore cross-sectional representations of the dataset, for example, the proportion of male vs. female, religion, different age groups, etc. Some of these tools include
 
 - [TensorFlow fairness indicator](https://github.com/tensorflow/fairness-indicators)
-- [TensorFlow Wath-If tool](https://pair-code.github.io/what-if-tool/) to investigate the model behavior
+- [TensorFlow What-If tool](https://pair-code.github.io/what-if-tool/) to investigate the model behavior
 - [Microsoft's Fairlearn](https://www.microsoft.com/en-us/research/publication/fairlearn-a-toolkit-for-assessing-and-improving-fairness-in-ai/)
 - [IBM's AI Fairness 360](https://aif360.mybluemix.net/)
 
