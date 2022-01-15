@@ -6,7 +6,7 @@ categories: machine-learning
 tags: [machine-learning]
 ---
 
-Taking a narrow definition of the problem, where [X] is a reasonable application of AI for the current state of the technologies involved, "trust" can be formulated as "it is safe to assume that an AI product can do [X] consistently and that it also detects when it is working outside of its boundaries, reacting accordingly".
+{% newthought "Taking a narrow definition" %} of the question, where [X] is a reasonable application of AI for the current state of the technologies involved, "trust" can be formulated as "it is safe to assume that an AI product can do [X] consistently and that it also detects when it is working outside of its boundaries, reacting accordingly".
 
 In other words, trust is related to "robustness", the ability of an AI product to not only do what it is supposed to do, but also to withstand adverse, hostile, conflicting conditions.
 
