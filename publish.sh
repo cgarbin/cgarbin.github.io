@@ -6,7 +6,8 @@ echo "  bundle exec jekyll serve"
 
 if [ -n "$(git status --porcelain)" ]; then
     echo ""
-    echo "There are uncommited changes - commit them first"
+    echo "There are uncommited changes - commit or stash them first"
+    exit 1
 fi
 
 set -xe
