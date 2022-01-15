@@ -93,7 +93,7 @@ The flaw in this thought process is that disadvantaged communities spend less on
 
 The analytical tools and methods help, but they are after the fact. The dataset and perhaps even the model are already in place.
 
-We also need methods to prevent errors when creating a dataset and methods to document limitations of the resulting dataset (no dataset is ever perfect). Both need more human intervention. [Datasheets for datasets](https://arxiv.org/abs/1803.09010) and [model cards](https://arxiv.org/abs/1810.03993) are methods to bring human judgment into the process.
+Besides detecting bias, we also need methods to prevent the introduction of bias when creating datasets and models. [Datasheets for datasets](https://arxiv.org/abs/1803.09010) and [model cards](https://arxiv.org/abs/1810.03993) are methods to bring human judgment into the process. They guide researchers and machine learning practitioners in the early stages of the dataset and model creation by asking pointed questions. This early intervention can help reduce bias that would go unnoticed or would be hard to eliminate if found in late stages.
 
 ## Other resources
 
