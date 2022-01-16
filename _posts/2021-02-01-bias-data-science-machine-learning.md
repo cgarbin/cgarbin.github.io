@@ -90,6 +90,7 @@ The flaw in this thought process is that disadvantaged communities spend less on
 - [TensorFlow What-If tool](https://pair-code.github.io/what-if-tool/) to investigate the model behavior
 - [Microsoft's Fairlearn](https://www.microsoft.com/en-us/research/publication/fairlearn-a-toolkit-for-assessing-and-improving-fairness-in-ai/)
 - [IBM's AI Fairness 360](https://aif360.mybluemix.net/)
+- [Know Your Data](https://knowyourdata.withgoogle.com/)
 
 The analytical tools and methods help, but they are after the fact. The dataset and perhaps even the model are already in place.
 
