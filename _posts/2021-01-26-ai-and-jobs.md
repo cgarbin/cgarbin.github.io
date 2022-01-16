@@ -2,8 +2,8 @@
 layout: post
 title:  "Artificial intelligence and jobs"
 date:   2021-02-01
-categories: artifical-intelligence
-tags: [artifical-intelligence, machine-learning, soclal-impact]
+categories: artificial-intelligence
+tags: [artificial-intelligence, machine-learning, soclal-impact]
 ---
 
 One of my favorites sources to keep track of current affairs, [The Economist](https://www.economist.com/), published in January of 2021 a column on the effect of automation on jobs, "[New research shows the robots are coming for jobs—but stealthily](https://www.economist.com/finance-and-economics/2021/01/16/new-research-shows-the-robots-are-coming-for-jobs-but-stealthily)" (need a subscription to read in full).
