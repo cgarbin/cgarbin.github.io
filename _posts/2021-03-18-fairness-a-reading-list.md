@@ -6,7 +6,7 @@ tags: [machine-learning, fairness, soclal-impact]
 toc: true
 ---
 
-This article is a list of resources to understand concepts and applications of fairness in machine learning (ML).
+This article lists resources to understand concepts and applications of fairness in machine learning (ML).
 
 <!--more-->
 
@@ -16,7 +16,7 @@ This article is a list of resources to understand concepts and applications of f
 
 In that case, read [21 fairness definitions and their politics (FAT* 2018)](https://fairmlbook.org/tutorial2.html).
 
-Narayanan is an engangingengaging speaker. He is also well-grounded in the subject, as one of the authors of the [fairml.org book (Fairness in Machine Learning)](https://fairmlbook.org/). In one hour he covers the complexity of the topic and the state of the research on it (as of 2018, but the fundamentals of the problem are still the same). This is a good source to understand the complexity of the problem and why solutions are not easy (and sometimes contradictory).
+Narayanan is an enganging speaker. He is also well-grounded in the subject, as one of the authors of the [fairmlbook.org book (Fairness in Machine Learning)](https://fairmlbook.org/). In one hour he covers the complexity of the topic and the state of the research on it (as of 2018, but the fundamentals of the problem are still the same). This is a good source to understand the complexity of the problem and why solutions are not easy (and sometimes contradictory).
 
 <!--more-->
 
@@ -48,7 +48,7 @@ Also known as the "fair ML book", from the site URL, [fairmlbook.org](https://fa
 
 From the authors of the fairmlbook.org. A note at the top says "For an updated resource, please see fairmlbook.org.". However, it is still a good source because the sequence of lectures is a structured way to understand/explore fairness and has many pointers to other references.
 
-[21 fairness definitions and their politics (https://fairmlbook.org/tutorial2.html)
+[21 fairness definitions and their politics](https://fairmlbook.org/tutorial2.html)
 
 Continuing the fairmlbook.org theme, this is a one-hour presentation by one of the authors. It is a good source to learn in a short time the complexities of the field (and thus, the complexity of the solutions).
 

@@ -6,7 +6,7 @@ tags: [machine-learning]
 toc: true
 ---
 
-Taking a narrow definition  of the question, where [X] is a reasonable application of AI for the current state of the technologies involved, "trust" can be formulated as "it is safe to assume that an AI product can do [X] consistently and that it also detects when it is working outside of its boundaries, reacting accordingly".
+Taking a narrow definition of the question, where [X] is a reasonable application of AI for the current state of the technologies involved, "trust" can be formulated as "it is safe to assume that an AI product can do [X] consistently and that it also detects when it is working outside of its boundaries, reacting accordingly".
 
 In other words, trust is related to "robustness", the ability of an AI product to not only do what it is supposed to do, but also to withstand adverse, hostile, conflicting conditions.
 
@@ -14,15 +14,15 @@ In other words, trust is related to "robustness", the ability of an AI product t
 
 ## The cost of robustness
 
-In software development we use the term "happy path" in the context of programs that do their job well when conditions are perfect but fail miserably if anything is even slightly out of ordinary. In other words, they work well only when they are on their happy path. The opposite of that is programs that are robust. They detect that they are off the happy path, and take corrective action, even if it is simply refusing to go further to avoid harm.
+In software development we use the term "happy path" in the context of programs that do their job well when conditions are perfect but fail miserably if anything is even slightly out of the ordinary. In other words, they work well only when they are on their happy path. The opposite of that is robust programs. They detect that they are off the happy path and take corrective action, even if it is simply refusing to go further to avoid harm.
 
-Writing robust programs is not cheap. I read some time ago that about half of the lines of code in a program are to detect and handle error conditions. I lost the source but can speak from personal experience. In every product I worked on, dealing with what could wrong and continuing operating, even if in a degraded mode, was at least half of the development time and costs. For mission-critical systems, the ones that need to run 24-7 unassisted, it was more than that. I would guess at least two-thirds of the time and the costs were dedicated to making sure they were robust systems.
+Writing robust programs is not cheap. I read some time ago that about half of the lines of code in a program are to detect and handle error conditions. I lost the source but can speak from personal experience. In every product I worked on, dealing with what could go wrong and continuing operating, even if in a degraded mode, was at least half of the development time and costs. For mission-critical systems, the ones that need to run 24-7 unassisted, it was more than that. I would guess at least two-thirds of the time and the costs were dedicated to making sure they were robust systems.
 
 ## Robustness for AI products
 
 AI products are software products. How do we develop robust AI products? We can approach in the same way we do with regular software products, starting from the other end: how can a product fail? Once we understand that, we put countermeasures in place and end up with a robust product.
 
-This goes by the name "failure mode analysis", "threat modeling", and similar terms. We are interested in anticipating what could go wrong, then add code to handle it.
+This goes by the name "failure mode analysis", "threat modeling", and similar terms. We are interested in anticipating what could go wrong, then adding code to handle it.
 
 [Threat Modeling AI/ML Systems and Dependencies](https://docs.microsoft.com/en-us/security/engineering/threat-modeling-aiml) is a comprehensive list of what can go wrong with an AI product (focusing on machine learning). As the name implies, it focuses on malicious attacks. A more practical list is the accompanying list of failure modes in machine learning. Besides malicious attacks, it has a list that they politely call "unintended failures", also known as "bugs". Some examples from the "unintended" list:
 
@@ -37,12 +37,13 @@ This goes by the name "failure mode analysis", "threat modeling", and similar te
 
 ### Side note: research vs. production
 
-Most research papers that publish results of a model do not cover failure modes. These papers are great research work, but from the research paper to a product, we still need to go through "how to make it robust" work, which will cost the same amount of time and money spent to develop the model described in the paper (or more), based on the discussion of the cost of robustness above.
+Most research papers that publish the results of a model do not cover failure modes. These papers are great research work, but from the research paper to a product, we still need to go through "how to make it robust" work, which will cost the same amount of time and money spent to develop the model described in the paper (or more), based on the discussion of the cost of robustness above.
 
 Even peer-reviewed papers do not perform well, as [this review](https://www.bmj.com/content/368/bmj.m689) of papers documented:
 
 > "Only 10 records were found for deep learning randomised clinical trials, two of which have been published (with low risk of bias, except for lack of blinding, and high adherence to reporting standards) and eight are ongoing. Of 81 non-randomised clinical trials identified, only nine were prospective and just six were tested in a real world clinical setting."
-"M. Nagendran et al." '<a href="https://www.bmj.com/content/368/bmj.m689">Artificial intelligence versus clinicians: systematic review of design, reporting standards, and claims of deep learning studies</a>'
+
+> M. Nagendran et al., [Artificial intelligence versus clinicians: systematic review of design, reporting standards, and claims of deep learning studies](https://www.bmj.com/content/368/bmj.m689)
 
 Google's ["production readiness" rubric](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/aad9f93b86b7addfea4c419b9100c6cdd26cacea.pdf) gives an idea of what it takes to take a machine learning model into production. It's much more than training a model.
 
@@ -52,11 +53,11 @@ Given an AI product that is being used in its well-defined application, I would 
 
 These products come from paranoid organizations, the ones that assume every possible thing that could go wrong will most definitely go wrong sooner or later. They then proceed to protect their products against this hostile world. Those products I trust. Creating such products takes time and lots of money.
 
-Looking from another side, I distrust any product that makes large claims in their first version, without backing it up with long research and trial periods.
+Looking from another side, I distrust any product that makes large claims in their first version without backing it up with extended research and trial periods.
 
 ## Other sources for AI failures
 
-Some papers and articles I came across on the topic of "AI failure".
+A list of some papers and articles I came across on the topic of "AI failure".
 
 [What to Do When AI Fails – O'Reilly](https://www.oreilly.com/radar/what-to-do-when-ai-fails/)
 > "What is an incident when it comes to an AI system? When does AI create liability that organizations need to respond to? This article answers these questions, based on our combined experience as both a lawyer and a data scientist responding to cybersecurity incidents, crafting legal frameworks to manage the risks of AI, and building sophisticated interpretable models to mitigate risk."

@@ -11,6 +11,7 @@ In the expression _machine learning_, are the machines actually learning anythin
 In the book "Artificial Intelligence, a guide for thinking humans" Melanie Mitchell explains that
 
 > "Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples."
+
 > Melanie Mitchell, Artificial Intelligence, a guide for thinking humans
 
 Let's explore what "learning" means for machine learning, guided by Mitchell's book. More specifically, we will concentrate on "deep learning", a branch of machine learning that has powered most of the recent advances in artificial intelligence.
@@ -111,7 +112,7 @@ This is how they look like.
 
 Using the neural network, we classify the large squares and calculate the accuracy, just like we did with the test set.
 
-But this time, out of 77 large squares, only 43 of them are classified as squares. The other 34 are classified as triangles. With an accuracy of 55.8%, the neural network is barely better than flipping a coin.
+But this time, out of 77 large squares, only 43 are classified as squares. The other 34 are classified as triangles. With an accuracy of 55.8%, the neural network is barely better than flipping a coin.
 
 Below are all the squares in this set and how the neural network classified them. The ones with the red border were incorrectly classified as triangles (there are many of them).
 
@@ -178,7 +179,7 @@ This is how the squares look like in the darker environment.
 
 ![](/images/2021-04-10/output_47_0.png)
 
-When we ask the neural network to classify these squares, we find out that the the performance is now abysmal. The accuracy is 0%. All squares are misclassified as triangles.
+When we ask the neural network to classify these squares, we find out that the performance is now abysmal. The accuracy is 0%. All squares are misclassified as triangles.
 
 To confirm, we can visualize the predictions. The wrong predictions have a red frame around them (all of them are wrong in this case).
 
@@ -225,4 +226,5 @@ Feel free to modify the pictures, the neural network model, and other parameters
 But remember that when the results improve, it's not the neural network that is learning more all of a sudden. _You_ are improving it.
 
 > "Because of the open-ended nature of designing these networks, in general it is not possible to automatically set all the parameters and designs, even with automated search. Often it takes a kind of cabalistic knowledge that students of machine learning gain both from their apprenticeships with experts and from hard-won experience."
+
 > Melanie Mitchell, Artificial Intelligence, a guide for thinking humans

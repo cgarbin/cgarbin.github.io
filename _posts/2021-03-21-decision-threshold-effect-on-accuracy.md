@@ -25,7 +25,11 @@ is premature.
 We use _accuracy_ in this text as the number of correct predictions on the test set, divided by the
 number of instances in the test set.
 
-$$ Accuracy = {Number\ of\ correct\ predictions \over Number\ of\ instances\ predicted} $$
+```text
+                 Number of correct predictions
+   Accuracy = -----------------------------------
+                 Number of instances predicted
+```
 
 To illustrate the discussion, we will use an image classification model (simplification disclaimer: there are other types of problems, e.g. regression, and other types of models -- we are making simplifications to expose the main concept.)
 

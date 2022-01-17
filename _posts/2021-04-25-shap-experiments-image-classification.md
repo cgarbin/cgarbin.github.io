@@ -27,7 +27,7 @@ This is my first opportunity to delve into model interpretability down to the co
 
 SHAP is based on [Shapley value](https://en.wikipedia.org/wiki/Shapley_value), a method to calculate the contributions of each player to the outcome of a game. In the case of machine learning, the "players" are the features (e.g. pixels in an image) and the "outcome of a game" is the model's prediction. [This article by Samuelle Mazzanti](https://towardsdatascience.com/shap-explained-the-way-i-wish-someone-explained-it-to-me-ab81cc69ef30) explains with a simple case how to calculate the Shapley value. It's a good introduction to understand the mechanics of the process.
 
-The Shapley value is calculated with all possible combinations of players. Given N players, it has to calculate outcomes for $$ 2^N $$ combinations. This is not feasible for large numbers of N. For example, for images N is the number of pixels.
+The Shapley value is calculated with all possible combinations of players. Given N players, it has to calculate outcomes for 2^N combinations. This is not feasible for large numbers of N. For example, for images N is the number of pixels.
 
 SHAP does not attempt to calculate the actual Shapley value. Instead, it uses sampling and approximations to calculate the SHAP value. See [chapter 4 of the SHAP paper for details](https://arxiv.org/abs/1705.07874).
 
@@ -44,7 +44,7 @@ The following picture and text come from the [SHAP README](https://github.com/sl
 
 > "The plot above explains ten outputs (digits 0-9) for four different images. Red pixels increase the model's output while blue pixels decrease the output. The input images are shown on the left, and as nearly transparent grayscale backings behind each explanation. The sum of the SHAP values equals the difference between the expected model output (averaged over the background dataset) and the current model output. Note that for the 'zero' image the blank middle is important, while for the 'four' image the lack of a connection on top makes it a four instead of a nine."
 
-This is an important part of the explanation: _"Note that for the 'zero' image the blank middle is important, while for the 'four' image the lack of a connection on top makes it a four instead of a nine."_ In other words, it's not only what is present that is important to decide what digit an image is, but also ***what is absent***.
+This is an essential part of the explanation: _"Note that for the 'zero' image the blank middle is important, while for the 'four' image the lack of a connection on top makes it a four instead of a nine."_ In other words, it's not only what is present that is important to decide what digit an image is, but also ***what is absent***.
 
 ## Experiments
 
@@ -101,7 +101,7 @@ The two examples for the digit "8" below are also easy to interpret. We can see 
 
 ![](/images/2021-04-25/accurate-digit-8-2.png)
 
-In the two examples for the digit "2" below, on the other hand, the first one is easy to interpret, but the attributions for the second make less sense. While reviewing them, note that the scale for the SHAP values is different for each example. The range of values in the second example is an order of magnitude larger. It does not affect a comparative analysis, but may be important in other cases to note the scale before judging the attributions.
+In the two examples for the digit "2" below, on the other hand, the first one is easy to interpret, but the attributions for the second make less sense. While reviewing them, note that the scale for the SHAP values is different for each example. The range of values in the second example is an order of magnitude larger. It does not affect a comparative analysis but may be important in other cases to note the scale before judging the attributions.
 
 In the first example we can see which pixels are more relevant (red) to predict the digit "2". We can also see what pixels were used to reduce the probability of predicting the digit "7" (blue), the second-highest predicted probability.
 

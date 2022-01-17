@@ -182,9 +182,9 @@ Going through historical records, the company determined the profit when differe
 
 At first glance, it looks like Bob contributes 50 to the profit: in line 2 we see that Anne contributes 10 to the profit and in line 5 the profit of Anne and Bob together is 60. The conclusion would be that Bob contributed 50. However, when we look at line 4 (only Charlie) and line 6 (Bob and Charlie), we now conclude that Bob contributes 40 to the profit, contradicting the first conclusion.
 
-Which one is correct? Both. We are interested in the contribution of each employee when they are working together. _This is a collaborative game_.
+Which one is correct? Both. We are interested in each employee's contribution when they are working together. _This is a collaborative game_.
 
-To understand the individual contributions, we start by analyzing all possible paths to go from no employee to all three of them.
+To understand the individual contributions, we start by analyzing all possible paths to go from no employee to all three.
 
 | Path | Combination to get to all employees |
 | -: | :- |
@@ -209,13 +209,13 @@ Repeating the process above, we calculate each employee's contribution for each 
 | 6 | Charlie → Bob, Charlie → Anne, Bob, Charlie | 60 | 10 | 30 |
 | | **Average (Shapley value)** | **30** | **25** | **45** |
 
-In this example we were able to calculate the contribution of each individual for all possible paths. In machine learning, the "individuals" are the features in the dataset. There may be thousands or even million of features in a dataset. For example, in image classification, each pixel in the image is a feature.
+In this example we were able to calculate the contribution of each individual for all possible paths. In machine learning, the "individuals" are the features in the dataset. There may be thousands or even millions of features in a dataset. For example, in image classification, each pixel in the image is a feature.
 
 SHAP uses a similar method to explain the contribution of features to the prediction of a model. However, calculating the contribution of each feature is not feasible in some cases (e.g. images and their millions of pixels). The combination of paths to try is exponential (factorial, to be precise). SHAP makes simplifications to calculate the features contributions. It is crucial to remember that **SHAP is an approximation, not the actual contribution value**.
 
 ### The importance of the baseline
 
-In the example above, the question we asked was "what is each employee's contribution to the profit?". Our baseline was the company with zero employees and no profit.
+In the example above, we asked "what is each employee's contribution to the profit?". Our baseline was the company with zero employees and no profit.
 
 We could have asked a different question: "what is the contribution of Bob and Charlie, given that Anne is already an employee?". In this case, our baseline is 10, the profit that Anne adds to the company by herself. Only paths 1 and 2 would apply, with the corresponding changes to the average contribution.
 
