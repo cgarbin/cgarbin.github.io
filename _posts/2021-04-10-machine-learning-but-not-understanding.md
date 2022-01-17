@@ -132,7 +132,7 @@ Even if we collect lots and lots and lots of examples, we are confronted with **
 
 > "[T]he vast range of possible unexpected situations an AI system could be faced with."
 
-For example, let's say we trained our autonomous driving system to recognize a school zone by the warning sign painted on the road ([source](https://virtualdriveoftexas.com/texas-school-zones/), [source2](https://www.wibw.com/content/news/School-misspelled-at-Florida-crosswalk-508798331.html?ref=331)):
+For example, let's say we trained our autonomous driving system to recognize a school zone by the warning sign painted on the road ([source](https://virtualdriveoftexas.com/texas-school-zones/)):
 
 ![](/images/2021-04-10/school-spelled-right.png)
 
@@ -215,7 +215,7 @@ Does it mean we need to stop using neural networks until then? No.
 
 Deep learning has successfully improved our lives. It's "just" a matter of understanding its limitations, applying it judiciously, for the tasks that it's well suited.
 
-To do that we need to educate the general public and, more importantly, the technical community. Too often we hype the next "AI has achieved humanlike performance in _some task here_", when in fact we should say "under these specific circumstances, for this specific application, AI has performed well".
+To do that we need to educate the general public and, more importantly, the technical community. Too often we hype the next "AI has achieved humanlike performance in [_some task here_]", when in fact we should say "under these specific circumstances, for this specific application, AI has performed well".
 
 # Source code for the experiments
 
