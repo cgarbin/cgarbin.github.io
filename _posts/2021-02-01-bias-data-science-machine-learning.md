@@ -99,5 +99,5 @@ Besides detecting bias, we also need methods to prevent the introduction of bias
 ## Other resources
 
 - Visual exploration of bias: [Hidden Bias explorable](https://pair.withgoogle.com/explorables/hidden-bias/) (Google's AI Explorables page)
-- [A longer exploration of biases and their sources](https://arxiv.org/pdf/1908.09635.pdf)
+- [A Survey on Bias and Fairness in Machine Learning](https://arxiv.org/pdf/1908.09635.pdf)
 - The ["Fairness and Machine Learning"](https://fairmlbook.org/) book (free)
