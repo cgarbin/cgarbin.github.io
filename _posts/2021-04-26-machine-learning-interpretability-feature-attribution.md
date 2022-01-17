@@ -18,7 +18,7 @@ An example of feature attribution for text (from [Explainable AI: A Review of Ma
 
 ![Feature attribution - text](/images/2021-04-26/example-feature-attribution-text.png)
 
-An example of feature attribution for tabular data (from [SHAP tutotiral - official documentation](https://shap.readthedocs.io/en/latest/example_notebooks/tabular_examples/tree_based_models/Catboost%20tutorial.html)):
+An example of feature attribution for tabular data (from [SHAP tutorial - official documentation](https://shap.readthedocs.io/en/latest/example_notebooks/tabular_examples/tree_based_models/Catboost%20tutorial.html)):
 
 ![Feature attribution - tabular](/images/2021-04-26/example-feature-attribution-tabular.png)
 
