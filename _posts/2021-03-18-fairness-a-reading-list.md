@@ -1,9 +1,9 @@
 ---
-layout: post
 title:  "Fairness in machine learning: a reading list"
+excerpt: "A list of resources to understand concepts and applications of fairness in machine learning (ML)."
 date:   2021-03-18
-categories: artificial-intelligence
 tags: [machine-learning, fairness, soclal-impact]
+toc: true
 ---
 
 This article is a list of resources to understand concepts and applications of fairness in machine learning (ML).
@@ -36,9 +36,9 @@ This section has a list of sources to understand the concepts of fairness and th
 
 [A Framework for Understanding Unintended Consequences of Machine Learning](https://arxiv.org/abs/1901.10002)
 
-Bias is closely related to fairness. This paper describes a framework to understand sources of bias in machine learning. Once we understand where bias comes from, we are better positioned to eliminate or at least mitigate it.
+Bias is closely related to fairness. This paper describes a framework to understand sources of bias in machine learning. Once we understand where bias comes from, we are better positioned to eliminate or at least mitigate it. The picture below is a summary of the framework, illustrating the sources of bias in machine learning.
 
-{% maincolumn './images/2021-03-18/sources-of-bias.png' '<a href="https://arxiv.org/pdf/1901.10002.pdf">A Framework for Understanding Unintended Consequences of Machine Learning</a>' %}
+![A Framework for Understanding Unintended Consequences of Machine Learning](/images/2021-03-18/sources-of-bias.png)
 
 [Fairness and Machine Learning - Limitations and Opportunities](https://fairmlbook.org/)
 
@@ -52,11 +52,11 @@ From the authors of the fairmlbook.org. A note at the top says "For an updated r
 
 Continuing the fairmlbook.org theme, this is a one-hour presentation by one of the authors. It is a good source to learn in a short time the complexities of the field (and thus, the complexity of the solutions).
 
-## Keeping up with the latest research
+### Keeping up with the latest research
 
 Visit the [Papers With Code fairness section](https://paperswithcode.com/task/fairness) frequently for the latest papers, libraries, and datasets on the topic.
 
-## Recent survey papers
+### Recent survey papers
 
 These are some recent survey papers on fairness as of early 2021. Each has a brief extract to help explain why it is relevant and what aspects it covers.
 
@@ -76,7 +76,7 @@ These are some recent survey papers on fairness as of early 2021. Each has a bri
 
 > We compare past and current notions of fairness along several dimensions, including the fairness criteria, the focus of the criteria (e.g., a test, a model, or its use), the relationship of fairness to individuals, groups, and subgroups, and the mathematical method for measuring fairness (e.g., classification, regression). This work points the way towards future research and measurement of (un)fairness that builds from our modern understanding of fairness while incorporating insights from the past.
 
-## Social and legal implications
+### Social and legal implications
 
 Not all aspects of machine learning fairness are technical. We care about fairness because it affects humans at the individual and societal levels. These are some papers that look at the social and legal implication of fairness in machine learning.
 
@@ -94,7 +94,7 @@ My (Christian's) commentary: highly analytical, with strong definitions of fairn
 
 > In the immediate after-math of the [2008] financial crisis, there were calls for reforms, not only of the financial services industry, but also within universities, where it was thought that unrealistic models and assumptions within economics departments (20) and business schools (11) were also responsible for inculcating a worldview that led to the crisis. It is time for us in computing departments to do some comparable soul searching. This article is one attempt at this task. It argues the well-publicized social ills of computing will not go away simply by integrating ethics instruction or codes of conduct into computing curricula. The remedy to these ills instead lies less in philosophy and more in fields such as sociology, psychology, anthropology, communications, and political science. That is, because computing as a discipline is becoming progressively more entangled within the human and social lifeworld, computing as an academic discipline must move away from engineering-inspired curricular models and integrate the analytic lenses supplied by social science theories and methodologies.
 
-## Healthcare specific
+### Healthcare specific
 
 [Potential Biases in Machine Learning Algorithms Using Electronic Health Record Data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6347576/)
 

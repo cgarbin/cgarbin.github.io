@@ -1,34 +1,35 @@
 ---
-layout: post
 title:  "Machine learning, but not understanding"
+excerpt: "In the expression 'machine learning', are the machines actually learning anything? Let's explore what 'learning' means for machine learning, guided by Melanie Mitchell's book 'Artificial Intelligence, a guide for thinking humans. We will see that machines don't learn in the same way we understand 'learn'."
 date:   2021-04-10
-categories: post
+tags: [machine-learning]
+toc: true
 ---
 
-{% newthought 'In the expression _machine learning_' %}, are the machines actually learning anything?
+In the expression _machine learning_, are the machines actually learning anything?
 
 In the book "Artificial Intelligence, a guide for thinking humans" Melanie Mitchell explains that
 
-{% epigraph
-"Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples."
-"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples."
+> Melanie Mitchell, Artificial Intelligence, a guide for thinking humans
 
 Let's explore what "learning" means for machine learning, guided by Mitchell's book. More specifically, we will concentrate on "deep learning", a branch of machine learning that has powered most of the recent advances in artificial intelligence.
 
 <!--more-->
 
+All quoted text in this article is from Dr. Mitchell's book "Artificial Intelligence, a guide for thinking humans".
+
 # An extremely short explanation of deep learning
 
-{% newthought 'Deep learning uses layers of "units"'%}{% sidenote 'mn-id-units' 'Also called _neurons_, but some people, including Mitchell and I, prefer the more generic _units_ term, to not confuse with biological neurons.' %} to extract patterns from labeled data. The internal layers are called "hidden layers". The last layer is called the "output layer", or the classification layer.
+Deep learning uses layers of "units"' (also called _neurons_, but some people, including Mitchell and I, prefer the more generic _units_ term, to not confuse with biological neurons) to extract patterns from labeled data. The internal layers are called "hidden layers". The last layer is called the "output layer", or the classification layer.
 
 In the following figure (from Mitchell's book), a neural network comprised of several hidden layers (only one shown) was trained to classify handwritten digits. The output layer has ten units, one for each possible digit.
 
-{% maincolumn 'images/2021-04-10/neural-network.png' 'From Mitchell, _Artificial Intelligence_, chapter 2' %}
+![From Mitchell, Artificial Intelligence, chapter 2](/images/2021-04-10/neural-network.png)
 
 How does a neural network learn? Back to Mitchell's quote:
 
-{% epigraph "Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples."
-"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples."
 
 Going through the sentence pieces:
 
@@ -39,26 +40,27 @@ Going through the sentence pieces:
 
 # An important consequence of this process
 
-{% epigraph "The machine learns what it observes in the data rather than what you (the human) might observe. If there are statistical associations in the training data, even if irrelevant to the task at hand, the machine will happily learn those instead of what you wanted it to learn." "Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "The machine learns what it observes in the data rather than what you (the human) might observe. If there are statistical associations in the training data, even if irrelevant to the task at hand, the machine will happily learn those instead of what you wanted it to learn."
 
 Thus, neural networks are not "learning" in the sense that we would understand the term. They are not learning higher-level concepts from the samples used to train them. They are extracting patterns from the data presented to them during training (and they assume that the labels are correct). That's all.
 
 Or, as Mitchell puts more eloquently:
 
-{% epigraph  "The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge; ... The barrier of meaning between AI and human-level intelligence still stands today."
-"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge; ... The barrier of meaning between AI and human-level intelligence still stands today."
 
 Should we be concerned that deep learning is not "learning"? We should, if we don't understand what it implies for real-life applications.
 
-In the next sections we will explore how neural networks lack the grasp of "rich meanings we humans bring to bear in perception", illustrating it with some "un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge".{% sidenote '' 'You can run the examples used in the text with the Jupyter notebook on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding). The examples use small pictures to run quickly on any computer.' %}
+In the next sections we will explore how neural networks lack the grasp of "rich meanings we humans bring to bear in perception", illustrating it with some "un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge".
+
+You can run the examples used in the text with the Jupyter notebook on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding). The examples use small pictures to run quickly on any computer.
 
 # Telling squares and triangles apart
 
-{% newthought 'We will see how a neural network' %} trained to tell squares and triangles apart behaves.
+We will see how a neural network trained to tell squares and triangles apart behaves.
 
 For human beings, the pictures below show squares and triangles. Some are small, some are large, some are in a light background, some are in a darker background. But they are all clearly either a square or a triangle in a frame.
 
-{% maincolumn 'images/2021-04-10/squares-triangles.png' ''%}
+![](/images/2021-04-10/squares-triangles.png)
 
 In this section we will go through the typical process of training a neural network to classify squares and triangles:
 
@@ -73,11 +75,9 @@ After we are done with that, we will predict similar images to see how the netwo
 
 This is how some of the training images look like. Each picture is a square or a triangle in different positions. The dataset has hundreds of these pictures.
 
-{% maincolumn 'images/2021-04-10/output_12_0.png' ''%}
+![](/images/2021-04-10/output_12_0.png)
 
 ## The "squares vs. triangles" neural network
-
-{% marginfigure 'mf-id-cnn' 'images/2021-04-10/cnn.png' 'Typical representation of a CNN. From the excellent _[Stanford CS231n: Convolutional Neural Networks for Visual Recognition](https://cs231n.github.io/convolutional-networks/)_ class.' %}
 
 We train a [convolutional neural network](https://cs231n.github.io/convolutional-networks/) (CNN) to classify a picture as a "square" or as a "triangle", using the training examples. We chose a CNN architecture because it is well suited to image classification.
 
@@ -95,7 +95,7 @@ Our neural network classified 65 out 67 pictures correctly, for an accuracy of 9
 
 Let's visualize where the neural network made the mistakes. The picture below shows the mistakes with a red border. All other pictures were classified correctly. Below each picture is the neural network's classification.
 
-{% maincolumn 'images/2021-04-10/output_25_0.png' ''%}
+![](/images/2021-04-10/output_25_0.png)
 
 Despite the good accuracy, does the neural network understand the concept of what it is learning?
 
@@ -107,7 +107,7 @@ In this section we will use the neural network we just trained to classify a set
 
 This is how they look like.
 
-{% maincolumn 'images/2021-04-10/output_28_0.png' ''%}
+![](/images/2021-04-10/output_28_0.png)
 
 Using the neural network, we classify the large squares and calculate the accuracy, just like we did with the test set.
 
@@ -115,7 +115,7 @@ But this time, out of 77 large squares, only 43 of them are classified as square
 
 Below are all the squares in this set and how the neural network classified them. The ones with the red border were incorrectly classified as triangles (there are many of them).
 
-{% maincolumn 'images/2021-04-10/output_34_0.png' ''%}
+![](/images/2021-04-10/output_34_0.png)
 
 ## Why does this experiment matter?
 
@@ -125,24 +125,22 @@ But this does not address the fundamental problem: ***the neural network does no
 
 Quoting Mitchell again (emphasis added):
 
-{% epigraph "The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, <b>these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;</b> ... The barrier of meaning between AI and human-level intelligence still stands today."
-"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, <b>these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;</b> ... The barrier of meaning between AI and human-level intelligence still stands today."
 
 Even if we collect lots and lots and lots of examples, we are confronted with ***the long-tail problem***:
 
-{% epigraph "[T]he vast range of possible unexpected situations an AI system could be faced with."
-"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "[T]he vast range of possible unexpected situations an AI system could be faced with."
 
-For example, let's say we trained our autonomous driving system to recognize a school zone by the warning sign painted on the road:
+For example, let's say we trained our autonomous driving system to recognize a school zone by the warning sign painted on the road ([source](https://virtualdriveoftexas.com/texas-school-zones/), [source2](https://www.wibw.com/content/news/School-misspelled-at-Florida-crosswalk-508798331.html?ref=331)):
 
-{% maincolumn 'images/2021-04-10/school-spelled-right.png' '[Image source](https://virtualdriveoftexas.com/texas-school-zones/)'%}
+![](/images/2021-04-10/school-spelled-right.png)
 
-Then, one day our autonomous driving system comes across these real-life examples:
+Then, one day our autonomous driving system comes across these real-life examples ([source 1](https://www.anyvan.com/blog/whats-going-on/back-to-shcool-for-some/), [source 2](https://www.wibw.com/content/news/School-misspelled-at-Florida-crosswalk-508798331.html?ref=331)):
 
-{% maincolumn 'images/2021-04-10/school-spelled-wrong-1.png' '[Image source](https://www.anyvan.com/blog/whats-going-on/back-to-shcool-for-some/)'%}
-{% maincolumn 'images/2021-04-10/school-spelled-wrong-2.png' '[Image source](https://www.wibw.com/content/news/School-misspelled-at-Florida-crosswalk-508798331.html?ref=331)'%}
+![](/images/2021-04-10/school-spelled-wrong-1.png)
+![](/images/2021-04-10/school-spelled-wrong-2.png)
 
-Any (well, most) human beings would still identify them as warning signs for school zones{% marginnote 'mg-stop-sign ' 'Presumably, the human would chuckle, then - hopefully - slow down' %}.
+Any (well, most) human beings would still identify them as warning signs for school zones (presumably, the human would chuckle, then - hopefully - slow down).
 
 Would the autonomous driving system identify them correctly? The honest answer is "we don't know". It depends on how it was trained. Was it given these examples in the training set? In enough quantities to identify the pattern? Did the test set have examples? Were they classified correctly?
 
@@ -150,20 +148,19 @@ But no matter how comprehensive we make the training and test sets and how metho
 
 The autonomous driving system lacks common sense.
 
-{% epigraph "...humans also have a fundamental competence lacking in all current AI systems: common sense. We have vast background knowledge of the world, both its physical and its social aspects."
-"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "...humans also have a fundamental competence lacking in all current AI systems: common sense. We have vast background knowledge of the world, both its physical and its social aspects."
 
 The neural network may be _learning_, but it is definitely not _understanding_.
 
 # Not understanding "squares" - part 2
 
-{% newthought 'In the first section' %} we changed the shape of an object. In this section we will not change the object. We will change the environment instead.
+In the first section we changed the shape of an object. In this section we will not change the object. We will change the environment instead.
 
 We will train a neural network to classify squares and triangles again. This time they are in different environments, represented by different background colors. The squares are in a lighter background and the triangles are on a dark(er) background (we can think of the backgrounds as "twilight" and "night").
 
 The picture below shows how they look like.
 
-{% maincolumn 'images/2021-04-10/output_38_0.png' ''%}
+![](/images/2021-04-10/output_38_0.png)
 
 Following the same steps we used in the first section, we train a neural network to classify the squares and triangles.
 
@@ -179,44 +176,41 @@ What happens if the squares are now in the same environment as the triangles (al
 
 This is how the squares look like in the darker environment.
 
-{% maincolumn 'images/2021-04-10/output_47_0.png' ''%}
+![](/images/2021-04-10/output_47_0.png)
 
 When we ask the neural network to classify these squares, we find out that the the performance is now abysmal. The accuracy is 0%. All squares are misclassified as triangles.
 
 To confirm, we can visualize the predictions. The wrong predictions have a red frame around them (all of them are wrong in this case).
 
-{% maincolumn 'images/2021-04-10/output_52_0.png' ''%}
+![](/images/2021-04-10/output_52_0.png)
 
 ## Why does this experiment matter?
 
 The neural network we just trained fails in the same way the first neural network failed. This neural network...
 
-{% epigraph "(...) lack(s) a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;"
-"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "(...) lack(s) a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;"
 
-In this case, the neural network is very likely learning not from the shape, but from the background {% sidenote '' 'A case of [spurious correlation](https://arxiv.org/abs/1907.02893).' %}. It is assuming that a darker background means "triangle" because it doesn't really understand the concept of what makes a triangle a triangle.
+In this case, the neural network is very likely learning not from the shape, but from the background (a case of [spurious correlation](https://arxiv.org/abs/1907.02893)). It is assuming that a darker background means "triangle" because it doesn't really understand the concept of what makes a triangle a triangle.
 
-Sometimes this leads to some funny examples, like the neural network that "learned" to classify land vs. water birds based on the background. The duck on the right was misclassified as a land bird, simply because it was not in its usual water environment.
+Sometimes this leads to some funny examples, like the neural network that "learned" to classify land vs. water birds based on the background. The duck on the right was misclassified as a land bird, simply because it was not in its usual water environment ([source](https://arxiv.org/abs/2005.04345)).
 
-{% maincolumn 'images/2021-04-10/land-and-waterbirds.png' 'From [An Investigation of Why Overparameterization Exacerbates Spurious Correlations](https://arxiv.org/abs/2005.04345)'%}
+![](/images/2021-04-10/land-and-waterbirds.png)
 
-Other times the mistakes are more consequential, for example, when neural networks misclassify X-rays based on markings left by radiologists in the images. Instead of learning actual attributes of a disease, the neural network "learned" from the marks left behind in the images. Images without such marks may be classified as "healthy". The consequences can be catastrophic.
+Other times the mistakes are more consequential, for example, when neural networks misclassify X-rays based on markings left by radiologists in the images. Instead of learning actual attributes of a disease, the neural network "learned" from the marks left behind in the images. Images without such marks may be classified as "healthy". The consequences can be catastrophic ([source](https://storage.googleapis.com/cloud-ai-whitepapers/AI%20Explainability%20Whitepaper.pdf)).
 
-{% maincolumn 'images/2021-04-10/x-ray-pen-marks.png' 'From [Google&#39;s AI Explanations Whitepaper](https://storage.googleapis.com/cloud-ai-whitepapers/AI%20Explainability%20Whitepaper.pdf)'%}
+![](/images/2021-04-10/x-ray-pen-marks.png)
 
 # Should we be concerned that deep "learning" is not "understanding"?
 
-{% newthought 'Mitchell asks'%} the following question in her book:
+Mitchell asks the following question in her book:
 
-{% epigraph "but the question remains: Will the fact that these systems lack humanlike understanding inevitably render them fragile, unreliable, and vulnerable to attacks? And how should this factor into our decisions about applying AI systems in the real world?"
-"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "but the question remains: Will the fact that these systems lack humanlike understanding inevitably render them fragile, unreliable, and vulnerable to attacks? And how should this factor into our decisions about applying AI systems in the real world?"
 
 Until we achieve humanlike understanding, we should be concerned that neural networks do not generalize well.
 
 Does it mean we need to stop using neural networks until then? No.
 
-{% epigraph "I think the most worrisome aspect of AI systems in the short term is that we will give them too much autonomy without being fully aware of their limitations and vulnerabilities."
-"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "I think the most worrisome aspect of AI systems in the short term is that we will give them too much autonomy without being fully aware of their limitations and vulnerabilities."
 
 Deep learning has successfully improved our lives. It's "just" a matter of understanding its limitations, applying it judiciously, for the tasks that it's well suited.
 
@@ -224,11 +218,11 @@ To do that we need to educate the general public and, more importantly, the tech
 
 # Source code for the experiments
 
-{% newthought 'The source code'%} for the experiments described here is on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding). It uses small pictures to run quickly on a regular computer.
+The source code for the experiments described here is on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding). It uses small pictures to run quickly on a regular computer.
 
 Feel free to modify the pictures, the neural network model, and other parameters that affect the results.
 
 But remember that when the results improve, it's not the neural network that is learning more all of a sudden. _You_ are improving it.
 
-{% epigraph "Because of the open-ended nature of designing these networks, in general it is not possible to automatically set all the parameters and designs, even with automated search. Often it takes a kind of cabalistic knowledge that students of machine learning gain both from their apprenticeships with experts and from hard-won experience."
-"Melanie Mitchell" "Artificial Intelligence, a guide for thinking humans" %}
+> "Because of the open-ended nature of designing these networks, in general it is not possible to automatically set all the parameters and designs, even with automated search. Often it takes a kind of cabalistic knowledge that students of machine learning gain both from their apprenticeships with experts and from hard-won experience."
+> Melanie Mitchell, Artificial Intelligence, a guide for thinking humans

@@ -1,12 +1,12 @@
 ---
-layout: post
 title:  "Exploring SHAP explanations for image classification"
+excerpt: "This article explores how to interpret predictions of an image classification neural network using SHAP."
 date:   2021-04-25
-categories: machine-learning
 tags: [machine-learning, image-classification, explainability, interpretability, shap]
+toc: true
 ---
 
-{% newthought 'This article explores' %} how to interpret predictions of an image classification neural network using [SHAP (SHapley Additive exPlanations)](https://arxiv.org/abs/1705.07874).
+This article explores how to interpret predictions of an image classification neural network using [SHAP (SHapley Additive exPlanations)](https://arxiv.org/abs/1705.07874).
 
 The goals of the experiments are to:
 
@@ -19,10 +19,7 @@ The goals of the experiments are to:
 
 This is my first opportunity to delve into model interpretability down to the code level. I picked [SHAP (SHapley Additive exPlanations)](https://arxiv.org/abs/1705.07874) to get started because of [its promise to unify various methods](https://github.com/slundberg/shap#methods-unified-by-shap) (emphasis ours):
 
-{% epigraph
-"...various methods have recently been proposed to help users interpret the predictions of complex models, but it is often unclear how these methods are related and when one method is preferable over another. To address this problem, <b>we present a unified framework for interpreting predictions</b>, SHAP (SHapley Additive exPlanations). SHAP assigns each feature an importance value for a particular prediction. Its novel components include: (1) the identification of a new class of additive feature importance measures. ... The new class unifies six existing methods, ..."
-"SHAP (SHapley Additive exPlanations)" '<a href="https://arxiv.org/abs/1705.07874">arXiv paper</a>'
-%}
+> "...various methods have recently been proposed to help users interpret the predictions of complex models, but it is often unclear how these methods are related and when one method is preferable over another. To address this problem, <b>we present a unified framework for interpreting predictions</b>, SHAP (SHapley Additive exPlanations). SHAP assigns each feature an importance value for a particular prediction. Its novel components include: (1) the identification of a new class of additive feature importance measures. ... The new class unifies six existing methods, ..."
 
 ## Overview of SHAP feature attribution for image classification
 
@@ -43,12 +40,9 @@ SHAP uses colors to explain attributions:
 
 The following picture and text come from the [SHAP README](https://github.com/slundberg/shap#deep-learning-example-with-deepexplainer-tensorflowkeras-models).
 
-{% fullwidth './images/2021-04-25/example-from-shap-readme.png' '' %}
+![](/images/2021-04-25/example-from-shap-readme.png)
 
-{% epigraph
-"The plot above explains ten outputs (digits 0-9) for four different images. Red pixels increase the model's output while blue pixels decrease the output. The input images are shown on the left, and as nearly transparent grayscale backings behind each explanation. The sum of the SHAP values equals the difference between the expected model output (averaged over the background dataset) and the current model output. Note that for the 'zero' image the blank middle is important, while for the 'four' image the lack of a connection on top makes it a four instead of a nine."
-"SHAP (SHapley Additive exPlanations)" '<a href="https://github.com/slundberg/shap#deep-learning-example-with-deepexplainer-tensorflowkeras-models">README</a>'
-%}
+> "The plot above explains ten outputs (digits 0-9) for four different images. Red pixels increase the model's output while blue pixels decrease the output. The input images are shown on the left, and as nearly transparent grayscale backings behind each explanation. The sum of the SHAP values equals the difference between the expected model output (averaged over the background dataset) and the current model output. Note that for the 'zero' image the blank middle is important, while for the 'four' image the lack of a connection on top makes it a four instead of a nine."
 
 This is an important part of the explanation: _"Note that for the 'zero' image the blank middle is important, while for the 'four' image the lack of a connection on top makes it a four instead of a nine."_ In other words, it's not only what is present that is important to decide what digit an image is, but also ***what is absent***.
 
@@ -69,10 +63,7 @@ The experiments are as follows:
 
 ### An important caveat
 
-{% epigraph
-'"Explanations must be wrong."'
-'Cynthia Rudin' '<a href="https://arxiv.org/abs/1811.10154">Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead</a>'
-%}
+**"Explanations must be wrong."** -- [Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead, Cynthia Rudin](https://arxiv.org/abs/1811.10154)
 
 As we are going through the exploration of the feature attributions, we must keep in my mind that we are analyzing two items at the same time:
 
@@ -100,25 +91,27 @@ Each picture below shows these pieces of information:
 
 Some of the feature attributions are easy to interpret. For example, this is the attribution for a digit "1".
 
-{% maincolumn './images/2021-04-25/accurate-digit-1.png' '' %}
+![](/images/2021-04-25/accurate-digit-1.png)
 
 We can see that the presence of the vertical pixels at the center of the image increases the probability of predicting a digit "1", as we would expect. The absence of pixels around that vertical line also increases the probability.
 
 The two examples for the digit "8" below are also easy to interpret. We can see that the blank space in the top loop and the blank spaces on both sides of the middle part of the image are important to define an "8".
 
-{% maincolumn './images/2021-04-25/accurate-digit-8-1.png' '' %}
+![](/images/2021-04-25/accurate-digit-8-1.png)
 
-{% maincolumn './images/2021-04-25/accurate-digit-8-2.png' '' %}
+![](/images/2021-04-25/accurate-digit-8-2.png)
 
 In the two examples for the digit "2" below, on the other hand, the first one is easy to interpret, but the attributions for the second make less sense. While reviewing them, note that the scale for the SHAP values is different for each example. The range of values in the second example is an order of magnitude larger. It does not affect a comparative analysis, but may be important in other cases to note the scale before judging the attributions.
 
 In the first example we can see which pixels are more relevant (red) to predict the digit "2". We can also see what pixels were used to reduce the probability of predicting the digit "7" (blue), the second-highest predicted probability.
 
-In the second picture, the more salient attributions are on the second-highest probability, the digit "7". It's almost as if the network "worked harder" to reject that digit than to predict the digit "2". Although the probability of the digit "7" is higher in this second example (compared to the digit "7" in the first example), it's still far away from the probability assigned to the digit "2"{% marginnote 'sd-rq1' "**RESEARCH QUESTION 1**: What causes SHAP to sometimes highlight the attributions of a class that was not assigned the highest probability?" %}.
+In the second picture, the more salient attributions are on the second-highest probability, the digit "7". It's almost as if the network "worked harder" to reject that digit than to predict the digit "2". Although the probability of the digit "7" is higher in this second example (compared to the digit "7" in the first example), it's still far away from the probability assigned to the digit "2".
 
-{% maincolumn './images/2021-04-25/accurate-digit-2-1.png' '' %}
+**RESEARCH QUESTION 1**: What causes SHAP to sometimes highlight the attributions of a class that was not assigned the highest probability?
 
-{% maincolumn './images/2021-04-25/accurate-digit-2-2.png' '' %}
+![](/images/2021-04-25/accurate-digit-2-1.png)
+
+![](/images/2021-04-25/accurate-digit-2-2.png)
 
 ### Inaccurate network
 
@@ -132,7 +125,7 @@ SHAP still does what we ask: shows the feature attributions for each class. For 
 - Digit "8": The top and bottom parts look like the top and bottom loops of the digit "8", resulting in the red areas we see in the attribution. The empty middle is now a detractor for this class (blue). An actual digit "8" would have something here, where the bottom and top loops meet.
 - Digit "5": Left this one for last because it is the one with the highest probability (but not by much) and also the one hardest to explain. It is almost as if just a few pixels (in red) were enough to assign a probability higher than the correct digit "0".
 
-{% maincolumn './images/2021-04-25/inaccurate-digit-0.png' '' %}
+![](/images/2021-04-25/inaccurate-digit-0.png)
 
 This example shows an important concept about explanations for black-box models: they explain what the model is predicting, but they do not attempt to explain if the predictions are correct.
 
@@ -144,11 +137,13 @@ Instead of plotting attributions one by one, as we saw in the previous examples,
 
 The plots below show all the attributions for all test digits. The accurate network is on the left and the inaccurate network is on the right.
 
-In the plot for the accurate network we can see that all samples have at least one class (digit) with favorable attributions (red). The plot is dotted with red areas. In the inaccurate network we don't see the same pattern. The plot is mainly gray {% marginnote 'sd-rq2' "**RESEARCH QUESTION 2**: Given this pattern, is it possible to use the distribution of attributions across samples to determine if a network is accurate (or not)? In other words, if all we have is the feature attributions for a reasonable number of cases, but don't have the actual vs. predicted labels, could we use that to determine that a network is accurate (or not)?" %}.
+In the plot for the accurate network we can see that all samples have at least one class (digit) with favorable attributions (red). The plot is dotted with red areas. In the inaccurate network we don't see the same pattern. The plot is mainly gray.
 
 | Accurate                              | Inaccurate                                |
 | ------------------------------------- | ----------------------------------------- |
 | ![Accurate](/images/2021-04-25/accurate-all.png) | ![Inaccurate](/images/2021-04-25/inaccurate-all.png) |
+
+**RESEARCH QUESTION 2**: Given this pattern, is it possible to use the distribution of attributions across samples to determine if a network is accurate (or not)? In other words, if all we have is the feature attributions for a reasonable number of cases, but don't have the actual vs. predicted labels, could we use that to determine that a network is accurate (or not)?
 
 ## Limitations of these experiments
 
@@ -169,7 +164,9 @@ background_images = images[:BACKGROUND_SIZE]
 
 The choice of baseline images can significantly affect the SHAP results (the results of any method that relies on baseline images, to be precise), as demonstrated in [Visualizing the Impact of Feature Attribution Baseline](https://distill.pub/2020/attribution-baselines/).
 
-In the experiments we conducted here we used a relatively small set of images for the baseline and we didn't attempt to get an equal distribution of the digits in that baseline (other than a simple manual check of distributions - see the notebook) {% marginnote 'sd-rq3' "**RESEARCH QUESTION 3**: Would a larger number of baseline images, with equal distribution of digits, significantly affect the results? More generically, what is a reasonable number of baseline images to start trusting the results?" %}.
+In the experiments we conducted here we used a relatively small set of images for the baseline and we didn't attempt to get an equal distribution of the digits in that baseline (other than a simple manual check of distributions - see the notebook).
+
+ **RESEARCH QUESTION 3**: Would a larger number of baseline images, with equal distribution of digits, significantly affect the results? More generically, what is a reasonable number of baseline images to start trusting the results?
 
 ## Code
 

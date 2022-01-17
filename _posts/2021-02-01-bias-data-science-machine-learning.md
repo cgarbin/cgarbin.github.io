@@ -1,12 +1,12 @@
 ---
-layout: post
 title:  "Bias in data science and machine learning"
+excerpt: "Of all the problems that may crop up in the machine learning lifecycle (acquire data, train a model, test the model, deploy, and monitor), biased data is the one that worries me the most because it starts in the very first step, when we acquire data for the model. All steps after that are affected by it."
 date:   2021-02-01
-categories: data-science
 tags: [data-science, machine-learning, bias]
+toc: true
 ---
 
-{% newthought 'Of all the problems'%} that may crop up in the machine learning lifecycle (acquire data, train a model, test the model, deploy, and monitor), **biased data** is the one that worries me the most because it starts in the very first step, when we acquire data for the model. All steps after that are affected by it.
+Of all the problems that may crop up in the machine learning lifecycle (acquire data, train a model, test the model, deploy, and monitor), **biased data** is the one that worries me the most because it starts in the very first step, when we acquire data for the model. All steps after that are affected by it.
 
 To top it off, we will likely not realize that the model is biased until it is used in production, where it can inflict real damage. While we are in the train/verify step, we happily verify the model against the dataset we collected. The numbers will look good because we are verifying the model against the flawed data that was used to create it.
 
@@ -21,14 +21,14 @@ If biased data is so damaging, understanding where it comes from helps us recogn
 
 In each phase, they identify multiple sources of bias, as illustrated in this picture:
 
-{% fullwidth './images/2021-02-01/sources-of-bias.png' '<a href="https://arxiv.org/abs/1901.10002">A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle</a>' %}
+![](/images/2021-02-01/sources-of-bias.png)
+Picture source: [A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](https://arxiv.org/abs/1901.10002).
 
 Once we have a framework to identify the sources of bias, we can better prevent it. In the authors' words:
 
-{% epigraph
-'Understanding the implications of each stage in the data generation process can reveal more direct and meaningful ways to prevent or address harmful downstream consequences that overly broad terms like “biased data” can mask.'
-"H. Suresh, J. Guttag" '<a href="https://arxiv.org/abs/1901.10002">A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle</a>'
-%}
+> Understanding the implications of each stage in the data generation process can reveal more direct and meaningful ways to prevent or address harmful downstream consequences that overly broad terms like “biased data” can mask.'
+
+> H. Suresh, J. Guttag, [A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](https://arxiv.org/abs/1901.10002).
 
 These are the sources of bias in the machine learning lifecycle, starting from the early stages and moving to the late stages.
 
@@ -68,7 +68,7 @@ In this framework, this is the only bias not directly related to the dataset. It
 
 ## A famous case of a biased model
 
-{% newthought "Probably the most well-published" %} case of a racially biased algorithm in the US: COMPAS, a program to help judges release defendants while they await trial (vs. keeping them in jail until the trial date), was biased against black defendants, even though it explicitly does not use race as one of the decision factors.
+Probably the most well-published case of a racially biased algorithm in the US: COMPAS, a program to help judges release defendants while they await trial (vs. keeping them in jail until the trial date), was biased against black defendants, even though it explicitly does not use race as one of the decision factors.
 
 However, there are enough other proxies for race in datasets. For example, using "number of arrests" as a proxy for "probability to commit a crime" is biased against minorities because the police have a history of arresting a disproportionately higher number of minorities. Not to mention that "arrest" and "conviction" are not necessarily correlated.
 
@@ -76,7 +76,7 @@ There are many articles dissecting the biases in COMPAS. One of my favorites is 
 
 ## Bias by proxy
 
-{% newthought "The example above" %} is a case of "bias by proxy". Even though it does not use race directly, other attributes (e.g. number of arrests), are influenced by race. They end up indirectly representing race in the prediction process.
+The example above is a case of "bias by proxy". Even though it does not use race directly, other attributes (e.g. number of arrests), are influenced by race. They end up indirectly representing race in the prediction process.
 
 Another example of bias by proxy is in healthcare. [An algorithm to prescribe the amount of care used "money spent on healthcare so far" as a factor in predicting "how much healthcare will be needed in the future"](https://www.science.org/doi/10.1126/science.aax2342). The algorithm's goal was to identify unhealthy people and allocate resources (medical visits, etc.) to them. But it didn't have a clear-cut "this person is healthy/unhealthy" attribute in the dataset. To identify unhealthy people, it used "money spent on healthcare so far" as a proxy. In other words, it assumed that people who spent more money on healthcare are sicker in general, thus need to be allocated more healthcare resources in the future.
 
@@ -84,7 +84,7 @@ The flaw in this thought process is that disadvantaged communities spend less on
 
 ## How can we detect and prevent bias?
 
-{% newthought "Some biases" %} can be detected with analytical methods and tools. These tools usually explore cross-sectional representations of the dataset, for example, the proportion of male vs. female, religion, different age groups, etc. Some of these tools include
+Some biases can be detected with analytical methods and tools. These tools usually explore cross-sectional representations of the dataset, for example, the proportion of male vs. female, religion, different age groups, etc. Some of these tools include
 
 - [TensorFlow fairness indicator](https://github.com/tensorflow/fairness-indicators)
 - [TensorFlow What-If tool](https://pair-code.github.io/what-if-tool/) to investigate the model behavior

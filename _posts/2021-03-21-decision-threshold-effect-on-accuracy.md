@@ -1,11 +1,12 @@
 ---
-layout: post
 title:  "What is \"model accuracy\", really?"
+excerpt: "A model's accuracy is an incomplete view of of the model's performance. This article shows how it can be misleading."
 date:   2021-03-21
-categories: post
+tags: [machine-learning, accuracy, roc]
+toc: true
 ---
 
-{% newthought 'In the book' %} [Responsible Machine Learning](https://www.h2o.ai/resources/ebook/responsible-machine-learning/),
+In the book [Responsible Machine Learning](https://www.h2o.ai/resources/ebook/responsible-machine-learning/),
 when discussing trust and risk, the authors recommend a list of questions to ask to understand the
 risk of a machine learning (ML) deployment.
 
@@ -26,59 +27,58 @@ number of instances in the test set.
 
 $$ Accuracy = {Number\ of\ correct\ predictions \over Number\ of\ instances\ predicted} $$
 
-To illustrate the discussion, we will use an image classification model{%sidenote 'mg-simplification' 'Simplification disclaimer: there are other types of problems, e.g. regression, and other types of
-models -- we are making simplifications to expose the main concept.' %}.
+To illustrate the discussion, we will use an image classification model (simplification disclaimer: there are other types of problems, e.g. regression, and other types of models -- we are making simplifications to expose the main concept.)
 
 A typical image classification problem, taught early in machine learning, is digit classification with the
 [MNIST dataset](http://yann.lecun.com/exdb/mnist/). The dataset looks like this (a small sample -
 the dataset has 70,000 images):
 
-{% maincolumn './images/2021-03-21/mnist.png' 'Sample digits from the MNIST dataset' %}
+![Sample digits from the MNIST dataset](/images/2021-03-21/mnist.png)
 
 In an image classification problem, we train a model to identify an image's class (label).
 In this case, there are ten classes, one for each digit (from zero to nine).
 
-{% maincolumn './images/2021-03-21/digit-classification-model.png' 'Digit classification model' %}
+![Digit classification model](/images/2021-03-21/digit-classification-model.png)
 
 This is an actual digit from MNIST. The model correctly classifies it as the digit "2".
 
-{% maincolumn './images/2021-03-21/digit-classification-example.png' 'Classification example' %}
+![Classification example](/images/2021-03-21/digit-classification-example.png)
 
 A neural network has several hidden layers to extract ("learn") features from the images. The very
 last layer is the one that classifies the image. In this case, we are classifying ten classes (ten
 digits). Therefore the last layer has ten neurons, one for each digit.
 
-{% maincolumn './images/2021-03-21/classification-layer.png' 'Classification layer' %}
+![Classification layer](/images/2021-03-21/classification-layer.png)
 
 Because we want to know what digit it is, we use [softmax activation](https://www.tensorflow.org/api_docs/python/tf/keras/activations/softmax)
 in the last layer to give us a probability distribution of each class. The model
 is confident that the image is a number "2" in the case below.
 
-{% maincolumn './images/2021-03-21/model-classification-certain.png' 'Model classification certain' %}
+![Model classification certain](/images/2021-03-21/model-classification-certain.png)
 
 For other images, the model may not be so confident.
 
-{% maincolumn './images/2021-03-21/model-classification-not-certain.png' 'Model classification not certain' %}
+![Model classification not certain](/images/2021-03-21/model-classification-not-certain.png)
 
 In those cases, how should we decide what the label is?
 
-{% maincolumn './images/2021-03-21/model-classification-how-to-decide.png' 'Model classification - how to decide' %}
+![Model classification - how to decide](/images/2021-03-21/model-classification-how-to-decide.png)
 
 Most of the time, the class with the largest probability is used as the label. In this example, the
 model classifies the image as the digit "2".
 
-{% maincolumn './images/2021-03-21/model-classification-use-largest.png' 'Model classification - largest probability' %}
+![Model classification - largest probability](/images/2021-03-21/model-classification-use-largest.png)
 
 But what should the model do when the largest probability is not that high and is close to the
 probability of other classes?
 
-{% maincolumn './images/2021-03-21/model-classification-uncertain.png' 'Model classification - uncertain' %}
+!['Model classification - uncertain](/images/2021-03-21/model-classification-uncertain.png)
 
 In the example below, the largest probability is for the class "9", but it is not even 50% and the
 probability for class "4" is not too far behind. The model does not have high confidence in this
 prediction.
 
-{% maincolumn './images/2021-03-21/model-classification-uncertain2.png' 'Model classification - uncertain' %}
+![Model classification - uncertain](/images/2021-03-21/model-classification-uncertain2.png)
 
 What should we do in these cases?
 
@@ -87,12 +87,12 @@ with the maximum probability, we select the largest probability above the thresh
 choose 50% as the threshold, in the number "2" example above we are still able to classify the image
 as the number "2".
 
-{% maincolumn './images/2021-03-21/model-classification-threshold-above.png' 'Model classification - above threshold' %}
+![Model classification - above threshold](/images/2021-03-21/model-classification-threshold-above.png)
 
 But now we no longer classify the ambiguous image as a number "9". In this case, we would not make
 a decision at all.
 
-{% maincolumn './images/2021-03-21/model-classification-threshold-below.png' 'Model classification - below threshold' %}
+![Model classification - below threshold](/images/2021-03-21/model-classification-threshold-below.png)
 
 But what threshold do we pick?
 
@@ -102,7 +102,7 @@ be very confident in the model's prediction.
 For example, for an automatic check deposit application, we want the model to be at least 99%
 confident of the prediction. Any image below that threshold is sent to human review.
 
-{% maincolumn './images/2021-03-21/model-classification-high-stakes.png' 'Model classification - high stakes' %}
+![Model classification - high stakes](/images/2021-03-21/model-classification-high-stakes.png)
 
 ## Effect of different thresholds
 
@@ -122,7 +122,7 @@ used in these examples, this is the effect of different thresholds on the model'
 
 ## Asking questions about "accuracy"
 
-{% newthought 'The one-line takeaway' %}: _to use a model responsibly **we must ask questions** about how its accuracy
+The one-line takeaway: _to use a model responsibly **we must ask questions** about how its accuracy
 was measured and not just accept published numbers_.
 
 1. How predictions are being made: is it probability-based (as in the examples above)? Something
@@ -135,7 +135,7 @@ detailed description of what a "correct prediction" is for the model.
 
 ## ROC as a better alternative to accuracy
 
-{% newthought 'A better alternative' %} to _accuracy_ is the [receiver operating characteristic (ROC) curve](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) (for a simpler introduction, see [this page](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc)). The ROC curve shows, at a glance, how a model behaves with different thresholds.
+A better alternative to _accuracy_ is the [receiver operating characteristic (ROC) curve](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) (for a simpler introduction, see [this page](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc)). The ROC curve shows, at a glance, how a model behaves with different thresholds.
 
 Every scientific paper that describes a model should publish the ROC curve. Papers that publish only the accuracy for the model, and especially papers that publish the accuracy without specifying the threshold, are, at best, incomplete. At worst, they were written by uninformed machine learning novices.
 

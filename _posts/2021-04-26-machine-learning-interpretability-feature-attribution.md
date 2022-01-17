@@ -1,9 +1,9 @@
 ---
-layout: post
 title:  "Machine learning interpretability with feature attribution"
+excerpt: "There are many discussions in the machine learning (ML) community about model interpretability and explainability. The discussions take place in several contexts, ranging from using interpretability and explainability techniques to increase the robustness of a model, all the way to increasing end-user trust in a model."
 date:   2021-04-26
-categories: machine-learning
 tags: [machine-learning, explainability, interpretability]
+toc: true
 ---
 
 There are many discussions in the machine learning (ML) community about model interpretability and explainability. The discussions take place in several contexts, ranging from using interpretability and explainability techniques to increase the robustness of a model, all the way to increasing end-user trust in a model.
@@ -14,17 +14,17 @@ This article investigates one method for model interpretability, feature attribu
 
 Feature attribution methods "[indicate how much each feature in your model contributed to the predictions for each given instance.](https://cloud.google.com/ai-platform/prediction/docs/ai-explanations/overview)" They work with tabular data, text, and images. The following pictures show an example for each case.
 
-An example of feature attribution for text:
+An example of feature attribution for text (from [Explainable AI: A Review of Machine Learning Interpretability Methods](https://www.mdpi.com/1099-4300/23/1/18#)):
 
-{% maincolumn './images/2021-04-26/example-feature-attribution-text.png' '<a href="https://www.mdpi.com/1099-4300/23/1/18#">Explainable AI: A Review of Machine Learning Interpretability Methods</a>' %}
+![Feature attribution - text](/images/2021-04-26/example-feature-attribution-text.png)
 
-An example of feature attribution for tabular data:
+An example of feature attribution for tabular data (from [SHAP tutotiral - official documentation](https://shap.readthedocs.io/en/latest/example_notebooks/tabular_examples/tree_based_models/Catboost%20tutorial.html)):
 
-{% maincolumn './images/2021-04-26/example-feature-attribution-tabular.png' '<a href="https://shap.readthedocs.io/en/latest/example_notebooks/tabular_examples/tree_based_models/Catboost%20tutorial.html">SHAP tutotiral - official documentation</a>' %}
+![Feature attribution - tabular](/images/2021-04-26/example-feature-attribution-tabular.png)
 
-An example of feature attribution for a model that identifies a cat in a picture:
+An example of feature attribution for a model that identifies a cat in a picture (from [LIME's GitHub](https://github.com/marcotcr/lime)):
 
-{% maincolumn './images/2021-04-26/example-feature-attribution-image.png' '<a href="https://github.com/marcotcr/lime">LIME GitHub</a>' %}
+![](/images/2021-04-26/example-feature-attribution-image.png)
 
 ## What feature attributions are used for
 
@@ -34,13 +34,13 @@ The prominent use cases for feature attribution are:
 - _Audit models_: verify that models are not looking at attributes that encode bias (gender, race, among others) when making decisions. For example, in the second picture below, the middle column shows a gender-biased model that predicts professions by looking at the face in the image. The rightmost column shows where a debiased model looks to make predictions.
 - _Optimize models_: simplify correlated features and remove features that do not contribute to predictions.
 
-The figure below is an example of feature attribution to debug a model (verify what the model uses to predict disease - in this case the model is looking at the wrong place).
+The figure below ([source](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683)) is an example of feature attribution to debug a model (verify what the model uses to predict disease - in this case the model is looking at the wrong place).
 
-{% maincolumn './images/2021-04-26/use-debug-model.png' '<a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683">Variable generalization performance of a deep learning model to detect pneumonia in chest radiographs: A cross-sectional study</a>' %}
+![](/images/2021-04-26/use-debug-model.png)
 
-The figure below is an example of feature attribution to audit a model (the model in the middle row makes the correct prediction, but is gender-biased):
+The figure below ([source](https://arxiv.org/abs/1610.02391)) is an example of feature attribution to audit a model (the model in the middle row makes the correct prediction, but is gender-biased):
 
-{% maincolumn './images/2021-04-26/use-audit-model.png' '<a href="https://arxiv.org/abs/1610.02391">Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization</a>' %}
+![](/images/2021-04-26/use-audit-model.png)
 
 ## Where feature attribution is in relation to other interpretability methods
 
@@ -54,8 +54,7 @@ Feature attribution is part of the first family, the association between anteced
 
 Using the framework in the [taxonomy of interpretable models](https://christophm.github.io/interpretable-ml-book/taxonomy-of-interpretability-methods.html), we can further narrow down feature attribution methods as:
 
-- _Post-hoc_: They are usually used after the model is trained and usually with black-box models. Therefore, we are interpreting the results of the model, not the model itself{%sidenote 'sd-note-model-interpretability' 'Creating interpretable models is yet [another area of research](https://arxiv.org/abs/1811.10154). The methods discussed here could also be used with intrinsically interpretable models, although they would be less valuable in those cases (because the models themselves are already interpretable).
-' %}. The typical application for feature attribution is to interpret the predictions of black-box models, such as deep neural networks (DNNs) and random forests. These models are too complex to be directly interpreted. Thus we are left with interpreting the model's results, not the model itself.
+- _Post-hoc_: They are usually used after the model is trained and usually with black-box models. Therefore, we are interpreting the results of the model, not the model itself (c)reating interpretable models is yet [another area of research](https://arxiv.org/abs/1811.10154)). The typical application for feature attribution is to interpret the predictions of black-box models, such as deep neural networks (DNNs) and random forests. These models are too complex to be directly interpreted. Thus we are left with interpreting the model's results, not the model itself.
 - _Result of the interpretation method_: They result in feature summary statistics (and visualization - most summary statistics can be visualized in one way or another).
 - _Model-agnostic or model-specific_: Shapley-value-based feature attribution methods can be used with different model architectures - they are model agnostic. Gradient-based feature attribution methods are based on gradients; therefore, they can be used only with models trained with gradient descent (neural networks, logistic regression, support vector machines, for example) - they are model specific.
 - _Local_: They explain an individual prediction of the model, not the entire model (that would be "global" interpretability).
@@ -68,17 +67,11 @@ Putting it all together, feature attribution methods are post-hoc, local interpr
 
 In their typical application, explanations have a fundamental limitation when applied to black-box models: they are approximations of how the model behaves.
 
-{% epigraph
-"[Explanations] cannot have perfect fidelity with respect to the original model. If the explanation was completely faithful to what the original model computes, the explanation would equal the original model, and one would not need the original model in the first place, only the explanation."
-"Cynthia Rudin" '<a href="https://arxiv.org/abs/1811.10154">Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead</a>'
-%}
+> "[Explanations] cannot have perfect fidelity with respect to the original model. If the explanation was completely faithful to what the original model computes, the explanation would equal the original model, and one would not need the original model in the first place, only the explanation." -- [Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead, Cynthia Rudin](https://arxiv.org/abs/1811.10154)
 
 More succinctly:
 
-{% epigraph
-<b>"Explanations must be wrong".</b>
-"Cynthia Rudin" '<a href="https://arxiv.org/abs/1811.10154">Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead</a>'
-%}
+> **"Explanations must be wrong."** -- [Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead, Cynthia Rudin](https://arxiv.org/abs/1811.10154)
 
 Therefore, **never mistake the explanation for the actual behavior of the model**. This is a critical conceptual limitation to keep in mind.
 
@@ -86,7 +79,7 @@ Therefore, **never mistake the explanation for the actual behavior of the model*
 
 Feature attributions do not have any understanding of the model they are explaining. They simply explain what the model predicts, [not caring if the prediction is right or wrong](https://arxiv.org/abs/1811.10154).
 
-{% maincolumn './images/2021-04-26/explaining-wrong-prediction.png' '<a href="https://arxiv.org/abs/1811.10154">Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead</a>' %}
+![](/images/2021-04-26/explaining-wrong-prediction.png)
 
 Therefore, **never confuse "explaining" with "understanding"**.
 
@@ -106,7 +99,7 @@ The attributions we get from the feature attributions algorithms are just number
 
 For example, simply overlaying the raw attribution values on an image may leave out important pixels that contributed to the prediction, as illustrated in figure 2 of [this paper](http://ceur-ws.org/Vol-2327/IUI19WS-ExSS2019-16.pdf). Compare the number of pictures highlighted in the top-right picture with the one below it, adjusted to show more contributing pixels.
 
-{% maincolumn './images/2021-04-26/user-interaction-example.png' '<a href="http://ceur-ws.org/Vol-2327/IUI19WS-ExSS2019-16.pdf">Exploring Principled Visualizations for Deep Network Attributions</a>' %}
+![](/images/2021-04-26/user-interaction-example.png)
 
 Showing all information at once to the users may also induce them to make more mistakes. For example, when showing the feature attributions overlaid to a medical image, [this paper](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext) found out that it increased overdiagnose of a medical condition. It points to the fact that just because we can explain something, we shouldn’t necessarily put that explanation in front of users without considering how it will change their behavior.
 
@@ -145,7 +138,7 @@ The following figure shows the SHAP feature attributions for a convolutional neu
 
 The leftmost digit is the sample from the MNIST dataset. The text at the top shows the actual label from the dataset (8) and the label the network predicted (also 8, thus a correct prediction). The next ten digits are the SHAP feature attributions for each class (the digits zero to nine, from left to right). At the top of each class we see the probability assigned by the network. In this case, the network gave the probability 99.54% to the digit 8, so it's correct and very confident about the prediction.
 
-{% maincolumn './images/2021-04-26/shap-example-mnist.png' '' %}
+![](/images/2021-04-26/shap-example-mnist.png)
 
 SHAP uses colors to explain attributions:
 
@@ -156,7 +149,7 @@ We can see that the contours of the digit 8 are assigned high probability. We ca
 
 Looking at digits 2 and 3, we can see in blue the reasons why the network assigned lower probabilities to them.
 
-{% maincolumn './images/2021-04-26/shap-colors.png' '' %}
+![](/images/2021-04-26/shap-colors.png)
 
 ### Shapley values
 
