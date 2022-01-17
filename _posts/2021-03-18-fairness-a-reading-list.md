@@ -2,7 +2,7 @@
 title:  "Fairness in machine learning: a reading list"
 excerpt: "A list of resources to understand concepts and applications of fairness in machine learning (ML)."
 date:   2021-03-18
-tags: [machine-learning, fairness, soclal-impact]
+tags: [machine-learning, bias, fairness, soclal-impact]
 toc: true
 ---
 
@@ -46,11 +46,11 @@ Also known as the "fair ML book", from the site URL, [fairmlbook.org](https://fa
 
 [CS 294: Fairness in Machine Learning](https://fairmlclass.github.io/)
 
-From the authors of the fairmlbook.org. A note at the top says "For an updated resource, please see fairmlbook.org.". However, it is still a good source because the sequence of lectures is a structured way to understand/explore fairness and has many pointers to other references.
+From the authors of [fairmlbook.org](https://fairmlbook.org/) (previous item). A note at the top says "For an updated resource, please see fairmlbook.org." However, it is still a good source because the sequence of lectures is a structured way to understand/explore fairness and has many pointers to other references.
 
 [21 fairness definitions and their politics](https://fairmlbook.org/tutorial2.html)
 
-Continuing the fairmlbook.org theme, this is a one-hour presentation by one of the authors. It is a good source to learn in a short time the complexities of the field (and thus, the complexity of the solutions).
+Continuing the [fairmlbook.org](https://fairmlbook.org/) theme, this is a one-hour presentation by one of the authors. It is a good source to learn in a short time the complexities of the field (and thus, the complexity of the solutions).
 
 ### Keeping up with the latest research
 
