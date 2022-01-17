@@ -10,7 +10,7 @@ Of all the problems that may crop up in the machine learning lifecycle (acquire 
 
 Once we start with a biased dataset, the model is doomed. There is no action we can take later in the lifecycle to completely correct it. Training more, training "better" (however that's defined), testing more, will not correct the biased dataset.
 
-To top it off, we will likely not realize that the model is biased until it is used in production, where it can inflict real damage. While we are in the train/verify step, we happily verify the model against the dataset we collected. The numbers will look good because we are verifying the model against the flawed data that was used to create it.
+To top it off, we will likely not realize that the model is biased until it is used in production, where it can inflict real damage. While we are in the train/verify step, we happily verify the model against the dataset we collected. The numbers will look good because we are verifying the model against the flawed data used to create it.
 
 <!--more-->
 
