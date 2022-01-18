@@ -6,9 +6,9 @@ tags: [machine-learning, computer-vision, transformers]
 toc: true
 ---
 
-This article describes the evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, applications in healthcare.
+This article describes the evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, ending with applications in healthcare.
 
-It starts with the motivation and origins of transformers, from the initial attempts to apply a specialized neural network architecture (recurrent neural network – RNN) to natural language processing (NLP), the evolution of such architectures (long short-term memory and the concept of attention), to the creation of transformers and what makes them perform well in NLP. Then it describes how transformers are applied to computer vision. The last section describes some of the applications of transformers in healthcare (healthcare is an area of interest for my research).
+It starts with the motivation and origins of transformers, from the initial attempts to apply a specialized neural network architecture (recurrent neural network – RNN) to natural language processing (NLP), the evolution of such architectures (long short-term memory and the concept of attention), to the creation of transformers and what makes them perform well in NLP. Then it describes how transformers are applied to computer vision. The last section describes some of the applications of transformers in healthcare (an area of interest for my research).
 
 Side note: It was originally written as a survey paper for a class I took. Hence the references are in bibliography format instead of embedded links.
 
@@ -108,7 +108,7 @@ Then (Dosovitskiy et al., 2020, which includes references to earlier works they 
 
 ![Vision Transformer architecture](/images/2021-12-01/vision-transformer-architecture.png)
 
-The resulting transformer models are more accurate than the convoluted neural network (CNN) models typically used in computer vision and, more importantly, significantly faster to train. In the table below, from (Dosovitskiy et al., 2020), the first three columns are three versions of the transformer model. The last row shows how the transformer-based networks (first three columns) use substantially less computational resources for training than CNN-based networks (last two columns).
+The resulting transformer models are more accurate than the convolutional neural network (CNN) models typically used in computer vision and, more importantly, significantly faster to train. In the table below, from (Dosovitskiy et al., 2020), the first three columns are three versions of the transformer model. The last row shows how the transformer-based networks (first three columns) use substantially less computational resources for training than CNN-based networks (last two columns).
 
 ![Vision Transformer performance](/images/2021-12-01/vision-transformer-performance.png)
 
