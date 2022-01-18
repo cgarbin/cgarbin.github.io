@@ -14,9 +14,9 @@ This article lists resources to understand concepts and applications of fairness
 
 ### "I can dedicate at most one hour of my life to fairness in ML"
 
-In that case, read [21 fairness definitions and their politics (FAT* 2018)](https://fairmlbook.org/tutorial2.html).
+In that case, watch the video [21 fairness definitions and their politics](https://fairmlbook.org/tutorial2.html).
 
-Narayanan is an enganging speaker. He is also well-grounded in the subject, as one of the authors of the [fairmlbook.org book (Fairness in Machine Learning)](https://fairmlbook.org/). In one hour he covers the complexity of the topic and the state of the research on it (as of 2018, but the fundamentals of the problem are still the same). This is a good source to understand the complexity of the problem and why solutions are not easy (and sometimes contradictory).
+Narayanan is an enganging speaker. He is also well-grounded in the subject, as one of the authors of the [fairmlbook.org book (Fairness and Machine Learning: Limitations and Opportunities)](https://fairmlbook.org/). In one hour he covers the complexity of the topic and the state of the research on it (as of 2018, but the fundamentals of the problem are still the same). This is a good source to understand the complexity of the problem and why solutions are not easy (and sometimes contradictory).
 
 <!--more-->
 
@@ -24,7 +24,7 @@ Narayanan is an enganging speaker. He is also well-grounded in the subject, as o
 
 Of all the sources below, if I could recommend only one (well, one for concepts, one for visualization, and one for a programming project):
 
-- Concepts: [Fairness in Machine Learning](https://fairmlbook.org/)
+- Concepts: [Fairness and Machine Learning: Limitations and Opportunities](https://fairmlbook.org/)
 - Visualization: [Measuring Fairness explorable](https://pair.withgoogle.com/explorables/measuring-fairness/)
 - In practice (programming): [Fairness \| Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/fairness/video-lecture)
 
@@ -34,11 +34,11 @@ Of all the sources below, if I could recommend only one (well, one for concepts,
 
 This section has a list of sources to understand the concepts of fairness and their implications for society, in no particular order.
 
-[A Framework for Understanding Unintended Consequences of Machine Learning](https://arxiv.org/abs/1901.10002)
+[A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](https://arxiv.org/abs/1901.10002)
 
 Bias is closely related to fairness. This paper describes a framework to understand sources of bias in machine learning. Once we understand where bias comes from, we are better positioned to eliminate or at least mitigate it. The picture below is a summary of the framework, illustrating the sources of bias in machine learning.
 
-![A Framework for Understanding Unintended Consequences of Machine Learning](/images/2021-03-18/sources-of-bias.png)
+![A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](/images/2021-03-18/sources-of-bias.png)
 
 [Fairness and Machine Learning - Limitations and Opportunities](https://fairmlbook.org/)
 
@@ -76,6 +76,10 @@ These are some recent survey papers on fairness as of early 2021. Each has a bri
 
 > We compare past and current notions of fairness along several dimensions, including the fairness criteria, the focus of the criteria (e.g., a test, a model, or its use), the relationship of fairness to individuals, groups, and subgroups, and the mathematical method for measuring fairness (e.g., classification, regression). This work points the way towards future research and measurement of (un)fairness that builds from our modern understanding of fairness while incorporating insights from the past.
 
+[A Framework for Fairness: A Systematic Review of Existing Fair AI Solutions](https://arxiv.org/abs/2112.05700)
+
+> A large portion of fairness research has gone to producing tools that machine learning practitioners can use to audit for bias while designing their algorithms. Nonetheless, there is a lack of application of these fairness solutions in practice. This systematic review provides an in-depth summary of the algorithmic bias issues that have been defined and the fairness solution space that has been proposed. Moreover, this review provides an in-depth breakdown of the caveats to the solution space that have arisen since their release and a taxonomy of needs that have been proposed by machine learning practitioners, fairness researchers, and institutional stakeholders
+
 ### Social and legal implications
 
 Not all aspects of machine learning fairness are technical. We care about fairness because it affects humans at the individual and societal levels. These are some papers that look at the social and legal implication of fairness in machine learning.
@@ -89,10 +93,6 @@ My (Christian's) commentary: highly analytical, with strong definitions of fairn
 [On the Legal Compatibility of Fairness Definitions](https://arxiv.org/abs/1912.00761)
 
 > Past literature has been effective in demonstrating ideological gaps in machine learning (ML) fairness definitions when considering their use in complex sociotechnical systems. However, we go further to demonstrate that these definitions often misunderstand the legal concepts from which they purport to be inspired, and consequently inappropriately co-opt legal language. In this paper, we demonstrate examples of this misalignment and discuss the differences in ML terminology and their legal counterparts [...].
-
-[Why Computing Belongs Within the Social Sciences](https://cacm.acm.org/magazines/2020/8/246368-why-computing-belongs-within-the-social-sciences/fulltext)
-
-> In the immediate after-math of the [2008] financial crisis, there were calls for reforms, not only of the financial services industry, but also within universities, where it was thought that unrealistic models and assumptions within economics departments (20) and business schools (11) were also responsible for inculcating a worldview that led to the crisis. It is time for us in computing departments to do some comparable soul searching. This article is one attempt at this task. It argues the well-publicized social ills of computing will not go away simply by integrating ethics instruction or codes of conduct into computing curricula. The remedy to these ills instead lies less in philosophy and more in fields such as sociology, psychology, anthropology, communications, and political science. That is, because computing as a discipline is becoming progressively more entangled within the human and social lifeworld, computing as an academic discipline must move away from engineering-inspired curricular models and integrate the analytic lenses supplied by social science theories and methodologies.
 
 ### Healthcare specific
 
