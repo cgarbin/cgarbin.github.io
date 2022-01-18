@@ -40,7 +40,7 @@ Bias is closely related to fairness. This paper describes a framework to underst
 
 ![A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](/images/2021-03-18/sources-of-bias.png)
 
-[Fairness and Machine Learning - Limitations and Opportunities](https://fairmlbook.org/)
+[Fairness and Machine Learning: Limitations and Opportunities](https://fairmlbook.org/)
 
 Also known as the "fair ML book", from the site URL, [fairmlbook.org](https://fairmlbook.org/). A free online book from luminaries of the field. It's updated frequently. If we could have only one reference for concepts, this would be it.
 
