@@ -2,8 +2,8 @@
 permalink: /about/
 title: "About"
 excerpt: "Christian Garbin's blog - about page"
-last_modified_at: 2022-01-17T00:00:00+00:00
-toc: true
+last_modified_at: 2022-01-18T00:00:00+00:00
+toc: false
 ---
 
 I'm a software architect at [Atos Unify](https://unify.com/en/). More about my professional life on
