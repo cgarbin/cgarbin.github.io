@@ -4,6 +4,9 @@ excerpt: "A list of resources to understand concepts and applications of fairnes
 date:   2021-03-18
 tags: [machine-learning, bias, fairness, soclal-impact]
 toc: true
+header:
+   overlay_image: /images/2021-03-18/justice.jpg
+   caption: "Photo credit: [Ludmila Kvapilova, CC BY-SA 4.0, via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Justice.tif)"
 ---
 
 This article lists resources to understand concepts and applications of fairness in machine learning (ML).
