@@ -1,6 +1,6 @@
 ---
 title:  "Applications of transformers in computer vision"
-excerpt: "This article describes the evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, applications in healthcare."
+excerpt: "This article describes the evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, ending with applications in healthcare."
 date:   2021-12-01
 tags: [machine-learning, computer-vision, transformers]
 toc: true
