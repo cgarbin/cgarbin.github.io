@@ -24,7 +24,7 @@ An example of feature attribution for tabular data (from [SHAP tutorial - offici
 
 An example of feature attribution for a model that identifies a cat in a picture (from [LIME's GitHub](https://github.com/marcotcr/lime)):
 
-![](/images/2021-04-26/example-feature-attribution-image.png)
+![Feature attribution for image identification](/images/2021-04-26/example-feature-attribution-image.png)
 
 ## What feature attributions are used for
 
@@ -36,11 +36,11 @@ The prominent use cases for feature attribution are:
 
 The figure below ([source](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683)) is an example of feature attribution to debug a model (verify what the model uses to predict disease - in this case the model is looking at the wrong place).
 
-![](/images/2021-04-26/use-debug-model.png)
+![Using interpretability to debug models](/images/2021-04-26/use-debug-model.png)
 
 The figure below ([source](https://arxiv.org/abs/1610.02391)) is an example of feature attribution to audit a model (the model in the middle row makes the correct prediction, but is gender-biased):
 
-![](/images/2021-04-26/use-audit-model.png)
+![Using interpretability to audit models](/images/2021-04-26/use-audit-model.png)
 
 ## Where feature attribution is in relation to other interpretability methods
 
@@ -67,19 +67,26 @@ Putting it all together, feature attribution methods are post-hoc, local interpr
 
 In their typical application, explanations have a fundamental limitation when applied to black-box models: they are approximations of how the model behaves.
 
-> "[Explanations] cannot have perfect fidelity with respect to the original model. If the explanation was completely faithful to what the original model computes, the explanation would equal the original model, and one would not need the original model in the first place, only the explanation." -- [Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead, Cynthia Rudin](https://arxiv.org/abs/1811.10154)
+> "[Explanations] cannot have perfect fidelity with respect to the original model. If the explanation was completely faithful to what the original model computes, the explanation would equal the original model, and one would not need the original model in the first place, only the explanation."
+
+<cite>Cynthia Rudin</cite> --- [Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead](https://arxiv.org/abs/1811.10154)
+{: .small}
 
 More succinctly:
 
-> **"Explanations must be wrong."** -- [Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead, Cynthia Rudin](https://arxiv.org/abs/1811.10154)
+> **"Explanations must be wrong."**
+
+<cite>Cynthia Rudin</cite> --- [Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead](https://arxiv.org/abs/1811.10154)
+{: .small}
 
 Therefore, **never mistake the explanation for the actual behavior of the model**. This is a critical conceptual limitation to keep in mind.
+{: .notice--warning}
 
 ### Feature attribution may not make sense
 
 Feature attributions do not have any understanding of the model they are explaining. They simply explain what the model predicts, [not caring if the prediction is right or wrong](https://arxiv.org/abs/1811.10154).
 
-![](/images/2021-04-26/explaining-wrong-prediction.png)
+![Explaining wrong predictions](/images/2021-04-26/explaining-wrong-prediction.png)
 
 Therefore, **never confuse "explaining" with "understanding"**.
 
@@ -99,7 +106,7 @@ The attributions we get from the feature attributions algorithms are just number
 
 For example, simply overlaying the raw attribution values on an image may leave out important pixels that contributed to the prediction, as illustrated in figure 2 of [this paper](http://ceur-ws.org/Vol-2327/IUI19WS-ExSS2019-16.pdf). Compare the number of pictures highlighted in the top-right picture with the one below it, adjusted to show more contributing pixels.
 
-![](/images/2021-04-26/user-interaction-example.png)
+![Example of user interaction](/images/2021-04-26/user-interaction-example.png)
 
 Showing all information at once to the users may also induce them to make more mistakes. For example, when showing the feature attributions overlaid to a medical image, [this paper](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext) found out that it increased overdiagnose of a medical condition. It points to the fact that just because we can explain something, we shouldn’t necessarily put that explanation in front of users without considering how it will change their behavior.
 
@@ -138,7 +145,7 @@ The following figure shows the SHAP feature attributions for a convolutional neu
 
 The leftmost digit is the sample from the MNIST dataset. The text at the top shows the actual label from the dataset (8) and the label the network predicted (also 8, thus a correct prediction). The next ten digits are the SHAP feature attributions for each class (the digits zero to nine, from left to right). At the top of each class we see the probability assigned by the network. In this case, the network gave the probability 99.54% to the digit 8, so it's correct and very confident about the prediction.
 
-![](/images/2021-04-26/shap-example-mnist.png)
+![SHAP example with MNIST](/images/2021-04-26/shap-example-mnist.png)
 
 SHAP uses colors to explain attributions:
 
@@ -149,7 +156,7 @@ We can see that the contours of the digit 8 are assigned high probability. We ca
 
 Looking at digits 2 and 3, we can see in blue the reasons why the network assigned lower probabilities to them.
 
-![](/images/2021-04-26/shap-colors.png)
+![SHAP color coding example](/images/2021-04-26/shap-colors.png)
 
 ### Shapley values
 
@@ -159,12 +166,10 @@ For example (based on [this article](https://storage.googleapis.com/cloud-ai-whi
 
 We have so far two pieces of information, the profit when the company had no employee (zero) and the profit with all three employees on board.
 
-
 | Employees | Profit |
 | :- | -: |
 | _None_ | 0 |
 | Anne, Bob, Charlie | 100 |
-
 
 Going through historical records, the company determined the profit when different combinations of employees were working in past months. They are added to the table below, between the two lines of the previous table.
 
@@ -178,7 +183,6 @@ Going through historical records, the company determined the profit when differe
 | 6 | Bob, Charlie | 70 |
 | 7 | Anne, Charlie | 90 |
 | 8 | Anne, Bob, Charlie | 100 |
-
 
 At first glance, it looks like Bob contributes 50 to the profit: in line 2 we see that Anne contributes 10 to the profit and in line 5 the profit of Anne and Bob together is 60. The conclusion would be that Bob contributed 50. However, when we look at line 4 (only Charlie) and line 6 (Bob and Charlie), we now conclude that Bob contributes 40 to the profit, contradicting the first conclusion.
 
