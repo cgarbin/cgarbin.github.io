@@ -62,7 +62,7 @@ Network architectures continue to evolve today. So many architectures have been 
 ## Recent trends
 
 - _Efficiently scaling CNNs_: There are different ways to scale CNN-based networks. The [EfficientNet](https://arxiv.org/abs/1905.11946) family of networks shows that we don't always need large CNN networks to get good results.
-- _Back to basics_: The ([MLP-Mixer](https://arxiv.org/abs/2105.01601)) network does away with CNN layers altogether. It uses only simpler multi-layer perceptron (MLP) layers, resulting in networks with faster throughput, predicting more images per second than other network architectures.
+- _Back to basics_: The [MLP-Mixer](https://arxiv.org/abs/2105.01601) network does away with CNN layers altogether. It uses only simpler multi-layer perceptron (MLP) layers, resulting in networks with faster throughput, predicting more images per second than other network architectures.
 - _Transformers_: Transformer-based networks, after their success with natural language processing (NLP), [are being appied to image processing]({% post_url 2021-12-01-transformers-in-computer-vision %}).
 
 ## Keeping up with new developments
