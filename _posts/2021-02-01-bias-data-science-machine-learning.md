@@ -21,14 +21,15 @@ If biased data is so damaging, understanding where it comes from helps us recogn
 
 In each phase, they identify multiple sources of bias, as illustrated in this picture:
 
-![](/images/2021-02-01/sources-of-bias.png)
+![Sources of bias](/images/2021-02-01/sources-of-bias.png)
 Picture source: [A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](https://arxiv.org/abs/1901.10002).
 
 Once we have a framework to identify the sources of bias, we can better prevent it. In the authors' words:
 
 > Understanding the implications of each stage in the data generation process can reveal more direct and meaningful ways to prevent or address harmful downstream consequences that overly broad terms like “biased data” can mask.'
 
-> H. Suresh, J. Guttag, [A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](https://arxiv.org/abs/1901.10002).
+<cite>H. Suresh, J. Guttag</cite> --- [A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](https://arxiv.org/abs/1901.10002)
+{: .small}
 
 These are the sources of bias in the machine learning lifecycle, starting from the early stages and moving to the late stages.
 

@@ -2,7 +2,7 @@
 title:  "Machine learning, but not understanding"
 excerpt: "In the expression 'machine learning', are the machines actually learning anything? Let's explore what 'learning' means for machine learning, guided by Melanie Mitchell's book 'Artificial Intelligence, a guide for thinking humans. We will see that machines don't learn in the same way we understand 'learn'."
 date:   2021-04-10
-tags: [machine-learning]
+tags: [machine-learning, failure]
 toc: true
 ---
 

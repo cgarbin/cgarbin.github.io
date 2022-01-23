@@ -5,7 +5,7 @@ date:   2021-04-26
 tags: [machine-learning, deep-learning, computer-vision]
 ---
 
-Deep learning revolutionized image processing. It made previous techniques, based on manual feature extraction, obsolete. This article reviews the progress of deep learn, with ever-growing networks and the new developments in the field.
+Deep learning revolutionized image processing. It made previous techniques, based on manual feature extraction, obsolete. This article reviews the progress of deep learning, with ever-growing networks and the new developments in the field.
 
 <!--more-->
 
@@ -25,7 +25,7 @@ In traditional image recognition, we use hand-crafted rules to extract features 
 
 In contrast, deep learning image recognition is done with trainable, multi-layer neural networks. Instead of hand-crafting the rules, we feed labeled images to the network. The neural network, through the training process, extracts the features needed to identify the images ([source](https://youtu.be/Qk4SqF9FT-M?t=435)).
 
-![Depp learning image processing](/images/2021-02-28/image-processing-deep-learning.png)
+![Deep learning image processing](/images/2021-02-28/image-processing-deep-learning.png)
 
 "Deep" comes from the fact that neural networks (in this application) use several layers. For example, LeNet-5, named after Yann LeCunn (of the presentation above) and shown in the (historic) picture below ([source](http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf)), has seven layers.
 

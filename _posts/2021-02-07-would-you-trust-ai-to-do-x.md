@@ -2,7 +2,7 @@
 title:  "Would you trust AI to do [X]?"
 excerpt: "Exploring 'robustness' as a factor to trust AI products, with examples of how difficult it is to create robust AI products."
 date:   2021-02-07
-tags: [machine-learning]
+tags: [machine-learning, failure]
 toc: true
 ---
 

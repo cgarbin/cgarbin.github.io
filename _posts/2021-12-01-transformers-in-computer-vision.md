@@ -10,6 +10,8 @@ This article describes the evolution of transformers, their application in natur
 
 It starts with the motivation and origins of transformers, from the initial attempts to apply a specialized neural network architecture (recurrent neural network – RNN) to natural language processing (NLP), the evolution of such architectures (long short-term memory and the concept of attention), to the creation of transformers and what makes them perform well in NLP. Then it describes how transformers are applied to computer vision. The last section describes some of the applications of transformers in healthcare (an area of interest for my research).
 
+<!--more-->
+
 Side note: It was originally written as a survey paper for a class I took. Hence the references are in bibliography format instead of embedded links.
 
 # The origins of transformers – natural language processing
@@ -34,11 +36,11 @@ The model must have a “memory” of what it has seen so far. Or, in other word
 
 Recurrent neural networks (RNNs) are a class of networks that can model such problems. The figure below shows the standard representation of an RNN cell. The blue arrow indicates the “temporal loop” in the network: the result from a previous input, known as the state, is fed into the network when processing a new input. Using the state from a previous input when processing new input allows the network to “remember” what it has seen so far.
 
-![](/images/2021-12-01/rnn-one-cell.png)
+![One cell of an RNN](/images/2021-12-01/rnn-one-cell.png)
 
 The temporal loop can be conceptually represented as passing the state from the past steps into the future steps. In the figure below, the RNN cell is unrolled (repeated) to represent the state from previous steps passed into the subsequent ones (this process is also called “unfolding” the network).
 
-![](/images/2021-12-01/rnn-unrolled.png)
+![Unrolled RNN](/images/2021-12-01/rnn-unrolled.png)
 
 ## Forgetting the past – vanishing and exploding gradients
 
@@ -220,50 +222,50 @@ Efficient transformer architectures will have two effects. From one side, larger
 
 # References
 
-1. Alammar, J. (2018a, May 9). Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention). https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/
-1. Alammar, J. (2018b, June 27). The Illustrated Transformer. http://jalammar.github.io/illustrated-transformer/
-1. Avsec, Ž. (2021, October 4). Predicting gene expression with AI. Deepmind. https://deepmind.com/blog/article/enformer
-1. Avsec, Ž., Agarwal, V., Visentin, D., Ledsam, J. R., Grabska-Barwinska, A., Taylor, K. R., Assael, Y., Jumper, J., Kohli, P., & Kelley, D. R. (2021). Effective gene expression prediction from sequence by integrating long-range interactions. Nature Methods, 18(10), 1196–1203. https://doi.org/10.1038/s41592-021-01252-x
-1. Ba, J., Mnih, V., & Kavukcuoglu, K. (2015). Multiple Object Recognition with Visual Attention. ArXiv:1412.7755 [Cs]. http://arxiv.org/abs/1412.7755
-1. Bahdanau, D., Cho, K., & Bengio, Y. (2014). Neural Machine Translation by Jointly Learning to Align and Translate. https://arxiv.org/abs/1409.0473v7
-1. Bengio, Y., Simard, P., & Frasconi, P. (1994). Learning long-term dependencies with gradient descent is difficult. IEEE Transactions on Neural Networks, 5(2), 157–166. https://doi.org/10.1109/72.279181
-1. Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A., Agarwal, S., Herbert-Voss, A., Krueger, G., Henighan, T., Child, R., Ramesh, A., Ziegler, D. M., Wu, J., Winter, C., … Amodei, D. (2020). Language Models are Few-Shot Learners. ArXiv:2005.14165 [Cs]. http://arxiv.org/abs/2005.14165
-1. Carion, N., Massa, F., Synnaeve, G., Usunier, N., Kirillov, A., & Zagoruyko, S. (2020). End-to-End Object Detection with Transformers. ArXiv:2005.12872 [Cs]. http://arxiv.org/abs/2005.12872
-1. Chefer, H., Gur, S., & Wolf, L. (2021). Transformer Interpretability Beyond Attention Visualization. ArXiv:2012.09838 [Cs]. http://arxiv.org/abs/2012.09838
-1. Chen, J., Lu, Y., Yu, Q., Luo, X., Adeli, E., Wang, Y., Lu, L., Yuille, A. L., & Zhou, Y. (2021). TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation. ArXiv:2102.04306 [Cs]. http://arxiv.org/abs/2102.04306
-1. Cheng, J., Dong, L., & Lapata, M. (2016). Long Short-Term Memory-Networks for Machine Reading. ArXiv:1601.06733 [Cs]. http://arxiv.org/abs/1601.06733
-1. Cho, K., van Merrienboer, B., Gulcehre, C., Bahdanau, D., Bougares, F., Schwenk, H., & Bengio, Y. (2014). Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation. ArXiv:1406.1078 [Cs, Stat]. http://arxiv.org/abs/1406.1078
-1. Choromanski, K., & Colwell, L. (2020, October 23). Rethinking Attention with Performers. Google AI Blog. http://ai.googleblog.com/2020/10/rethinking-attention-with-performers.html
-1. Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. ArXiv:1810.04805 [Cs]. http://arxiv.org/abs/1810.04805
-1. Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., Uszkoreit, J., & Houlsby, N. (2020). An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. https://arxiv.org/abs/2010.11929v2
-1. Gers, F. A., Schmidhuber, J., & Cummins, F. (1999). Learning to forget: Continual prediction with LSTM. 1999 Ninth International Conference on Artificial Neural Networks ICANN 99. (Conf. Publ. No. 470), 2, 850–855 vol.2. https://doi.org/10.1049/cp:19991218
-1. Greff, K., Srivastava, R. K., Koutník, J., Steunebrink, B. R., & Schmidhuber, J. (2017). LSTM: A Search Space Odyssey. IEEE Transactions on Neural Networks and Learning Systems, 28(10), 2222–2232. https://doi.org/10.1109/TNNLS.2016.2582924
-1. Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computation, 9(8), 1735–1780. https://doi.org/10.1162/neco.1997.9.8.1735
-1. Ian, G., Yoshua, B., & Aaron, C. (2016). Deep Learning. https://www.deeplearningbook.org/
-1. Jakob, U. (2017). Transformer: A Novel Neural Network Architecture for Language Understanding. Google AI Blog. http://ai.googleblog.com/2017/08/transformer-novel-neural-network.html
-1. Jumper, J., Evans, R., Pritzel, A., Green, T., Figurnov, M., Ronneberger, O., Tunyasuvunakool, K., Bates, R., Žídek, A., Potapenko, A., Bridgland, A., Meyer, C., Kohl, S. A. A., Ballard, A. J., Cowie, A., Romera-Paredes, B., Nikolov, S., Jain, R., Adler, J., … Hassabis, D. (2021). Highly accurate protein structure prediction with AlphaFold. Nature, 596(7873), 583–589. https://doi.org/10.1038/s41586-021-03819-2
-1. Kodialam, R. S., Boiarsky, R., Lim, J., Dixit, N., Sai, A., & Sontag, D. (2020). Deep Contextual Clinical Prediction with Reverse Distillation. ArXiv:2007.05611 [Cs, Stat]. http://arxiv.org/abs/2007.05611
-1. Komura, D., & Ishikawa, S. (2018). Machine Learning Methods for Histopathological Image Analysis. Computational and Structural Biotechnology Journal, 16, 34–42. https://doi.org/10.1016/j.csbj.2018.01.001
-1. Li, Y., Rao, S., Solares, J. R. A., Hassaine, A., Ramakrishnan, R., Canoy, D., Zhu, Y., Rahimi, K., & Salimi-Khorshidi, G. (2020). BEHRT: Transformer for Electronic Health Records. Scientific Reports, 10(1), 7155. https://doi.org/10.1038/s41598-020-62922-y
-1. Lin, Z., Feng, M., Santos, C. N. dos, Yu, M., Xiang, B., Zhou, B., & Bengio, Y. (2017). A Structured Self-attentive Sentence Embedding. ArXiv:1703.03130 [Cs]. http://arxiv.org/abs/1703.03130
-1. Liu, Z., Lin, Y., Cao, Y., Hu, H., Wei, Y., Zhang, Z., Lin, S., & Guo, B. (2021). Swin Transformer: Hierarchical Vision Transformer using Shifted Windows. ArXiv:2103.14030 [Cs]. http://arxiv.org/abs/2103.14030
-1. Luong, M.-T., Pham, H., & Manning, C. D. (2015). Effective Approaches to Attention-based Neural Machine Translation. ArXiv:1508.04025 [Cs]. http://arxiv.org/abs/1508.04025
-1. Matsoukas, C., Haslum, J. F., Söderberg, M., & Smith, K. (2021). Is it Time to Replace CNNs with Transformers for Medical Images? ArXiv:2108.09038 [Cs]. http://arxiv.org/abs/2108.09038
-1. May, M. (2020, March 14). A Survey of Long-Term Context in Transformers. Machine Learning Musings. https://www.pragmatic.ml/a-survey-of-methods-for-incorporating-long-term-context/
-1. Mehta, S., Lu, X., Weaver, D., Elmore, J. G., Hajishirzi, H., & Shapiro, L. (2020). HATNet: An End-to-End Holistic Attention Network for Diagnosis of Breast Biopsy Images. ArXiv:2007.13007 [Cs, Eess]. http://arxiv.org/abs/2007.13007
-1. Mnih, V., Heess, N., Graves, A., & kavukcuoglu,  koray. (2014). Recurrent Models of Visual Attention. Advances in Neural Information Processing Systems, 27. https://proceedings.neurips.cc/paper/2014/hash/09c6c3783b4a70054da74f2538ed47c6-Abstract.html
-1. Olah, C. (2015, August 27). Understanding LSTM Networks. Colah’s Blog. https://colah.github.io/posts/2015-08-Understanding-LSTMs/
-1. Olah, C., & Carter, S. (2016). Attention and Augmented Recurrent Neural Networks. Distill, 1(9), e1. https://doi.org/10.23915/distill.00001
-1. Parmar, N., Vaswani, A., Uszkoreit, J., Kaiser, Ł., Shazeer, N., Ku, A., & Tran, D. (2018). Image Transformer. https://arxiv.org/abs/1802.05751v3
-1. Pascanu, R., Mikolov, T., & Bengio, Y. (2013). On the difficulty of training Recurrent Neural Networks. ArXiv:1211.5063 [Cs]. http://arxiv.org/abs/1211.5063
-1. Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., & Sutskever, I. (2019). Language Models are Unsupervised Multitask Learners. 24.
-1. Reyes, M., Meier, R., Pereira, S., Silva, C. A., Dahlweid, F.-M., Tengg-Kobligk, H. von, Summers, R. M., & Wiest, R. (2020). On the Interpretability of Artificial Intelligence in Radiology: Challenges and Opportunities. Radiology: Artificial Intelligence, 2(3), e190043. https://doi.org/10.1148/ryai.2020190043
-1. Rubiera, C. O. (2021). AlphaFold 2 is here: What’s behind the structure prediction miracle - Oxford Protein Informatics Group. Oxford Protein Informatics Group. https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/
-1. Rumelhart, D. E., Hinton, G., & Williams, R. (1987). Learning Internal Representations by Error Propagation. In Parallel Distributed Processing: Explorations in the Microstructure of Cognition: Foundations (pp. 318–362). MIT Press. https://ieeexplore.ieee.org/document/6302929
-1. Selvaraju, R. R., Cogswell, M., Das, A., Vedantam, R., Parikh, D., & Batra, D. (2020). Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization. International Journal of Computer Vision, 128(2), 336–359. https://doi.org/10.1007/s11263-019-01228-7
-1. Sutskever, I., Vinyals, O., & Le, Q. V. (2014). Sequence to Sequence Learning with Neural Networks. ArXiv:1409.3215 [Cs]. http://arxiv.org/abs/1409.3215
-1. Tay, Y., Dehghani, M., Bahri, D., & Metzler, D. (2020). Efficient Transformers: A Survey. ArXiv:2009.06732 [Cs]. http://arxiv.org/abs/2009.06732
-1. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., & Polosukhin, I. (2017). Attention Is All You Need. ArXiv:1706.03762 [Cs]. http://arxiv.org/abs/1706.03762
-1. Wikipedia. (2021). Gene expression. In Wikipedia. https://en.wikipedia.org/w/index.php?title=Gene_expression&oldid=1051856939
-1. Xu, K., Ba, J., Kiros, R., Cho, K., Courville, A., Salakhutdinov, R., Zemel, R., & Bengio, Y. (2016). Show, Attend and Tell: Neural Image Caption Generation with Visual Attention. ArXiv:1502.03044 [Cs]. http://arxiv.org/abs/1502.03044
-1. Zaheer, M., Guruganesh, G., Dubey, A., Ainslie, J., Alberti, C., Ontanon, S., Pham, P., Ravula, A., Wang, Q., Yang, L., & Ahmed, A. (2021). Big Bird: Transformers for Longer Sequences. ArXiv:2007.14062 [Cs, Stat]. http://arxiv.org/abs/2007.14062
+1. Alammar, J. (2018a, May 9) [Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention)](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)
+1. Alammar, J. (2018b, June 27) [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
+1. Avsec, Ž. (2021, October 4) [Predicting gene expression with AI. Deepmind](https://deepmind.com/blog/article/enformer)
+1. Avsec, Ž., Agarwal, V., Visentin, D., Ledsam, J. R., Grabska-Barwinska, A., Taylor, K. R., Assael, Y., Jumper, J., Kohli, P., & Kelley, D. R. (2021) [Effective gene expression prediction from sequence by integrating long-range interactions. Nature Methods, 18(10), 1196–1203](https://doi.org/10.1038/s41592-021-01252-x)
+1. Ba, J., Mnih, V., & Kavukcuoglu, K. (2015) [Multiple Object Recognition with Visual Attention](http://arxiv.org/abs/1412.7755)
+1. Bahdanau, D., Cho, K., & Bengio, Y. (2014) [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473v7)
+1. Bengio, Y., Simard, P., & Frasconi, P. (1994) [Learning long-term dependencies with gradient descent is difficult. IEEE Transactions on Neural Networks, 5(2), 157–166.](https://doi.org/10.1109/72.279181)
+1. Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A., Agarwal, S., Herbert-Voss, A., Krueger, G., Henighan, T., Child, R., Ramesh, A., Ziegler, D. M., Wu, J., Winter, C., … Amodei, D. (2020) [Language Models are Few-Shot Learners](http://arxiv.org/abs/2005.14165)
+1. Carion, N., Massa, F., Synnaeve, G., Usunier, N., Kirillov, A., & Zagoruyko, S. (2020) [End-to-End Object Detection with Transformers](http://arxiv.org/abs/2005.12872)
+1. Chefer, H., Gur, S., & Wolf, L. (2021) [Transformer Interpretability Beyond Attention Visualization](http://arxiv.org/abs/2012.09838)
+1. Chen, J., Lu, Y., Yu, Q., Luo, X., Adeli, E., Wang, Y., Lu, L., Yuille, A. L., & Zhou, Y. (2021) [TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation](http://arxiv.org/abs/2102.04306)
+1. Cheng, J., Dong, L., & Lapata, M. (2016) [Long Short-Term Memory-Networks for Machine Reading](http://arxiv.org/abs/1601.06733)
+1. Cho, K., van Merrienboer, B., Gulcehre, C., Bahdanau, D., Bougares, F., Schwenk, H., & Bengio, Y. (2014) [Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation](http://arxiv.org/abs/1406.1078)
+1. Choromanski, K., & Colwell, L. (2020, October 23) [Rethinking Attention with Performers](http://ai.googleblog.com/2020/10/rethinking-attention-with-performers.html)
+1. Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019) [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](http://arxiv.org/abs/1810.04805)
+1. Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., Uszkoreit, J., & Houlsby, N. (2020) [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929v2)
+1. Gers, F. A., Schmidhuber, J., & Cummins, F. (1999) [Learning to forget: Continual prediction with LSTM. 1999 Ninth International Conference on Artificial Neural Networks ICANN 99. (Conf. Publ. No. 470), 2, 850–855 vol.2](https://doi.org/10.1049/cp:19991218)
+1. Greff, K., Srivastava, R. K., Koutník, J., Steunebrink, B. R., & Schmidhuber, J. (2017) [LSTM: A Search Space Odyssey. IEEE Transactions on Neural Networks and Learning Systems, 28(10), 2222–2232](https://doi.org/10.1109/TNNLS.2016.2582924)
+1. Hochreiter, S., & Schmidhuber, J. (1997) [Long Short-Term Memory. Neural Computation, 9(8), 1735–1780](https://doi.org/10.1162/neco.1997.9.8.1735)
+1. Ian, G., Yoshua, B., & Aaron, C. (2016) [Deep Learning](https://www.deeplearningbook.org/)
+1. Jakob, U. (2017) [Transformer: A Novel Neural Network Architecture for Language Understanding](http://ai.googleblog.com/2017/08/transformer-novel-neural-network.html)
+1. Jumper, J., Evans, R., Pritzel, A., Green, T., Figurnov, M., Ronneberger, O., Tunyasuvunakool, K., Bates, R., Žídek, A., Potapenko, A., Bridgland, A., Meyer, C., Kohl, S. A. A., Ballard, A. J., Cowie, A., Romera-Paredes, B., Nikolov, S., Jain, R., Adler, J., … Hassabis, D. (2021) [Highly accurate protein structure prediction with AlphaFold. Nature, 596(7873), 583–589](https://doi.org/10.1038/s41586-021-03819-2)
+1. Kodialam, R. S., Boiarsky, R., Lim, J., Dixit, N., Sai, A., & Sontag, D. (2020) [Deep Contextual Clinical Prediction with Reverse Distillation](http://arxiv.org/abs/2007.05611)
+1. Komura, D., & Ishikawa, S. (2018) [Machine Learning Methods for Histopathological Image Analysis. Computational and Structural Biotechnology Journal, 16, 34–42](https://doi.org/10.1016/j.csbj.2018.01.001)
+1. Li, Y., Rao, S., Solares, J. R. A., Hassaine, A., Ramakrishnan, R., Canoy, D., Zhu, Y., Rahimi, K., & Salimi-Khorshidi, G. (2020) [BEHRT: Transformer for Electronic Health Records. Scientific Reports, 10(1), 7155](https://doi.org/10.1038/s41598-020-62922-y)
+1. Lin, Z., Feng, M., Santos, C. N. dos, Yu, M., Xiang, B., Zhou, B., & Bengio, Y. (2017) [A Structured Self-attentive Sentence Embedding](http://arxiv.org/abs/1703.03130)
+1. Liu, Z., Lin, Y., Cao, Y., Hu, H., Wei, Y., Zhang, Z., Lin, S., & Guo, B. (2021) [Swin Transformer: Hierarchical Vision Transformer using Shifted Windows](http://arxiv.org/abs/2103.14030)
+1. Luong, M.-T., Pham, H., & Manning, C. D. (2015) [Effective Approaches to Attention-based Neural Machine Translation](http://arxiv.org/abs/1508.04025)
+1. Matsoukas, C., Haslum, J. F., Söderberg, M., & Smith, K. (2021) [Is it Time to Replace CNNs with Transformers for Medical Images?](http://arxiv.org/abs/2108.09038)
+1. May, M. (2020, March 14) [A Survey of Long-Term Context in Transformers. Machine Learning Musings](https://www.pragmatic.ml/a-survey-of-methods-for-incorporating-long-term-context/)
+1. Mehta, S., Lu, X., Weaver, D., Elmore, J. G., Hajishirzi, H., & Shapiro, L. (2020) [HATNet: An End-to-End Holistic Attention Network for Diagnosis of Breast Biopsy Images](http://arxiv.org/abs/2007.13007)
+1. Mnih, V., Heess, N., Graves, A., & kavukcuoglu,  koray. (2014) [Recurrent Models of Visual Attention. Advances in Neural Information Processing Systems, 27](https://proceedings.neurips.cc/paper/2014/hash/09c6c3783b4a70054da74f2538ed47c6-Abstract.html)
+1. Olah, C. (2015, August 27) [Understanding LSTM Networks. Colah’s Blog](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+1. Olah, C., & Carter, S. (2016) [Attention and Augmented Recurrent Neural Networks. Distill, 1(9), e1](https://doi.org/10.23915/distill.00001)
+1. Parmar, N., Vaswani, A., Uszkoreit, J., Kaiser, Ł., Shazeer, N., Ku, A., & Tran, D. (2018) [Image Transformer](https://arxiv.org/abs/1802.05751v3)
+1. Pascanu, R., Mikolov, T., & Bengio, Y. (2013) [On the difficulty of training Recurrent Neural Networks](http://arxiv.org/abs/1211.5063)
+1. Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., & Sutskever, I. (2019) [Language Models are Unsupervised Multitask Learners](https://www.semanticscholar.org/paper/Language-Models-are-Unsupervised-Multitask-Learners-Radford-Wu/9405cc0d6169988371b2755e573cc28650d14dfe)
+1. Reyes, M., Meier, R., Pereira, S., Silva, C. A., Dahlweid, F.-M., Tengg-Kobligk, H. von, Summers, R. M., & Wiest, R. (2020) [On the Interpretability of Artificial Intelligence in Radiology: Challenges and Opportunities. Radiology: Artificial Intelligence, 2(3), e190043](https://doi.org/10.1148/ryai.2020190043)
+1. Rubiera, C. O. (2021) [AlphaFold 2 is here: What’s behind the structure prediction miracle - Oxford Protein Informatics Group. Oxford Protein Informatics Group](https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/)
+1. Rumelhart, D. E., Hinton, G., & Williams, R. (1987) [Learning Internal Representations by Error Propagation. In Parallel Distributed Processing: Explorations in the Microstructure of Cognition: Foundations (pp. 318–362). MIT Press](https://ieeexplore.ieee.org/document/6302929)
+1. Selvaraju, R. R., Cogswell, M., Das, A., Vedantam, R., Parikh, D., & Batra, D. (2020) [Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization. International Journal of Computer Vision, 128(2), 336–359](https://doi.org/10.1007/s11263-019-01228-7)
+1. Sutskever, I., Vinyals, O., & Le, Q. V. (2014) [Sequence to Sequence Learning with Neural Networks](http://arxiv.org/abs/1409.3215)
+1. Tay, Y., Dehghani, M., Bahri, D., & Metzler, D. (2020) [Efficient Transformers: A Survey](http://arxiv.org/abs/2009.06732)
+1. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., & Polosukhin, I. (2017) [Attention Is All You Need](http://arxiv.org/abs/1706.03762)
+1. Wikipedia. (2021) [Gene expression](https://en.wikipedia.org/w/index.php?title=Gene_expression&oldid=1051856939)
+1. Xu, K., Ba, J., Kiros, R., Cho, K., Courville, A., Salakhutdinov, R., Zemel, R., & Bengio, Y. (2016) [Show, Attend and Tell: Neural Image Caption Generation with Visual Attention](http://arxiv.org/abs/1502.03044)
+1. Zaheer, M., Guruganesh, G., Dubey, A., Ainslie, J., Alberti, C., Ontanon, S., Pham, P., Ravula, A., Wang, Q., Yang, L., & Ahmed, A. (2021) [Big Bird: Transformers for Longer Sequences](http://arxiv.org/abs/2007.14062)

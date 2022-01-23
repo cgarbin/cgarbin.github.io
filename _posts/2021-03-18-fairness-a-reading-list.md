@@ -2,7 +2,7 @@
 title:  "Fairness in machine learning: a reading list"
 excerpt: "A list of resources to understand concepts and applications of fairness in machine learning (ML)."
 date:   2021-03-18
-tags: [machine-learning, bias, fairness, soclal-impact]
+tags: [machine-learning, bias, fairness, social-impact]
 toc: true
 header:
    overlay_image: /images/2021-03-18/justice.jpg

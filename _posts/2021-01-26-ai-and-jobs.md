@@ -2,7 +2,7 @@
 title:  "Artificial intelligence and jobs"
 excerpt: "A review of articles that explore the effect of AI on jobs, based on an article from The Economist."
 date:   2021-02-01
-tags: [artificial-intelligence, machine-learning, soclal-impact]
+tags: [artificial-intelligence, machine-learning, social-impact]
 toc: true
 ---
 
