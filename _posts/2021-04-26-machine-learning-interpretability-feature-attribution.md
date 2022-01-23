@@ -89,6 +89,7 @@ Feature attributions do not have any understanding of the model they are explain
 ![Explaining wrong predictions](/images/2021-04-26/explaining-wrong-prediction.png)
 
 Therefore, **never confuse "explaining" with "understanding"**.
+{: .notice--warning}
 
 ### Feature attributions are sensitive to the baseline
 
