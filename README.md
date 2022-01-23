@@ -72,4 +72,14 @@ cp docs/_pages/category-archive.md _pages
 cp docs/_pages/tag-archive.md _pages
 ```
 
+To add a link to the tags page, modify `navigation.yml`:
+
+```yaml
+main:
+  - title: 'Posts by tag'
+    url: /tags/
+  - title: 'About'
+    url: /about/
+```
+
 Regenerate the site (stop and restart `bundle exec jekyll serve`).
