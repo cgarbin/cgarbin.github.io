@@ -79,6 +79,11 @@ More succinctly:
 <cite>Cynthia Rudin</cite> --- [Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead](https://arxiv.org/abs/1811.10154)
 {: .small}
 
+As we are going through the exploration of the feature attributions, we must keep in my mind that we are analyzing two items at the same time:
+
+1. What the model predicted.
+1. How feature attribution _approximates_ what the model considers to make the prediction.
+
 Therefore, **never mistake the explanation for the actual behavior of the model**. This is a critical conceptual limitation to keep in mind.
 {: .notice--warning}
 

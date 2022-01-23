@@ -23,7 +23,7 @@ In some machine learning applications, we train models by feeding one input at a
 However, there are other classes of problems where a single input is not enough to make a prediction. Natural language processing is a prominent example. When translating a sentence, it is not enough to look at one word at a time. The context in which a word is used matters. For example, the Portuguese word legal is translated in different ways to English.
 
 > Isso é um argumento **legal** → This is a **legal** argument
-
+>
 > Isso é um seriado **legal** → This is a **nice** TV series
 
 In these applications of machine learning, context matters. The translation of “legal” depends on the word that came before it. If we represent the phrases as vectors (so a model can process them), we could, for example, represent the first phrase as the vector `p1=[87,12,43,215,102]` and the second sentence as the vector `p2=[87,12,43,175,102]`.

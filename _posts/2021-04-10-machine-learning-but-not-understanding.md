@@ -12,7 +12,8 @@ In the book "Artificial Intelligence, a guide for thinking humans" Melanie Mitch
 
 > "Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples."
 
-> Melanie Mitchell, Artificial Intelligence, a guide for thinking humans
+<cite>Melanie Mitchell</cite> --- Artificial Intelligence, a guide for thinking humans
+{: .small}
 
 Let's explore what "learning" means for machine learning, guided by Mitchell's book. More specifically, we will concentrate on "deep learning", a branch of machine learning that has powered most of the recent advances in artificial intelligence.
 
@@ -61,7 +62,7 @@ We will see how a neural network trained to tell squares and triangles apart beh
 
 For human beings, the pictures below show squares and triangles. Some are small, some are large, some are in a light background, some are in a darker background. But they are all clearly either a square or a triangle in a frame.
 
-![](/images/2021-04-10/squares-triangles.png)
+![Swuares and triangles](/images/2021-04-10/squares-triangles.png)
 
 In this section we will go through the typical process of training a neural network to classify squares and triangles:
 
@@ -76,7 +77,7 @@ After we are done with that, we will predict similar images to see how the netwo
 
 This is how some of the training images look like. Each picture is a square or a triangle in different positions. The dataset has hundreds of these pictures.
 
-![](/images/2021-04-10/output_12_0.png)
+![Samples squares and triangles](/images/2021-04-10/output_12_0.png)
 
 ## The "squares vs. triangles" neural network
 
@@ -96,7 +97,7 @@ Our neural network classified 65 out 67 pictures correctly, for an accuracy of 9
 
 Let's visualize where the neural network made the mistakes. The picture below shows the mistakes with a red border. All other pictures were classified correctly. Below each picture is the neural network's classification.
 
-![](/images/2021-04-10/output_25_0.png)
+![Mistakes](/images/2021-04-10/output_25_0.png)
 
 Despite the good accuracy, does the neural network understand the concept of what it is learning?
 
@@ -108,7 +109,7 @@ In this section we will use the neural network we just trained to classify a set
 
 This is how they look like.
 
-![](/images/2021-04-10/output_28_0.png)
+![Larger squares](/images/2021-04-10/output_28_0.png)
 
 Using the neural network, we classify the large squares and calculate the accuracy, just like we did with the test set.
 
@@ -116,7 +117,7 @@ But this time, out of 77 large squares, only 43 are classified as squares. The o
 
 Below are all the squares in this set and how the neural network classified them. The ones with the red border were incorrectly classified as triangles (there are many of them).
 
-![](/images/2021-04-10/output_34_0.png)
+![Large squares wrongly classified as triangles](/images/2021-04-10/output_34_0.png)
 
 ## Why does this experiment matter?
 
@@ -134,12 +135,12 @@ Even if we collect lots and lots and lots of examples, we are confronted with **
 
 For example, let's say we trained our autonomous driving system to recognize a school zone by the warning sign painted on the road ([source](https://virtualdriveoftexas.com/texas-school-zones/)):
 
-![](/images/2021-04-10/school-spelled-right.png)
+![School warning](/images/2021-04-10/school-spelled-right.png)
 
 Then, one day our autonomous driving system comes across these real-life examples ([source 1](https://www.anyvan.com/blog/whats-going-on/back-to-shcool-for-some/), [source 2](https://www.wibw.com/content/news/School-misspelled-at-Florida-crosswalk-508798331.html?ref=331)):
 
-![](/images/2021-04-10/school-spelled-wrong-1.png)
-![](/images/2021-04-10/school-spelled-wrong-2.png)
+![School warning mispelled](/images/2021-04-10/school-spelled-wrong-1.png)
+![School warning mispelled](/images/2021-04-10/school-spelled-wrong-2.png)
 
 Any (well, most) human beings would still identify them as warning signs for school zones (presumably, the human would chuckle, then - hopefully - slow down).
 
@@ -161,7 +162,7 @@ We will train a neural network to classify squares and triangles again. This tim
 
 The picture below shows how they look like.
 
-![](/images/2021-04-10/output_38_0.png)
+![Darker background](/images/2021-04-10/output_38_0.png)
 
 Following the same steps we used in the first section, we train a neural network to classify the squares and triangles.
 
@@ -177,13 +178,13 @@ What happens if the squares are now in the same environment as the triangles (al
 
 This is how the squares look like in the darker environment.
 
-![](/images/2021-04-10/output_47_0.png)
+![Squares in darker background](/images/2021-04-10/output_47_0.png)
 
 When we ask the neural network to classify these squares, we find out that the performance is now abysmal. The accuracy is 0%. All squares are misclassified as triangles.
 
 To confirm, we can visualize the predictions. The wrong predictions have a red frame around them (all of them are wrong in this case).
 
-![](/images/2021-04-10/output_52_0.png)
+![Squares in darker background wrongly predicted as triangles](/images/2021-04-10/output_52_0.png)
 
 ## Why does this experiment matter?
 
@@ -195,11 +196,11 @@ In this case, the neural network is very likely learning not from the shape, but
 
 Sometimes this leads to some funny examples, like the neural network that "learned" to classify land vs. water birds based on the background. The duck on the right was misclassified as a land bird, simply because it was not in its usual water environment ([source](https://arxiv.org/abs/2005.04345)).
 
-![](/images/2021-04-10/land-and-waterbirds.png)
+![Water birds vs. land birds](/images/2021-04-10/land-and-waterbirds.png)
 
 Other times the mistakes are more consequential, for example, when neural networks misclassify X-rays based on markings left by radiologists in the images. Instead of learning actual attributes of a disease, the neural network "learned" from the marks left behind in the images. Images without such marks may be classified as "healthy". The consequences can be catastrophic ([source](https://storage.googleapis.com/cloud-ai-whitepapers/AI%20Explainability%20Whitepaper.pdf)).
 
-![](/images/2021-04-10/x-ray-pen-marks.png)
+![X-ray with pen marks](/images/2021-04-10/x-ray-pen-marks.png)
 
 # Should we be concerned that deep "learning" is not "understanding"?
 
@@ -227,4 +228,5 @@ But remember that when the results improve, it's not the neural network that is 
 
 > "Because of the open-ended nature of designing these networks, in general it is not possible to automatically set all the parameters and designs, even with automated search. Often it takes a kind of cabalistic knowledge that students of machine learning gain both from their apprenticeships with experts and from hard-won experience."
 
-> Melanie Mitchell, Artificial Intelligence, a guide for thinking humans
+<cite>Melanie Mitchell</cite> --- Artificial Intelligence, a guide for thinking humans
+{: .small}

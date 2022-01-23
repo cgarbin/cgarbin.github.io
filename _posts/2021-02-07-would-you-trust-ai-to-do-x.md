@@ -43,7 +43,8 @@ Even peer-reviewed papers do not perform well, as [this review](https://www.bmj.
 
 > "Only 10 records were found for deep learning randomised clinical trials, two of which have been published (with low risk of bias, except for lack of blinding, and high adherence to reporting standards) and eight are ongoing. Of 81 non-randomised clinical trials identified, only nine were prospective and just six were tested in a real world clinical setting."
 
-> M. Nagendran et al., [Artificial intelligence versus clinicians: systematic review of design, reporting standards, and claims of deep learning studies](https://www.bmj.com/content/368/bmj.m689)
+<cite>M. Nagendran et al.</cite> --- [Artificial intelligence versus clinicians: systematic review of design, reporting standards, and claims of deep learning studies](https://www.bmj.com/content/368/bmj.m689)
+{: .small}
 
 Google's ["production readiness" rubric](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/aad9f93b86b7addfea4c419b9100c6cdd26cacea.pdf) gives an idea of what it takes to take a machine learning model into production. It's much more than training a model.
 

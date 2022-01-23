@@ -42,13 +42,15 @@ As the paper puts it:
 
 > "We showed that this effect was driven by a negative effect of heatmaps for cases with no DR: the heatmaps tended to cause readers to overcall these cases, in particular causing more false-positive grades of mild NPDR. This negative effect was expected. The integrated gradients method is designed mainly to show evidence for positive predictions (pathologic features in the case of DR), but is not expected to be useful for negative predictions."
 
-> R. Sayres et al. [Using a Deep Learning Algorithm and Integrated Gradients Explanation to Assist Grading for Diabetic Retinopathy](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext)
+<cite>R. Sayres et al.</cite> --- [Using a Deep Learning Algorithm and Integrated Gradients Explanation to Assist Grading for Diabetic Retinopathy](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext)
+{: .small}
 
 That in itself was an interesting conclusion, but it goes further:
 
 > "However, we also observed that reader accuracy improved over the course of the experiment for grades plus heatmap. By the end of the experiment block, accuracy was comparable with the grades-only condition.... This suggests that over time, clinicians learned to use the heatmaps for guiding diagnosis."
 
-> R. Sayres et al. [Using a Deep Learning Algorithm and Integrated Gradients Explanation to Assist Grading for Diabetic Retinopathy](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext)
+<cite>R. Sayres et al.</cite> --- [Using a Deep Learning Algorithm and Integrated Gradients Explanation to Assist Grading for Diabetic Retinopathy](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext)
+{: .small}
 
 ## How and when we introduce explanation is critical
 
