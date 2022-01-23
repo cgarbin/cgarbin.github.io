@@ -1,9 +1,19 @@
 ---
 permalink: /about/
 title: "About"
-excerpt: "Christian Garbin's blog - about page"
-last_modified_at: 2022-01-18T00:00:00+00:00
-toc: false
+excerpt: "Minimal Mistakes is a flexible two-column Jekyll theme."
+layouts_gallery:
+  - url: /assets/images/mm-layout-splash.png
+    image_path: /assets/images/mm-layout-splash.png
+    alt: "splash layout example"
+  - url: /assets/images/mm-layout-single-meta.png
+    image_path: /assets/images/mm-layout-single-meta.png
+    alt: "single layout with comments and related posts"
+  - url: /assets/images/mm-layout-archive.png
+    image_path: /assets/images/mm-layout-archive.png
+    alt: "archive layout example"
+last_modified_at: 2021-05-11T10:23:16-04:00
+toc: true
 ---
 
 I'm a software architect at [Atos Unify](https://unify.com/en/). More about my professional life on
