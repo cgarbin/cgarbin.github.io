@@ -2,7 +2,7 @@
 permalink: /about/
 layout: home
 title: "About"
-excerpt: "Minimal Mistakes is a flexible two-column Jekyll theme."
+excerpt: "I'm a software architect and a Ph.D. candidate, focusing on machine learning."
 toc: false
 ---
 
@@ -24,5 +24,11 @@ The projects I did for the master's and the Ph.D. are [on GitHub](https://github
 - IEEE ICMLA data science tutorial [notebooks](https://github.com/fau-masters-collected-works-cgarbin/ieee-icmla-2019-data-science-tutorial) (the practical part of [Dr. Marques'](https://www.ogemarques.com/) [The Data Science landscape: foundations, tools, and practical applications](https://www.icmla-conference.org/icmla19/links/tutorialAM.htm)).
 - [Dropout vs. batch normalization](https://link.springer.com/article/10.1007/s11042-019-08453-9). The free version of the paper is [available here](https://drive.google.com/file/d/1PyRUgSXqpl_OvJkWrR4HCWLDaEexzWd9/view) and the code is [on GitHub](https://github.com/fau-masters-collected-works-cgarbin/cap6619-deep-learning-term-project).
 - Code for assignments and blog posts is [on GitHub](https://github.com/fau-masters-collected-works-cgarbin).
+
+### Older things
+
+I used to be more active on [Stack Overflow](https://stackoverflow.com/users/336802/christian-garbin). Nowadays I help a bit with questions and answers moderation.
+
+At around the same time I used to write about more technical topics [on Blogger](https://christiangarbin.blogspot.com/). I switched to GitHub Pages (this blog) to simplify my workflows, because most of my work is already on GitHub.
 
 ---
