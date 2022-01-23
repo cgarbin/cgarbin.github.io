@@ -4,6 +4,12 @@ Personal blog - published [here](https://cgarbin.github.io/).
 
 The blog uses [Jekyll](http://jekyllrb.com/) and the [Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/).
 
+Organization:
+
+- Posts are in the `_posts` directory.
+- Images are in the `images` directory.
+- Static pages are in the `_pages` directory.
+
 ## Adding tags and categories pages
 
 This method uses [the jekyll-archives plugin](https://github.com/jekyll/jekyll-archives).
