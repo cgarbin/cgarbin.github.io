@@ -13,9 +13,9 @@ I'm a software architect at [Atos Unify](https://unify.com/en/). More about my p
 In December of 2020 I completed a Computer Science master's degree at [Florida Atlantic University](https://www.fau.edu/),
 focusing on machine learning. The thesis is available [here](https://fau.digital.flvc.org/islandora/object/fau%3A64688).
 
-I'm now a Ph.D. candidate, also focusing on machine learning, continuing the work I did for the master's degree.
+I'm now a Ph.D. candidate, focusing on machine learning, continuing the work I did for the master's degree.
 
-The projects I did for the master's and the Ph.D. are [on GitHub](https://github.com/fau-masters-collected-works-cgarbin).
+My projects for the master's and the Ph.D. are [on GitHub](https://github.com/fau-masters-collected-works-cgarbin).
 
 ### Publications from the master's and Ph.D. work
 
@@ -29,6 +29,6 @@ The projects I did for the master's and the Ph.D. are [on GitHub](https://github
 
 I used to be more active on [Stack Overflow](https://stackoverflow.com/users/336802/christian-garbin). Nowadays I help a bit with questions and answers moderation.
 
-At around the same time I used to write about more technical topics [on Blogger](https://christiangarbin.blogspot.com/). I switched to GitHub Pages (this blog) to simplify my workflows, because most of my work is already on GitHub.
+At around the same time, I wrote about more technical topics [on Blogger](https://christiangarbin.blogspot.com/). I switched to GitHub Pages (this blog) to simplify my workflows because most of my work is already on GitHub.
 
 ---
