@@ -13,9 +13,7 @@ I'm a software architect at [Atos Unify](https://unify.com/en/). More about my p
 In December of 2020 I completed a Computer Science master's degree at [Florida Atlantic University](https://www.fau.edu/),
 focusing on machine learning. The thesis is available [here](https://fau.digital.flvc.org/islandora/object/fau%3A64688).
 
-I'm now a Ph.D. candidate, focusing on machine learning, continuing the work I did for the master's degree.
-
-My projects for the master's and the Ph.D. are [on GitHub](https://github.com/fau-masters-collected-works-cgarbin).
+I'm now a Ph.D. candidate, focusing on machine learning, continuing the work I did for the master's degree. My projects for the master's and the Ph.D. are [on GitHub](https://github.com/fau-masters-collected-works-cgarbin).
 
 ### Publications from the master's and Ph.D. work
 
