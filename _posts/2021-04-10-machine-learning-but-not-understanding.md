@@ -188,9 +188,7 @@ To confirm, we can visualize the predictions. The wrong predictions have a red f
 
 ## Why does this experiment matter?
 
-The neural network we just trained fails in the same way the first neural network failed. This neural network...
-
-> "(...) lack(s) a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;"
+The neural network we just trained fails in the same way the first neural network failed: it doesn't understand the concepts of "square" and "triangle". It is just looking for any sort of pattern in the training data. It doesn't know if a pattern makes sense or not, it just knows there is a pattern there.
 
 In this case, the neural network is very likely learning not from the shape, but from the background (a case of [spurious correlation](https://arxiv.org/abs/1907.02893)). It is assuming that a darker background means "triangle" because it doesn't really understand the concept of what makes a triangle a triangle.
 
