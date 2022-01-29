@@ -29,7 +29,7 @@ This goes by the name "failure mode analysis", "threat modeling", and similar te
 - _Reward hacking_: reinforcement learning systems whose reward is not modeled correctly. Some well-known examples include [maximizing the score to the detriment of finishing the course](https://openai.com/blog/faulty-reward-functions/) (it's in a game, but picture this reward function in a robot, where "score" is a wrongly-defined measure of success).
 - _Side effects_: reinforcement learning systems that do not have proper constraints in place to achieve their goals. For example: if the goal is "move as fast as possible from point A to B", a reinforcement-learning robot could knock everything in its way.
 - _Distributional shifts_: the real-life environment does not match what the model was trained on. Sometimes it is simples things. For example, an x-ray imaging system trained on hospital x-ray images may perform significantly worse on images taken with portable x-ray machines (used for emergency cases and in remote clinics).
-- _Natural adversarial examples_: the model is confused by naturally occurring examples. [It's sadly fairly simple to confuse classifiers](https://arxiv.org/abs/1907.07174). See the example picture below )[source](https://arxiv.org/abs/1907.07174))
+- _Natural adversarial examples_: the model is confused by naturally occurring examples. [It's sadly fairly simple to confuse classifiers](https://arxiv.org/abs/1907.07174). See the example picture below ([source](https://arxiv.org/abs/1907.07174)).
 - _Common corruption_: changes to the input, such as zooming, cropping, or tilting images, confuse the system.
 - _Incomplete testing in realistic conditions_: a polite way to say "the developers failed to account for how the world works".
 
