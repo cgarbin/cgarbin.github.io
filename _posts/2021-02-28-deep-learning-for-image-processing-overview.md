@@ -64,7 +64,7 @@ Network architectures continue to evolve today. So many architectures have been 
 
 - _Efficiently scaling CNNs_: There are different ways to scale CNN-based networks. The [EfficientNet](https://arxiv.org/abs/1905.11946) family of networks shows that we don't always need large CNN networks to get good results.
 - _Back to basics_: The [MLP-Mixer](https://arxiv.org/abs/2105.01601) network does away with CNN layers altogether. It uses only simpler multi-layer perceptron (MLP) layers, resulting in networks with faster throughput, predicting more images per second than other network architectures.
-- _Transformers_: Transformer-based networks, after their success with natural language processing (NLP), [are being appied to image processing]({% post_url 2021-12-01-transformers-in-computer-vision %}).
+- _Transformers_: Transformer-based networks, after their success with natural language processing (NLP), [are being applied to image processing]({% post_url 2021-12-01-transformers-in-computer-vision %}).
 - _Learning concepts_: by training with images and their textual descriptions (multimodal learning), OpenAI created [CLIP](https://openai.com/blog/clip/), a network that seems to have learned the concepts of images. Traditional image classification relied on extracting features from the images. They work well on images with the same characteristics but fail when they are different. For example, they identify the picture of a banana but not the sketch of a banana. On the other hand, CLIP seems to have learned the concept of the images. It identifies pictures and sketches of bananas (see the illustration in the [article](https://openai.com/blog/clip/))
 
 ## Keeping up with new developments
