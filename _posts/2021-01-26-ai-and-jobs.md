@@ -1,7 +1,8 @@
 ---
 title:  "Artificial intelligence and jobs"
 excerpt: "A review of articles that explore the effect of AI on jobs, based on an article from The Economist."
-date:   2021-02-01
+date: 2021-02-01
+last_modified_at: 2022-02-04
 tags: [artificial-intelligence, machine-learning, social-impact]
 toc: true
 ---
@@ -51,4 +52,23 @@ This effect on decision making, first by augmenting it with better predictions (
 
 This is a very readable paper, with many concrete examples of current jobs and roles and how much they could be affected by the improvements in prediction (and decision making) through AI.
 
+Feb 2022 update: Another The Economist article, [Economists are revising their views on robots and jobs](https://www.economist.com/finance-and-economics/2022/01/22/economists-are-revising-their-views-on-robots-and-jobs).
+{: .notice--success}
+
+This article is about robots, not artificial intelligence. However, it is the same general topic of "effect of automation on jobs".
+
+The article's main point is that economists are revising how they measure the effect of automation on jobs. Their new methods concluded that automation increases jobs, at least at the company level.
+
+Being The Economist, it cites academic papers to back up the claims:
+
+- [The Direct and Indirect Effects of Automation on Employment: A Survey of the Recent Literature](https://scholar.harvard.edu/files/aghion/files/direct_and_indirect_effects_of_automation.pdf): "[T]he direct effect of automation may be to increase employment at the firm level, not to reduce it.". The same wrote [another paper with original research](https://scholar.harvard.edu/aghion/publications/what-are-labor-and-product-market-effects-automation-new-evidence-france).
+- [Robots and employment: Evidence from Japan, 1978-2017](https://voxeu.org/article/robots-and-employment-evidence-japan): "[A]n increase of one robot unit per 1,000 workers increases employment by 2.2%".
+- [New Evidence on the Effect of Technology on Employment and Skill Demand](https://economics.mit.edu/files/22239): "[A]dvanced technologies led to increases in employment and no change in skill composition... [F]irms used new technologies to produce new types of output rather than replace workers with technologies within the same type of production."
+
+The new research raises a few questions:
+
+- Why has the view changed? The Economist credits the change to new statistical methods that untangle cause and effect from the numbers.
+- Is this all good news? It is still open for debate. The research cited above does not evaluate the quality of the jobs created or left in place. It also focuses on the effect at the company level, not on the economy (across companies).
+
 I know ending a post without a conclusion is anti-climatic. But in this case, it's an acknowledgment of the complexity of the "AI vs. jobs" discussion. Going through these different points of view helped me avoid the trap of having a simplistic opinion about a nuanced topic.
+{: .notice}
