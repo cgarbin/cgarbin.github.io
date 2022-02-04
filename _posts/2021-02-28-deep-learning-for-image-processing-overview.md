@@ -2,6 +2,7 @@
 title:  "An overview of deep learning for image processing"
 excerpt: "Deep learning (large, multi-layered neural networks) have been successfully applied to computer vision tasks. This article reviews its origins, the evolution of network architectures, and recent developments."
 date:   2021-04-26
+last_modified_at: 2022-02-04
 tags: [machine-learning, deep-learning, computer-vision]
 ---
 
@@ -13,7 +14,7 @@ Deep learning is a sub-area of machine learning, which in turn is a sub-area of 
 
 ![Deep learning](/images/2021-02-28/AI-ML-DL.png)
 
-The best way I found to explain deep learning is in contrast with traditional methods. Yann LeCun, one of the founders of deep learning, gave an [informative talk](https://www.youtube.com/watch?v=Qk4SqF9FT-M) on the evolution of learning techniques, starting with the traditional ones and ending with deep learning. He focuses on image recognition in that talk.
+The best way I found to explain deep learning is in contrast to traditional methods. Yann LeCun, one of the founders of deep learning, gave an [informative talk](https://www.youtube.com/watch?v=Qk4SqF9FT-M) on the evolution of learning techniques, starting with the traditional ones and ending with deep learning. He focuses on image recognition in that talk.
 
 It is a worthwhile investment of one hour of our time to listen to someone who was not only present but actively driving the evolution of deep learning. The two pictures immediately below are from his speech.
 
@@ -64,6 +65,7 @@ Network architectures continue to evolve today. So many architectures have been 
 - _Efficiently scaling CNNs_: There are different ways to scale CNN-based networks. The [EfficientNet](https://arxiv.org/abs/1905.11946) family of networks shows that we don't always need large CNN networks to get good results.
 - _Back to basics_: The [MLP-Mixer](https://arxiv.org/abs/2105.01601) network does away with CNN layers altogether. It uses only simpler multi-layer perceptron (MLP) layers, resulting in networks with faster throughput, predicting more images per second than other network architectures.
 - _Transformers_: Transformer-based networks, after their success with natural language processing (NLP), [are being appied to image processing]({% post_url 2021-12-01-transformers-in-computer-vision %}).
+- _Learning concepts_: by training with images and their textual descriptions (multimodal learning), OpenAI created [CLIP](https://openai.com/blog/clip/), a network that seems to have learned the concepts of images. Traditional image classification relied on extracting features from the images. They work well on images with the same characteristics but fail when they are different. For example, they identify the picture of a banana but not the sketch of a banana. On the other hand, CLIP seems to have learned the concept of the images. It identifies pictures and sketches of bananas (see the illustration in the [article](https://openai.com/blog/clip/))
 
 ## Keeping up with new developments
 
