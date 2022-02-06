@@ -52,8 +52,9 @@ This effect on decision making, first by augmenting it with better predictions (
 
 This is a very readable paper, with many concrete examples of current jobs and roles and how much they could be affected by the improvements in prediction (and decision making) through AI.
 
-Feb 2022 update: Another The Economist article, [Economists are revising their views on robots and jobs](https://www.economist.com/finance-and-economics/2022/01/22/economists-are-revising-their-views-on-robots-and-jobs).
-{: .notice--success}
+### Frn 2022 update: "Economists are revising their views on robots and jobs"
+
+Another The Economist article, [Economists are revising their views on robots and jobs](https://www.economist.com/finance-and-economics/2022/01/22/economists-are-revising-their-views-on-robots-and-jobs).
 
 This article is about robots, not artificial intelligence. However, it is the same general topic of "effect of automation on jobs".
 
