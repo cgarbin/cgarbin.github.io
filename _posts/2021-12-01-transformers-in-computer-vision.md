@@ -1,6 +1,6 @@
 ---
 title:  "Applications of transformers in computer vision"
-excerpt: "This article describes the evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, ending with applications in healthcare."
+excerpt: "The evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, ending with applications in healthcare."
 date:   2021-12-01
 tags: [machine-learning, computer-vision, transformers]
 toc: true
@@ -94,7 +94,7 @@ The best performing language models today, BERT (Devlin et al., 2019), GPT-2 (Ra
 
 A key concept of the transformer architecture is the “multi-head self-attention” layer. “Multi”  refers to the fact that instead of having one attention layer, transformers have multiple attention layers running in parallel. In addition, the layers employ self-attention (Cheng et al., 2016) (Lin et al., 2017). With such a construct, transformers can efficiently weigh in the contribution of multiple parts of a sentence simultaneously. Each self-attention layer can encode longer range dependencies, capturing the relationship between words that are further apart (compared to RNNs and CNNs).
 
-The ability to pay attention to multiple parts of the input and the encoding of longer-range dependencies results in better accuracy. The figure below (Alammar, 2018b) shows how self-attention allows a model to learn that “it” refers more strongly to "The animal" in the sentence..
+The ability to pay attention to multiple parts of the input and the encoding of longer-range dependencies results in better accuracy. The figure below (Alammar, 2018b) shows how self-attention allows a model to learn that “it” refers more strongly to "The animal" in the sentence.
 
 ![Transformer attention example](/images/2021-12-01/transformer-attention-example.png)
 

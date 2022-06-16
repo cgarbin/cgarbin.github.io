@@ -34,11 +34,11 @@ The prominent use cases for feature attribution are:
 - _Audit models_: verify that models are not looking at attributes that encode bias (gender, race, among others) when making decisions. For example, in the second picture below, the middle column shows a gender-biased model that predicts professions by looking at the face in the image. The rightmost column shows where a debiased model looks to make predictions.
 - _Optimize models_: simplify correlated features and remove features that do not contribute to predictions.
 
-The figure below ([source](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683)) is an example of feature attribution to debug a model (verify what the model uses to predict disease - in this case the model is looking at the wrong place).
+The figure below ([source](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683)) is an example of feature attribution to debug a model (verify what the model uses to predict diseases). In this case, the model is looking at the wrong place to make predictions (using the X-ray markers instead of the pathology).
 
 ![Using interpretability to debug models](/images/2021-04-26/use-debug-model.png)
 
-The figure below ([source](https://arxiv.org/abs/1610.02391)) is an example of feature attribution to audit a model (the model in the middle row makes the correct prediction, but is gender-biased):
+The figure below ([source](https://arxiv.org/abs/1610.02391)) is an example of feature attribution to audit a model. The middle column shows how the model predicts all women as "nurse", never as "doctor" -- an example of gender bias. The rightmost column shows a corrected model.
 
 ![Using interpretability to audit models](/images/2021-04-26/use-audit-model.png)
 
@@ -110,7 +110,7 @@ When used to help explain the predictions of a model to end-users, consider that
 
 The attributions we get from the feature attributions algorithms are just numbers. To make sense of them, we need to apply visualization techniques.
 
-For example, simply overlaying the raw attribution values on an image may leave out important pixels that contributed to the prediction, as illustrated in figure 2 of [this paper](http://ceur-ws.org/Vol-2327/IUI19WS-ExSS2019-16.pdf). Compare the number of pictures highlighted in the top-right picture with the one below it, adjusted to show more contributing pixels.
+For example, simply overlaying the raw attribution values on an image may leave out important pixels that contributed to the prediction, as illustrated in figure 2 of [this paper](http://ceur-ws.org/Vol-2327/IUI19WS-ExSS2019-16.pdf). Compare the number of pixels highlighted in the top-right picture with the one below it, adjusted to show more contributing pixels.
 
 ![Example of user interaction](/images/2021-04-26/user-interaction-example.png)
 
@@ -145,7 +145,7 @@ Because of SHAP's claim to unify several methods, in this section we review how 
 
 ### Example with MNIST
 
-The code for the examples described in this section is available on this GitHub repository.
+The code for the examples described in this section is available on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification).
 
 The following figure shows the SHAP feature attributions for a convolutional neural network that classifies digits from the MNIST dataset.
 
