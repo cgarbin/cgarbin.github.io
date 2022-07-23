@@ -2,13 +2,17 @@
 title:  "Understanding transformers in one morning"
 excerpt: "Transformers: from zero to hero in one morning (or at least know enough to discuss transformers intelligently and apply them to your projects)."
 date:   2022-07-22
-tags: [machine-learning, computer-vision, transformers]
+tags: [machine-learning, natural-language-processing, nlp, transformers]
 toc: true
 ---
 
-# Understanding transformers in one morning
+Transformers are (deservedly so) a hot topic in machine learning.
 
-This article has resources to understand transformers in one morning (four hours, give or take).
+If you are new to transformers, the resources in this article will help you understand their fundamentals and applications. It will take about one morning (four hours, give or take) to go through all items.
+
+I created the list after spending much longer than one morning wading through a large number of articles and videos. I lost time going around in circles, wasting time with superficial sources, or stumbling in articles that were too deep for my level when I first encountered them but were great once I was more prepared.
+
+This list is organized in a logical sequence, building up the knowledge from the first principles, then going deeper into the details. They are the videos and articles that helped me the most. I hope they help you as well.
 
 <!--more-->
 
