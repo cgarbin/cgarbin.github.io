@@ -10,6 +10,31 @@ Organization:
 - Images are in the `images` directory.
 - Static pages are in the `_pages` directory.
 
+## Updating Jekyll and theme
+
+Update Jekyll
+
+```bash
+bundle update
+git add Gemfile.lock
+git commit -m "Update Jekyll"
+```
+
+Update Minimal Mistakes theme
+
+```bash
+cd ../minimal-mistakes
+git pull --rebase
+
+cd ../cgarbin.github.io
+# Restore Reditt sharing:
+#   - _buttons.scss: add Reddit color
+#   - social-share.html: remove Facebook, add Reddit
+
+git add .
+git commit -m "Update Minimal Mistakes theme"
+```
+
 ## Releasing new posts
 
 1. Test the posts locally with `bundle exec jekyll serve`
