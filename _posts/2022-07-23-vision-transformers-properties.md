@@ -131,9 +131,9 @@ way to lower layers in the ResNet, (ii) ViT also more strongly propagates repres
 <cite>[Do Vision Transformers See Like Convolutional Neural Networks?](https://arxiv.org/abs/2108.08810)</cite>
 {: .small}
 
-A possible explanation for this structural difference is how the transfomer layers learn to aggregrate spatial information. CNNs have fixed receptive fields (encoded in the kernel sizes and sequences of layers). Transformers do not have this prior knowledge of "receptive fields" for an image. They have to learn that spatial relations are important in image processing.
+A possible explanation for this structural difference is how the transformer layers learn to aggregate spatial information. CNNs have fixed receptive fields (encoded in the kernel sizes and sequences of layers). Transformers do not have this prior knowledge of “receptive fields” for an image. They have to learn that spatial relations are important in image processing.
 
-The experiments in the paper confirmed the observation in [the original ViT paper](https://arxiv.org/abs/2010.11929) that transformers eventually settle in a structure where lower layers learn pay attention locally and globally, while higher layers learn to pay attention globally.
+The experiments in the paper confirmed the observation in [the original ViT paper](https://arxiv.org/abs/2010.11929) that transformers eventually settle in a structure where lower layers learn to pay attention locally and globally, while higher layers learn to pay attention globally.
 
 > [E]ven in the lowest layers of ViT, self-attention layers have a mix of local heads (small distances) and global heads (large distances). This is in contrast to CNNs, which are hardcoded to attend only locally in the lower layers.
 
