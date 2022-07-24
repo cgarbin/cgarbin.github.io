@@ -66,3 +66,8 @@ For a sense of history, these are two papers highly cited as works that led us t
 Finally, [Attention is all you need; Attentional Neural Network Models <i class="fab fa-youtube" aria-hidden="true"></i>](https://www.youtube.com/watch?v=rBCqOTEfxvg) is a talk by Łukasz Kaiser, one of the [paper's](https://arxiv.org/abs/1706.03762) authors. He builds up the solution, starting with how natural language translation used to be solved in the past, the limitations, and how transformers solve them. So far, it's what I would expect from one of the authors. What makes this video interesting to me is how humble Łukasz is. He explains the trials and errors and, at one point, how they had to ask for help to train the model they created.
 
 Reading a scientific paper makes it look like a linear story from problem to solution ("we had an idea and implemented it"). Watching Łukasz talk helps understand how these great solutions don't arrive out of thin air. Researchers build on top of previous work, try many variations, make mistakes, and ask for help to complete their work. Then they write the paper…
+
+----
+
+If your interests are in computer vision, [it turns out transformers work quite well for that too]({% post_url 2022-07-23-vision-transformers-properties %}).
+{: .small}
