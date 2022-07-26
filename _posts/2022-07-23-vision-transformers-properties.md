@@ -161,7 +161,7 @@ New training methods, such as [data-efficient image transformers (DeiT)](https:/
 
 ## Catching up with recent developments
 
-Transformers are an active area of research.
+Transformers are moving fast. These are some places I use to keep up with recent developments.
 
 - Yanni Kilchner reviews recent papers on his [YouTube channel](https://www.youtube.com/channel/UCZHmQk67mSJgfCCTn7xBfew). It is a great place to go after reading a paper to check your understanding and insights you may have missed on a first pass.
 - [AI Coffe Break with Letitia](https://www.youtube.com/c/AICoffeeBreak) distills papers into short videos (about ten minutes or so). It's the ideal format to review the essence of papers.
