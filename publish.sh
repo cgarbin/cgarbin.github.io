@@ -1,8 +1,8 @@
 #!/bin/bash
 # Publish the site to the GitHub pages branch, making it public
 
-echo "Remember to publish and test locally first:"
-echo "  bundle exec jekyll serve"
+export JEKYLL_ENV=production
+bundle exec jekyll build
 
 if [ -n "$(git status --porcelain)" ]; then
     echo ""
