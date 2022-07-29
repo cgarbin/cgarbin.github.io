@@ -1,8 +1,9 @@
 #!/bin/bash
 # Publish the site to the GitHub pages branch, making it public
 
-export JEKYLL_ENV=production
-bundle exec jekyll build
+# This didn't quite work -- needs more testing
+# export JEKYLL_ENV=production
+# jekyll build
 
 if [ -n "$(git status --porcelain)" ]; then
     echo ""
