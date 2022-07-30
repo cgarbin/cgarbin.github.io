@@ -14,6 +14,9 @@ It starts with the motivation and origins of transformers, from the initial atte
 
 Side note: It was originally written as a survey paper for a class I took. Hence the references are in bibliography format instead of embedded links.
 
+if you are new to transformers, see [Understanding transformers in one morning]({% post_url 2022-07-22-understanding-transformers-in-one-morning %}) and [Vision transformer properties]({% post_url 2022-07-23-vision-transformers-properties %}).
+{: .notice--info}
+
 # The origins of transformers – natural language processing
 
 ## When context matters
