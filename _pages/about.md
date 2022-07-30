@@ -35,6 +35,6 @@ Papers and articles where I'm a collaborator:
 
 I used to be more active on [Stack Overflow](https://stackoverflow.com/users/336802/christian-garbin). Nowadays I help a bit with questions and answers moderation.
 
-Earlier I wrote a few pieces on programming topics [on Blogger](https://christiangarbin.blogspot.com/). I switched to GitHub Pages (this blog) to simplify my workflows because most of my work is already on GitHub.
+Earlier I wrote a few pieces on programming topics on [Blogger](https://christiangarbin.blogspot.com/). I switched to GitHub Pages (this blog) to simplify my workflows because most of my work is already on GitHub.
 
 ---
