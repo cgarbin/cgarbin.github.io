@@ -2,7 +2,7 @@
 title:  "Exploring SHAP explanations for image classification"
 excerpt: "How to interpret predictions of an image classification neural network using SHAP."
 date:   2021-04-25
-tags: [machine-learning, image-classification, explainability, interpretability, shap]
+tags: [machine-learning, computer-vision, image-classification, explainability, interpretability, shap]
 toc: true
 ---
 

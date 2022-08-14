@@ -2,7 +2,7 @@
 title:  "Machine learning interpretability with feature attribution"
 excerpt: "There are many discussions in the machine learning (ML) community about model interpretability and explainability. The discussions take place in several contexts, ranging from using interpretability and explainability techniques to increase the robustness of a model, all the way to increasing end-user trust in a model."
 date:   2021-04-26
-tags: [machine-learning, explainability, interpretability]
+tags: [machine-learning, explainability, interpretability, shap]
 toc: true
 ---
 
