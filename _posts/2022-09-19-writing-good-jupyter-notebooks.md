@@ -32,7 +32,7 @@ To illustrate how to go from a notebook that is not wrong but is also not good, 
 - [Step 3](#step-3---make-data-cleanup-more-explicit-and-explain-why-specific-numbers-were-chosen): make data cleanup more explicit and explain why specific numbers were chosen (the assumptions behind them).
 - [Step 4](#step-4---make-the-code-more-flexible-with-constants-and-make-the-code-more-difficult-to-break): make the code more flexible with constants and make the code more difficult to break.
 - [Step 5](#step-5---make-the-graphs-easier-to-read): make the graphs easier to read.
-- Step 6: describe the limitations of the conclusion.
+- [Step 6](#step-6---describe-the-limitations-of-the-conclusion): describe the limitations of the conclusion.
 
 ## Step 1 - The original notebook
 
