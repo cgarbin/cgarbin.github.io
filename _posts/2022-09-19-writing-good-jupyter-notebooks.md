@@ -110,14 +110,14 @@ There are a few notable items in this code:
 1. We use a generic name for the constant, so we don't need to change it later if we change the cutoff value. If we had named it something more specific, like `MINIMUM_WAGE`, we would need to change the constant name later if we change the value. This makes the code less flexible and less resilient.
 1. We print the results of the operation, so we can discuss with the domain experts if our decision makes sense. For example, we could ask an HR representative if they expected to see this many employers removed when we set this age cutoff. It may catch errors in the dataset or in the code.
 
-Regarding the last item, printing the operation results: we, the data scientists, may not be the domain expert. In this case, we are not the HR people. We need to engage the HR people in the steps as much as we can to validate our decisions. Simple things, like printing the effect of some decisions (how many employees were removed with a filter) help validate the decisions.
+Regarding the last item, printing the operation results: we, the data scientists, may not be the domain expert. In this example, the domain expert are the HR and legal departments. We need to engage the them in the steps we are taking as much as we can to validate our decisions. Simple things, like printing the effect of some decisions (how many employees were removed with a filter) help validate the decisions.
 {: .notice--info}
 
 When we clean up the age column, we keep using the same patterns:
 
 1. We create a filter for the data we want to exclude, as we did for the salary filter. Mixing up filters (exclude and include) makes the code brittle. It is easy to make a mistake if we have to think about the what type of filter, exclude or include, we are using for a column (an example of [extraneous cognitive load](https://en.wikipedia.org/wiki/Cognitive_load#Extraneous), a bad thing to have in the code).
 1. We follow a pattern for the variable name. The salary one was named `SALARY_CUTOFF`, so this one is also suffixed with `..._CUTOFF`.
-1. We choose a generic variable name. If we had named it something more specific, e.g. `RETIRED_AGE`, if we decide to change the age cutoff the `RETIRED_` part may no longer make sense. If we use a generic name instead (`AGE_CUTOFF`), the name still makes sense even if we change the age.
+1. We choose a generic variable name. If we name it something more specific, e.g. `RETIRED_AGE` and decide to change the age cutoff later, the `RETIRED_` part may no longer make sense. A generic name (`AGE_CUTOFF`) requires only a change to the value, making the code more resilient.
 
 ![Step 4 - Age cutoff, following the same patterns as the age cutoff](/images/2022-09-19/step-4.2.drawio.png){: .align-center style="width:66%;"}
 
