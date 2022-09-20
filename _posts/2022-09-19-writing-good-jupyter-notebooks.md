@@ -8,7 +8,7 @@ toc: true
 
 [Jupyter notebooks](https://jupyter.org/) are an excellent tool for data scientists and machine learning practitioners. However, if not approached with a few techniques, they can turn into a pile of unintelligible, unmaintainable code.
 
-This post will discuss some techniques I use to write good Jupyter notebooks. We will start with a notebook that is not wrong but is not well written. We will progressively make changes to it until we arrive at a good notebook.
+This post will discuss some techniques I use to write good Jupyter notebooks. We will start with a notebook that is not wrong but is not well written. We will progressively change it until we arrive at a good notebook.
 
 But first, what is a good Jupyter notebook? Good notebooks have the following properties:
 
@@ -87,7 +87,7 @@ In this step, we make the following improvements:
 1. Explain why specific numbers were chosen (the assumptions behind them).
 1. Explain what the code blocks are doing.
 
-In the following figure we explain why we are removing all employees that are 66 or older and add a reference to back up our decision (the hyperlink in the text). We also explain what this piece of code is doing in detail.
+In the following figure, we explain why we are removing all employees that are 66 or older and add a reference to back up our decision (the hyperlink in the text). We also explain what this piece of code is doing in detail.
 
 ![Step 3 - Making data cleanup more explicit](/images/2022-09-19/step-3.drawio.png){: .align-center style="width:66%;"}
 
@@ -97,29 +97,38 @@ In the following figure we explain why we are removing all employees that are 66
 
 In this step, we make the following improvements:
 
-- Make the code more flexible with constants. If we need to change decisions, for example the age cutoff, we have only one place to change.
+- Make the code more flexible with constants. If we need to change decisions, for example, the age cutoff, we have only one place to change.
 - Make the code more difficult to break. By following patterns, we reduce the chances of introducing bugs.
 
-In this piece of code we remove everyone who made less than the minimum age working full time (see the [notebook](https://github.com/fau-masters-collected-works-cgarbin/writing-good-jupyter-notebooks/blob/master/salary-discrimination-by-gender-step-4.ipynb) for details).
+In this piece of code, we remove everyone who made less than the minimum age working full time (see the [notebook](https://github.com/fau-masters-collected-works-cgarbin/writing-good-jupyter-notebooks/blob/master/salary-discrimination-by-gender-step-4.ipynb) for details).
 
 ![Step 4 - Salary cutoff](/images/2022-09-19/step-4.1.drawio.png){: .align-center style="width:66%;"}
 
 There are a few notable items in this code:
 
-1. We use a constant, in case we need to make changes later (more flexible code).
-1. We use a generic name for the constant, so we don't need to change it later if we change the cutoff value. If we had named it something more specific, like `MINIMUM_WAGE`, we would need to change the constant name later if we change the value. This makes the code less flexible and less resilient.
-1. We print the results of the operation, so we can discuss with the domain experts if our decision makes sense. For example, we could ask an HR representative if they expected to see this many employers removed when we set this age cutoff. It may catch errors in the dataset or in the code.
+1. We use a constant if we need to make changes later (more flexible code).
+1. We use a generic name for the constant (`SALARY_CUTOFF`), so we don't need to change it later if we change the cutoff value. If we had named it something more specific, like `MINIMUM_WAGE`, we would need to change the constant name if we changed the value. This makes the code less flexible and less resilient.
+1. We don't modify the original data. We create a filter instead, so we can see the effect of each filter separately and backtrack one change at a time if we need to.
+1. The filter variable also has a generic name (`low_salaries`), for the same reasons we used a generic name for the constant.
+1. We print the results of the operation (the cutoff value and how many items it removed from the dataset), so we can discuss with the domain experts if our decision makes sense. For example, we could ask an HR representative if they expected to see this many employers removed when we set this salary cutoff. It may catch errors in the dataset or in the code.
 
-Regarding the last item, printing the operation results: we, the data scientists, may not be the domain expert. In this example, the domain expert are the HR and legal departments. We need to engage the them in the steps we are taking as much as we can to validate our decisions. Simple things, like printing the effect of some decisions (how many employees were removed with a filter) help validate the decisions.
-{: .notice--info}
+Regarding the last item, printing the operation results: **we, the data scientists, may not be the domain expert**. In this example, the domain experts are the HR and legal departments. We need to engage them in the steps we are taking as much as we can to validate our decisions. Simple things, like printing the effect of some decisions (how many employees were removed with a filter) help validate the decisions.
+{: .notice}
 
 When we clean up the age column, we keep using the same patterns:
 
-1. We create a filter for the data we want to exclude, as we did for the salary filter. Mixing up filters (exclude and include) makes the code brittle. It is easy to make a mistake if we have to think about the what type of filter, exclude or include, we are using for a column (an example of [extraneous cognitive load](https://en.wikipedia.org/wiki/Cognitive_load#Extraneous), a bad thing to have in the code).
+1. We create a filter for the data we want to exclude, as we did for the salary filter.
 1. We follow a pattern for the variable name. The salary one was named `SALARY_CUTOFF`, so this one is also suffixed with `..._CUTOFF`.
 1. We choose a generic variable name. If we name it something more specific, e.g. `RETIRED_AGE` and decide to change the age cutoff later, the `RETIRED_` part may no longer make sense. A generic name (`AGE_CUTOFF`) requires only a change to the value, making the code more resilient.
 
-![Step 4 - Age cutoff, following the same patterns as the age cutoff](/images/2022-09-19/step-4.2.drawio.png){: .align-center style="width:66%;"}
+![Step 4 - Age cutoff, following the same patterns as the salary cutoff](/images/2022-09-19/step-4.2.drawio.png){: .align-center style="width:66%;"}
+
+With all the filters in place, we can clean up the data in one step. Because all the filters we created are to exclude data, we can confidently negate all of them to get the data we want to keep. If we different types of filters (exclude and include), we would have to carefully think about how to apply each of them, opening the door for bugs. That would make the code easier to break.
+
+This is an important concept: don't make your brain hold more information than it absolutely has to (don't create [extraneous cognitive load](https://en.wikipedia.org/wiki/Cognitive_load#Extraneous)). If we follow a pattern, we have only one thing to remember, the pattern itself.
+{: .notice}
+
+![Step 4 - Applying the filters to clean up the data](/images/2022-09-19/step-4.3.drawio.png){: .align-center style="width:80%;"}
 
 [This is the reworked notebook](https://github.com/fau-masters-collected-works-cgarbin/writing-good-jupyter-notebooks/blob/master/salary-discrimination-by-gender-step-4.ipynb).
 
@@ -157,11 +166,11 @@ We now have a good notebook. It is organized in sections, uses constants to make
 
 We are now at the last step, where we present the conclusion to the original question, _"is there gender discrimination in the salaries of an organization?"_.
 
-In real-life, complex questions don't always have simple answers. And that's the case here. We have a few limitations that prevent us from giving a definitive answer to the question. But we have enough to spur some action. Our job at this point is to document what we found and the limitations of our analysis.
+In real life, the data we have is not perfect and complex questions don't always have simple answers. And that's the case here. We have a few limitations that prevent us from giving a definitive answer to the question. But we have enough to spur some action. Our job at this point is to document what we found and the limitations of our analysis.
 
 In the conclusion section, we clearly document:
 
-- That we used some proxy variables.
+- That we used proxy variables.
 - Despite the dataset's limitations, we have tentative conclusions.
 - That we need more precise data, but at the same time, we have enough to take action (and avoid (analysis paralysis)[https://en.wikipedia.org/wiki/Analysis_paralysis]).
 
