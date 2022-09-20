@@ -185,8 +185,9 @@ We write notebooks for our stakeholders, not for ourselves.
 To write good notebooks, we need to:
 
 - Organize them logically so that the stakeholders can follow the analysis.
-- Spell out critical assumptions and decisions so stakeholders can validate them (or change them).
 - Make the code easy to understand, easy to change (flexible), and hard to break (resilient), so we can modify it confidently as we review the results with the stakeholders.
+- Spell out critical assumptions and decisions so stakeholders can validate them (or challenge them).
+- Clearly document the limitations of the analysis so stakeholders can decide if they are acceptable or not.
 
 ## Running the examples
 
