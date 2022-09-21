@@ -112,7 +112,7 @@ There are a few notable items in this code:
 1. The filter variable also has a generic name (`low_salaries`), for the same reasons we used a generic name for the constant.
 1. We print the results of the operation (the cutoff value and how many items it removed from the dataset), so we can discuss with the domain experts if our decision makes sense. For example, we could ask an HR representative if they expected to see this many employers removed when we set this salary cutoff. It may catch errors in the dataset or in the code.
 
-Regarding the last item, printing the operation results: **we, the data scientists, may not be the domain expert**. In this example, the domain experts are the HR and legal departments. We need to engage them in the steps we are taking as much as we can to validate our decisions. Simple things, like printing the effect of some decisions (how many employees were removed with a filter) help validate the decisions.
+Regarding the last item, printing the operation results: **we, the data scientists, may not be the domain experts**. In this example, the domain experts are the HR and legal departments. We need to engage them to validate our decisions. Simple things, like printing the effect of filtering the data (how many employees were removed) help validate the decisions with the domain experts.
 {: .notice}
 
 When we clean up the age column, we keep using the same patterns:
@@ -123,7 +123,7 @@ When we clean up the age column, we keep using the same patterns:
 
 ![Step 4 - Age cutoff, following the same patterns as the salary cutoff](/images/2022-09-19/step-4.2.drawio.png){: .align-center style="width:66%;"}
 
-With all the filters in place, we can clean up the data in one step. Because all the filters we created are to exclude data, we can confidently negate all of them to get the data we want to keep. If we different types of filters (exclude and include), we would have to carefully think about how to apply each of them, opening the door for bugs. That would make the code easier to break.
+With all the filters in place, we can clean up the data in one step. Because all the filters we created are to exclude data, we can confidently negate all of them to get the data we want to keep. If we use different types of filters (exclude and include), we have to carefully think about how to apply each of them, opening the door for bugs.
 
 This is an important concept: don't make your brain hold more information than it absolutely has to (don't create [extraneous cognitive load](https://en.wikipedia.org/wiki/Cognitive_load#Extraneous)). If we follow a pattern, we have only one thing to remember, the pattern itself.
 {: .notice}
@@ -172,7 +172,7 @@ In the conclusion section, we clearly document:
 
 - That we used proxy variables.
 - Despite the dataset's limitations, we have tentative conclusions.
-- That we need more precise data, but at the same time, we have enough to take action (and avoid (analysis paralysis)[https://en.wikipedia.org/wiki/Analysis_paralysis]).
+- That we need more precise data, but at the same time, we have enough to take action (and avoid [analysis paralysis](https://en.wikipedia.org/wiki/Analysis_paralysis])).
 
 ![Step 6 - Conclusions and limitations](/images/2022-09-19/step-6.drawio.png){: .align-center style="width:66%;"}
 
