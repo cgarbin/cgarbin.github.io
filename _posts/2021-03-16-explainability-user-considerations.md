@@ -4,6 +4,9 @@ excerpt: "If we assume that explaining to the end-users how a machine learning (
 date:   2021-03-16
 tags: [machine-learning, explainability, interpretability]
 toc: true
+sidebar:
+  title: ""
+  nav: sidebar-2021-03-16
 ---
 
 If we assume that explaining to the end-users how a machine learning (ML) model makes its predictions increases their trust on that model (side note: it can be debated if explaining a prediction is sufficient to establish trust, but in general we can assume that explaining contributes to increasing trust), the question is then "how and when we should explain the model's prediction".

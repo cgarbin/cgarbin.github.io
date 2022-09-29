@@ -4,6 +4,9 @@ excerpt: "How to write well-structured, understandable, flexible, and resilient 
 date:   2022-09-19
 tags: [jupyter-notebooks, python, data-science]
 toc: true
+sidebar:
+  title: ""
+  nav: sidebar-2022-09-19
 ---
 
 [Jupyter notebooks](https://jupyter.org/) are an excellent tool for data scientists and machine learning practitioners. However, if not approached with a few techniques, they can turn into a pile of unintelligible, unmaintainable code.

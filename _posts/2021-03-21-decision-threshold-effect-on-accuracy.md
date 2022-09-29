@@ -4,6 +4,9 @@ excerpt: "A model's accuracy is an incomplete view of of the model's performance
 date:   2021-03-21
 tags: [machine-learning, accuracy, roc]
 toc: true
+sidebar:
+  title: ""
+  nav: sidebar-2021-03-21
 ---
 
 In the book [Responsible Machine Learning](https://www.h2o.ai/resources/ebook/responsible-machine-learning/),

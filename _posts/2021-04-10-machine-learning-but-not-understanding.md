@@ -4,6 +4,9 @@ excerpt: "In the expression 'machine learning', are the machines actually learni
 date:   2021-04-10
 tags: [machine-learning, failure]
 toc: true
+sidebar:
+  title: ""
+  nav: sidebar-2021-04-10
 ---
 
 In the expression _machine learning_, are the machines actually learning anything?

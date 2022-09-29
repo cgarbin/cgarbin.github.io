@@ -4,6 +4,9 @@ excerpt: "Of all the problems that may crop up in the machine learning lifecycle
 date:   2021-02-01
 tags: [data-science, machine-learning, bias, social-impact]
 toc: true
+sidebar:
+  title: ""
+  nav: sidebar-2021-02-01
 ---
 
 Of all the problems that may crop up in the machine learning lifecycle (acquire data, train a model, test the model, deploy, and monitor), **biased data** is the one that worries me the most because it starts in the very first step, when we acquire data for the model. All steps after that are affected by it.

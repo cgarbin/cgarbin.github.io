@@ -4,6 +4,9 @@ excerpt: "Vision transformers are not just a replacement for CNNs and RNNs. They
 date:   2022-07-23
 tags: [machine-learning, computer-vision, transformers]
 toc: true
+sidebar:
+  title: ""
+  nav: sidebar-2022-07-23
 ---
 
 Transformers crossed over from natural language into computer vision in a few low-key steps until the [An Image is Worth 16x16 Words](https://arxiv.org/abs/2010.11929) paper exploded into the machine learning scene late in 2020.

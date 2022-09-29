@@ -4,6 +4,9 @@ excerpt: "Transformers: from zero to hero in one morning (or at least know enoug
 date:   2022-07-22
 tags: [machine-learning, natural-language-processing, nlp, transformers]
 toc: true
+sidebar:
+  title: ""
+  nav: sidebar-2022-07-22
 ---
 
 Transformers are (deservedly so) a hot topic in machine learning.

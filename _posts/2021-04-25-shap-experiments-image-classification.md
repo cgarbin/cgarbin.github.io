@@ -4,6 +4,9 @@ excerpt: "How to interpret predictions of an image classification neural network
 date:   2021-04-25
 tags: [machine-learning, computer-vision, image-classification, explainability, interpretability, shap]
 toc: true
+sidebar:
+  title: ""
+  nav: sidebar-2021-04-25
 ---
 
 This article explores how to interpret predictions of an image classification neural network using [SHAP (SHapley Additive exPlanations)](https://arxiv.org/abs/1705.07874).

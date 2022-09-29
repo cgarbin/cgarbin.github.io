@@ -4,6 +4,9 @@ excerpt: "The evolution of transformers, their application in natural language p
 date:   2021-12-01
 tags: [machine-learning, computer-vision, transformers]
 toc: true
+sidebar:
+  title: ""
+  nav: sidebar-2021-12-01
 ---
 
 This article describes the evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, ending with applications in healthcare.

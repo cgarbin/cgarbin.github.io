@@ -7,6 +7,9 @@ toc: true
 header:
    overlay_image: /images/2021-03-18/justice.jpg
    caption: "Photo credit: [Ludmila Kvapilova, CC BY-SA 4.0, via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Justice.tif)"
+sidebar:
+  title: ""
+  nav: sidebar-2021-03-18
 ---
 
 This article lists resources to understand concepts and applications of fairness in machine learning (ML).

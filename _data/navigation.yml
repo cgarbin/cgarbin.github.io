@@ -10,3 +10,91 @@ main:
   #   url: /collection-archive/
   # - title: 'Sitemap'
   #   url: /sitemap/
+
+sidebar-2022-09-19:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-code" style="color:blue""></i> Code for this article'
+        url: https://github.com/fau-masters-collected-works-cgarbin/writing-good-jupyter-notebooks
+
+sidebar-2022-07-22:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Transfomers in computer vision'
+        url: /transformers-in-computer-vision
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Vision transformer properties'
+        url: /vision-transformers-properties
+
+sidebar-2022-07-23:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Understand transformers in one morning'
+        url: /understanding-transformers-in-one-morning
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Transfomers in computer vision'
+        url: /transformers-in-computer-vision
+
+sidebar-2021-12-01:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Understand transformers in one morning'
+        url: /understanding-transformers-in-one-morning
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Vision transformer properties'
+        url: /vision-transformers-properties
+
+sidebar-2021-04-26:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Explainability: end-users considerations'
+        url: /explainability-user-considerations
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Exploring SHAP explanations for image classification'
+        url: /shap-experiments-image-classification
+
+sidebar-2021-04-25:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Machine learning interpretability with feature attribution'
+        url: /machine-learning-interpretability-feature-attribution
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Explainability: end-users considerations'
+        url: /explainability-user-considerations
+      - title: '<i class="fas fa-code" style="color:blue""></i> Code for this article'
+        url: https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/running-the-code.md
+
+sidebar-2021-04-10:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> What is “model accuracy”, really?'
+        url: /decision-threshold-effect-on-accuracy
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Bias in data science and machine learning'
+        url: /bias-data-science-machine-learning
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Fairness in machine learning: a reading list'
+        url: /fairness-a-reading-list
+      - title: '<i class="fas fa-code" style="color:blue""></i> Code for this article'
+        url: https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding
+
+sidebar-2021-03-21:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Machine learning, but not understanding'
+        url: /machine-learning-but-not-understanding
+      - title: '<i class="fas fa-code" style="color:blue""></i> Code for this article'
+        url: https://github.com/fau-masters-collected-works-cgarbin/decision-threshold-effect-on-accuracy
+
+sidebar-2021-03-18:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Bias in data science and machine learning'
+        url: /bias-data-science-machine-learning
+
+sidebar-2021-03-16:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Machine learning interpretability with feature attribution'
+        url: /machine-learning-interpretability-feature-attribution
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Exploring SHAP explanations for image classification'
+        url: /shap-experiments-image-classification
+
+sidebar-2021-02-01:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Fairness in machine learning: a reading list'
+        url: /fairness-a-reading-list
