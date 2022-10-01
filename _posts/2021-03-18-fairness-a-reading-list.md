@@ -38,11 +38,11 @@ Of all the sources below, if I could recommend only one (well, one for concepts,
 
 ### Conceptual
 
-This section has a list of sources to understand the concepts of fairness and their implications for society, in no particular order.
+This section lists sources to understand the concepts of fairness and their implications for society, in no particular order.
 
 [A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](https://arxiv.org/abs/1901.10002)
 
-Bias is closely related to fairness. This paper describes a framework to understand sources of bias in machine learning. Once we understand where bias comes from, we are better positioned to eliminate or at least mitigate it. The picture below is a summary of the framework, illustrating the sources of bias in machine learning.
+Bias is closely related to fairness. This paper describes a framework to understand sources of bias in machine learning. Once we understand where bias comes from, we are better positioned to eliminate or at least mitigate it. The picture below summarizes the framework, illustrating the sources of bias in machine learning.
 
 ![A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle](/images/2021-03-18/sources-of-bias.png)
 
@@ -88,7 +88,7 @@ These are some recent survey papers on fairness as of early 2021. Each has a bri
 
 ### Social and legal implications
 
-Not all aspects of machine learning fairness are technical. We care about fairness because it affects humans at the individual and societal levels. These are some papers that look at the social and legal implication of fairness in machine learning.
+Not all aspects of machine learning fairness are technical. We care about fairness because it affects humans at the individual and societal levels. These are some papers that look at the social and legal implications of fairness in machine learning.
 
 [This Thing Called Fairness: Disciplinary Confusion Realizing a Value in Technology](https://arxiv.org/abs/1909.11869)
 
@@ -105,3 +105,7 @@ My (Christian's) commentary: highly analytical, with strong definitions of fairn
 [Potential Biases in Machine Learning Algorithms Using Electronic Health Record Data](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6347576/)
 
 > This Special Communication outlines the potential biases that may be introduced into machine learning–based clinical decision support tools that use electronic health record data and proposes potential solutions to the problems of overreliance on automation, algorithms based on biased data, and algorithms that do not provide information that is clinically meaningful.
+
+## Bias and fairness
+
+Bias is a close cousin to fairness. Read more about bias in [this post]({% post_url 2021-02-01-bias-data-science-machine-learning %}).
