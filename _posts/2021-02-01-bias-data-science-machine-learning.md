@@ -17,6 +17,8 @@ To top it off, we will likely not realize that the model is biased until it is u
 
 <!--more-->
 
+## Sources of bias
+
 If biased data is so damaging, understanding where it comes from helps us recognize and correct the problem early on. Some time ago, I came across a paper that categorizes the sources of bias in the machine learning lifecycle: ["A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle"](https://arxiv.org/abs/1901.10002). They split the sources of bias into two phases:
 
 - _Data generation_: the collection of the raw data and creation of the dataset,
@@ -46,7 +48,7 @@ More complex examples involve secular trends, the changes in a large population 
 
 The sampled population does not represent the target population. This is probably the easiest one to identify when humans are involved. We can check for race, age, and other factors relatively simply.
 
-It's more complicated when the definition of "population" is not that clear. For example, training a model to detect diseases in X-rays is affected by the source of the X-rays. Sicker people have X-rays taken in the emergency care facility, while healthier people have X-rays taken in a clinical setting. Not accounting for that factor can result in an X-ray dataset of overwhelmingly sicker or healthier people. Now that problem becomes more subtle. This can be a good or a bad thing. It depends on the target population of our model itself. Presumably, a model used in the emergency room would benefit from being trained in the X-rays from the emergency room and would perform poorly if trained with the X-rays from the clinics.
+It's more complicated when the definition of "population" is not that clear. For example, training a model to detect diseases in X-rays is affected by the source of the X-rays. Sicker people have X-rays taken in the emergency care facility, while healthier people have X-rays taken in a clinical setting. Not accounting for that factor can result in an X-ray dataset of overwhelmingly sicker or healthier people. Is that a problem? It depends on the target population of our model. If we are developing a model to be used in emergency rooms, it would benefit from being trained in the X-rays from the emergency room and would perform poorly if trained with the X-rays from the clinics.
 
 Thus, representation bias is not a statement about the population in general, but about the target population.
 
@@ -100,7 +102,7 @@ The analytical tools and methods help, but they are after the fact. The dataset 
 
 Besides detecting bias, we also need methods to prevent the introduction of bias when creating datasets and models. [Datasheets for datasets](https://arxiv.org/abs/1803.09010) and [model cards](https://arxiv.org/abs/1810.03993) are methods to bring human judgment into the process. They guide researchers and machine learning practitioners in the early stages of the dataset and model creation by asking pointed questions. This early intervention can help reduce bias that would go unnoticed or would be hard to eliminate if found in late stages.
 
-## Other resources
+## Learning more about bias
 
 - Visual exploration of bias: [Hidden Bias explorable](https://pair.withgoogle.com/explorables/hidden-bias/) (Google's AI Explorables page)
 - [A Survey on Bias and Fairness in Machine Learning](https://arxiv.org/pdf/1908.09635.pdf)
