@@ -51,7 +51,7 @@ This is an essential part of the explanation: _"Note that for the 'zero' image t
 
 ## Experiments
 
-This [Jupyter notebook](https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/shap-experiments-image-classification.ipynb) shows how to use SHAP's DeepExplainer to visualize feature attribution in image classification with neural networks. See the [instructions to run the code](./running-the-code.md) for more details.
+This [Jupyter notebook](https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/shap-experiments-image-classification.ipynb) shows how to use SHAP's DeepExplainer to visualize feature attribution in image classification with neural networks. See the [instructions to run the code](https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/running-the-code.md) for more details.
 
 SHAP has multiple explainers. The notebook uses the DeepExplainer explainer because it is the one used in [the image classification SHAP sample code](https://shap.readthedocs.io/en/latest/image_examples.html).
 
