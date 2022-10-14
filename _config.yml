@@ -183,7 +183,7 @@ exclude:
 keep_files:
   - .git
   - .svn
-encoding: 'utf-8'
+encoding: 'UTF-8'
 markdown_ext: 'markdown,mkdown,mkdn,mkd,md'
 
 # Conversion
@@ -202,7 +202,6 @@ kramdown:
   entity_output: as_char
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
 
 # Sass/SCSS
 sass:
@@ -213,7 +212,7 @@ sass:
 permalink: /:title/
 paginate: 10 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: America/New_York
 
 # Plugins (previously gems:)
 plugins:
