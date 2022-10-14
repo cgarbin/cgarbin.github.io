@@ -28,8 +28,6 @@ if grep -Rq --include="*.html" localhost; then
 fi
 cd ..
 
-exit 0
-
 set -xe
 
 mv _site ../_site-ghio
