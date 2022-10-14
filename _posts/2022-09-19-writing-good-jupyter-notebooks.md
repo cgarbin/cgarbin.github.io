@@ -33,7 +33,7 @@ To illustrate how to go from a notebook that is not wrong but is also not good, 
 - [Step 1](#step-1---the-original-notebook): the original notebook, the one that lacks structure and proper coding practices.
 - [Step 2](#step-2---add-a-description-organize-into-sections-add-exploratory-data-analysis): adds a description, organize into sections, add exploratory data analysis.
 - [Step 3](#step-3---make-data-cleanup-more-explicit-and-explain-why-specific-numbers-were-chosen): make data cleanup more explicit and explain why specific numbers were chosen (the assumptions behind them).
-- [Step 4](#step-4---make-the-code-more-flexible-with-constants-and-make-the-code-more-difficult-to-break): make the code more flexible with constants and make the code more difficult to break.
+- [Step 4](#step-4---make-the-code-more-flexible-and-more-difficult-to-break): make the code more flexible with constants and make the code more difficult to break.
 - [Step 5](#step-5---make-the-graphs-easier-to-read): make the graphs easier to read.
 - [Step 6](#step-6---describe-the-limitations-of-the-conclusion): describe the limitations of the conclusion.
 
@@ -96,7 +96,7 @@ In the following figure, we explain why we are removing all employees that are 6
 
 [This is the reworked notebook](https://github.com/fau-masters-collected-works-cgarbin/writing-good-jupyter-notebooks/blob/master/salary-discrimination-by-gender-step-3.ipynb).
 
-## Step 4 - Make the code more flexible with constants and make the code more difficult to break
+## Step 4 - Make the code more flexible and more difficult to break
 
 In this step, we make the following improvements:
 
