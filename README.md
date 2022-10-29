@@ -21,6 +21,30 @@ Organization:
 
 It's IMPORTANT to release the version generate with `... jekyll build` and not the one generated with `... jekyll serve`. The `serve` option generates links to `localhost` and not to the actual site.
 
+## Adding links to the sidebar
+
+Add a new entry in navigation.yaml. Example:"
+
+```yaml
+sidebar-2022-09-19:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-code" style="color:blue""></i> Code for this article'
+        url: https://github.com/fau-masters-collected-works-cgarbin/writing-good-jupyter-notebooks
+```
+
+Point to the entry in the post's front matter:
+
+```yaml
+---
+title: "..."
+...
+sidebar:
+  title: ""
+  nav: sidebar-2022-09-19
+---
+```
+
 ## Adding tags and categories pages
 
 This method uses [the jekyll-archives plugin](https://github.com/jekyll/jekyll-archives).
