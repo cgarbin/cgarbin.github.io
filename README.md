@@ -21,6 +21,11 @@ Organization:
 
 It's IMPORTANT to release the version generate with `... jekyll build` and not the one generated with `... jekyll serve`. The `serve` option generates links to `localhost` and not to the actual site.
 
+## Linking to another post
+
+In post text: `[this post]({% post_url 2021-02-01-bias-data-science-machine-learning %})`
+
+In excerpts: `[this post](bias-data-science-machine-learning)`
 ## Adding links to the sidebar
 
 Add a new entry in navigation.yaml. Example:"
@@ -29,6 +34,8 @@ Add a new entry in navigation.yaml. Example:"
 sidebar-2022-09-19:
   - title: "More..."
     children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Transfomers in computer vision'
+        url: /transformers-in-computer-vision
       - title: '<i class="fas fa-code" style="color:blue""></i> Code for this article'
         url: https://github.com/fau-masters-collected-works-cgarbin/writing-good-jupyter-notebooks
 ```
@@ -43,6 +50,22 @@ sidebar:
   title: ""
   nav: sidebar-2022-09-19
 ---
+```
+
+## Adding new pages
+
+Add a new .md in _pages, then add a link to the top of the page if needed with [these instructions](#adding-links-to-top-of-the-page).
+
+## Adding links to top of the page
+
+Modify `navigation.yml`:
+
+```yaml
+main:
+  - title: Tags'
+    url: /tags/
+  - title: 'About'
+    url: /about/
 ```
 
 ## Adding tags and categories pages
@@ -105,16 +128,6 @@ Copy the Minimal Mistakes tag and categories pages.
 mkdir _pages
 cp docs/_pages/category-archive.md _pages
 cp docs/_pages/tag-archive.md _pages
-```
-
-To add a link to the tags page, modify `navigation.yml`:
-
-```yaml
-main:
-  - title: 'Posts by tag'
-    url: /tags/
-  - title: 'About'
-    url: /about/
 ```
 
 ## Updating Jekyll and theme
