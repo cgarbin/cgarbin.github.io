@@ -20,13 +20,10 @@ But how exactly a model determines what a correct prediction is?
 
 <!--more-->
 
-Here we will analyze the effect of an important factor a model uses to decide the correct
-prediction (label) for classification problems, the **decision threshold**. We will see that
-without understanding how a model decides what "correct" is, talking about the model accuracy
+Here we will analyze the effect of an important factor a model uses to decide the correct prediction (label) for classification problems, the **decision threshold**. We will see that without understanding how a model decides what "correct" is, talking about the model's accuracy
 is premature.
 
-We use _accuracy_ in this text as the number of correct predictions on the test set, divided by the
-number of instances in the test set.
+We use _accuracy_ in this text as the number of correct predictions on the test set, divided by the number of instances in the test set.
 
 ```text
                  Number of correct predictions
@@ -81,7 +78,7 @@ probability of other classes?
 
 !['Model classification - uncertain](/images/2021-03-21/model-classification-uncertain.png)
 
-In the example below, the largest probability is for the class "9", but it is not even 50% and the
+In the example below, the largest probability is for class "9", but it is not even 50%, and the
 probability for class "4" is not too far behind. The model does not have high confidence in this
 prediction.
 
@@ -103,11 +100,11 @@ a decision at all.
 
 But what threshold do we pick?
 
-It depends. For high-stakes applications, where wrong decisions have severe consequences, we want to
+It depends. For high-stakes applications where wrong decisions have severe consequences, we want to
 be very confident in the model's prediction.
 
 For example, for an automatic check deposit application, we want the model to be at least 99%
-confident of the prediction. Any image below that threshold is sent to human review.
+confident of the prediction. Any image below that threshold is sent for human review.
 
 ![Model classification - high stakes](/images/2021-03-21/model-classification-high-stakes.png)
 
@@ -140,11 +137,13 @@ was measured and not just accept published numbers_.
 _"We achieved 99.9% accuracy on [some task here]"_ means nothing if it's not accompanied by a
 detailed description of what a "correct prediction" is for the model.
 
-## ROC as a better alternative to accuracy
+## What to use instead of accuracy?
 
-A better alternative to _accuracy_ is the [receiver operating characteristic (ROC) curve](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) (for a simpler introduction, see [this page](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc)). The ROC curve shows, at a glance, how a model behaves with different thresholds.
+Balanced datasets have similar numbers of instances for each class. For these cases, a better alternative to _accuracy_ is the [receiver operating characteristic (ROC) curve](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) (for a simpler introduction, see [this page](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc)). The ROC curve shows, at a glance, how a model behaves with different thresholds.
 
-Every scientific paper that describes a model should publish the ROC curve. Papers that publish only the accuracy for the model, and especially papers that publish the accuracy without specifying the threshold, are, at best, incomplete. At worst, they were written by uninformed machine learning novices.
+Imbalanced datasets have a large number of instances for one of the classes and a small number of instances for the other classes. They are typical in healthcare applications where a specific condition affects only a small portion of the population. _Accuracy_ is an especially flawed metric for imbalanced datasets. For example, if a disease affects only 0.1% of the population, a "classifier" that returns "no disease" is 99.9% "accurate". In these cases, the [precision and recall](https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall) are better metrics. _[The Precision-Recall Plot is More Informative than the ROC Plot when Evaluating Binary Classifiers on Imbalanced Datasets](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0118432)_ explains in detail and using concrete examples why should prefer the precision-recall plot for imbalanced datasets.
+
+Every scientific paper that describes a model should publish the ROC or precision-recall curve. Papers that publish only the accuracy for the model, and especially papers that publish the accuracy without specifying the threshold, are, at best, incomplete. At worst, they were written by uninformed machine learning novices.
 
 ## Experimenting with the code
 
