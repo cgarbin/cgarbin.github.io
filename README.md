@@ -147,9 +147,11 @@ cd ../minimal-mistakes
 git pull --rebase
 
 cd ../cgarbin.github.io
-# Restore Reditt sharing:
+# Restore Reddt sharing:
 #   - _buttons.scss: add Reddit color
 #   - social-share.html: remove Facebook, add Reddit
+# Check that CSS customization was not lost
+#   - assets/css/main.scss must have .page__hero customizations
 
 git add .
 git commit -m "Update Minimal Mistakes theme"

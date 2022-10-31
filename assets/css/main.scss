@@ -7,3 +7,23 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+.page__hero {
+
+    &--overlay {
+      padding: 0.5em 0;
+
+      .page__lead {
+        font-size: $type-size-5;
+        max-width: $medium;
+      }
+
+      .page__title {
+        font-size: $type-size-2;
+
+        @include breakpoint($small) {
+          font-size: $type-size-4;
+        }
+      }
+    }
+  }
