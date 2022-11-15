@@ -22,7 +22,7 @@ feature_row:
     url: "/decision-threshold-effect-on-accuracy/"
     btn_class: "btn--inverse"
     btn_label: "Continue reading..."
-  - title: "When we say \"machine learning\", what are the machine learning?"
+  - title: "When we say \"machine learning\", what are the machines learning?"
     excerpt: "They are not _learning_ in the same sense as humans do."
     url: "/machine-learning-but-not-understanding/"
     btn_class: "btn--inverse"
