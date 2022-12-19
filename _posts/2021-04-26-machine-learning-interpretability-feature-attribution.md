@@ -1,6 +1,6 @@
 ---
 title:  "Machine learning interpretability with feature attribution"
-excerpt: "There are many discussions in the machine learning (ML) community about model interpretability and explainability. The discussions take place in several contexts, ranging from using interpretability and explainability techniques to increase the robustness of a model, all the way to increasing end-user trust in a model."
+excerpt: "A review of _feature attribution_, a technique to interpret model predictions. First, it reviews commonly-used feature attribution methods, then demonstrates feature attribution with SHAP, one of these methods."
 date:   2021-04-26
 tags: [machine-learning, explainability, interpretability, shap]
 toc: true
@@ -11,7 +11,7 @@ sidebar:
 
 There are many discussions in the machine learning (ML) community about model interpretability and explainability. The discussions take place in several contexts, ranging from using interpretability and explainability techniques to increase the robustness of a model, all the way to increasing end-user trust in a model.
 
-This article investigates one method for model interpretability, feature attribution.
+This article reviews _feature attribution_, a technique to interpret model predictions. First, it reviews commonly-used feature attribution methods, then demonstrates feature attribution with SHAP, one of these methods.
 
 <!--more-->
 
@@ -117,7 +117,7 @@ For example, simply overlaying the raw attribution values on an image may leave 
 
 ![Example of user interaction](/images/2021-04-26/user-interaction-example.png)
 
-Showing all information at once to the users may also induce them to make more mistakes. For example, when showing the feature attributions overlaid to a medical image, [this paper](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext) found out that it increased overdiagnose of a medical condition. It points to the fact that just because we can explain something, we shouldn’t necessarily put that explanation in front of users without considering how it will change their behavior.
+Showing all information at once to the users may also induce them to make more mistakes. For example, when showing the feature attributions overlaid to a medical image, [this paper](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext) found out that it increased overdiagnosing of a medical condition. It points to the fact that just because we can explain something, we shouldn’t necessarily put that explanation in front of users without considering how it will change their behavior.
 
 ## Well-known feature attribution methods
 
@@ -180,7 +180,7 @@ We have so far two pieces of information, the profit when the company had no emp
 | _None_ | 0 |
 | Anne, Bob, Charlie | 100 |
 
-Going through historical records, the company determined the profit when different combinations of employees were working in past months. They are added to the table below, between the two lines of the previous table.
+Going through historical records, the company determined the profit when different combinations of employees were working in the past months. They are added to the table below, between the two lines of the previous table.
 
 | | Employees | Profit |
 | -: | :- | -: |
@@ -197,7 +197,7 @@ At first glance, it looks like Bob contributes 50 to the profit: in line 2 we se
 
 Which one is correct? Both. We are interested in each employee's contribution when they are working together. _This is a collaborative game_.
 
-To understand the individual contributions, we start by analyzing all possible paths to go from no employee to all three.
+To understand the individual contributions, we start by analyzing all possible paths from "no employee" to "all three employees".
 
 | Path | Combination to get to all employees |
 | -: | :- |
@@ -222,9 +222,9 @@ Repeating the process above, we calculate each employee's contribution for each 
 | 6 | Charlie → Bob, Charlie → Anne, Bob, Charlie | 60 | 10 | 30 |
 | | **Average (Shapley value)** | **30** | **25** | **45** |
 
-In this example we were able to calculate the contribution of each individual for all possible paths. In machine learning, the "individuals" are the features in the dataset. There may be thousands or even millions of features in a dataset. For example, in image classification, each pixel in the image is a feature.
+In this example we managed to calculate each individual's contribution for all possible paths in a reasonable time. In machine learning, the "individuals" are the features in the dataset. There may be thousands or even millions of features in a dataset. For example, in image classification, each pixel in the image is a feature.
 
-SHAP uses a similar method to explain the contribution of features to the prediction of a model. However, calculating the contribution of each feature is not feasible in some cases (e.g. images and their millions of pixels). The combination of paths to try is exponential (factorial, to be precise). SHAP makes simplifications to calculate the features contributions. It is crucial to remember that **SHAP is an approximation, not the actual contribution value**.
+SHAP uses a similar method to explain the contribution of features to a model's prediction. However, calculating the contribution of each feature is not feasible in some cases (e.g. images and their millions of pixels). The combination of paths to try is exponential (factorial, to be precise). SHAP makes simplifications to calculate the features' contributions. It is crucial to remember that **SHAP is an approximation, not the actual contribution value**.
 
 ### The importance of the baseline
 
@@ -245,6 +245,6 @@ _The choice of the baseline affects the calculations_. [Visualizing the Impact o
 
 Other sources treat interpretability and explainability as equivalent terms (for example, [Miller's work](https://arxiv.org/abs/1706.07269) and [Molan's online book on the topic](https://christophm.github.io/interpretable-ml-book/interpretability.html)).
 
-This article uses "interpretability" as defined in Ajay Thampi's book. We distinguish between interpretability and explainability to not involve aspects of how to represent the interpretation of a model's prediction to end-users. This would add to the discussion other topics such as user interface and user interaction. While important for the overall discussion of ML interpretability and explainability, these topics are not relevant to the scope of this work. However, we preserve the original term when quoting a source. If the source chose "explainability", we quote it so.
+This article uses "interpretability" as defined in Ajay Thampi's book. We distinguish between interpretability and explainability to not involve aspects of displaying the interpretation of a model's prediction to end-users. This would add to the discussion other topics such as user interface and user interaction. While important for the overall discussion of ML interpretability and explainability, these topics are not relevant to the scope of this work. However, we preserve the original term when quoting a source. If the source chose "explainability", we quote it so.
 
 Therefore, when we discuss "interpretability" here, we mean the interpretation that is shown to a machine learning practitioner, someone familiar with model training and evaluation. We discuss interpretability in a more technical format with this definition in place, assuming that the consumer of the interpretability results has enough technical background to understand it.
