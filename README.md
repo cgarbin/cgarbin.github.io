@@ -27,12 +27,12 @@ In post text: `[this post]({% post_url 2021-02-01-bias-data-science-machine-lear
 
 In excerpts: `[this post](bias-data-science-machine-learning)`
 
-## Adding links to the sidebar
+## Adding links to a post's sidebar
 
-Add a new entry in navigation.yaml. Example:"
+Add a new entry in navigation.yaml. Example:
 
 ```yaml
-sidebar-2022-09-19:
+sidebar-2022-09-19: # post's date, to help correlate
   - title: "More..."
     children:
       - title: '<i class="fas fa-book-open" style="color:blue"></i> Transfomers in computer vision'
@@ -49,15 +49,15 @@ title: "..."
 ...
 sidebar:
   title: ""
-  nav: sidebar-2022-09-19
+  nav: sidebar-2022-09-19  # <-- the entry in navigation.yaml
 ---
 ```
 
-## Adding new pages
+## Adding new pages (other than posts)
 
-Add a new .md in _pages, then add a link to the top of the page if needed with [these instructions](#adding-links-to-top-of-the-page).
+Add a new .md in _pages, then, if needed, add a link to the top navigation bar with [these instructions](#adding-pages-to-the-top-navigation-bar).
 
-## Adding links to top of the page
+## Adding pages to the top navigation bar
 
 Modify `navigation.yml`:
 
