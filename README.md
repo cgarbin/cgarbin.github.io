@@ -26,6 +26,7 @@ It's IMPORTANT to release the version generate with `... jekyll build` and not t
 In post text: `[this post]({% post_url 2021-02-01-bias-data-science-machine-learning %})`
 
 In excerpts: `[this post](bias-data-science-machine-learning)`
+
 ## Adding links to the sidebar
 
 Add a new entry in navigation.yaml. Example:"
