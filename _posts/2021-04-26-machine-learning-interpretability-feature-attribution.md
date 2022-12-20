@@ -2,6 +2,7 @@
 title:  "Machine learning interpretability with feature attribution"
 excerpt: "A review of _feature attribution_, a technique to interpret model predictions. First, it reviews commonly-used feature attribution methods, then demonstrates feature attribution with SHAP, one of these methods."
 date:   2021-04-26
+last_modified_at: 2022-12-20
 tags: [machine-learning, explainability, interpretability, shap]
 toc: true
 sidebar:
@@ -89,6 +90,10 @@ As we are going through the exploration of the feature attributions, we must kee
 
 Therefore, **never mistake the explanation for the actual behavior of the model**. This is a critical conceptual limitation to keep in mind.
 {: .notice--warning}
+
+Because the explanations are approximations, they may disagree with each other. For example, in the figure below, LIME (left) and SHAP (right) disagree not only in the magnitude of features' contributions but also in the direction (sign). This disagreement is more common than we may think. Refer to the excellent paper _[The Disagreement Problem in Explainable Machine Learning: A Practitioner's Perspective](<https://arxiv.org/abs/2202.01602>)_ for more details and how practitioners deal with this issue (the figure comes from the paper).
+
+![Explanation methods may disagree](/images/2021-04-26/disagreement.png)
 
 ### Feature attribution may not make sense
 
