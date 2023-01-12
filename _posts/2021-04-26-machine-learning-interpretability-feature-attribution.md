@@ -217,7 +217,7 @@ We then calculate each employee's contribution in that path (this part is import
 
 Repeating the process above, we calculate each employee's contribution for each path. Finally, we average the contributions — **this is the Shapley value for each employee** (last line in the table).
 
-| Path | Combination to get to all employees | Anne | Boob | Charlie |
+| Path | Combination to get to all employees | Anne | Bob | Charlie |
 | -: | :- | -: | -: | -: |
 | 1 | Anne → Anne, Bob → Anne, Bob, Charlie | 10 | 50 | 40 |
 | 2 | Anne → Anne, Charlie → Anne, Bob, Charlie | 10 | 10 | 80 |
