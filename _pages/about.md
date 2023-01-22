@@ -18,7 +18,7 @@ I'm now a Ph.D. candidate, focusing on machine learning, continuing the work I d
 ### Publications from the master's and Ph.D. work
 
 - [Master's thesis](https://fau.digital.flvc.org/islandora/object/fau%3A64688).
-- Code for assignments, research projects, and blog posts is [on GitHub](https://github.com/fau-masters-collected-works-cgarbin).
+- Code for assignments, research projects, and blog posts are [on GitHub](https://github.com/fau-masters-collected-works-cgarbin).
 
 Papers and articles where I'm the main author:
 

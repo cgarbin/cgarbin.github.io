@@ -4,6 +4,9 @@ excerpt: "Deep learning (large, multi-layered neural networks) have been success
 date:   2021-04-26
 last_modified_at: 2022-02-04
 tags: [machine-learning, deep-learning, computer-vision]
+sidebar:
+  title: ""
+  nav: sidebar-2021-02-28  # <-- the entry in navigation.yaml
 ---
 
 Deep learning revolutionized image processing. It made previous techniques, based on manual feature extraction, obsolete. This article reviews the progress of deep learning, with ever-growing networks and the new developments in the field.

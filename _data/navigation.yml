@@ -42,6 +42,8 @@ sidebar-2021-12-01:
         url: /understanding-transformers-in-one-morning
       - title: '<i class="fas fa-book-open" style="color:blue"></i> Vision transformer properties'
         url: /vision-transformers-properties
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> An overview of deep learning for image processing'
+        url: /deep-learning-for-image-processing-overview
 
 sidebar-2021-04-26:
   - title: "More..."
@@ -94,6 +96,14 @@ sidebar-2021-03-16:
         url: /machine-learning-interpretability-feature-attribution
       - title: '<i class="fas fa-book-open" style="color:blue"></i> Exploring SHAP explanations for image classification'
         url: /shap-experiments-image-classification
+
+sidebar-2021-02-28:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Transformers in computer vision'
+        url: /transformers-in-computer-vision
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Interpretability with feature attribution'
+        url: /machine-learning-interpretability-feature-attribution
 
 sidebar-2021-02-01:
   - title: "More..."
