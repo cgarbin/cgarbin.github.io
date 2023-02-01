@@ -2,6 +2,7 @@
 title:  "Writing good Jupyter notebooks"
 excerpt: "How to write well-structured, understandable, flexible, and resilient Jupyter notebooks."
 date:   2022-09-19
+last_modified_at: 2023-02-01
 tags: [jupyter-notebooks, python, data-science]
 toc: true
 sidebar:
@@ -31,7 +32,7 @@ We will use as an example a notebook that attempts to answer the question _"is t
 To illustrate how to go from a notebook that is not wrong but is also not good, we will go through the following steps:
 
 - [Step 1](#step-1---the-original-notebook): the original notebook, the one that lacks structure and proper coding practices.
-- [Step 2](#step-2---add-a-description-organize-into-sections-add-exploratory-data-analysis): adds a description, organize into sections, add exploratory data analysis.
+- [Step 2](#step-2---add-a-description-organize-into-sections-add-exploratory-data-analysis): add a description, organize into sections, add exploratory data analysis.
 - [Step 3](#step-3---make-data-cleanup-more-explicit-and-explain-why-specific-numbers-were-chosen): make data cleanup more explicit and explain why specific numbers were chosen (the assumptions behind them).
 - [Step 4](#step-4---make-the-code-more-flexible-and-more-difficult-to-break): make the code more flexible with constants and make the code more difficult to break.
 - [Step 5](#step-5---make-the-graphs-easier-to-read): make the graphs easier to read.
@@ -90,9 +91,13 @@ In this step, we make the following improvements:
 1. Explain why specific numbers were chosen (the assumptions behind them).
 1. Explain what the code blocks are doing.
 
-In the following figure, we explain why we are removing all employees that are 66 or older and add a reference to back up our decision (the hyperlink in the text). We also explain what this piece of code is doing in detail.
+The following figure shows how we explain why we are removing all employees that are 66 or older and add a reference to back up our decision (the hyperlink in the text). We also explain why we think this is a good decision.
 
 ![Step 3 - Making data cleanup more explicit](/images/2022-09-19/step-3.drawio.png){: .align-center style="width:66%;"}
+
+Why should we document decisions to this level of detail? One reason is to remember why we made them. But, more importantly, **we, the data scientists, may not be the domain experts**. In this example, the domain experts are the HR and legal departments. We need to engage them to validate our decisions. Documenting to this level of detail **invites a dicussion with the domain experts to validate the decisions**.
+{: .notice}
+
 
 [This is the reworked notebook](https://github.com/fau-masters-collected-works-cgarbin/writing-good-jupyter-notebooks/blob/master/salary-discrimination-by-gender-step-3.ipynb).
 
@@ -115,7 +120,7 @@ There are a few notable items in this code:
 1. The filter variable also has a generic name (`low_salaries`), for the same reasons we used a generic name for the constant.
 1. We print the results of the operation (the cutoff value and how many items it removed from the dataset), so we can discuss with the domain experts if our decision makes sense. For example, we could ask an HR representative if they expected to see this many employers removed when we set this salary cutoff. It may catch errors in the dataset or in the code.
 
-Regarding the last item, printing the operation results: **we, the data scientists, may not be the domain experts**. In this example, the domain experts are the HR and legal departments. We need to engage them to validate our decisions. Simple things, like printing the effect of filtering the data (how many employees were removed) help validate the decisions with the domain experts.
+Regarding the last item, printing the operation results: showing the effect of filtering data (how many employees were removed) helps **validate the decisions with the domain experts**.
 {: .notice}
 
 When we clean up the age column, we keep using the same patterns:
@@ -155,7 +160,7 @@ Another technique to make graphs readable is to [bin the data](https://en.wikipe
 
 ![Step 5 - Salary by age before binning](/images/2022-09-19/step-5.3.drawio.png){: .align-center style="width:66%;"}
 
-It is impossible to see any pattern in such a graph. To make it more legible, we will [bin the data](https://en.wikipedia.org/wiki/Data_binning). But the question is "what bins make sense for this case?" Since we are analyzing salaries, we chose 22 as our first bin because this is usually the [age of graduation](https://nonpartisaneducation.org/Review/Resources/Int__lHigherEd_AppendixA.pdf). After that, we will bin every five years for the first years to account for rapid promotions and rises that happen at the start of a career, then bin every ten years for later stages in the career, where promotions are rarer. We also document those assumptions clearly to discuss them with the domain experts.
+It is impossible to see any pattern in such a graph. To make it more legible, we will [bin the data](https://en.wikipedia.org/wiki/Data_binning). But the question is, "what bins make sense for this case?" Since we are analyzing salaries, we chose 22 as our first bin because this is usually the [age of graduation](https://nonpartisaneducation.org/Review/Resources/Int__lHigherEd_AppendixA.pdf). After that, we will bin every five years for the first years to account for rapid promotions and rises that happen at the start of a career, then bin every ten years for later stages in the career, where promotions are rarer. We also document those assumptions clearly to discuss them with the domain experts.
 
 This is the new graph:
 
