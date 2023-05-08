@@ -22,6 +22,7 @@ I'm now a Ph.D. candidate, focusing on machine learning, continuing the work I d
 
 Papers and articles where I'm the main author:
 
+- [Machine learning for predicting opioid use disorder from healthcare data, a systematic review](https://doi.org/10.1016/j.cmpb.2023.107573). The accepted manuscript (free to access) is available [here](https://drive.google.com/file/d/1JqsCfO_sq8fMwOeLe2bQrzTto0CHN1Vd/view?usp=share_link).
 - [Assessing Methods and Tools to Improve Reporting, Increase Transparency, and Reduce Failures in Machine Learning Applications in Health Care](https://pubs.rsna.org/doi/10.1148/ryai.210127), on the RSNA Radiology:Artificial Intelligence journal (free version available on the [NIH Library of Medicine site](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8980932/)). This article is based on the [master's thesis](https://fau.digital.flvc.org/islandora/object/fau%3A64688).
 - [Dataset datasheet for CheXpert](https://arxiv.org/abs/2105.03020), in collaboration with the [Stanford CheXpert team](https://stanfordmlgroup.github.io/competitions/chexpert/).
 - [Dropout vs. batch normalization](https://link.springer.com/article/10.1007/s11042-019-08453-9). The free version of the paper is [available here](https://drive.google.com/file/d/1PyRUgSXqpl_OvJkWrR4HCWLDaEexzWd9/view) and the code is [on GitHub](https://github.com/fau-masters-collected-works-cgarbin/cap6619-deep-learning-term-project).
