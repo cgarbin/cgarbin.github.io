@@ -104,7 +104,7 @@ analytics:
 author:
   name: 'Christian Garbin'
   avatar: # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio: 'I am a software architect at [Atos Unify](https://unify.com/en/) and a Ph.D. candidate at [Florida Atlantic University](https://www.fau.edu/), focusing on machine learning [(more...)](https://cgarbin.github.io/about/)'
+  bio: 'I am a software engineer at [MathWorks](https://www.mathworks.com/) and a Ph.D. candidate at [Florida Atlantic University](https://www.fau.edu/), focusing on machine learning [(more...)](https://cgarbin.github.io/about/)'
   #location: 'Somewhere'
   email:
   links:

@@ -2,11 +2,11 @@
 permalink: /about/
 layout: home
 title: "About"
-excerpt: "I'm a software architect and a Ph.D. candidate, focusing on machine learning."
+excerpt: "I'm a software engineer and a Ph.D. candidate, focusing on machine learning."
 toc: false
 ---
 
-I'm a software architect at [Atos Unify](https://unify.com/en/). More about my professional life on
+I'm a software engineer at [MathWorks](https://www.mathworks.com/). More about my professional life on
 [LinkedIn](https://www.linkedin.com/in/christiangarbin/). Over the years, with the help of my colleagues, we were granted
 [a few patents](https://scholar.google.com/citations?user=q1ZmDvYAAAAJ&hl=en).
 
