@@ -7,15 +7,12 @@ toc: false
 ---
 
 I'm a software engineer at [MathWorks](https://www.mathworks.com/). More about my professional life on
-[LinkedIn](https://www.linkedin.com/in/christiangarbin/). Over the years, with the help of my colleagues, we were granted
-[a few patents](https://scholar.google.com/citations?user=q1ZmDvYAAAAJ&hl=en).
+[LinkedIn](https://www.linkedin.com/in/christiangarbin/).
 
 In December of 2020 I completed a Computer Science master's degree at [Florida Atlantic University](https://www.fau.edu/),
-focusing on machine learning. The thesis is available [here](https://fau.digital.flvc.org/islandora/object/fau%3A64688).
+focusing on machine learning. The thesis is available [here](https://fau.digital.flvc.org/islandora/object/fau%3A64688). I'm now a Ph.D. candidate, focusing on machine learning, continuing the work I did for the master's degree. My master's and Ph.D. projects are [on GitHub](https://github.com/fau-masters-collected-works-cgarbin).
 
-I'm now a Ph.D. candidate, focusing on machine learning, continuing the work I did for the master's degree. My master's and Ph.D. projects are [on GitHub](https://github.com/fau-masters-collected-works-cgarbin).
-
-### Publications from the master's and Ph.D. work
+### Publications
 
 - [Master's thesis](https://fau.digital.flvc.org/islandora/object/fau%3A64688).
 - Code for assignments, research projects, and blog posts are [on GitHub](https://github.com/fau-masters-collected-works-cgarbin).
@@ -31,6 +28,8 @@ Papers and articles where I'm a collaborator:
 
 - [On the use of colormaps in the context of post-hoc explainable AI methods](https://cdn.ymaws.com/siim.org/resource/resmgr/siim2022/documents/abstract/2009/2009_-_marques,___on_the_use.pdf), an [abstract session in SIIM 2002](https://siim.org/page/22m_2009).
 - IEEE ICMLA data science tutorial [notebooks](https://github.com/fau-masters-collected-works-cgarbin/ieee-icmla-2019-data-science-tutorial), the practical part of [Dr. Marques'](https://www.ogemarques.com/) [The Data Science landscape: foundations, tools, and practical applications](https://www.icmla-conference.org/icmla19/links/tutorialAM.htm) session.
+
+More publications and patents on [Google Scholar](https://scholar.google.com/citations?user=q1ZmDvYAAAAJ&hl=en).
 
 ### Older things
 
