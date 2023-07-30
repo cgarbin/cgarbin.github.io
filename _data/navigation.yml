@@ -22,7 +22,7 @@ sidebar-2022-09-19:
 sidebar-2022-07-22:
   - title: "More..."
     children:
-      - title: '<i class="fas fa-book-open" style="color:blue"></i> Transfomers in computer vision'
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Transformers in computer vision'
         url: /transformers-in-computer-vision
       - title: '<i class="fas fa-book-open" style="color:blue"></i> Vision transformer properties'
         url: /vision-transformers-properties
@@ -32,7 +32,7 @@ sidebar-2022-07-23:
     children:
       - title: '<i class="fas fa-book-open" style="color:blue"></i> Understand transformers in one morning'
         url: /understanding-transformers-in-one-morning
-      - title: '<i class="fas fa-book-open" style="color:blue"></i> Transfomers in computer vision'
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Transformers in computer vision'
         url: /transformers-in-computer-vision
 
 sidebar-2021-12-01:
