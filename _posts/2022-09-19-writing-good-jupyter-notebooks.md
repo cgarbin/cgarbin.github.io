@@ -32,7 +32,7 @@ We will use as an example a notebook that attempts to answer the question _"is t
 To illustrate how to go from a notebook that is not wrong but is also not good, we will go through the following steps:
 
 - [Step 1](#step-1---the-original-notebook): the original notebook, the one that lacks structure and proper coding practices.
-- [Step 2](#step-2---add-a-description-organize-into-sections-add-exploratory-data-analysis): add a description, organize into sections, add exploratory data analysis.
+- [Step 2](#step-2---add-a-description-organize-it-into-sections-and-add-exploratory-data-analysis): add a description, organize into sections, add exploratory data analysis.
 - [Step 3](#step-3---make-data-cleanup-more-explicit-and-explain-why-specific-numbers-were-chosen): make data cleanup more explicit and explain why specific numbers were chosen (the assumptions behind them).
 - [Step 4](#step-4---make-the-code-more-flexible-and-more-difficult-to-break): make the code more flexible with constants and make the code more difficult to break.
 - [Step 5](#step-5---make-the-graphs-easier-to-read): make the graphs easier to read.
@@ -98,7 +98,6 @@ The following figure shows how we explain why we are removing all employees that
 Why should we document decisions to this level of detail? One reason is to remember why we made them. But, more importantly, **we, the data scientists, may not be the domain experts**. In this example, the domain experts are the HR and legal departments. We need to engage them to validate our decisions. Documenting to this level of detail **invites a dicussion with the domain experts to validate the decisions**.
 {: .notice}
 
-
 [This is the reworked notebook](https://github.com/fau-masters-collected-works-cgarbin/writing-good-jupyter-notebooks/blob/master/salary-discrimination-by-gender-step-3.ipynb).
 
 ## Step 4 - Make the code more flexible and more difficult to break
@@ -146,7 +145,7 @@ In this step, we make the graphs easier to read.
 
 First, we add transparency when plotting multiple variables on the same graph.
 
-This is the [pairplot ](https://seaborn.pydata.org/generated/seaborn.pairplot.html) from the previous step, without transparency:
+This is the [pairplot](https://seaborn.pydata.org/generated/seaborn.pairplot.html) from the previous step, without transparency:
 
 ![Step 5 - Pairplot without transparency](/images/2022-09-19/step-5.1.drawio.png){: .align-center style="width:66%;"}
 

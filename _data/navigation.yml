@@ -13,6 +13,12 @@ main:
   # - title: 'Sitemap'
   #   url: /sitemap/
 
+sidebar-2023-11-05:
+  - title: "More..."
+    children:
+      - title: '<i class="fas fa-code" style="color:blue""></i> Code for this article'
+        url: https://github.com/fau-masters-collected-works-cgarbin/llm-github-issues
+
 sidebar-2022-09-19:
   - title: "More..."
     children:
