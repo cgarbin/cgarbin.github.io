@@ -25,6 +25,7 @@ Papers and articles where I'm the main author:
 
 Papers and articles where I'm a collaborator:
 
+- [Automated patient localization in challenging hospital environments](https://link.springer.com/article/10.1007/s11042-024-18118-x).
 - [Deep learning for edge devices](https://ieeexplore.ieee.org/abstract/document/10190244).
 - [On the use of colormaps in the context of post-hoc explainable AI methods](https://cdn.ymaws.com/siim.org/resource/resmgr/siim2022/documents/abstract/2009/2009_-_marques,___on_the_use.pdf), an [abstract session in SIIM 2022](https://siim.org/page/22m_2009).
 - IEEE ICMLA data science tutorial [notebooks](https://github.com/fau-masters-collected-works-cgarbin/ieee-icmla-2019-data-science-tutorial), the practical part of [Dr. Marques'](https://www.ogemarques.com/) [The Data Science landscape: foundations, tools, and practical applications](https://www.icmla-conference.org/icmla19/links/tutorialAM.htm) session.
