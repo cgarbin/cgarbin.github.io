@@ -13,7 +13,7 @@ Transformers are (deservedly so) a hot topic in machine learning.
 
 If you are new to transformers, the resources in this article will help you understand their fundamentals and applications. It will take about one morning (four hours, give or take) to go through all items.
 
-I created the list after spending much longer than one morning wading through a large number of articles and videos. I lost time going around in circles, wasting time with superficial sources, or stumbling in articles that were too deep for my level when I first encountered them but were great once I was more prepared.
+I created the list after spending much longer than one morning wading through many articles and videos. I lost time going around in circles, wasting time with superficial sources, or stumbling on articles that were too deep for my level when I first encountered them but were great once I was more prepared.
 
 This list is organized in a logical sequence, building up the knowledge from the first principles, then going deeper into the details. They are the videos and articles that helped me the most. I hope they help you as well.
 
@@ -34,7 +34,7 @@ The second hour is about understanding the key concepts in the paper with Rasa's
 - [Rasa Algorithm Whiteboard - Transformers & Attention 3: Multi Head Attention <i class="fab fa-youtube" aria-hidden="true"></i>](https://www.youtube.com/watch?v=23XUv0T9L5c) (11 minutes): Using a phrase as an example, it explains why we need more than one attention head to understand the context where words are used (**multi-head attention**). The fact that the attention heads are independent is a crucial concept in transformers. It allows matrix operations for each head to run in parallel, significantly speeding up the training process.
 - [Rasa Algorithm Whiteboard: Transformers & Attention 4 - Transformers <i class="fab fa-youtube" aria-hidden="true"></i>](https://www.youtube.com/watch?v=EXNBy8G43MM)(15 minutes):  With the foundational concepts explained, this video covers the pictures in the "Attention is All You Need" paper that make up the **transformer architecture**. The new concept introduced here is **positional encoding**. It ends by highlighting how the transformer architecture lends itself to **parallelization** in ways other attention architectures cannot.
 
-We just finished the second hour of the morning understanding transformers. Rasa's videos are a great introduction but are still informal. That's not a bug. It's a feature. They introduce the key concepts in simple terms, making them easy to follow.
+We just finished the second hour of the morning's understanding transformers. Rasa's videos are a great introduction but are still informal. That's not a bug -- it's a feature. They introduce the key concepts in simple terms, making them easy to follow.
 
 ## Hour 3 - Digging into details
 
@@ -59,16 +59,16 @@ These are other articles and videos that helped me understand transformers. Some
 - [Transformers from Scratch](https://e2eml.school/transformers.html) (same title, different article) takes more time than other articles to explain one-hot encoding, dot product, and matrix multiplication, among others, with illustrations. By the time it gets to "attention as matrix multiplication", it's easier to understand the math. This post can be a good refresher if you are rusty on the math side of machine learning.
 - [Transformer model for language understanding](https://www.tensorflow.org/text/tutorials/transformer) is TensorFlow's official implementation of the paper. It is not as annotated as the PyTorch code in [The Annotated Transformer](http://nlp.seas.harvard.edu/annotated-transformer/), but still helpful if you are in a TensorFlow shop.
 - [The Transformer Model in Equations](https://johnthickstun.com/docs/transformers.pdf) is exactly what the name says, transformers as mathematical operations. The "Discussion" section is an insightful explanation of the equations, valuable even if you don't have a strong math background (like me).
-- [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) is an often-cited source for understanding transformers. It is a good source if someone has time to read only one article beyond the paper.
+- [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) is an often-cited source for understanding transformers. It is a good source if someone can read only one article beyond the paper.
 
-For a sense of history, these are two papers highly cited as works that led us to the transformer architecture.
+For a sense of history, these two papers are highly cited as works that led to the transformer architecture.
 
 - [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473) is the paper credited with introducing the "attention" mechanism.
 - [Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/abs/1508.04025) builds on the previous paper, introducing other important concepts, including dot-product attention. This [official Tensorflow notebook](https://www.tensorflow.org/text/tutorials/nmt_with_attention) implements a Spanish-to-English translation based on the paper.
 
 Finally, [Attention is all you need; Attentional Neural Network Models <i class="fab fa-youtube" aria-hidden="true"></i>](https://www.youtube.com/watch?v=rBCqOTEfxvg) is a talk by Łukasz Kaiser, one of the [paper's](https://arxiv.org/abs/1706.03762) authors. He builds up the solution, starting with how natural language translation used to be solved in the past, the limitations, and how transformers solve them. So far, it's what I would expect from one of the authors. What makes this video interesting to me is how humble Łukasz is. He explains the trials and errors and, at one point, how they had to ask for help to train the model they created.
 
-Reading a scientific paper makes it look like a linear story from problem to solution ("we had an idea and implemented it"). Watching Łukasz talk helps understand how these great solutions don't arrive out of thin air. Researchers build on top of previous work, try many variations, make mistakes, and ask for help to complete their work. Then they write the paper…
+Reading a scientific paper makes it look like a linear story from problem to solution ("we had an idea and implemented it"). Watching Łukasz talk helps us understand how these great solutions don't arrive out of thin air. Researchers build on top of previous work, try many variations, make mistakes, and ask for help to complete their work. Then they write the paper…
 
 ----
 
