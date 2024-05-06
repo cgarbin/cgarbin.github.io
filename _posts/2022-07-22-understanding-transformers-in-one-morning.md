@@ -2,6 +2,7 @@
 title:  "Understanding transformers in one morning"
 excerpt: "Transformers: from zero to hero in one morning (or at least know enough to discuss transformers intelligently and apply them to your projects)."
 date:   2022-07-22
+last_modified_at: 2024-05-06
 tags: [machine-learning, natural-language-processing, nlp, transformers]
 toc: true
 sidebar:
@@ -60,6 +61,7 @@ These are other articles and videos that helped me understand transformers. Some
 - [Transformer model for language understanding](https://www.tensorflow.org/text/tutorials/transformer) is TensorFlow's official implementation of the paper. It is not as annotated as the PyTorch code in [The Annotated Transformer](http://nlp.seas.harvard.edu/annotated-transformer/), but still helpful if you are in a TensorFlow shop.
 - [The Transformer Model in Equations](https://johnthickstun.com/docs/transformers.pdf) is exactly what the name says, transformers as mathematical operations. The "Discussion" section is an insightful explanation of the equations, valuable even if you don't have a strong math background (like me).
 - [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) is an often-cited source for understanding transformers. It is a good source if someone can read only one article beyond the paper.
+- Andrej Karpathy's [Let's build GPT: from scratch, in code, spelled out  <i class="fab fa-youtube" aria-hidden="true"></i>](https://www.youtube.com/watch?v=kCc8FmEb1nY) walks through the code to build a transformer model from scratch. At just under two hours, it's the best investment of time at the code level I have found. Andrej is a great teacher and knows what he is talking about.
 
 For a sense of history, these two papers are highly cited as works that led to the transformer architecture.
 
