@@ -185,3 +185,8 @@ In the experiments we conducted here we used a relatively small set of images fo
 ## Code
 
 See instructions [here](https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/running-the-code.md) to prepare the environment and run the code.
+
+## More on explainability and interpretability
+
+- There are other methods to explain and interpret models with feature attribution. See [this post]({% post_url 2021-04-26-machine-learning-interpretability-feature-attribution %}) for a brief overview.
+- See [this section](https://cgarbin.github.io/machine-learning-interpretability-feature-attribution/#shapley-values) for a detailed explanation of Shapley values.

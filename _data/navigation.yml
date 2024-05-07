@@ -68,6 +68,8 @@ sidebar-2021-04-25:
         url: /machine-learning-interpretability-feature-attribution
       - title: '<i class="fas fa-book-open" style="color:blue"></i> Explainability: end-users considerations'
         url: /explainability-user-considerations
+      - title: '<i class="fas fa-book-open" style="color:blue"></i> Shapley values'
+        url: https://cgarbin.github.io/machine-learning-interpretability-feature-attribution/#shapley-values
       - title: '<i class="fas fa-code" style="color:blue""></i> Code for this article'
         url: https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/running-the-code.md
 
