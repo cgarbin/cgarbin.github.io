@@ -47,7 +47,7 @@ How to turn that "read" advice into "write" advice:
 1. **Choose a title that communicates the paper's main point**. Don't try to be clever. The title should be clear and concise. It should tell the reader what the paper is about.
 1. **Write a short, to the point abstract**. This is the first opportunity to motivate the reader. A good abstract explains the research problem, why it is important to work on it, the challenges, and the main results in a few sentences. Note that these are fundamental questions. You may not be ready to write the paper if you can't answer them.
 1. **Write a clear introduction that sets the stage for the rest of the paper**. Use it to entice the reader to keep reading. The introduction should cover the same items as the abstract but in more detail.
-1. **Choose section and subsection titles that tell a story**. The section titles for scientific papers often follow a rigid structure (introduction, related work, methodology, results, discussion, conclusion). However, we have more freedom for the subsections. Use precise and concise titles that tell the reader what to expect. For example, "Approach 1" and "Approach 2" are not good subsection titles. "Approach 1: Using a neural network" and "Approach 2: Using a decision tree" are better.
+1. **Choose section and subsection titles that tell a story**. The section titles for scientific papers often follow a rigid structure (introduction, related work, methodology, results, discussion, conclusion). However, we have more freedom for the subsections. Use precise and concise titles that tell the reader what to expect. For example, "Approach 1" and "Approach 2" are not good subsection titles. Better titles to help pique the reader's interest are "Approach 1: Using a neural network" and "Approach 2: Using a decision tree".
 
 Here are a few lessons that took me a while to learn:
 
@@ -75,7 +75,7 @@ How to turn that "read" advice into "write" advice:
 
 1. **Don't rely on text alone to convey your ideas**. Support the text with figures, tables, and diagrams.
    1. Chris Olah's blog has superb examples of figures and diagrams supporting the text explanations, such as [the one on how LSTM works](https://colah.github.io/posts/2015-08-Understanding-LSTMs/).
-1. **Use detailed captions for figures, tables, and diagrams**. Assume the reader will read only the captions and none of the paper's text. The captions should be self-contained and explain the main points. "Results for approach 1" is a bad caption. "Result from experiments for approach 1, using neural networks to solve the problem. The graph shows it performs well in the first ten epochs, then overfits. This problem sparked the idea for approach 2 (figure 2)." is a better caption.
+1. **Use detailed captions for figures, tables, and diagrams**. Assume the reader will read only the captions and none of the paper's text. The captions should be self-contained and explain the main points. "Results for approach 1" is a bad caption. A better caption to keep the reader engaged is "Result from experiments for approach 1, using neural networks to solve the problem. The graph shows it performs well in the first ten epochs, then overfits. This problem sparked the idea for approach 2 (figure 2)."
 1. **Avoid trivial mistakes that undermine the paper's credibility**. Trivial mistakes indicate sloppiness and make the reader doubt the paper's results.
    1. Make sure that the axes are properly labeled, that the figures have legends, and that the color schemes are clear and accessible (a [list of common errors and how to fix them](https://nickch-k.github.io/DataCommSlides/Easy_Mistakes_to_Avoid.html)).
    1. Carefully review table columns and row labels.
@@ -98,7 +98,7 @@ The main point of the third pass is to convince the user that the paper's result
 How to turn that "read" advice into "write" advice:
 
 1. **Ensure that the results are statistically significant**. Use error bars, p-values, or other statistical measures to show that the results are not due to chance.
-1. **Perform [ablation studies](https://en.wikipedia.org/wiki/Ablation_(artificial_intelligence))** to show the impact of different components of your approach and to prove that the results come from your approach, not to other factors.
+1. **Perform [ablation studies](https://en.wikipedia.org/wiki/Ablation_(artificial_intelligence))** to show the impact of different components of your approach and to prove that the results come from your approach, not other factors.
 
 Here are a few lessons that that took me a while to learn:
 
