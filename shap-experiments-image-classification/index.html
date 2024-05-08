@@ -1,0 +1,850 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Exploring SHAP explanations for image classification - Christian Garbin’s personal blog</title>
+<meta name="description" content="How to interpret predictions of an image classification neural network using SHAP.">
+
+
+  <meta name="author" content="Christian Garbin">
+  
+  <meta property="article:author" content="Christian Garbin">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Christian Garbin's personal blog">
+<meta property="og:title" content="Exploring SHAP explanations for image classification">
+<meta property="og:url" content="https://cgarbin.github.io/shap-experiments-image-classification/">
+
+
+  <meta property="og:description" content="How to interpret predictions of an image classification neural network using SHAP.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-04-25T00:00:00-04:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://cgarbin.github.io/shap-experiments-image-classification/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Christian Garbin",
+      "url": "https://cgarbin.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Christian Garbin's personal blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Christian Garbin's personal blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://cgarbin.github.io/" itemprop="url">Christian Garbin</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am a software engineer at <a href="https://www.mathworks.com/">MathWorks</a> and a Ph.D. candidate at <a href="https://www.fau.edu/">Florida Atlantic University</a>, focusing on machine learning <a href="https://cgarbin.github.io/about/">(more…)</a></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">More...</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/machine-learning-interpretability-feature-attribution"><i class="fas fa-book-open" style="color:blue"></i> Machine learning interpretability with feature attribution</a></li>
+          
+            <li><a href="/explainability-user-considerations"><i class="fas fa-book-open" style="color:blue"></i> Explainability: end-users considerations</a></li>
+          
+            <li><a href="https://cgarbin.github.io/machine-learning-interpretability-feature-attribution/#shapley-values"><i class="fas fa-book-open" style="color:blue"></i> Shapley values</a></li>
+          
+            <li><a href="https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/running-the-code.md"><i class="fas fa-code" style="color:blue""></i> Code for this article</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Exploring SHAP explanations for image classification">
+    <meta itemprop="description" content="How to interpret predictions of an image classification neural network using SHAP.">
+    <meta itemprop="datePublished" content="2021-04-25T00:00:00-04:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://cgarbin.github.io/shap-experiments-image-classification/" class="u-url" itemprop="url">Exploring SHAP explanations for image classification
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          10 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#why-use-shap-instead-of-another-method">Why use SHAP instead of another method?</a></li><li><a href="#overview-of-shap-feature-attribution-for-image-classification">Overview of SHAP feature attribution for image classification</a><ul><li><a href="#how-shap-works">How SHAP works</a></li><li><a href="#visualizing-shap-attributions">Visualizing SHAP attributions</a></li></ul></li><li><a href="#experiments">Experiments</a><ul><li><a href="#an-important-caveat">An important caveat</a></li></ul></li><li><a href="#some-results-from-the-experiments">Some results from the experiments</a><ul><li><a href="#accurate-network">Accurate network</a></li><li><a href="#inaccurate-network">Inaccurate network</a></li><li><a href="#aggregate-attributions-for-accurate-vs-inaccurate-networks">Aggregate attributions for accurate vs. inaccurate networks</a></li></ul></li><li><a href="#limitations-of-these-experiments">Limitations of these experiments</a></li><li><a href="#code">Code</a></li><li><a href="#more-on-explainability-and-interpretability">More on explainability and interpretability</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>This article explores how to interpret predictions of an image classification neural network using <a href="https://arxiv.org/abs/1705.07874">SHAP (SHapley Additive exPlanations)</a>.</p>
+
+<p>The goals of the experiments are to:</p>
+
+<ol>
+  <li>Explore how SHAP explains the predictions. This experiment uses a (fairly) accurate network to understand how SHAP attributes the predictions.</li>
+  <li>Explore how SHAP behaves with inaccurate predictions. This experiment uses a network with lower accuracy and prediction probabilities that are less robust (more spread among the classes) to understand how SHAP behaves when the predictions are not reliable (a hat tip to <a href="https://arxiv.org/abs/1811.10154">Dr. Rudin’s work</a>).</li>
+</ol>
+
+<!--more-->
+
+<h2 id="why-use-shap-instead-of-another-method">Why use SHAP instead of another method?</h2>
+
+<p>This project is my first opportunity to delve into model interpretability at the code level. I picked <a href="https://arxiv.org/abs/1705.07874">SHAP (SHapley Additive exPlanations)</a> to get started because of <a href="https://github.com/slundberg/shap#methods-unified-by-shap">its promise to unify various methods</a> (emphasis ours):</p>
+
+<blockquote>
+  <p>“…various methods have recently been proposed to help users interpret the predictions of complex models, but it is often unclear how these methods are related and when one method is preferable over another. To address this problem, <b>we present a unified framework for interpreting predictions</b>, SHAP (SHapley Additive exPlanations). SHAP assigns each feature an importance value for a particular prediction. Its novel components include: (1) the identification of a new class of additive feature importance measures. … The new class unifies six existing methods, …”</p>
+</blockquote>
+
+<h2 id="overview-of-shap-feature-attribution-for-image-classification">Overview of SHAP feature attribution for image classification</h2>
+
+<h3 id="how-shap-works">How SHAP works</h3>
+
+<p>SHAP is based on <a href="https://en.wikipedia.org/wiki/Shapley_value">Shapley value</a>, a method to calculate the contributions of each player to the outcome of a game. See <a href="https://cgarbin.github.io/machine-learning-interpretability-feature-attribution/#shapley-values">this article</a> for a simple, illustrated example of how to calculate the Shapley value and <a href="https://towardsdatascience.com/shap-explained-the-way-i-wish-someone-explained-it-to-me-ab81cc69ef30">this article by Samuelle Mazzanti</a> for a more detailed explanation.</p>
+
+<p>The Shapley value is calculated with all possible combinations of players. Given N players, it has to calculate outcomes for 2^N combinations of players. In the case of machine learning, the “players” are the features (e.g. pixels in an image) and the “outcome of a game” is the model’s prediction. Calculating the contribution of each feature is not feasible for large numbers of N. For example, for images, N is the number of pixels.</p>
+
+<p>Therefore, SHAP does not attempt to calculate the actual Shapley value. Instead, it uses sampling and approximations to calculate the SHAP value. See <a href="https://arxiv.org/abs/1705.07874">chapter 4 of the SHAP paper for details</a>.</p>
+
+<h3 id="visualizing-shap-attributions">Visualizing SHAP attributions</h3>
+
+<p>SHAP uses colors to explain attributions:</p>
+
+<ul>
+  <li>Red pixels increase the probability of a class being predicted</li>
+  <li>Blue pixels decrease the probability of a class being predicted</li>
+</ul>
+
+<p>The following picture and text come from the <a href="https://github.com/slundberg/shap#deep-learning-example-with-deepexplainer-tensorflowkeras-models">SHAP README</a>.</p>
+
+<p><img src="/images/2021-04-25/example-from-shap-readme.png" alt="SHAP example" /></p>
+
+<blockquote>
+  <p>“The plot above explains ten outputs (digits 0-9) for four different images. Red pixels increase the model’s output while blue pixels decrease the output. The input images are shown on the left, and as nearly transparent grayscale backings behind each explanation. The sum of the SHAP values equals the difference between the expected model output (averaged over the background dataset) and the current model output. Note that for the ‘zero’ image the blank middle is important, while for the ‘four’ image the lack of a connection on top makes it a four instead of a nine.”</p>
+</blockquote>
+
+<p>This is an essential part of the explanation: <em>“Note that for the ‘zero’ image the blank middle is important, while for the ‘four’ image the lack of a connection on top makes it a four instead of a nine.”</em> In other words, it’s not only what is present that is important to decide what digit an image is, but also <strong><em>what is absent</em></strong>.</p>
+
+<h2 id="experiments">Experiments</h2>
+
+<p>This <a href="https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/shap-experiments-image-classification.ipynb">Jupyter notebook</a> shows how to use SHAP’s DeepExplainer to visualize feature attribution in image classification with neural networks. See the <a href="https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/running-the-code.md">instructions to run the code</a> for more details.</p>
+
+<p>SHAP has multiple explainers. The notebook uses the DeepExplainer explainer because it is the one used in <a href="https://shap.readthedocs.io/en/latest/image_examples.html">the image classification SHAP sample code</a>.</p>
+
+<p>The code is based on the <a href="https://shap.readthedocs.io/en/stable/example_notebooks/image_examples/image_classification/PyTorch%20Deep%20Explainer%20MNIST%20example.html">SHAP MNIST example</a>, available as a Jupyter notebook <a href="https://github.com/slundberg/shap/blob/master/notebooks/image_examples/image_classification/PyTorch%20Deep%20Explainer%20MNIST%20example.ipynb">on GitHub</a>. This notebook uses the PyTorch sample code because at this time (April 2021), SHAP does not support TensorFlow 2.0. <a href="https://github.com/slundberg/shap/issues/850">This GitHub issue</a> tracks the work to support TensorFlow 2.0 in SHAP.</p>
+
+<p>The experiments are as follows:</p>
+
+<ol>
+  <li>Train a CNN to classify the MNIST dataset.</li>
+  <li>Show the feature attributions for a subset of the training set using SHAP DeepExplainer.</li>
+  <li>Review and annotate some of the attributions to better understand what they reveal about the model and the explanation itself.</li>
+  <li>Repeat the steps above with the CNN that is significantly less accurate.</li>
+</ol>
+
+<h3 id="an-important-caveat">An important caveat</h3>
+
+<blockquote>
+  <p><strong>“Explanations must be wrong.”</strong></p>
+</blockquote>
+
+<p class="small"><cite>Cynthia Rudin</cite> — <a href="https://arxiv.org/abs/1811.10154">Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead</a></p>
+
+<p>As we are going through the exploration of the feature attributions, we must keep in my mind that we are analyzing two items at the same time:</p>
+
+<ol>
+  <li>What the model predicted.</li>
+  <li>How the feature attribution explainer <em>approximates</em> what the model considers to make the prediction.</li>
+</ol>
+
+<p>The explainer <em>approximates</em> the model and sometimes (as in this case) also uses an approximation of the input. Therefore, some of the attributions that may not make much sense may result from these approximations, not necessarily the model’s behavior.</p>
+
+<p class="notice--warning">Therefore, <strong>never mistake the explanation for the actual behavior of the model</strong>. This is a critical conceptual limitation to keep in mind.</p>
+
+<p>See more on <a href="/machine-learning-interpretability-feature-attribution/">this post about feature attribution</a>.</p>
+
+<h2 id="some-results-from-the-experiments">Some results from the experiments</h2>
+
+<p>This section explores some of the feature attributions resulting from the experiments (see the <a href="https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/shap-experiments-image-classification.ipynb">notebook</a>).</p>
+
+<p>Before reading further: this is my first foray into the details of feature attribution with SHAP (or any other method). Some of the items reported below are questions I need to investigate further to understand better how feature attribution in general, and SHAP in particular, work.</p>
+
+<p>Some candidates for research questions are noted in the explanations.</p>
+
+<h3 id="accurate-network">Accurate network</h3>
+
+<p>This section explores feature attribution using the (fairly) accurate network. This network achieves 97% overall accuracy.</p>
+
+<p>Each picture below shows these pieces of information:</p>
+
+<ul>
+  <li>The leftmost digit is the example from the MNIST dataset that the network predicted. The text at the top of the picture shows the actual and predicted values. The predicted value is the largest of all probabilities (without applying a threshold).</li>
+  <li>Following that digit, there are ten digits, one for each class (from left to right: zero to nine), with the feature attributions overlaid on each digit. The text at the top shows the probability that the network assigned for that class.</li>
+</ul>
+
+<p>Some of the feature attributions are easy to interpret. For example, this is the attribution for a digit “1”.</p>
+
+<p><img src="/images/2021-04-25/accurate-digit-1.png" alt="SHAP attributions for digit 1" /></p>
+
+<p>We can see that the presence of the vertical pixels at the center of the image increases the probability of predicting a digit “1”, as we would expect. The absence of pixels around that vertical line also increases the probability.</p>
+
+<p>The two examples for the digit “8” below are also easy to interpret. We can see that the blank space in the top loop and the blank spaces on both sides of the middle part of the image are important to define an “8”.</p>
+
+<p><img src="/images/2021-04-25/accurate-digit-8-1.png" alt="SHAP attributions for digit 8" /></p>
+
+<p><img src="/images/2021-04-25/accurate-digit-8-2.png" alt="SHAP attributions for digit 8" /></p>
+
+<p>In the two examples for the digit “2” below, on the other hand, the first one is easy to interpret, but the attributions for the second make less sense. While reviewing them, note that the scale for the SHAP values is different for each example. The range of values in the second example is an order of magnitude larger. It does not affect a comparative analysis but it may be important in other cases to note the scale before judging the attributions.</p>
+
+<p>In the first example we can see which pixels are more relevant (red) to predict the digit “2”. We can also see what pixels were used to reduce the probability of predicting the digit “7” (blue), the second-highest predicted probability.</p>
+
+<p>In the second picture, the more salient attributions are on the second-highest probability, the digit “7”. It’s almost as if the network “worked harder” to reject that digit than to predict the digit “2”. Although the probability of the digit “7” is higher in this second example (compared to the digit “7” in the first example), it’s still far away from the probability assigned to the digit “2”.</p>
+
+<p class="notice--info"><strong>RESEARCH QUESTION 1</strong>: What causes SHAP sometimes to highlight the attributions of a class that was not assigned the highest probability?</p>
+
+<p><img src="/images/2021-04-25/accurate-digit-2-1.png" alt="SHAP attributions for digit 2" /></p>
+
+<p><img src="/images/2021-04-25/accurate-digit-2-2.png" alt="SHAP attributions for digit 2" /></p>
+
+<h3 id="inaccurate-network">Inaccurate network</h3>
+
+<p>This section explores feature attribution using the inaccurate network. This network achieves 87% overall accuracy. Besides the low overall accuracy, each prediction has a larger probability spread. In some cases, the difference between the largest and the second-largest probability is very small, as we will soon see.</p>
+
+<p>In the example for the digit “0” below, the network incorrectly predicted it as “5”. But it didn’t miss by much. The difference in probability between “5” (incorrect) and “0” (correct) is barely 1%. Also, the two probabilities add up to 54%. In other words, the two top probabilities add up to about half of the total probability. The prediction for this example is not only wrong but uncertain across several classes (labels).</p>
+
+<p>SHAP still does what we ask: shows the feature attributions for each class. For the three classes with the highest probability, we can see that:</p>
+
+<ul>
+  <li>Digit “0”: The empty middle is the important part, as we have seen in other cases for this digit.</li>
+  <li>Digit “8”: The top and bottom parts look like the top and bottom loops of the digit “8”, resulting in the red areas we see in the attribution. The empty middle is now a detractor for this class (blue). An actual digit “8” would have something here, where the bottom and top loops meet.</li>
+  <li>Digit “5”: Left this one for last because it is the one with the highest probability (but not by much) and also the one hardest to explain. It is almost as if just a few pixels (in red) were enough to assign a probability higher than the correct digit “0”.</li>
+</ul>
+
+<p><img src="/images/2021-04-25/inaccurate-digit-0.png" alt="SHAP attributions for digit 0" /></p>
+
+<p>This example shows an important concept about explanations for black-box models: they explain what the model is predicting, but they do not attempt to explain if the predictions are correct.</p>
+
+<p>Hence the call to <a href="https://arxiv.org/abs/1811.10154">stop explaining black-box models</a> (at least for some applications). But this is a story for another day…</p>
+
+<h3 id="aggregate-attributions-for-accurate-vs-inaccurate-networks">Aggregate attributions for accurate vs. inaccurate networks</h3>
+
+<p>Instead of plotting attributions one by one, as we saw in the previous examples, SHAP can also plot multiple images in the same plot. One advantage of this plot is that all images share the same SHAP scale.</p>
+
+<p>The plots below show all the attributions for all test digits. The accurate network is on the left and the inaccurate network is on the right.</p>
+
+<p>In the plot for the accurate network we can see that all samples have at least one class (digit) with favorable attributions (red). The plot is dotted with red areas. In the inaccurate network we don’t see the same pattern. The plot is mainly gray.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Accurate</th>
+      <th>Inaccurate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="/images/2021-04-25/accurate-all.png" alt="Accurate" /></td>
+      <td><img src="/images/2021-04-25/inaccurate-all.png" alt="Inaccurate" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="notice--info"><strong>RESEARCH QUESTION 2</strong>: Given this pattern, is it possible to use the distribution of attributions across samples to determine if a network is accurate (or not)? In other words, if all we have is the feature attributions for a reasonable number of cases but don’t have the actual vs. predicted labels, could we use that to determine whether a network is accurate (or not)?</p>
+
+<h2 id="limitations-of-these-experiments">Limitations of these experiments</h2>
+
+<p>SHAP attributes features based on a baseline input. This is this line of code in the Jupyter notebook:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">expl</span> <span class="o">=</span> <span class="n">shap</span><span class="p">.</span><span class="n">DeepExplainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">background_images</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The baseline images are extracted from the test set here:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">images</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">test_loader</span><span class="p">))</span>
+<span class="p">...</span>
+<span class="n">BACKGROUND_SIZE</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">background_images</span> <span class="o">=</span> <span class="n">images</span><span class="p">[:</span><span class="n">BACKGROUND_SIZE</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>The choice of baseline images can significantly affect the SHAP results (the results of any method that relies on baseline images, to be precise), as demonstrated in <a href="https://distill.pub/2020/attribution-baselines/">Visualizing the Impact of Feature Attribution Baseline</a>.</p>
+
+<p>In the experiments we conducted here we used a relatively small set of images for the baseline and we didn’t attempt to get an equal distribution of the digits in that baseline (other than a simple manual check of distributions - see the notebook).</p>
+
+<p class="notice--info"><strong>RESEARCH QUESTION 3</strong>: Would a larger number of baseline images, with equal distribution of digits, significantly affect the results? More generically, what is a reasonable number of baseline images to start trusting the results?</p>
+
+<h2 id="code">Code</h2>
+
+<p>See instructions <a href="https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification/blob/master/running-the-code.md">here</a> to prepare the environment and run the code.</p>
+
+<h2 id="more-on-explainability-and-interpretability">More on explainability and interpretability</h2>
+
+<ul>
+  <li>There are other methods to explain and interpret models with feature attribution. See <a href="/machine-learning-interpretability-feature-attribution/">this post</a> for a brief overview.</li>
+  <li>See <a href="https://cgarbin.github.io/machine-learning-interpretability-feature-attribution/#shapley-values">this section</a> for a detailed explanation of Shapley values.</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/computer-vision" class="page__taxonomy-item p-category" rel="tag">computer-vision</a><span class="sep">, </span>
+    
+      <a href="/tags/explainability" class="page__taxonomy-item p-category" rel="tag">explainability</a><span class="sep">, </span>
+    
+      <a href="/tags/image-classification" class="page__taxonomy-item p-category" rel="tag">image-classification</a><span class="sep">, </span>
+    
+      <a href="/tags/interpretability" class="page__taxonomy-item p-category" rel="tag">interpretability</a><span class="sep">, </span>
+    
+      <a href="/tags/machine-learning" class="page__taxonomy-item p-category" rel="tag">machine-learning</a><span class="sep">, </span>
+    
+      <a href="/tags/shap" class="page__taxonomy-item p-category" rel="tag">shap</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-04-25T00:00:00-04:00">April 25, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Exploring+SHAP+explanations+for+image+classification%20https%3A%2F%2Fcgarbin.github.io%2Fshap-experiments-image-classification%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fcgarbin.github.io%2Fshap-experiments-image-classification%2F&title=Exploring SHAP explanations for image classification" class="btn  btn--reddit" title="Share on Reddit"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcgarbin.github.io%2Fshap-experiments-image-classification%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/machine-learning-but-not-understanding/" class="pagination--pager" title="Machine learning, but not understanding
+">Previous</a>
+    
+    
+      <a href="/deep-learning-for-image-processing-overview/" class="pagination--pager" title="An overview of deep learning for image processing
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/how-to-read-and-write-a-paper/" rel="permalink">Improve writing by learning how to read
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Turn the advice in “How to Read a Paper” around to write a good paper.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/using-llms-for-summarization/" rel="permalink">Using LLMs to summarize GitHub issues
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          16 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A learning exercise on using large language models (LLMs) for summarization. It uses GitHub issues as a practical use case that we can relate to.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/writing-good-jupyter-notebooks/" rel="permalink">Writing good Jupyter notebooks
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How to write well-structured, understandable, flexible, and resilient Jupyter notebooks.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/vision-transformers-properties/" rel="permalink">Vision transformer properties
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Vision transformers are not just a replacement for CNNs and RNNs. They have some interesting properties.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 Christian Garbin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

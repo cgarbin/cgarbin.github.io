@@ -1,0 +1,714 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Understanding transformers in one morning - Christian Garbin’s personal blog</title>
+<meta name="description" content="Transformers: from zero to hero in one morning (or at least know enough to discuss transformers intelligently and apply them to your projects).">
+
+
+  <meta name="author" content="Christian Garbin">
+  
+  <meta property="article:author" content="Christian Garbin">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Christian Garbin's personal blog">
+<meta property="og:title" content="Understanding transformers in one morning">
+<meta property="og:url" content="https://cgarbin.github.io/understanding-transformers-in-one-morning/">
+
+
+  <meta property="og:description" content="Transformers: from zero to hero in one morning (or at least know enough to discuss transformers intelligently and apply them to your projects).">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-07-22T00:00:00-04:00">
+
+
+
+  <meta property="article:modified_time" content="2024-05-06T00:00:00-04:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://cgarbin.github.io/understanding-transformers-in-one-morning/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Christian Garbin",
+      "url": "https://cgarbin.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Christian Garbin's personal blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Christian Garbin's personal blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://cgarbin.github.io/" itemprop="url">Christian Garbin</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am a software engineer at <a href="https://www.mathworks.com/">MathWorks</a> and a Ph.D. candidate at <a href="https://www.fau.edu/">Florida Atlantic University</a>, focusing on machine learning <a href="https://cgarbin.github.io/about/">(more…)</a></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">More...</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/transformers-in-computer-vision"><i class="fas fa-book-open" style="color:blue"></i> Transformers in computer vision</a></li>
+          
+            <li><a href="/vision-transformers-properties"><i class="fas fa-book-open" style="color:blue"></i> Vision transformer properties</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Understanding transformers in one morning">
+    <meta itemprop="description" content="Transformers: from zero to hero in one morning (or at least know enough to discuss transformers intelligently and apply them to your projects).">
+    <meta itemprop="datePublished" content="2022-07-22T00:00:00-04:00">
+    <meta itemprop="dateModified" content="2024-05-06T00:00:00-04:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://cgarbin.github.io/understanding-transformers-in-one-morning/" class="u-url" itemprop="url">Understanding transformers in one morning
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#hour-1---the-paper">Hour 1 - The paper</a></li><li><a href="#hour-2---key-concepts">Hour 2 - Key concepts</a></li><li><a href="#hour-3---digging-into-details">Hour 3 - Digging into details</a></li><li><a href="#hour-4---pick-your-adventure">Hour 4 - Pick your adventure</a></li><li><a href="#where-to-go-from-here">Where to go from here</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Transformers are (deservedly so) a hot topic in machine learning.</p>
+
+<p>If you are new to transformers, the resources in this article will help you understand their fundamentals and applications. It will take about one morning (four hours, give or take) to go through all items.</p>
+
+<p>I created the list after spending much longer than one morning wading through many articles and videos. I lost time going around in circles, wasting time with superficial sources, or stumbling on articles that were too deep for my level when I first encountered them but were great once I was more prepared.</p>
+
+<p>This list is organized in a logical sequence, building up the knowledge from the first principles, then going deeper into the details. They are the videos and articles that helped me the most. I hope they help you as well.</p>
+
+<!--more-->
+
+<h2 id="hour-1---the-paper">Hour 1 - The paper</h2>
+
+<p>First, read Google AI Research’s blog post <a href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html">Google AI Blog: Transformer: A Novel Neural Network Architecture for Language Understanding</a>. Don’t follow the links; just read the post. Then read the paper <a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a>. Don’t worry about understanding the details at this point. Get familiar with terminology and pictures.</p>
+
+<p>The paper has about 6,000 words. It would take twenty minutes to read at the average reading pace of 300 words per minute. But it’s a scientific paper, so it will take longer. Using the <a href="https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf">three-pass approach</a>, let’s reserve an hour to read it.</p>
+
+<h2 id="hour-2---key-concepts">Hour 2 - Key concepts</h2>
+
+<p>The second hour is about understanding the key concepts in the paper with Rasa’s Algorithm Whiteboard video series.</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=yGTUuEx3GkA&amp;t=4s">Rasa Algorithm Whiteboard - Transformers &amp; Attention 1: Self Attention <i class="fab fa-youtube" aria-hidden="true"></i></a>(14 minutes): Explains <strong>attention</strong> first with a simple example using a time series, then with a text example. The video introduces <strong>word embedding</strong>, a key concept for NLP (natural language processing) models, including transformers. With these concepts explained, it defines <strong>self-attention</strong>.</li>
+  <li><a href="https://www.youtube.com/watch?v=tIvKXrEDMhk">Rasa Algorithm Whiteboard - Transformers &amp; Attention 2: Keys, Values, Queries  <i class="fab fa-youtube" aria-hidden="true"></i></a>(13 minutes): Building on the previous video, it explains <strong>keys, queries, and values</strong>.  First, it explains the operations that make up the <strong>attention layer</strong> conceptually, as a process to add context to a value (you can think of a “value” as a “word” in this context). Since we are trying to create a model, it describes where we need to add trainable parameters (weights). With the concepts and weights in place, it reintroduces the operations as matrix operations that create the stackable <strong>self-attention block</strong>.</li>
+  <li><a href="https://www.youtube.com/watch?v=23XUv0T9L5c">Rasa Algorithm Whiteboard - Transformers &amp; Attention 3: Multi Head Attention <i class="fab fa-youtube" aria-hidden="true"></i></a> (11 minutes): Using a phrase as an example, it explains why we need more than one attention head to understand the context where words are used (<strong>multi-head attention</strong>). The fact that the attention heads are independent is a crucial concept in transformers. It allows matrix operations for each head to run in parallel, significantly speeding up the training process.</li>
+  <li><a href="https://www.youtube.com/watch?v=EXNBy8G43MM">Rasa Algorithm Whiteboard: Transformers &amp; Attention 4 - Transformers <i class="fab fa-youtube" aria-hidden="true"></i></a>(15 minutes):  With the foundational concepts explained, this video covers the pictures in the “Attention is All You Need” paper that make up the <strong>transformer architecture</strong>. The new concept introduced here is <strong>positional encoding</strong>. It ends by highlighting how the transformer architecture lends itself to <strong>parallelization</strong> in ways other attention architectures cannot.</li>
+</ul>
+
+<p>We just finished the second hour of the morning’s understanding transformers. Rasa’s videos are a great introduction but are still informal. That’s not a bug – it’s a feature. They introduce the key concepts in simple terms, making them easy to follow.</p>
+
+<h2 id="hour-3---digging-into-details">Hour 3 - Digging into details</h2>
+
+<p>Now we will switch to a more formal introduction with these two lectures from professor <a href="https://peterbloem.nl/">Peter Bloem</a>, VU University in Amsterdam.</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=KmAISyVvE1Y&amp;list=PLIXJ-Sacf8u60G1TwcznBmK6rEL3gmZmV&amp;index=2">Lecture 12.1 Self-attention <i class="fab fa-youtube" aria-hidden="true"></i></a>(23 minutes): Explains, with the help of illustrations, the matrix operations to calculate self-attention, then moves on to keys, queries, and values. With the basic concepts in place, it explains why we need multi-head attention.</li>
+  <li><a href="https://www.youtube.com/watch?v=oUhGZMCTHtI&amp;list=PLIXJ-Sacf8u60G1TwcznBmK6rEL3gmZmV&amp;index=3">Lecture 12.2 Transformers <i class="fab fa-youtube" aria-hidden="true"></i></a>(18 minutes): Examines the pieces that make up the transformer model in the paper. The pictures from the paper are dissected with some math and code.</li>
+</ul>
+
+<h2 id="hour-4---pick-your-adventure">Hour 4 - Pick your adventure</h2>
+
+<ul>
+  <li>Go wide with <a href="https://sea-adl.org/2019/12/03/lstm-is-dead-long-live-transformers/">LSTM is dead, long live Transformers  <i class="fab fa-youtube" aria-hidden="true"></i></a> (30 minutes): This talk gives a sense of history, explaining how we approached natural language problems in the past, their limitations, and how transformers overcame those limitations. It shows how to implement the transformer calculations with Python code. If you are better at visualizing code than math (like me), this can help you understand the operations.</li>
+  <li>Go deep with <a href="http://nlp.seas.harvard.edu/annotated-transformer/">The Annotated Transformer</a> (30 to 60 minutes to read, hours and hours to experiment):  This article by the Harvard NLP team annotates the transformer paper with modern (as of 2022) PyTorch code. Each section of the paper is supplemented by the code that implements it. Part 3, “A Real World Example”, implements a fully functional German-English translation example using a <a href="https://torchtext.readthedocs.io/en/latest/datasets.html#multi30k">smaller dataset</a> that makes it workable on smaller machines.</li>
+</ul>
+
+<h2 id="where-to-go-from-here">Where to go from here</h2>
+
+<p>It is a good time to reread the paper. It will make more sense now.</p>
+
+<p>These are other articles and videos that helped me understand transformers. Some of them overlap with the ones above, and some are complementary.</p>
+
+<ul>
+  <li>Positional embedding (encoding) is a key concept in understanding transformers. The transformer paper assumes that the reader knows that concept and briefly explains the reasons to use sine and cosine. <a href="https://www.youtube.com/watch?v=1biZfFLPRSY">This video  <i class="fab fa-youtube" aria-hidden="true"></i></a> from <em>AI Coffee Break with Letitia</em> explains in under ten minutes the concepts and the reasons to use sine and cosine.</li>
+  <li><a href="http://peterbloem.nl/blog/transformers">Transformers from scratch</a> is the accompanying blog post to hour 3, “Digging into details.” Professor Bloem describes some concepts explored in the video and adds code to show they are implemented.</li>
+  <li><a href="https://e2eml.school/transformers.html">Transformers from Scratch</a> (same title, different article) takes more time than other articles to explain one-hot encoding, dot product, and matrix multiplication, among others, with illustrations. By the time it gets to “attention as matrix multiplication”, it’s easier to understand the math. This post can be a good refresher if you are rusty on the math side of machine learning.</li>
+  <li><a href="https://www.tensorflow.org/text/tutorials/transformer">Transformer model for language understanding</a> is TensorFlow’s official implementation of the paper. It is not as annotated as the PyTorch code in <a href="http://nlp.seas.harvard.edu/annotated-transformer/">The Annotated Transformer</a>, but still helpful if you are in a TensorFlow shop.</li>
+  <li><a href="https://johnthickstun.com/docs/transformers.pdf">The Transformer Model in Equations</a> is exactly what the name says, transformers as mathematical operations. The “Discussion” section is an insightful explanation of the equations, valuable even if you don’t have a strong math background (like me).</li>
+  <li><a href="https://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a> is an often-cited source for understanding transformers. It is a good source if someone can read only one article beyond the paper.</li>
+  <li>Andrej Karpathy’s <a href="https://www.youtube.com/watch?v=kCc8FmEb1nY">Let’s build GPT: from scratch, in code, spelled out  <i class="fab fa-youtube" aria-hidden="true"></i></a> walks through the code to build a transformer model from scratch. At just under two hours, it’s the best investment of time at the code level I have found. Andrej is a great teacher and knows what he is talking about.</li>
+</ul>
+
+<p>For a sense of history, these two papers are highly cited as works that led to the transformer architecture.</p>
+
+<ul>
+  <li><a href="https://arxiv.org/abs/1409.0473">Neural Machine Translation by Jointly Learning to Align and Translate</a> is the paper credited with introducing the “attention” mechanism.</li>
+  <li><a href="https://arxiv.org/abs/1508.04025">Effective Approaches to Attention-based Neural Machine Translation</a> builds on the previous paper, introducing other important concepts, including dot-product attention. This <a href="https://www.tensorflow.org/text/tutorials/nmt_with_attention">official Tensorflow notebook</a> implements a Spanish-to-English translation based on the paper.</li>
+</ul>
+
+<p>Finally, <a href="https://www.youtube.com/watch?v=rBCqOTEfxvg">Attention is all you need; Attentional Neural Network Models <i class="fab fa-youtube" aria-hidden="true"></i></a> is a talk by Łukasz Kaiser, one of the <a href="https://arxiv.org/abs/1706.03762">paper’s</a> authors. He builds up the solution, starting with how natural language translation used to be solved in the past, the limitations, and how transformers solve them. So far, it’s what I would expect from one of the authors. What makes this video interesting to me is how humble Łukasz is. He explains the trials and errors and, at one point, how they had to ask for help to train the model they created.</p>
+
+<p>Reading a scientific paper makes it look like a linear story from problem to solution (“we had an idea and implemented it”). Watching Łukasz talk helps us understand how these great solutions don’t arrive out of thin air. Researchers build on top of previous work, try many variations, make mistakes, and ask for help to complete their work. Then they write the paper…</p>
+
+<hr />
+
+<p class="small">If your interests are in computer vision, <a href="/vision-transformers-properties/">it turns out transformers work quite well for that too</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/machine-learning" class="page__taxonomy-item p-category" rel="tag">machine-learning</a><span class="sep">, </span>
+    
+      <a href="/tags/natural-language-processing" class="page__taxonomy-item p-category" rel="tag">natural-language-processing</a><span class="sep">, </span>
+    
+      <a href="/tags/nlp" class="page__taxonomy-item p-category" rel="tag">nlp</a><span class="sep">, </span>
+    
+      <a href="/tags/transformers" class="page__taxonomy-item p-category" rel="tag">transformers</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2024-05-06">May 6, 2024</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Understanding+transformers+in+one+morning%20https%3A%2F%2Fcgarbin.github.io%2Funderstanding-transformers-in-one-morning%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fcgarbin.github.io%2Funderstanding-transformers-in-one-morning%2F&title=Understanding transformers in one morning" class="btn  btn--reddit" title="Share on Reddit"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcgarbin.github.io%2Funderstanding-transformers-in-one-morning%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/transformers-in-computer-vision/" class="pagination--pager" title="Applications of transformers in computer vision
+">Previous</a>
+    
+    
+      <a href="/vision-transformers-properties/" class="pagination--pager" title="Vision transformer properties
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/how-to-read-and-write-a-paper/" rel="permalink">Improve writing by learning how to read
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Turn the advice in “How to Read a Paper” around to write a good paper.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/using-llms-for-summarization/" rel="permalink">Using LLMs to summarize GitHub issues
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          16 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A learning exercise on using large language models (LLMs) for summarization. It uses GitHub issues as a practical use case that we can relate to.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/writing-good-jupyter-notebooks/" rel="permalink">Writing good Jupyter notebooks
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How to write well-structured, understandable, flexible, and resilient Jupyter notebooks.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/vision-transformers-properties/" rel="permalink">Vision transformer properties
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Vision transformers are not just a replacement for CNNs and RNNs. They have some interesting properties.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 Christian Garbin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
