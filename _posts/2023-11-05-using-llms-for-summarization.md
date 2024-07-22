@@ -2,7 +2,7 @@
 title:  "Using LLMs to summarize GitHub issues"
 excerpt: "A learning exercise on using large language models (LLMs) for summarization. It uses GitHub issues as a practical use case that we can relate to."
 date:   2023-11-05
-last_modified_at: 2023-11-05
+last_modified_at: 2024-07-21
 tags: [generative-ai, llm, summarization, prompt-engineering]
 toc: true
 sidebar:
@@ -14,6 +14,8 @@ This project is a learning exercise on using large language models (LLMs) for su
 
 The goal is to allow developers to understand what is being reported and discussed in the issues without having to read each message in the thread. We will take the [original GitHub issue with its comments](/images/2023-11-05/github-issue-original.jpg) and generate a summary like [this one](/images/2023-11-05/github-issue-summarized.jpg).
 
+**UPDATE 2024-07-21**: With the [announcement of GPT-4o mini](https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/), there are fewer and fewer reasons to use GPT-3.5 models. I updated the code to use the GPT-4o and GPT-4o mini models and to remove the GPT-4 Turbo models (they are listed under ["older models we support"](https://openai.com/api/pricing/), hinting that they will eventually be removed).
+
 We will review the following topics:
 
 1. How to prepare data to use with an LLM.
@@ -23,7 +25,7 @@ We will review the following topics:
 1. The role of prompts in LLMs and how to create good prompts.
 1. When not to use LLMs.
 
-The code for these experiments is available on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/llm-github-issues). This [YouTube video <i class="fab fa-youtube" aria-hidden="true"></i>](https://youtu.be/5sDD0WNDZkc) walks through the sections below.
+The code for these experiments is available on [this GitHub repository](https://github.com/fau-masters-collected-works-cgarbin/llm-github-issues). This [YouTube video](https://youtu.be/5sDD0WNDZkc) walks through the sections below, but note that it uses the first version of the code. The code has been updated since then.
 
 <!--more-->
 
@@ -69,7 +71,7 @@ In the following sections, we will go behind the scenes to see how the applicati
 
 ## What happens behind the scenes
 
-This section describes the steps to go from a GitHub issue to a summary.
+This section describes the steps to summarize a GitHub issue using LLMs. We will start by fetching the issue data, preprocessing it, building an appropriate prompt, sending it to the LLM, and finally, processing the response.
 
 ### Step 1 - Get the GitHub issue and its comments
 
@@ -208,7 +210,8 @@ This is a summary of what is covered in the following sections.
 
 1. [A simple GitHub issue first to see how LLMs can summarize](#a-simple-github-issue-to-get-started).
 1. [A large GitHub issue that doesn't fit in the context window of a basic LLM](#a-large-github-issue).
-1. [A more powerful model for a better summary](#a-more-powerful-model).
+1. [A more powerful model for a better summary](#better-summaries-with-a-more-powerful-model).
+1. [The introduction of GPT-4o mini](#the-introduction-of-gpt-4o-mini).
 1. [The importance of using a good prompt](#the-importance-of-using-a-good-prompt).
 1. [Sometimes we should not use an LLM](#if-all-we-have-is-a-hammer).
 
@@ -239,43 +242,36 @@ There are a few ways to work around this problem:
 - Break up the information into smaller pieces that fit in the context window. For example, we could [ask for a summary of each comment separately](https://github.com/microsoft/azure-openai-design-patterns/blob/main/patterns/01-large-document-summarization/README.md), then combine them into a single summary to show to the user. This may not work well in all cases, for example, if one comment refers to another.
 - Use a model with a larger context window.
 
-We will use the second option. Click on _"Click to configure the prompt and the model"_ at the top of the screen and select the _"gpt-3.5-turbo-16k"_ model. Then click the _"Generate summary with..."_ button again ([click to enlarge](/images/2023-11-05/example2-choose-16k-model.jpg)).
+We will use the second option. Click on _"Click to configure the prompt and the model"_ at the top of the screen, select the GPT-4o model and click the _"Generate summary with gpt-4o"_ button ([click to enlarge](/images/2023-11-05/example2-choose-16k-model.jpg)).
 
-![Switch to model with larger context window](/images/2023-11-05/example2-choose-16k-model.jpg){: .align-center style="width:50%;"}
+![Switch to model with larger context window](/images/2023-11-05/example2-choose-larger-context-model.png){: .align-center style="width:50%;"}
 
 Now we get a summary from the LLM.
 
-Why don't we start with the gpt-3.5-turbo-16k model to avoid such problems? Money. As a general rule, LLMs with larger context windows cost more. If we use an AI provider such as OpenAI, we have to [pay more per token](https://openai.com/pricing). If we run the model ourselves, we need to buy more powerful hardware. Either way, using a larger context window costs more.
+Why don't we start with GPT-4o to avoid such problems? Money. As a general rule, LLMs with larger context windows cost more. If we use an AI provider such as OpenAI, we must [pay more per token](https://openai.com/pricing). If we run the model ourselves, we need to buy more powerful hardware. Either way, using a larger context window costs more.
 
-### A more powerful model
+### Better summaries with a more powerful model
 
-Although in the last section we managed to get a summary from the LLM, it's not a particularly good one. Note how the LLM copies pieces of text from the comments instead of summarizing them ([click to enlarge](/images/2023-11-05/example3-gpt-35-summary.jpg)).
+As a result of using GPT-4o, we also get better summaries.
 
-![Summarization from GPT-3.5 model](/images/2023-11-05/example3-gpt-35-summary.jpg){: .align-center style="width:50%;"}
+Why don't we use GPT-4o from the start? In addition to the above reason (money), there is also higher latency. As a general rule, better models are also larger. They need more hardware to run, translating into [higher costs per token](https://openai.com/pricing) and a longer time to generate a response.
 
-We can get better results by using a more powerful model. In this case, we will use the [GPT-4 model](https://openai.com/research/gpt-4). Click on _"Click to configure the prompt and the model"_ at the top of the screen and select the _"gpt-4"_ model. Then click on the _"Generate summary with..."_ button again.
-
-We get better summaries with this model. It summarizes the comments instead of copying pieces of text from them ([click to enlarge](/images/2023-11-05/example3-gpt-4-summary.jpg)).
-
-![Summarization from GPT-4 model](/images/2023-11-05/example3-gpt-4-summary.jpg){: .align-center style="width:50%;"}
-
-Why don't we start with the gpt-4k model? Money and higher latency. As a general rule, better models are also larger. They need more hardware to run, translating into [higher costs per token](https://openai.com/pricing) and a longer time to generate a summary.
-
-We can see the difference comparing the token count, cost, and time to generate the summary between the gpt-3.5-turbo-16k and gpt-4 models.
-
-Here is the token count, cost, and time from the gpt-3.5-turbo-16k model, used in the previous section.
-
-<!-- markdownlint-disable-next-line MD033 -->
-> Total tokens: 5,188 (input: 4,154, output: 1,034) - costs US $0.0166<br>
-> Elapsed time: 32.40 seconds (160.1 tokens/sec)
-
-And here is the token count, cost, and time from the gpt-4 model, used in this section. Even though it is about the same token count, it costs ten times more and takes four times longer to generate the summary.
-
-<!-- markdownlint-disable-next-line MD033 -->
-> Total tokens: 5,045 (input: 4,154, output: 891) - costs US $0.1781<br>
-> Elapsed time: 128.01 seconds (39.4 tokens/sec)
+We can see the difference comparing the token count, cost, and time to generate the summary between the gpt-3.5-turbo and the gpt-4o models.
 
 How do we pick a model? It depends on the use case. Start with the smallest (and thus cheaper and faster) model that produces good results. Create some heuristics to decide when to use a more powerful model. For example, switch to a larger model if the comments are larger than a certain size and if the users are willing to wait longer for better results (sometimes an average result faster is better than the perfect result later).
+
+### The introduction of GPT-4o mini
+
+The previous sections compared GPT-3.5 Turbo against GPT-4o to emphasize the differences between a smaller and a much larger model. However, in July 2024, OpenAI introduced the [GPT-4o mini model](https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/). It comes with the same 128k tokens context window as the GPT-4o model but with a much lower cost. It's even cheaper than the GPT-3.5 models. See the [OpenAI API pricing](https://openai.com/api/pricing/) for details.
+
+GPT-4o (not mini) is still a better model, but its price and latency may not justify the better results. For example, the following table shows the summary for a large issue (`https://github.com/qjebbs/vscode-plantuml/issues/255`). GPT-4o is on the left, and GPT-4o mini is on the mini. The difference in costs is staggering, but the results are not that much different.
+
+The message is that unless you have a specific reason for using GPT-3.5 Turbo, you should start a new project with the GPT-4o mini model. It will produce results comparable to GPT-4o for less than the GPT-3.5 Turbo cost.
+
+| GPT-4o summary | GPT-4o mini summary |
+|---------|---------|
+| 3,859 tokens, US $0.0303 | 4,060, tokens, US $0.0012 |
+| ![GPT-4o summary](/images/2023-11-05/gpt-4o-summary.png) | ![GPT-4o mini summary](/images/2023-11-05/gpt-4o-mini-summary.png) |
 
 ### The importance of using a good prompt
 
@@ -318,11 +314,11 @@ time, labels, and status (whether the issue is still open or closed).
 ...remainder of the lines...
 ```
 
-The LLM will return _a_ number of comments, but most of the time it will be wrong. Select, for example, the issue `https://github.com/microsoft/semantic-kernel/issues/2039` from the sample list. GPT-3.5 will say this issue has six comments when it has eight (at the time of writing - the number may change in the future, but it's certainly not six). The number you get may vary, but it will also be wrong.
+The LLM will return _a_ number of comments, but it will usually be wrong. Select, for example, the issue `https://github.com/qjebbs/vscode-plantuml/issues/255` from the sample list. None of the models get the number of comments correctly.
 
-Why? Because **LLMs are not "executing" instructions**, they are simply [adding one word at a time](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/).
+Why? Because **LLMs are not "executing" instructions**, they are simply [generating one token at a time](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/).
 
-This is an important concept to keep in mind. **LLMs do not understand what the text means**. They just pick the next word based on the previous ones. They are not a replacement for code.
+This is an important concept to keep in mind. **LLMs do not understand what the text means**. They just pick the next token based on the previous ones. They are not a replacement for code.
 {: .notice--warning}
 
 What to do instead? If we have easy access to the information we want, we should just use it. In this case, we can get the number of comments from the GitHub API response.
@@ -341,4 +337,4 @@ What to do instead? If we have easy access to the information we want, we should
 
 ## Related projects
 
-[This project](https://github.com/fau-masters-collected-works-cgarbin/gpt-all-local) lets you ask questions on a document and get answers from an LLM. It uses similar techniques as this project, with a major difference: the LLM runs locally, on your computer.
+[This project](https://github.com/fau-masters-collected-works-cgarbin/gpt-all-local) lets you ask questions on a document and get answers from an LLM. It uses techniques similar to this project but with a significant difference: the LLM runs locally on your computer.
