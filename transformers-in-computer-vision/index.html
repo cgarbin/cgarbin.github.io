@@ -1,0 +1,916 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Applications of transformers in computer vision - Christian Garbin’s personal blog</title>
+<meta name="description" content="The evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, ending with applications in healthcare.">
+
+
+  <meta name="author" content="Christian Garbin">
+  
+  <meta property="article:author" content="Christian Garbin">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Christian Garbin's personal blog">
+<meta property="og:title" content="Applications of transformers in computer vision">
+<meta property="og:url" content="https://cgarbin.github.io/transformers-in-computer-vision/">
+
+
+  <meta property="og:description" content="The evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, ending with applications in healthcare.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-12-01T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://cgarbin.github.io/transformers-in-computer-vision/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Christian Garbin",
+      "url": "https://cgarbin.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Christian Garbin's personal blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Christian Garbin's personal blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://cgarbin.github.io/" itemprop="url">Christian Garbin</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am a software engineer at <a href="https://www.mathworks.com/">MathWorks</a> and a Ph.D. candidate at <a href="https://www.fau.edu/">Florida Atlantic University</a>, focusing on machine learning <a href="https://cgarbin.github.io/about/">(more…)</a></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">More...</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/understanding-transformers-in-one-morning"><i class="fas fa-book-open" style="color:blue"></i> Understand transformers in one morning</a></li>
+          
+            <li><a href="/vision-transformers-properties"><i class="fas fa-book-open" style="color:blue"></i> Vision transformer properties</a></li>
+          
+            <li><a href="/deep-learning-for-image-processing-overview"><i class="fas fa-book-open" style="color:blue"></i> An overview of deep learning for image processing</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Applications of transformers in computer vision">
+    <meta itemprop="description" content="The evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, ending with applications in healthcare.">
+    <meta itemprop="datePublished" content="2021-12-01T00:00:00-05:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://cgarbin.github.io/transformers-in-computer-vision/" class="u-url" itemprop="url">Applications of transformers in computer vision
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          25 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#the-origins-of-transformers--natural-language-processing">The origins of transformers – natural language processing</a><ul><li><a href="#when-context-matters">When context matters</a></li><li><a href="#remembering-the-past--recurrent-neural-networks">Remembering the past – recurrent neural networks</a></li><li><a href="#forgetting-the-past--vanishing-and-exploding-gradients">Forgetting the past – vanishing and exploding gradients</a></li><li><a href="#going-further-into-the-past--long-short-term-memory">Going further into the past – long short-term memory</a></li><li><a href="#deciding-where-to-look--attention">Deciding where to look – attention</a></li><li><a href="#attention-is-all-we-need--transformers">“Attention is all we need” – transformers</a></li></ul></li><li><a href="#transformers-in-computer-vision">Transformers in computer vision</a></li><li><a href="#transformers-in-healthcare">Transformers in healthcare</a><ul><li><a href="#nlp-applications">NLP applications</a></li><li><a href="#genomics-and-proteomics-applications">Genomics and proteomics applications</a></li><li><a href="#computer-vision-applications">Computer vision applications</a><ul><li><a href="#label-generation">Label generation</a></li><li><a href="#large-image-analysis">Large image analysis</a></li><li><a href="#improvements-in-interpretability">Improvements in interpretability</a></li></ul></li></ul></li><li><a href="#conclusions">Conclusions</a></li><li><a href="#appendix-a---a-reading-list-for-rnn-lstm-attention-and-transformers-in-nlp">Appendix A - A reading list for RNN, LSTM, attention, and transformers in NLP</a></li><li><a href="#appendix-b---the-quadratic-bottleneck">Appendix B - The quadratic bottleneck</a></li><li><a href="#references">References</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>This article describes the evolution of transformers, their application in natural language processing (NLP), their surprising effectiveness in computer vision, ending with applications in healthcare.</p>
+
+<p>It starts with the motivation and origins of transformers, from the initial attempts to apply a specialized neural network architecture (recurrent neural network – RNN) to natural language processing (NLP), the evolution of such architectures (long short-term memory and the concept of attention), to the creation of transformers and what makes them perform well in NLP. Then it describes how transformers are applied to computer vision. The last section describes some of the applications of transformers in healthcare (an area of interest for my research).</p>
+
+<!--more-->
+
+<p>Side note: It was originally written as a survey paper for a class I took. Hence the references are in bibliography format instead of embedded links.</p>
+
+<p class="notice--info">if you are new to transformers, see <a href="/understanding-transformers-in-one-morning/">Understanding transformers in one morning</a> and <a href="/vision-transformers-properties/">Vision transformer properties</a>.</p>
+
+<h1 id="the-origins-of-transformers--natural-language-processing">The origins of transformers – natural language processing</h1>
+
+<h2 id="when-context-matters">When context matters</h2>
+
+<p>In some machine learning applications, we train models by feeding one input at a time. The trained model is then used in the same way: given one input, make a prediction. The typical example is image recognition and classification. We train the model by feeding one image at a time. Once trained, we feed one image and the model returns a prediction.</p>
+
+<p>However, there are other classes of problems where a single input is not enough to make a prediction. Natural language processing is a prominent example. When translating a sentence, it is not enough to look at one word at a time. The context in which a word is used matters. For example, the Portuguese word legal is translated in different ways to English.</p>
+
+<blockquote>
+  <p>Isso é um argumento <strong>legal</strong> → This is a <strong>legal</strong> argument</p>
+
+  <p>Isso é um seriado <strong>legal</strong> → This is a <strong>nice</strong> TV series</p>
+</blockquote>
+
+<p>In these applications of machine learning, context matters. The translation of “legal” depends on the word that came before it. If we represent the phrases as vectors (so a model can process them), we could, for example, represent the first phrase as the vector <code class="language-plaintext highlighter-rouge">p1=[87,12,43,215,102]</code> and the second sentence as the vector <code class="language-plaintext highlighter-rouge">p2=[87,12,43,175,102]</code>.</p>
+
+<p>A model attempting to translate the word “legal”, encoded as <code class="language-plaintext highlighter-rouge">102</code>, must remember what came before it. The model must translate <code class="language-plaintext highlighter-rouge">102</code> one way if it was preceded by <code class="language-plaintext highlighter-rouge">215</code> (p1) and another way if it was preceded by <code class="language-plaintext highlighter-rouge">175</code> (p2).</p>
+
+<p>The model must have a “memory” of what it has seen so far. Or, in other words, the model’s output is contextual: it is based not only on its current state (the current input – the current word) but also on previous states (what came before the current input – the words that came before). To understand the context, the model must “remember” what it has seen so far, instead of taking only one input at a time, i.e. the model must work with a sequence of input values.</p>
+
+<h2 id="remembering-the-past--recurrent-neural-networks">Remembering the past – recurrent neural networks</h2>
+
+<p>Recurrent neural networks (RNNs) are a class of networks that can model such problems. The figure below shows the standard representation of an RNN cell. The blue arrow indicates the “temporal loop” in the network: the result from a previous input, known as the state, is fed into the network when processing a new input. Using the state from a previous input when processing new input allows the network to “remember” what it has seen so far.</p>
+
+<p><img src="/images/2021-12-01/rnn-one-cell.png" alt="One cell of an RNN" /></p>
+
+<p>The temporal loop can be conceptually represented as passing the state from the past steps into the future steps. In the figure below, the RNN cell is unrolled (repeated) to represent the state from previous steps passed into the subsequent ones (this process is also called “unfolding” the network).</p>
+
+<p><img src="/images/2021-12-01/rnn-unrolled.png" alt="Unrolled RNN" /></p>
+
+<h2 id="forgetting-the-past--vanishing-and-exploding-gradients">Forgetting the past – vanishing and exploding gradients</h2>
+
+<p>RNNs are trained with a variation of back-propagation, similar to how we train other types of neural networks. First, we choose how many steps we will unroll the network, and then we apply a specialized version of back-propagation (Ian et al., 2016).</p>
+
+<p>Ideally, we would like to create an RNN with as many unrolled steps as possible, to have as much context as possible (i.e. remember very large sentences or even entire pieces of text). However, a large number of unrolled steps has an unfortunate effect: vanishing and exploding gradients, which limits the size of the network we can build (Bengio et al., 1994) (Pascanu et al., 2013).</p>
+
+<p>In practice, the result is that we have to limit the number of unrolled steps of an RNN, thus limiting how far back the network can “remember” information.</p>
+
+<h2 id="going-further-into-the-past--long-short-term-memory">Going further into the past – long short-term memory</h2>
+
+<p>Long short-term memory (LSTM) is a recurrent network architecture created to deal with the vanishing and exploding gradient problem of the classical RNN architecture (Hochreiter &amp; Schmidhuber, 1997). They do so by having a more complex cell design. In this design, the gradients are all contained within the LSTM cell, making them more stable because they no longer have to traverse the entire network.</p>
+
+<p>The figure below, from (Greff et al., 2017), compares an RNN cell (left) with a typical LSTM cell (right), including the “forget gate” that enables it to learn long sequences that are not partitioned into subsequences (Gers et al., 1999).</p>
+
+<p><img src="/images/2021-12-01/rnn-lstm-compared.png" alt="RNN and LSTM compared" /></p>
+
+<h2 id="deciding-where-to-look--attention">Deciding where to look – attention</h2>
+
+<p>With LSTM we have a solution to look further into the past and process larger sentences. Now we need to decide where to look when processing a sentence because the order of the words is important for language processing. A model cannot mindlessly translate one word at a time.</p>
+
+<p>A typical example where the order of words matters is the placement of adjectives. Back to the first example, we can see that the placement of “legal” varies in each language.</p>
+
+<blockquote>
+  <p>Isso é um argumento <strong>legal</strong> → This is a <strong>legal</strong> argument</p>
+</blockquote>
+
+<p>How does a model know that “legal” goes to a different position in the translated phrase? The solution has two parts. First, the model needs to process the entire sentence, not each word separately. Then, the model needs to learn that it has to pay more attention to some parts of the phrases than others, at different times (in the example above, although “legal” comes last in the input, the model has to learn that in the output it must come first).</p>
+
+<p>RNN encoder/decoder networks (Cho et al., 2014) are used for the first part, processing the entire sentence. An encoder/decoder has two neural networks: one that converts (encodes) a sequence of words into a representation suitable to train a network, and another network that takes the encoded representation and translates (decodes) it. The decoder, armed with a full sequence of words and not just one word, implements the second part of the solution: decide in which sequence it must process the words (which may not be in the same order they were received, as in this case).</p>
+
+<p>This process is known as <em>attention</em> (Bahdanau et al., 2014) (Luong et al., 2015), as in “where should the decoder look to produce the next output”.</p>
+
+<h2 id="attention-is-all-we-need--transformers">“Attention is all we need” – transformers</h2>
+
+<p>Adding the concept of attention significantly improved the accuracy of the networks, but it is still part of a time-consuming process, the training of the encoder and decoder RNNs.</p>
+
+<p>If what we want is the information to calculate attention, can we do that in a faster way? It turns out we can. Transformer networks dispense with RNNs and directly compute the important piece of information we want, attention. They achieve better accuracy for a fraction of the training time (Jakob, 2017) (Vaswani et al., 2017).</p>
+
+<p>Instead of using RNNs, transformers use stacks of feed-forward layers (a simple layer of neurons, without cycles, unlike RNNs). The figure below, from the original paper (Vaswani et al., 2017), shows the network architecture.</p>
+
+<p><img src="/images/2021-12-01/transformer-model-architecture.png" alt="Transformer model architecture" /></p>
+
+<p>Dispensing with RNNs has two effects: the training process can be parallelized (RNNs are sequential by definition: the state of a previous step is fed into the next step) and computations are much faster. The following table, from (Vaswani et al., 2017), shows the smaller computational complexity of the transformer model compared to RNNs and convolutional neural networks (CNNs).</p>
+
+<p><img src="/images/2021-12-01/transformer-computational-complexity.png" alt="Transformer computational complexity" /></p>
+
+<p>The rightmost columns of the following table, also from (Vaswani et al., 2017), compares the training cost (in FLOPs). The transformer models are two to three orders the magnitude less expensive to train.</p>
+
+<p><img src="/images/2021-12-01/transformer-training-cost.png" alt="Transformer training cost" /></p>
+
+<p>The best performing language models today, BERT (Devlin et al., 2019), GPT-2 (Radford et al., 2019), and GPT-3 (Brown et al., 2020), are based on the transformer architecture. The combination of a simpler network and parallelization allowed the creation of these large, sophisticated models.</p>
+
+<p>A key concept of the transformer architecture is the “multi-head self-attention” layer. “Multi”  refers to the fact that instead of having one attention layer, transformers have multiple attention layers running in parallel. In addition, the layers employ self-attention (Cheng et al., 2016) (Lin et al., 2017). With such a construct, transformers can efficiently weigh in the contribution of multiple parts of a sentence simultaneously. Each self-attention layer can encode longer range dependencies, capturing the relationship between words that are further apart (compared to RNNs and CNNs).</p>
+
+<p>The ability to pay attention to multiple parts of the input and the encoding of longer-range dependencies results in better accuracy. The figure below (Alammar, 2018b) shows how self-attention allows a model to learn that “it” refers more strongly to “The animal” in the sentence.</p>
+
+<p><img src="/images/2021-12-01/transformer-attention-example.png" alt="Transformer attention example" /></p>
+
+<p>Research continues to create larger transformer models. A recent advancement in the architecture of transformers is Big Bird (Zaheer et al., 2021). It removes the original model’s quadratic computational and memory dependency on the sequence length by introducing sparse attention. By removing the quadratic dependency, larger models can be built, capable of processing larger sequences.</p>
+
+<h1 id="transformers-in-computer-vision">Transformers in computer vision</h1>
+
+<p>The concepts of “sequence” and “attention” can also be applied to computer vision. The original applications of attention in image processing used RNNs, like the NLP counterparts. Neural networks with attention were used for image classification (Mnih et al., 2014), multiple object recognition (Ba et al., 2015), and image caption generation (Xu et al., 2016). These applications of attention to computer vision experienced the same issues that afflicted NLP architectures based on RNN: vanishing or exploding gradients and long times to train the model.</p>
+
+<p>And, just like in NLP, the solution was to apply self-attention, using the transformer architecture. One of the first applications of transformers in computer vision was in image generation (Parmar et al., 2018). (Carion et al., 2020) applied transformers to object detection and segmentation using a hybrid architecture, with a CNN used to extract image features.</p>
+
+<p>Then (Dosovitskiy et al., 2020, which includes references to earlier works they built upon), dropped all other types of networks, creating a “pure” transformer architecture for image recognition. In the figure below, from that paper, we can see the same elements of the NLP transformer architecture, now applied to computer vision: the lack of more complex networks (like RNN or CNN) that results in fast training time, the concept of sequences (created by splitting the image into patches), and the multi-headed attention. This architecture is known as ViT (Vision Transformer).</p>
+
+<p><img src="/images/2021-12-01/vision-transformer-architecture.png" alt="Vision Transformer architecture" /></p>
+
+<p>The resulting transformer models are more accurate than the convolutional neural network (CNN) models typically used in computer vision and, more importantly, significantly faster to train. In the table below, from (Dosovitskiy et al., 2020), the first three columns are three versions of the transformer model. The last row shows how the transformer-based networks (first three columns) use substantially less computational resources for training than CNN-based networks (last two columns).</p>
+
+<p><img src="/images/2021-12-01/vision-transformer-performance.png" alt="Vision Transformer performance" /></p>
+
+<p>Transformers in computer vision is still an active area of research. At the time of this writing (November of 2021), the recently-published Swin Transformer architecture (Liu et al., 2021) used a shifted windows approach (figure below, from the paper) to achieve state-of-the-art results in image classification, object detection, and image segmentation. The shifted window architecture allows a transformer network to cope with the “…large variations in the scale of visual entities and the high resolution of pixels in images compared to words in text.”</p>
+
+<p><img src="/images/2021-12-01/swin-transformer.png" alt="Swin Transformer" /></p>
+
+<h1 id="transformers-in-healthcare">Transformers in healthcare</h1>
+
+<p>Applications of Transformers in healthcare fall, in general terms, into the following categories:</p>
+
+<ul>
+  <li><em>Natural language process (NLP)</em>: extract information from medical records to make predictions.</li>
+  <li><em>Genomics and proteomics</em>:  processing the large sequences from genetic and proteomic.</li>
+  <li><em>Computer vision</em>: image classification, segmentation, augmentation, and generation.</li>
+</ul>
+
+<p>The following sections describe some of these applications. Note from the dates of the references that this is a recent and active area of research. Many of the current applications of CNNs and RNNs in the same areas have evolved over the years until they reached their current performance. It is expected that these early (and promising) applications of transformers will improve over time as research continues.</p>
+
+<h2 id="nlp-applications">NLP applications</h2>
+
+<p>The healthcare industry has been accumulating written records for many years. There is a wealth of information stored in these records from consultation notes, lab exam summaries, and radiologists’ reports. Most of them are already stored in electronic health records (EHR), ready to be consumed by computers. Transformers’ success with NLP makes them a good fit to process EHR. Some of the applications include:</p>
+
+<ul>
+  <li>BEHRT (Li et al., 2020), as the name indicates, was inspired by BERT (Devlin et al., 2019). Trained on medical records, BEHRT can predict 301 diseases in a future visit of a patient. It improved the state-of-the-art in this task by “8.0–13.2% (in terms of average precision scores for different tasks)”. In addition to the improvements in prediction, the attention mechanism has the potential to make the model more interpretable, an important feature for healthcare applications.</li>
+  <li>(Kodialam et al., 2020) introduces SARD (self-attention with reverse distillation), where the input to the model is not the raw text from medical records but a summary of a medical visit. While BEHRT can handle 301 conditions, SARD can handle “…a much larger set of 37,004 codes, spanning conditions, medications, procedures, and physician specialty.”</li>
+</ul>
+
+<h2 id="genomics-and-proteomics-applications">Genomics and proteomics applications</h2>
+
+<p>Transformers’ ability to process sequences makes them natural candidates for genomics and proteomics applications, where large, complex sequences abound.</p>
+
+<ul>
+  <li>AlphaFold2 (Jumper et al., 2021) is an evolution of the first AlphaFold. It decisively won the 14th Critical Assessment of Structural Prediction (CASP), a competition to predict the structure (“folds”) of proteins. Understanding the structure of proteins is important because the function of a protein is directly related to its structure. Given that the structure of a protein is determined by its amino acid sequence, it is not surprising to learn that one of the most important changes in AlphaFold2 was the addition of attention via transformers (Rubiera, 2021). AlphaFold2’s transformer architecture has been named EvoFormer.</li>
+  <li>(Avsec et al., 2021) applied transformers to gene expression. They named the architecture Enformer (“a portmanteau of enhancer and transformer”). Gene expression is a fundamental building block in biology. It is “the process by which information from a gene is used in the synthesis of a functional gene product that enables it to produce end products, protein or non-coding RNA, and ultimately affect a phenotype, as the final effect.” (Wikipedia, 2021).</li>
+</ul>
+
+<p>With these applications in mind, the figure below (Avsec, 2021) illustrates why the ability to process larger sequences makes transformers an effective architecture for genomics and proteomics applications. The dark blue area shows how far the Enformer architecture can look for interactions between DNA base pairs (200,000), compared with the previous state-of-the-art Basenji2 architecture (40,000 base pairs).</p>
+
+<p><img src="/images/2021-12-01/enformer.png" alt="Enformer" /></p>
+
+<h2 id="computer-vision-applications">Computer vision applications</h2>
+
+<p>Transformers are improving the following areas of healthcare computer vision:</p>
+
+<ul>
+  <li><em>Label generation</em>: extract accurate labels from medical records to train image classification networks.</li>
+  <li><em>Large image analysis</em>: process the large images generated in some medical areas.</li>
+  <li><em>Improvements to explainability</em>: produce explanations that are easier to interpret for medical professionals.</li>
+</ul>
+
+<p>The following sections expand on those areas.</p>
+
+<h3 id="label-generation">Label generation</h3>
+
+<p>Medical image applications that identify diseases and other features in images are trained with supervised or semi-supervised learning, which means they need many images with accurate labels. Labeling medical images requires experts that are few, expensive, or both.</p>
+
+<p>On the other hand, there are many images with accompanying medical reports, for example, the radiological reports from x-rays. An application capable of reliably extracting labels from the reports can boost the number of images in medical image datasets. However, medical reports are created by human experts for other human experts. The reports contain complex sentences that record not only the expert’s certainty about findings but also other potential findings and exclusions. Telling apart positive, potential, and negated (excluded) findings is a complex task.</p>
+
+<p>CheXpert (Irvin et al., 2019) made available over 100,000 chest x-ray images with labels extracted from the medical reports using a rule-based NLP parser. The same team later developed ChexBert (Smit et al., 2020) based on (as the name implies) BERT (Devlin et al., 2019). CheXBert performed better than CheXPert and, crucially, it performs better in uncertainty (“potential”, “unremarkable”, and similar words) and negation cases, which are notoriously difficult to analyze.</p>
+
+<p>These results indicate that transformer-based labeling extraction can improve the labels of existing datasets and help create more trustworthy labeled medical images, which are necessary to advance research in healthcare computer vision.</p>
+
+<h3 id="large-image-analysis">Large image analysis</h3>
+
+<p>Some medical diagnosis images, such as those used in histopathology, are large, in the hundreds of megabytes to the gigapixel range. Traditional neural networks cannot handle such images in one piece. Before transformers, a common solution was to split the image into multiple patches and process them separately with a CNN-based network  (Komura &amp; Ishikawa, 2018). Dividing an image into arbitrary patches may lose context information about the overall image structure and features.</p>
+
+<p>Holistic Attention Network – HATNet (Mehta et al., 2020) is a transformer-based architecture that takes a different approach, borrowing concepts from NLP. Instead of analyzing each patch separately, it considers each patch a “word” and combines them into bags of words. The bags of words are then processed by a transformer network that aggregates information from the different patches into a global image representation. HATNet is “8% more accurate and about 2× faster than the previous best network”.</p>
+
+<p>More important than the immediate results of HATNet is the innovative approach that opens up the door to more research into processing large medical images. For example, TransUNet (Chen et al., 2021) takes a similar approach for medical image segmentation. As in image classification, CNNs have been traditionally applied to medical image segmentation. Using CNNs for segmentation has a related problem as for classification: the CNNs lose global context. TransUNet resolves that problem with a hybrid architecture: a CNN is used to extract features from the large-dimensional images, which are then passed to a  transformer network. It improved the state-of-the-art Synapse multi-organ CT segmentation by several percentage points.</p>
+
+<h3 id="improvements-in-interpretability">Improvements in interpretability</h3>
+
+<p>In high-stakes applications, such as healthcare, interpretable results help improve “auditability, system verification, enhance trust, and user adoption” (Reyes et al., 2020). Specifically for medical images, interpretability is related to explaining what pieces of an image the model considered for inference.</p>
+
+<p>Although still a new field, the interpretability of image classification with transformers shows early signs that it can result in more precise, and thus more helpful, interpretations of what a model is “looking” at. In the figure below, from (Chefer et al., 2021), the rightmost column shows their new method to extract interpretability from a transformer multi-class image classification task. It generates class-specific visualizations with better-defined activations. The closest alternative method is Grad-CAM (Selvaraju et al., 2020) (other methods cannot even generate class-specific visualizations), but it has significantly more extraneous artifacts in the visualization.</p>
+
+<p><img src="/images/2021-12-01/interpretability.png" alt="Interpretability" /></p>
+
+<p>The transformer’s attention map also shows promising results for interpretability. In the figure below, from (Matsoukas et al., 2021), the top row shows the original image of a dermoscopic image (left), an eye fundus (center), and a mammography (right). The middle row is a Grad-CAM saliency map, traditionally used to interpret the classification from CNNs. The bottom row is a saliency map from a transformer attention layer. The attention layer saliency shows a more well-defined saliency area, making the results easier to interpret (although the paper notes that this assumption has to be tested with medical professionals).</p>
+
+<p><img src="/images/2021-12-01/saliency-maps.png" alt="Interpretability" /></p>
+
+<h1 id="conclusions">Conclusions</h1>
+
+<p>Transformers were first used in NLP applications, resulting in impressive language models like BERT, GPT-2, and GTP-3. Their ability to learn the association between pieces of a large sequence of data (attention) is now being used in computer vision. The resulting models are faster to train and more accurate than CNNs for image classification.</p>
+
+<p>From the literature references, we notice that applying transformers to computer vision is still a new area. CNN- and RNN-based solutions evolved over many years of research. We should expect transformers also to evolve. In fact,  several approaches are already being tried to create more efficient transformer architectures by, for example, reducing the quadratic complexity of the attention mechanism (May, 2020), (Tay et al., 2020), (Choromanski &amp; Colwell, 2020).</p>
+
+<p>Efficient transformer architectures will have two effects. From one side, larger and larger sequences will be handled, improving the results in applications where the size of the sequence is critical for the results (for example, large resolution images used in healthcare). On the other hand, for the same sequence length, it will become faster, and thus cheaper, to train transformers, democratizing their use.</p>
+
+<p>And, as a final benefit, we may end up with one unified network architecture that can be applied to two important fields, natural language processing, and computer vision.</p>
+
+<h1 id="appendix-a---a-reading-list-for-rnn-lstm-attention-and-transformers-in-nlp">Appendix A - A reading list for RNN, LSTM, attention, and transformers in NLP</h1>
+
+<p>While researching this paper, I started with the original application of the networks, natural language processing (NLP). After researching the applications for image processing, it became clear that starting with NLP was indeed a good choice. The concepts of sequence and attention are easier to illustrate and follow in that area. Once learned in that context, they can be transferred to computer vision.</p>
+
+<p>This appending is a reading list in the context of NLP to help other readers, and the future self of the author when he will (inevitably) have forgotten some of the concepts.</p>
+
+<p>The seminal paper on encoder/decoder combined with RNN for natural language processing is (Cho et al., 2014).  (Sutskever et al., 2014) introduced sequence-to-sequence using long short-term memory (LSTM) networks. (Bahdanau et al., 2014) and (Luong et al., 2015) are credited with developing the attention mechanism.  (Vaswani et al., 2017) is the original paper on transformers (reading the accompanying Google’s blog post (Jakob, 2017) makes it easier to follow the paper).</p>
+
+<p>The explanations of RNN and LSTM in this paper are simplified because I wanted to focus on transformers. I did not discuss the different types of RNNs and the inner working of the LSTM cell. For a step-by-step, illustrated explanation of how LSTMs work and why it is an effective RNN architecture, see (Olah, 2015). For other RNN architectures, see (Olah &amp; Carter, 2016).</p>
+
+<p>(Alammar, 2018a) describes step-by-step, with the help of animated visualizations the sequence-to-sequence, encoder/decoder, RNN, and attention concepts, including details of how they work. (Alammar, 2018b) builds on that to explain how transformers use the important concept of self-attention, with detailed illustrations.</p>
+
+<p>Finally, as a historical note: finding the original paper on recurrent networks (RNNs) turned out to be elusive. Like many ideas, it evolved over time. (Rumelhart et al., 1987) is credited in several places as the first mention and description of a “recurrent network”, although it did not describe the back-propagation through time (BPTT) method used to train RNNs nowadays.</p>
+
+<h1 id="appendix-b---the-quadratic-bottleneck">Appendix B - The quadratic bottleneck</h1>
+
+<p>As a general rule, the longer the sequence a transformer can process, the better results it will have. However, it comes at the cost of large amounts of memory and processing power required for training and inference. The self-attention mechanism of the standard transformer architecture is a quadratic function (figure below, from (Tay et al., 2020)).</p>
+
+<p><img src="/images/2021-12-01/quadratic-problem.png" alt="The quadratic problem" /></p>
+
+<p>Several approaches are being tried to reduce the quadratic complexity, creating more efficient transformer architectures (May, 2020), (Tay et al., 2020), (Choromanski &amp; Colwell, 2020).</p>
+
+<p>Efficient transformer architectures will have two effects. From one side, larger and larger sequences will be handled, improving the results in applications where the size of the sequence is critical for the results (for example, large resolution images used in healthcare). On the other hand, for the same sequence length, it will become faster, and thus cheaper, to train transformers, democratizing their use.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+  <li>Alammar, J. (2018a, May 9) <a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention)</a></li>
+  <li>Alammar, J. (2018b, June 27) <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></li>
+  <li>Avsec, Ž. (2021, October 4) <a href="https://deepmind.com/blog/article/enformer">Predicting gene expression with AI. Deepmind</a></li>
+  <li>Avsec, Ž., Agarwal, V., Visentin, D., Ledsam, J. R., Grabska-Barwinska, A., Taylor, K. R., Assael, Y., Jumper, J., Kohli, P., &amp; Kelley, D. R. (2021) <a href="https://doi.org/10.1038/s41592-021-01252-x">Effective gene expression prediction from sequence by integrating long-range interactions. Nature Methods, 18(10), 1196–1203</a></li>
+  <li>Ba, J., Mnih, V., &amp; Kavukcuoglu, K. (2015) <a href="http://arxiv.org/abs/1412.7755">Multiple Object Recognition with Visual Attention</a></li>
+  <li>Bahdanau, D., Cho, K., &amp; Bengio, Y. (2014) <a href="https://arxiv.org/abs/1409.0473v7">Neural Machine Translation by Jointly Learning to Align and Translate</a></li>
+  <li>Bengio, Y., Simard, P., &amp; Frasconi, P. (1994) <a href="https://doi.org/10.1109/72.279181">Learning long-term dependencies with gradient descent is difficult. IEEE Transactions on Neural Networks, 5(2), 157–166.</a></li>
+  <li>Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A., Agarwal, S., Herbert-Voss, A., Krueger, G., Henighan, T., Child, R., Ramesh, A., Ziegler, D. M., Wu, J., Winter, C., … Amodei, D. (2020) <a href="http://arxiv.org/abs/2005.14165">Language Models are Few-Shot Learners</a></li>
+  <li>Carion, N., Massa, F., Synnaeve, G., Usunier, N., Kirillov, A., &amp; Zagoruyko, S. (2020) <a href="http://arxiv.org/abs/2005.12872">End-to-End Object Detection with Transformers</a></li>
+  <li>Chefer, H., Gur, S., &amp; Wolf, L. (2021) <a href="http://arxiv.org/abs/2012.09838">Transformer Interpretability Beyond Attention Visualization</a></li>
+  <li>Chen, J., Lu, Y., Yu, Q., Luo, X., Adeli, E., Wang, Y., Lu, L., Yuille, A. L., &amp; Zhou, Y. (2021) <a href="http://arxiv.org/abs/2102.04306">TransUNet: Transformers Make Strong Encoders for Medical Image Segmentation</a></li>
+  <li>Cheng, J., Dong, L., &amp; Lapata, M. (2016) <a href="http://arxiv.org/abs/1601.06733">Long Short-Term Memory-Networks for Machine Reading</a></li>
+  <li>Cho, K., van Merrienboer, B., Gulcehre, C., Bahdanau, D., Bougares, F., Schwenk, H., &amp; Bengio, Y. (2014) <a href="http://arxiv.org/abs/1406.1078">Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation</a></li>
+  <li>Choromanski, K., &amp; Colwell, L. (2020, October 23) <a href="http://ai.googleblog.com/2020/10/rethinking-attention-with-performers.html">Rethinking Attention with Performers</a></li>
+  <li>Devlin, J., Chang, M.-W., Lee, K., &amp; Toutanova, K. (2019) <a href="http://arxiv.org/abs/1810.04805">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></li>
+  <li>Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., Uszkoreit, J., &amp; Houlsby, N. (2020) <a href="https://arxiv.org/abs/2010.11929v2">An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale</a></li>
+  <li>Gers, F. A., Schmidhuber, J., &amp; Cummins, F. (1999) <a href="https://doi.org/10.1049/cp:19991218">Learning to forget: Continual prediction with LSTM. 1999 Ninth International Conference on Artificial Neural Networks ICANN 99. (Conf. Publ. No. 470), 2, 850–855 vol.2</a></li>
+  <li>Greff, K., Srivastava, R. K., Koutník, J., Steunebrink, B. R., &amp; Schmidhuber, J. (2017) <a href="https://doi.org/10.1109/TNNLS.2016.2582924">LSTM: A Search Space Odyssey. IEEE Transactions on Neural Networks and Learning Systems, 28(10), 2222–2232</a></li>
+  <li>Hochreiter, S., &amp; Schmidhuber, J. (1997) <a href="https://doi.org/10.1162/neco.1997.9.8.1735">Long Short-Term Memory. Neural Computation, 9(8), 1735–1780</a></li>
+  <li>Ian, G., Yoshua, B., &amp; Aaron, C. (2016) <a href="https://www.deeplearningbook.org/">Deep Learning</a></li>
+  <li>Jakob, U. (2017) <a href="http://ai.googleblog.com/2017/08/transformer-novel-neural-network.html">Transformer: A Novel Neural Network Architecture for Language Understanding</a></li>
+  <li>Jumper, J., Evans, R., Pritzel, A., Green, T., Figurnov, M., Ronneberger, O., Tunyasuvunakool, K., Bates, R., Žídek, A., Potapenko, A., Bridgland, A., Meyer, C., Kohl, S. A. A., Ballard, A. J., Cowie, A., Romera-Paredes, B., Nikolov, S., Jain, R., Adler, J., … Hassabis, D. (2021) <a href="https://doi.org/10.1038/s41586-021-03819-2">Highly accurate protein structure prediction with AlphaFold. Nature, 596(7873), 583–589</a></li>
+  <li>Kodialam, R. S., Boiarsky, R., Lim, J., Dixit, N., Sai, A., &amp; Sontag, D. (2020) <a href="http://arxiv.org/abs/2007.05611">Deep Contextual Clinical Prediction with Reverse Distillation</a></li>
+  <li>Komura, D., &amp; Ishikawa, S. (2018) <a href="https://doi.org/10.1016/j.csbj.2018.01.001">Machine Learning Methods for Histopathological Image Analysis. Computational and Structural Biotechnology Journal, 16, 34–42</a></li>
+  <li>Li, Y., Rao, S., Solares, J. R. A., Hassaine, A., Ramakrishnan, R., Canoy, D., Zhu, Y., Rahimi, K., &amp; Salimi-Khorshidi, G. (2020) <a href="https://doi.org/10.1038/s41598-020-62922-y">BEHRT: Transformer for Electronic Health Records. Scientific Reports, 10(1), 7155</a></li>
+  <li>Lin, Z., Feng, M., Santos, C. N. dos, Yu, M., Xiang, B., Zhou, B., &amp; Bengio, Y. (2017) <a href="http://arxiv.org/abs/1703.03130">A Structured Self-attentive Sentence Embedding</a></li>
+  <li>Liu, Z., Lin, Y., Cao, Y., Hu, H., Wei, Y., Zhang, Z., Lin, S., &amp; Guo, B. (2021) <a href="http://arxiv.org/abs/2103.14030">Swin Transformer: Hierarchical Vision Transformer using Shifted Windows</a></li>
+  <li>Luong, M.-T., Pham, H., &amp; Manning, C. D. (2015) <a href="http://arxiv.org/abs/1508.04025">Effective Approaches to Attention-based Neural Machine Translation</a></li>
+  <li>Matsoukas, C., Haslum, J. F., Söderberg, M., &amp; Smith, K. (2021) <a href="http://arxiv.org/abs/2108.09038">Is it Time to Replace CNNs with Transformers for Medical Images?</a></li>
+  <li>May, M. (2020, March 14) <a href="https://www.pragmatic.ml/a-survey-of-methods-for-incorporating-long-term-context/">A Survey of Long-Term Context in Transformers. Machine Learning Musings</a></li>
+  <li>Mehta, S., Lu, X., Weaver, D., Elmore, J. G., Hajishirzi, H., &amp; Shapiro, L. (2020) <a href="http://arxiv.org/abs/2007.13007">HATNet: An End-to-End Holistic Attention Network for Diagnosis of Breast Biopsy Images</a></li>
+  <li>Mnih, V., Heess, N., Graves, A., &amp; kavukcuoglu,  koray. (2014) <a href="https://proceedings.neurips.cc/paper/2014/hash/09c6c3783b4a70054da74f2538ed47c6-Abstract.html">Recurrent Models of Visual Attention. Advances in Neural Information Processing Systems, 27</a></li>
+  <li>Olah, C. (2015, August 27) <a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTM Networks. Colah’s Blog</a></li>
+  <li>Olah, C., &amp; Carter, S. (2016) <a href="https://doi.org/10.23915/distill.00001">Attention and Augmented Recurrent Neural Networks. Distill, 1(9), e1</a></li>
+  <li>Parmar, N., Vaswani, A., Uszkoreit, J., Kaiser, Ł., Shazeer, N., Ku, A., &amp; Tran, D. (2018) <a href="https://arxiv.org/abs/1802.05751v3">Image Transformer</a></li>
+  <li>Pascanu, R., Mikolov, T., &amp; Bengio, Y. (2013) <a href="http://arxiv.org/abs/1211.5063">On the difficulty of training Recurrent Neural Networks</a></li>
+  <li>Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., &amp; Sutskever, I. (2019) <a href="https://www.semanticscholar.org/paper/Language-Models-are-Unsupervised-Multitask-Learners-Radford-Wu/9405cc0d6169988371b2755e573cc28650d14dfe">Language Models are Unsupervised Multitask Learners</a></li>
+  <li>Reyes, M., Meier, R., Pereira, S., Silva, C. A., Dahlweid, F.-M., Tengg-Kobligk, H. von, Summers, R. M., &amp; Wiest, R. (2020) <a href="https://doi.org/10.1148/ryai.2020190043">On the Interpretability of Artificial Intelligence in Radiology: Challenges and Opportunities. Radiology: Artificial Intelligence, 2(3), e190043</a></li>
+  <li>Rubiera, C. O. (2021) <a href="https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/">AlphaFold 2 is here: What’s behind the structure prediction miracle - Oxford Protein Informatics Group. Oxford Protein Informatics Group</a></li>
+  <li>Rumelhart, D. E., Hinton, G., &amp; Williams, R. (1987) <a href="https://ieeexplore.ieee.org/document/6302929">Learning Internal Representations by Error Propagation. In Parallel Distributed Processing: Explorations in the Microstructure of Cognition: Foundations (pp. 318–362). MIT Press</a></li>
+  <li>Selvaraju, R. R., Cogswell, M., Das, A., Vedantam, R., Parikh, D., &amp; Batra, D. (2020) <a href="https://doi.org/10.1007/s11263-019-01228-7">Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization. International Journal of Computer Vision, 128(2), 336–359</a></li>
+  <li>Sutskever, I., Vinyals, O., &amp; Le, Q. V. (2014) <a href="http://arxiv.org/abs/1409.3215">Sequence to Sequence Learning with Neural Networks</a></li>
+  <li>Tay, Y., Dehghani, M., Bahri, D., &amp; Metzler, D. (2020) <a href="http://arxiv.org/abs/2009.06732">Efficient Transformers: A Survey</a></li>
+  <li>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., &amp; Polosukhin, I. (2017) <a href="http://arxiv.org/abs/1706.03762">Attention Is All You Need</a></li>
+  <li>Wikipedia. (2021) <a href="https://en.wikipedia.org/w/index.php?title=Gene_expression&amp;oldid=1051856939">Gene expression</a></li>
+  <li>Xu, K., Ba, J., Kiros, R., Cho, K., Courville, A., Salakhutdinov, R., Zemel, R., &amp; Bengio, Y. (2016) <a href="http://arxiv.org/abs/1502.03044">Show, Attend and Tell: Neural Image Caption Generation with Visual Attention</a></li>
+  <li>Zaheer, M., Guruganesh, G., Dubey, A., Ainslie, J., Alberti, C., Ontanon, S., Pham, P., Ravula, A., Wang, Q., Yang, L., &amp; Ahmed, A. (2021) <a href="http://arxiv.org/abs/2007.14062">Big Bird: Transformers for Longer Sequences</a></li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/computer-vision" class="page__taxonomy-item p-category" rel="tag">computer-vision</a><span class="sep">, </span>
+    
+      <a href="/tags/machine-learning" class="page__taxonomy-item p-category" rel="tag">machine-learning</a><span class="sep">, </span>
+    
+      <a href="/tags/transformers" class="page__taxonomy-item p-category" rel="tag">transformers</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-12-01T00:00:00-05:00">December 1, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Applications+of+transformers+in+computer+vision%20https%3A%2F%2Fcgarbin.github.io%2Ftransformers-in-computer-vision%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fcgarbin.github.io%2Ftransformers-in-computer-vision%2F&title=Applications of transformers in computer vision" class="btn  btn--reddit" title="Share on Reddit"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcgarbin.github.io%2Ftransformers-in-computer-vision%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/machine-learning-interpretability-feature-attribution/" class="pagination--pager" title="Machine learning interpretability with feature attribution
+">Previous</a>
+    
+    
+      <a href="/understanding-transformers-in-one-morning/" class="pagination--pager" title="Understanding transformers in one morning
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/how-to-read-and-write-a-paper/" rel="permalink">Improve writing by learning how to read
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Turn the advice in “How to Read a Paper” around to write a good paper.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/using-llms-for-summarization/" rel="permalink">Using LLMs to summarize GitHub issues
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          16 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A learning exercise on using large language models (LLMs) for summarization. It uses GitHub issues as a practical use case that we can relate to.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/writing-good-jupyter-notebooks/" rel="permalink">Writing good Jupyter notebooks
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How to write well-structured, understandable, flexible, and resilient Jupyter notebooks.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/vision-transformers-properties/" rel="permalink">Vision transformer properties
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Vision transformers are not just a replacement for CNNs and RNNs. They have some interesting properties.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 Christian Garbin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

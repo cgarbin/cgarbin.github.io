@@ -1,0 +1,1072 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Machine learning interpretability with feature attribution - Christian Garbin’s personal blog</title>
+<meta name="description" content="A review of feature attribution, a technique to interpret model predictions. First, it reviews commonly-used feature attribution methods, then demonstrates feature attribution with SHAP, one of these methods.">
+
+
+  <meta name="author" content="Christian Garbin">
+  
+  <meta property="article:author" content="Christian Garbin">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Christian Garbin's personal blog">
+<meta property="og:title" content="Machine learning interpretability with feature attribution">
+<meta property="og:url" content="https://cgarbin.github.io/machine-learning-interpretability-feature-attribution/">
+
+
+  <meta property="og:description" content="A review of feature attribution, a technique to interpret model predictions. First, it reviews commonly-used feature attribution methods, then demonstrates feature attribution with SHAP, one of these methods.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-04-26T00:00:00-04:00">
+
+
+
+  <meta property="article:modified_time" content="2022-12-20T00:00:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://cgarbin.github.io/machine-learning-interpretability-feature-attribution/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Christian Garbin",
+      "url": "https://cgarbin.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Christian Garbin's personal blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Christian Garbin's personal blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://cgarbin.github.io/" itemprop="url">Christian Garbin</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am a software engineer at <a href="https://www.mathworks.com/">MathWorks</a> and a Ph.D. candidate at <a href="https://www.fau.edu/">Florida Atlantic University</a>, focusing on machine learning <a href="https://cgarbin.github.io/about/">(more…)</a></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">More...</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/explainability-user-considerations"><i class="fas fa-book-open" style="color:blue"></i> Explainability: end-users considerations</a></li>
+          
+            <li><a href="/shap-experiments-image-classification"><i class="fas fa-book-open" style="color:blue"></i> Exploring SHAP explanations for image classification</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Machine learning interpretability with feature attribution">
+    <meta itemprop="description" content="A review of feature attribution, a technique to interpret model predictions. First, it reviews commonly-used feature attribution methods, then demonstrates feature attribution with SHAP, one of these methods.">
+    <meta itemprop="datePublished" content="2021-04-26T00:00:00-04:00">
+    <meta itemprop="dateModified" content="2022-12-20T00:00:00-05:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://cgarbin.github.io/machine-learning-interpretability-feature-attribution/" class="u-url" itemprop="url">Machine learning interpretability with feature attribution
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          14 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#what-feature-attributions-are-used-for">What feature attributions are used for</a></li><li><a href="#where-feature-attribution-is-in-relation-to-other-interpretability-methods">Where feature attribution is in relation to other interpretability methods</a></li><li><a href="#limitations-and-traps-of-feature-attribution">Limitations and traps of feature attribution</a><ul><li><a href="#feature-attributions-are-approximations">Feature attributions are approximations</a></li><li><a href="#feature-attribution-may-not-make-sense">Feature attribution may not make sense</a></li><li><a href="#feature-attributions-are-sensitive-to-the-baseline">Feature attributions are sensitive to the baseline</a></li><li><a href="#feature-attributions-are-slow-to-calculate">Feature attributions are slow to calculate</a></li><li><a href="#user-interactions-are-complex">User interactions are complex</a></li></ul></li><li><a href="#well-known-feature-attribution-methods">Well-known feature attribution methods</a></li><li><a href="#a-feature-attribution-example-with-shap">A feature attribution example with SHAP</a><ul><li><a href="#example-with-mnist">Example with MNIST</a></li><li><a href="#shapley-values">Shapley values</a></li><li><a href="#the-importance-of-the-baseline">The importance of the baseline</a></li></ul></li><li><a href="#appendix---interpretability-vs-explainability">Appendix - interpretability vs. explainability</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>There are many discussions in the machine learning (ML) community about model interpretability and explainability. The discussions take place in several contexts, ranging from using interpretability and explainability techniques to increase the robustness of a model, all the way to increasing end-user trust in a model.</p>
+
+<p>This article reviews <em>feature attribution</em>, a technique to interpret model predictions. First, it reviews commonly-used feature attribution methods, then demonstrates feature attribution with SHAP, one of these methods.</p>
+
+<!--more-->
+
+<p>Feature attribution methods “<a href="https://cloud.google.com/ai-platform/prediction/docs/ai-explanations/overview">indicate how much each feature in your model contributed to the predictions for each given instance.</a>” They work with tabular data, text, and images. The following pictures show an example for each case.</p>
+
+<p>An example of feature attribution for text (from <a href="https://www.mdpi.com/1099-4300/23/1/18#">Explainable AI: A Review of Machine Learning Interpretability Methods</a>):</p>
+
+<p><img src="/images/2021-04-26/example-feature-attribution-text.png" alt="Feature attribution - text" /></p>
+
+<p>An example of feature attribution for tabular data (from <a href="https://shap.readthedocs.io/en/latest/example_notebooks/tabular_examples/tree_based_models/Catboost%20tutorial.html">SHAP tutorial - official documentation</a>):</p>
+
+<p><img src="/images/2021-04-26/example-feature-attribution-tabular.png" alt="Feature attribution - tabular" /></p>
+
+<p>An example of feature attribution for a model that identifies a cat in a picture (from <a href="https://github.com/marcotcr/lime">LIME’s GitHub</a>):</p>
+
+<p><img src="/images/2021-04-26/example-feature-attribution-image.png" alt="Feature attribution for image identification" /></p>
+
+<h2 id="what-feature-attributions-are-used-for">What feature attributions are used for</h2>
+
+<p>The prominent use cases for feature attribution are:</p>
+
+<ul>
+  <li><em>Debug models</em>: verify that models make predictions for the right reasons. For example, in the first picture below, a model predicts diseases in X-ray images based on the metal tags the X-ray technicians place on patients, not the actual disease marks (an example of <a href="https://arxiv.org/abs/1907.02893">spurious correlation</a>).</li>
+  <li><em>Audit models</em>: verify that models are not looking at attributes that encode bias (gender, race, among others) when making decisions. For example, in the second picture below, the middle column shows a gender-biased model that predicts professions by looking at the face in the image. The rightmost column shows where a debiased model looks to make predictions.</li>
+  <li><em>Optimize models</em>: simplify correlated features and remove features that do not contribute to predictions.</li>
+</ul>
+
+<p>The figure below (<a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683">source</a>) is an example of feature attribution to debug a model (verify what the model uses to predict diseases). In this case, the model is looking at the wrong place to make predictions (using the X-ray markers instead of the pathology).</p>
+
+<p><img src="/images/2021-04-26/use-debug-model.png" alt="Using interpretability to debug models" /></p>
+
+<p>The figure below (<a href="https://arxiv.org/abs/1610.02391">source</a>) is an example of feature attribution to audit a model. The middle column shows how the model predicts all women as “nurse”, never as “doctor” – an example of gender bias. The rightmost column shows a corrected model.</p>
+
+<p><img src="/images/2021-04-26/use-audit-model.png" alt="Using interpretability to audit models" /></p>
+
+<h2 id="where-feature-attribution-is-in-relation-to-other-interpretability-methods">Where feature attribution is in relation to other interpretability methods</h2>
+
+<p><a href="https://arxiv.org/abs/1912.05100">Explainability fact sheets</a> defines the following explanation families (borrowed from <a href="https://dl.acm.org/doi/10.1145/169891.169951">Explanation facilities and interactive systems</a>):</p>
+
+<ul>
+  <li><em>Association between antecedent and consequent</em>: “model internals such as its parameters, feature(s)-prediction relations such as explanations based on feature attribution or importance and item(s)-prediction relations, such as influential training instances”.</li>
+  <li><em>Contrast and differences</em>: “prototypes and criticisms (similarities and dissimilarities) and class-contrastive counterfactual statements”.</li>
+  <li><em>Causal mechanism</em>: “a full causal model”.</li>
+</ul>
+
+<p>Feature attribution is part of the first family, the association between antecedent and consequent.</p>
+
+<p>Using the framework in the <a href="https://christophm.github.io/interpretable-ml-book/taxonomy-of-interpretability-methods.html">taxonomy of interpretable models</a>, we can further narrow down feature attribution methods as:</p>
+
+<ul>
+  <li><em>Post-hoc</em>: They are usually used after the model is trained and usually with black-box models. Therefore, we are interpreting the results of the model, not the model itself (c)reating interpretable models is yet <a href="https://arxiv.org/abs/1811.10154">another area of research</a>). The typical application for feature attribution is to interpret the predictions of black-box models, such as deep neural networks (DNNs) and random forests. These models are too complex to be directly interpreted. Thus we are left with interpreting the model’s results, not the model itself.</li>
+  <li><em>Result of the interpretation method</em>: They result in feature summary statistics (and visualization - most summary statistics can be visualized in one way or another).</li>
+  <li><em>Model-agnostic or model-specific</em>: Shapley-value-based feature attribution methods can be used with different model architectures - they are model agnostic. Gradient-based feature attribution methods are based on gradients; therefore, they can be used only with models trained with gradient descent (neural networks, logistic regression, support vector machines, for example) - they are model specific.</li>
+  <li><em>Local</em>: They explain an individual prediction of the model, not the entire model (that would be “global” interpretability).</li>
+</ul>
+
+<p>Putting it all together, feature attribution methods are post-hoc, local interpretation methods. They can be model-agnostic (e.g., SHAP) or model-specific (e.g., Grad-CAM).</p>
+
+<h2 id="limitations-and-traps-of-feature-attribution">Limitations and traps of feature attribution</h2>
+
+<h3 id="feature-attributions-are-approximations">Feature attributions are approximations</h3>
+
+<p>In their typical application, explanations have a fundamental limitation when applied to black-box models: they are approximations of how the model behaves.</p>
+
+<blockquote>
+  <p>“[Explanations] cannot have perfect fidelity with respect to the original model. If the explanation was completely faithful to what the original model computes, the explanation would equal the original model, and one would not need the original model in the first place, only the explanation.”</p>
+</blockquote>
+
+<p class="small"><cite>Cynthia Rudin</cite> — <a href="https://arxiv.org/abs/1811.10154">Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead</a></p>
+
+<p>More succinctly:</p>
+
+<blockquote>
+  <p><strong>“Explanations must be wrong.”</strong></p>
+</blockquote>
+
+<p class="small"><cite>Cynthia Rudin</cite> — <a href="https://arxiv.org/abs/1811.10154">Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead</a></p>
+
+<p>As we are going through the exploration of the feature attributions, we must keep in my mind that we are analyzing two items at the same time:</p>
+
+<ol>
+  <li>What the model predicted.</li>
+  <li>How feature attribution <em>approximates</em> what the model considers to make the prediction.</li>
+</ol>
+
+<p class="notice--warning">Therefore, <strong>never mistake the explanation for the actual behavior of the model</strong>. This is a critical conceptual limitation to keep in mind.</p>
+
+<p>Because the explanations are approximations, they may disagree with each other. For example, in the figure below, LIME (left) and SHAP (right) disagree not only in the magnitude of features’ contributions but also in the direction (sign). This disagreement is more common than we may think. Refer to the excellent paper <em><a href="https://arxiv.org/abs/2202.01602">The Disagreement Problem in Explainable Machine Learning: A Practitioner’s Perspective</a></em> for more details and how practitioners deal with this issue (the figure comes from the paper).</p>
+
+<p><img src="/images/2021-04-26/disagreement.png" alt="Explanation methods may disagree" /></p>
+
+<h3 id="feature-attribution-may-not-make-sense">Feature attribution may not make sense</h3>
+
+<p>Feature attributions do not have any understanding of the model they are explaining. They simply explain what the model predicts, <a href="https://arxiv.org/abs/1811.10154">not caring if the prediction is right or wrong</a>.</p>
+
+<p><img src="/images/2021-04-26/explaining-wrong-prediction.png" alt="Explaining wrong predictions" /></p>
+
+<p class="notice--warning">Therefore, <strong>never confuse “explaining” with “understanding”</strong>.</p>
+
+<h3 id="feature-attributions-are-sensitive-to-the-baseline">Feature attributions are sensitive to the baseline</h3>
+
+<p>Another conceptual limitation is the choice of a baseline. The attributions are not absolute values. They are the contributions compared to a baseline. To better understand why baselines are important, see how Shapley values are calculated in the <a href="#shapley-values">Shapley values section</a>, then the section on baselines right after it.</p>
+
+<h3 id="feature-attributions-are-slow-to-calculate">Feature attributions are slow to calculate</h3>
+
+<p>Moving on to practical limitations, an important one is performance. Calculating feature attributions for large images is time-consuming.</p>
+
+<p>When used to help explain the predictions of a model to end-users, consider that it may make the user interface look unresponsive. You may have to compute the attributions offline or, at a minimum, indicate to the user that there is a task in progress and how long it will take.</p>
+
+<h3 id="user-interactions-are-complex">User interactions are complex</h3>
+
+<p>The attributions we get from the feature attributions algorithms are just numbers. To make sense of them, we need to apply visualization techniques.</p>
+
+<p>For example, simply overlaying the raw attribution values on an image may leave out important pixels that contributed to the prediction, as illustrated in figure 2 of <a href="http://ceur-ws.org/Vol-2327/IUI19WS-ExSS2019-16.pdf">this paper</a>. Compare the number of pixels highlighted in the top-right picture with the one below it, adjusted to show more contributing pixels.</p>
+
+<p><img src="/images/2021-04-26/user-interaction-example.png" alt="Example of user interaction" /></p>
+
+<p>Showing all information at once to the users may also induce them to make more mistakes. For example, when showing the feature attributions overlaid to a medical image, <a href="https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext">this paper</a> found out that it increased overdiagnosing of a medical condition. It points to the fact that just because we can explain something, we shouldn’t necessarily put that explanation in front of users without considering how it will change their behavior.</p>
+
+<h2 id="well-known-feature-attribution-methods">Well-known feature attribution methods</h2>
+
+<p>The following table was compiled with the article <a href="https://thegradient.pub/a-visual-history-of-interpretation-for-image-recognition/">A Visual History of Interpretation for Image Recognition</a> and the paper <a href="https://www.mdpi.com/1099-4300/23/1/18">Explainable AI: A Review of Machine Learning Interpretability Methods</a>.</p>
+
+<p>Each row has an explanation method, when it was introduced, a link to the paper that introduced it, and an example of how the method attributes features. The entries are in chronological order.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method and introductory paper</th>
+      <th>Feature attribution example (from the paper)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CAM (class activation maps)<br />2015-12<br /> <a href="https://arxiv.org/abs/1512.04150">Learning Deep Features for Discriminative Localization</a></td>
+      <td><img src="/images/2021-04-26/method-example-cam.png" alt="CAM example" /></td>
+    </tr>
+    <tr>
+      <td>LIME (local interpretable model-agnostic explanations)<br />2016-08<br /><a href="https://arxiv.org/abs/1602.04938">“Why Should I Trust You?”: Explaining the Predictions of Any Classifier</a></td>
+      <td><img src="/images/2021-04-26/method-example-lime.png" alt="LIME example" /></td>
+    </tr>
+    <tr>
+      <td>Grad-CAM<br />2016-10<br /><a href="https://arxiv.org/abs/1610.02391">Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization</a></td>
+      <td><img src="/images/2021-04-26/method-example-grad-cam.png" alt="Grad-CAM example" /></td>
+    </tr>
+    <tr>
+      <td>Integrated gradients<br />2017-03<br /><a href="https://arxiv.org/abs/1703.01365">Axiomatic Attribution for Deep Networks</a></td>
+      <td><img src="/images/2021-04-26/method-example-integrated-gradients.png" alt="integrated gradients example" /></td>
+    </tr>
+    <tr>
+      <td>DeepLIFT (Deep Learning Important FeaTures)<br />2017-04<br /><a href="https://arxiv.org/abs/1704.02685">Learning Important Features Through Propagating Activation Differences</a></td>
+      <td><img src="/images/2021-04-26/method-example-deeplift.png" alt="DeepLIFT example" /></td>
+    </tr>
+    <tr>
+      <td>SHAP (SHapley Additive exPlanations)<br />2017-05<br /><a href="https://arxiv.org/abs/1705.07874">A Unified Approach to Interpreting Model Predictions</a></td>
+      <td><img src="/images/2021-04-26/method-example-shap.png" alt="SHAP example" /></td>
+    </tr>
+    <tr>
+      <td>SmoothGrad<br />2017-06<br /><a href="https://arxiv.org/abs/1706.03825">SmoothGrad: removing noise by adding noise</a></td>
+      <td><img src="/images/2021-04-26/method-example-smoothgrad.png" alt="SHAP example" /></td>
+    </tr>
+    <tr>
+      <td>Anchors<br />2018<br /><a href="https://homes.cs.washington.edu/~marcotcr/aaai18.pdf">Anchors: High Precision Model-Agnostic Explanations</a></td>
+      <td><img src="/images/2021-04-26/method-example-anchors.png" alt="Anchors example" /></td>
+    </tr>
+    <tr>
+      <td>CEM (contrastive explanations method)<br />2018-02<br /><a href="https://arxiv.org/abs/1802.07623">Explanations based on the Missing: Towards Contrastive Explanations with Pertinent Negatives</a></td>
+      <td><img src="/images/2021-04-26/method-example-cem.png" alt="CEM example" /></td>
+    </tr>
+    <tr>
+      <td>This looks like that<br />2018-06<br /><a href="https://arxiv.org/abs/1806.10574">This Looks Like That: Deep Learning for Interpretable Image Recognition</a></td>
+      <td><img src="/images/2021-04-26/method-example-this-looks-like-that.png" alt="This looks like that example" /></td>
+    </tr>
+    <tr>
+      <td>XRAI<br />2019-06<br /><a href="https://arxiv.org/abs/1906.02825">XRAI: Better Attributions Through Regions</a></td>
+      <td><img src="/images/2021-04-26/method-example-xrai.png" alt="XRAI example" /></td>
+    </tr>
+    <tr>
+      <td>Contrastive Explanations<br />2021-09<br /><a href="https://arxiv.org/abs/2103.01378">Contrastive Explanations for Model Interpretability</a></td>
+      <td><img src="/images/2021-04-26/method-example-contrastive-explanations.png" alt="Contrastive explanations example" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="a-feature-attribution-example-with-shap">A feature attribution example with SHAP</h2>
+
+<p>SHAP (SHapley Additive exPlanations) was introduced in the paper <a href="https://arxiv.org/abs/1705.07874">A Unified Approach to Interpreting Model Predictions</a>. As the title indicates, SHAP <a href="https://github.com/slundberg/shap#methods-unified-by-shap">unifies</a> LIME, Shapley sampling values, DeepLIFT, QII, layer-wise relevance propagation, Shapley regression values, and tree interpreter.</p>
+
+<p>Because of SHAP’s claim to unify several methods, in this section we review how it works. It starts with an example of SHAP for image classification, then explains the theory behind it. For a more detailed review of SHAP, including code, please see <a href="/shap-experiments-image-classification/">this article</a>.</p>
+
+<h3 id="example-with-mnist">Example with MNIST</h3>
+
+<p>The code for the examples described in this section is available on <a href="https://github.com/fau-masters-collected-works-cgarbin/shap-experiments-image-classification">this GitHub repository</a>.</p>
+
+<p>The following figure shows the SHAP feature attributions for a convolutional neural network that classifies digits from the MNIST dataset.</p>
+
+<p>The leftmost digit is the sample from the MNIST dataset. The text at the top shows the actual label from the dataset (8) and the label the network predicted (also 8, thus a correct prediction). The next ten digits are the SHAP feature attributions for each class (the digits zero to nine, from left to right). At the top of each class we see the probability assigned by the network. In this case, the network gave the probability 99.54% to the digit 8, so it’s correct and very confident about the prediction.</p>
+
+<p><img src="/images/2021-04-26/shap-example-mnist.png" alt="SHAP example with MNIST" /></p>
+
+<p>SHAP uses colors to explain attributions:</p>
+
+<ul>
+  <li><em>Red pixels</em> increases the probability of a class being predicted</li>
+  <li><em>Blue pixels</em> decrease the probability of a class being predicted</li>
+</ul>
+
+<p>We can see that the contours of the digit 8 are assigned high probability. We can also see that the empty space inside the top loop is relevant to detecting a digit 8. The empty spaces to the left and right of the middle, where the bottom and top half of the digit meet are also important. In other words, it’s not only what is present that is important to decide what digit an image is, but also what is absent.</p>
+
+<p>Looking at digits 2 and 3, we can see in blue the reasons why the network assigned lower probabilities to them.</p>
+
+<p><img src="/images/2021-04-26/shap-colors.png" alt="SHAP color coding example" /></p>
+
+<h3 id="shapley-values">Shapley values</h3>
+
+<p>SHAP uses an approximation of Shapley value for feature attribution. The Shapley value determines the contribution of individuals in interactions that involve multiple participants.</p>
+
+<p>For example (based on <a href="https://storage.googleapis.com/cloud-ai-whitepapers/AI%20Explainability%20Whitepaper.pdf">this article</a>), a company has three employees, Anne, Bob, and Charlie. The company has ended a month with a profit of 100 (the monetary unit is not essential). The company wants to distribute the profit to the employees according to their contribution.</p>
+
+<p>We have so far two pieces of information, the profit when the company had no employee (zero) and the profit with all three employees on board.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Employees</th>
+      <th style="text-align: right">Profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><em>None</em></td>
+      <td style="text-align: right">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Anne, Bob, Charlie</td>
+      <td style="text-align: right">100</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Going through historical records, the company determined the profit when different combinations of employees were working in the past months. They are added to the table below, between the two lines of the previous table.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right"> </th>
+      <th style="text-align: left">Employees</th>
+      <th style="text-align: right">Profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left"><em>None</em></td>
+      <td style="text-align: right">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">Anne</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: left">Bob</td>
+      <td style="text-align: right">20</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: left">Charlie</td>
+      <td style="text-align: right">30</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: left">Anne, Bob</td>
+      <td style="text-align: right">60</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">6</td>
+      <td style="text-align: left">Bob, Charlie</td>
+      <td style="text-align: right">70</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">7</td>
+      <td style="text-align: left">Anne, Charlie</td>
+      <td style="text-align: right">90</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">8</td>
+      <td style="text-align: left">Anne, Bob, Charlie</td>
+      <td style="text-align: right">100</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>At first glance, it looks like Bob contributes 50 to the profit: in line 2 we see that Anne contributes 10 to the profit and in line 5 the profit of Anne and Bob together is 60. The conclusion would be that Bob contributed 50. However, when we look at line 4 (only Charlie) and line 6 (Bob and Charlie), we now conclude that Bob contributes 40 to the profit, contradicting the first conclusion.</p>
+
+<p>Which one is correct? Both. We are interested in each employee’s contribution when they are working together. <em>This is a collaborative game</em>.</p>
+
+<p>To understand the individual contributions, we start by analyzing all possible paths from “no employee” to “all three employees”.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Path</th>
+      <th style="text-align: left">Combination to get to all employees</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">Anne → Anne, Bob → Anne, Bob, Charlie</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">Anne → Anne, Charlie → Anne, Bob, Charlie</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: left">Bob → Anne, Bob → Anne, Bob, Charlie</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: left">Bob → Bob, Charlie → Anne, Bob, Charlie</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: left">Charlie → Anne, Charlie → Anne, Bob, Charlie</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">6</td>
+      <td style="text-align: left">Charlie → Bob, Charlie → Anne, Bob, Charlie</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We then calculate each employee’s contribution in that path (this part is important). For example, in the first path, Anne contributes 10 (line 1 in the previous table), Bob contributes 50 (line 5, minus Anne’s contribution of 10), and Charlie contributes 40 (line 8 in the previous table, minus line 5). The total contribution must add to the total profit (this part is also important): Anne = 10 + Bob = 50 + Charlie = 40 → 100.</p>
+
+<p>Repeating the process above, we calculate each employee’s contribution for each path. Finally, we average the contributions — <strong>this is the Shapley value for each employee</strong> (last line in the table).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Path</th>
+      <th style="text-align: left">Combination to get to all employees</th>
+      <th style="text-align: right">Anne</th>
+      <th style="text-align: right">Bob</th>
+      <th style="text-align: right">Charlie</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">Anne → Anne, Bob → Anne, Bob, Charlie</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">50</td>
+      <td style="text-align: right">40</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">Anne → Anne, Charlie → Anne, Bob, Charlie</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">80</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: left">Bob → Anne, Bob → Anne, Bob, Charlie</td>
+      <td style="text-align: right">40</td>
+      <td style="text-align: right">20</td>
+      <td style="text-align: right">40</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: left">Bob → Bob, Charlie → Anne, Bob, Charlie</td>
+      <td style="text-align: right">30</td>
+      <td style="text-align: right">20</td>
+      <td style="text-align: right">50</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: left">Charlie → Anne, Charlie → Anne, Bob, Charlie</td>
+      <td style="text-align: right">30</td>
+      <td style="text-align: right">40</td>
+      <td style="text-align: right">30</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">6</td>
+      <td style="text-align: left">Charlie → Bob, Charlie → Anne, Bob, Charlie</td>
+      <td style="text-align: right">60</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">30</td>
+    </tr>
+    <tr>
+      <td style="text-align: right"> </td>
+      <td style="text-align: left"><strong>Average (Shapley value)</strong></td>
+      <td style="text-align: right"><strong>30</strong></td>
+      <td style="text-align: right"><strong>25</strong></td>
+      <td style="text-align: right"><strong>45</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In this example we managed to calculate each individual’s contribution for all possible paths in a reasonable time. In machine learning, the “individuals” are the features in the dataset. There may be thousands or even millions of features in a dataset. For example, in image classification, each pixel in the image is a feature.</p>
+
+<p>SHAP uses a similar method to explain the contribution of features to a model’s prediction. However, calculating the contribution of each feature is not feasible in some cases (e.g. images and their millions of pixels). The combination of paths to try is exponential (factorial, to be precise). SHAP makes simplifications to calculate the features’ contributions. It is crucial to remember that <strong>SHAP is an approximation, not the actual contribution value</strong>.</p>
+
+<h3 id="the-importance-of-the-baseline">The importance of the baseline</h3>
+
+<p>In the example above, we asked “what is each employee’s contribution to the profit?”. Our baseline was the company with zero employees and no profit.</p>
+
+<p>We could have asked a different question: “what is the contribution of Bob and Charlie, given that Anne is already an employee?”. In this case, our baseline is 10, the profit that Anne adds to the company by herself. Only paths 1 and 2 would apply, with the corresponding changes to the average contribution.</p>
+
+<p>SHAP (and other feature attribution methods) calculate the feature contribution compared to a baseline. For example, in feature attribution for image classification, the baseline is an image or a set of images.</p>
+
+<p><em>The choice of the baseline affects the calculations</em>. <a href="https://distill.pub/2020/attribution-baselines/">Visualizing the Impact of Feature Attribution Baselines</a> discussed the problem and its effect on feature attribution.</p>
+
+<h2 id="appendix---interpretability-vs-explainability">Appendix - interpretability vs. explainability</h2>
+
+<p><a href="https://www.manning.com/books/interpretable-ai">Ajay Thampi’s Interpretable AI</a> book distinguishes between interpretability and explainability this way:</p>
+
+<ul>
+  <li><em>Interpretability</em>: “It is the degree to which we can consistently estimate what a model will predict given an input, understand how the model came up with the prediction, understand how the prediction changes with changes in the input or algorithmic parameters and finally understand when the model has made a mistake. Interpretability is mostly discernible by experts who are either building, deploying or using the AI system and these techniques are building blocks that will help you get to explainability.”</li>
+  <li><em>Explainability</em>: “[G]oes beyond interpretability in that it helps us understand in a human-readable form how and why a model came up with a prediction. It explains the internal mechanics of the system in human terms with the intent to reach a much wider audience. Explainability requires interpretability as building blocks and also looks to other fields and areas such as Human-Computer Interaction (HCI), law and ethics.”</li>
+</ul>
+
+<p>Other sources treat interpretability and explainability as equivalent terms (for example, <a href="https://arxiv.org/abs/1706.07269">Miller’s work</a> and <a href="https://christophm.github.io/interpretable-ml-book/interpretability.html">Molan’s online book on the topic</a>).</p>
+
+<p>This article uses “interpretability” as defined in Ajay Thampi’s book. We distinguish between interpretability and explainability to not involve aspects of displaying the interpretation of a model’s prediction to end-users. This would add to the discussion other topics such as user interface and user interaction. While important for the overall discussion of ML interpretability and explainability, these topics are not relevant to the scope of this work. However, we preserve the original term when quoting a source. If the source chose “explainability”, we quote it so.</p>
+
+<p>Therefore, when we discuss “interpretability” here, we mean the interpretation that is shown to a machine learning practitioner, someone familiar with model training and evaluation. We discuss interpretability in a more technical format with this definition in place, assuming that the consumer of the interpretability results has enough technical background to understand it.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/explainability" class="page__taxonomy-item p-category" rel="tag">explainability</a><span class="sep">, </span>
+    
+      <a href="/tags/interpretability" class="page__taxonomy-item p-category" rel="tag">interpretability</a><span class="sep">, </span>
+    
+      <a href="/tags/machine-learning" class="page__taxonomy-item p-category" rel="tag">machine-learning</a><span class="sep">, </span>
+    
+      <a href="/tags/shap" class="page__taxonomy-item p-category" rel="tag">shap</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-12-20">December 20, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Machine+learning+interpretability+with+feature+attribution%20https%3A%2F%2Fcgarbin.github.io%2Fmachine-learning-interpretability-feature-attribution%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fcgarbin.github.io%2Fmachine-learning-interpretability-feature-attribution%2F&title=Machine learning interpretability with feature attribution" class="btn  btn--reddit" title="Share on Reddit"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcgarbin.github.io%2Fmachine-learning-interpretability-feature-attribution%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/deep-learning-for-image-processing-overview/" class="pagination--pager" title="An overview of deep learning for image processing
+">Previous</a>
+    
+    
+      <a href="/transformers-in-computer-vision/" class="pagination--pager" title="Applications of transformers in computer vision
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/how-to-read-and-write-a-paper/" rel="permalink">Improve writing by learning how to read
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Turn the advice in “How to Read a Paper” around to write a good paper.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/using-llms-for-summarization/" rel="permalink">Using LLMs to summarize GitHub issues
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          16 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A learning exercise on using large language models (LLMs) for summarization. It uses GitHub issues as a practical use case that we can relate to.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/writing-good-jupyter-notebooks/" rel="permalink">Writing good Jupyter notebooks
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How to write well-structured, understandable, flexible, and resilient Jupyter notebooks.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/vision-transformers-properties/" rel="permalink">Vision transformer properties
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Vision transformers are not just a replacement for CNNs and RNNs. They have some interesting properties.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 Christian Garbin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

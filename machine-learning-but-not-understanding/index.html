@@ -1,0 +1,881 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Machine learning, but not understanding - Christian Garbin’s personal blog</title>
+<meta name="description" content="In the expression ‘machine learning’, are the machines actually learning anything? Let’s explore what ‘learning’ means for machine learning, guided by Melanie Mitchell’s book ‘Artificial Intelligence, a guide for thinking humans. We will see that machines don’t learn in the same way we understand ‘learn’.">
+
+
+  <meta name="author" content="Christian Garbin">
+  
+  <meta property="article:author" content="Christian Garbin">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Christian Garbin's personal blog">
+<meta property="og:title" content="Machine learning, but not understanding">
+<meta property="og:url" content="https://cgarbin.github.io/machine-learning-but-not-understanding/">
+
+
+  <meta property="og:description" content="In the expression ‘machine learning’, are the machines actually learning anything? Let’s explore what ‘learning’ means for machine learning, guided by Melanie Mitchell’s book ‘Artificial Intelligence, a guide for thinking humans. We will see that machines don’t learn in the same way we understand ‘learn’.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-04-10T00:00:00-04:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://cgarbin.github.io/machine-learning-but-not-understanding/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Christian Garbin",
+      "url": "https://cgarbin.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Christian Garbin's personal blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Christian Garbin's personal blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://cgarbin.github.io/" itemprop="url">Christian Garbin</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am a software engineer at <a href="https://www.mathworks.com/">MathWorks</a> and a Ph.D. candidate at <a href="https://www.fau.edu/">Florida Atlantic University</a>, focusing on machine learning <a href="https://cgarbin.github.io/about/">(more…)</a></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">More...</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/decision-threshold-effect-on-accuracy"><i class="fas fa-book-open" style="color:blue"></i> What is “model accuracy”, really?</a></li>
+          
+            <li><a href="/bias-data-science-machine-learning"><i class="fas fa-book-open" style="color:blue"></i> Bias in data science and machine learning</a></li>
+          
+            <li><a href="/fairness-a-reading-list"><i class="fas fa-book-open" style="color:blue"></i> Fairness in machine learning: a reading list</a></li>
+          
+            <li><a href="https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding"><i class="fas fa-code" style="color:blue""></i> Code for this article</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Machine learning, but not understanding">
+    <meta itemprop="description" content="In the expression ‘machine learning’, are the machines actually learning anything? Let’s explore what ‘learning’ means for machine learning, guided by Melanie Mitchell’s book ‘Artificial Intelligence, a guide for thinking humans. We will see that machines don’t learn in the same way we understand ‘learn’.">
+    <meta itemprop="datePublished" content="2021-04-10T00:00:00-04:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://cgarbin.github.io/machine-learning-but-not-understanding/" class="u-url" itemprop="url">Machine learning, but not understanding
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          12 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#an-extremely-short-explanation-of-deep-learning">An extremely short explanation of deep learning</a></li><li><a href="#an-important-consequence-of-this-process">An important consequence of this process</a></li><li><a href="#telling-squares-and-triangles-apart">Telling squares and triangles apart</a><ul><li><a href="#the-squares-vs-triangles-training-examples">The “squares vs. triangles” training examples</a></li><li><a href="#the-squares-vs-triangles-neural-network">The “squares vs. triangles” neural network</a></li><li><a href="#how-does-the-neural-network-perform">How does the neural network perform?</a></li><li><a href="#when-are-squares-not-squares">When are squares not squares?</a></li><li><a href="#why-does-this-experiment-matter">Why does this experiment matter?</a></li></ul></li><li><a href="#not-understanding-squares---part-2">Not understanding “squares” - part 2</a><ul><li><a href="#in-the-dark-all-squares-are-triangles">In the dark, all squares are triangles</a></li><li><a href="#why-does-this-experiment-matter-1">Why does this experiment matter?</a></li></ul></li><li><a href="#should-we-be-concerned-that-deep-learning-is-not-understanding">Should we be concerned that deep “learning” is not “understanding”?</a></li><li><a href="#source-code-for-the-experiments">Source code for the experiments</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>In the expression <em>machine learning</em>, are the machines actually learning anything?</p>
+
+<p>In the book “Artificial Intelligence, a guide for thinking humans” Melanie Mitchell explains that</p>
+
+<blockquote>
+  <p>“Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples.”</p>
+</blockquote>
+
+<p class="small"><cite>Melanie Mitchell</cite> — Artificial Intelligence, a guide for thinking humans</p>
+
+<p>Let’s explore what “learning” means for machine learning, guided by Mitchell’s book. More specifically, we will concentrate on “deep learning”, a branch of machine learning that has powered most of the recent advances in artificial intelligence.</p>
+
+<!--more-->
+
+<p>All quoted text in this article is from Dr. Mitchell’s book “Artificial Intelligence, a guide for thinking humans”.</p>
+
+<h1 id="an-extremely-short-explanation-of-deep-learning">An extremely short explanation of deep learning</h1>
+
+<p>Deep learning uses layers of “units”’ (also called <em>neurons</em>, but some people, including Mitchell and I, prefer the more generic <em>units</em> term, to not confuse with biological neurons) to extract patterns from labeled data. The internal layers are called “hidden layers”. The last layer is called the “output layer”, or the classification layer.</p>
+
+<p>In the following figure (from Mitchell’s book), a neural network comprised of several hidden layers (only one shown) was trained to classify handwritten digits. The output layer has ten units, one for each possible digit.</p>
+
+<p><img src="/images/2021-04-10/neural-network.png" alt="From Mitchell, Artificial Intelligence, chapter 2" /></p>
+
+<p>How does a neural network learn? Back to Mitchell’s quote:</p>
+
+<blockquote>
+  <p>“Learning in neural networks simply consists in gradually modifying the weights on connections so that each output’s error gets as close to 0 as possible on all training examples.”</p>
+</blockquote>
+
+<p>Going through the sentence pieces:</p>
+
+<ul>
+  <li><em>training examples</em>: The labeled examples we present to the network to train it. For example, we present a picture of a square or a triangle and its corresponding label, “square” or “triangle”.</li>
+  <li><em>output’s error</em>: How far the network’s prediction is from the correct label of the example picture.</li>
+  <li><em>weights on connections</em>: A large-precision decimal number that adjusts the output of a unit in one layer to the input of a unit in the next layer. The weights are where the “knowledge” of the neural network is encoded.</li>
+  <li><em>gradually modifying</em>: This is the neural network learning process. An algorithm carefully modifies the weights on the connections to get closer to the expected output. Repeating the adjustment step over time (many, many times) allows the network to learn from the training examples.</li>
+</ul>
+
+<h1 id="an-important-consequence-of-this-process">An important consequence of this process</h1>
+
+<blockquote>
+  <p>“The machine learns what it observes in the data rather than what you (the human) might observe. If there are statistical associations in the training data, even if irrelevant to the task at hand, the machine will happily learn those instead of what you wanted it to learn.”</p>
+</blockquote>
+
+<p>Thus, neural networks are not “learning” in the sense that we would understand the term. They are not learning higher-level concepts from the samples used to train them. They are extracting patterns from the data presented to them during training (and they assume that the labels are correct). That’s all.</p>
+
+<p>Or, as Mitchell puts more eloquently:</p>
+
+<blockquote>
+  <p>“The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge; … The barrier of meaning between AI and human-level intelligence still stands today.”</p>
+</blockquote>
+
+<p>Should we be concerned that deep learning is not “learning”? We should, if we don’t understand what it implies for real-life applications.</p>
+
+<p>In the next sections we will explore how neural networks lack the grasp of “rich meanings we humans bring to bear in perception”, illustrating it with some “un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge”.</p>
+
+<p>You can run the examples used in the text with the Jupyter notebook on <a href="https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding">this GitHub repository</a>. The examples use small pictures to run quickly on any computer.</p>
+
+<h1 id="telling-squares-and-triangles-apart">Telling squares and triangles apart</h1>
+
+<p>We will see how a neural network trained to tell squares and triangles apart behaves.</p>
+
+<p>For human beings, the pictures below show squares and triangles. Some are small, some are large, some are in a light background, some are in a darker background. But they are all clearly either a square or a triangle in a frame.</p>
+
+<p><img src="/images/2021-04-10/squares-triangles.png" alt="Swuares and triangles" /></p>
+
+<p>In this section we will go through the typical process of training a neural network to classify squares and triangles:</p>
+
+<ol>
+  <li>Get a dataset with labeled pictures of squares and triangles</li>
+  <li>Split the dataset into a training set and a test set</li>
+  <li>Train the network with the training set</li>
+  <li>Validate the neural network accuracy with the test set</li>
+</ol>
+
+<p>After we are done with that, we will predict similar images to see how the network handles them.</p>
+
+<h2 id="the-squares-vs-triangles-training-examples">The “squares vs. triangles” training examples</h2>
+
+<p>This is how some of the training images look like. Each picture is a square or a triangle in different positions. The dataset has hundreds of these pictures.</p>
+
+<p><img src="/images/2021-04-10/output_12_0.png" alt="Samples squares and triangles" /></p>
+
+<h2 id="the-squares-vs-triangles-neural-network">The “squares vs. triangles” neural network</h2>
+
+<p>We train a <a href="https://cs231n.github.io/convolutional-networks/">convolutional neural network</a> (CNN) to classify a picture as a “square” or as a “triangle”, using the training examples. We chose a CNN architecture because it is well suited to image classification.</p>
+
+<p>If you would like to see the details of the training process, see the Jupyter notebook on <a href="https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding">this GitHub repository</a>.</p>
+
+<h2 id="how-does-the-neural-network-perform">How does the neural network perform?</h2>
+
+<p>Before we started the training process, we set aside 10% of the pictures to use later (67 pictures). They are pictures that the neural network was not trained on. This is the <em>test set</em>. We use the test set to measure the performance of the neural network.</p>
+
+<p>A traditional measure of performance is “accuracy”. It measures the percentage of pictures in the test set that were correctly classified.</p>
+
+<p>First, we ask the neural network to predict what the pictures are (more details on how that happens <a href="https://github.com/fau-masters-collected-works-cgarbin/decision-threshold-effect-on-accuracy">here</a>), then we compare with the actual labels and calculate the accuracy.</p>
+
+<p>Our neural network classified 65 out 67 pictures correctly, for an accuracy of 97%. This is a pretty good accuracy for a relatively small neural network that can be trained quickly.</p>
+
+<p>Let’s visualize where the neural network made the mistakes. The picture below shows the mistakes with a red border. All other pictures were classified correctly. Below each picture is the neural network’s classification.</p>
+
+<p><img src="/images/2021-04-10/output_25_0.png" alt="Mistakes" /></p>
+
+<p>Despite the good accuracy, does the neural network understand the concept of what it is learning?</p>
+
+<h2 id="when-are-squares-not-squares">When are squares not squares?</h2>
+
+<p>When they are larger. At least for this neural network.</p>
+
+<p>In this section we will use the neural network we just trained to classify a set of squares. But there is a twist to these squares: they are larger than the ones we used in the training set.</p>
+
+<p>This is how they look like.</p>
+
+<p><img src="/images/2021-04-10/output_28_0.png" alt="Larger squares" /></p>
+
+<p>Using the neural network, we classify the large squares and calculate the accuracy, just like we did with the test set.</p>
+
+<p>But this time, out of 77 large squares, only 43 are classified as squares. The other 34 are classified as triangles. With an accuracy of 55.8%, the neural network is barely better than flipping a coin.</p>
+
+<p>Below are all the squares in this set and how the neural network classified them. The ones with the red border were incorrectly classified as triangles (there are many of them).</p>
+
+<p><img src="/images/2021-04-10/output_34_0.png" alt="Large squares wrongly classified as triangles" /></p>
+
+<h2 id="why-does-this-experiment-matter">Why does this experiment matter?</h2>
+
+<p>The simplest and fastest way to improve this neural network is to increase the size of the training and test sets. In this case, we should add larger squares to the training set and retrain the neural network. It will very likely perform better.</p>
+
+<p>But this does not address the fundamental problem: <strong><em>the neural network does not understand the concept of “square”.</em></strong></p>
+
+<p>Quoting Mitchell again (emphasis added):</p>
+
+<blockquote>
+  <p>“The phrase “barrier of meaning” perfectly captures an idea that has permeated this book: humans, in some deep and essential way, understand the situations they encounter, whereas no AI system yet possesses such understanding. While state-of-the-art AI systems have nearly equaled (and in some cases surpassed) humans on certain narrowly defined tasks, <b>these systems all lack a grasp of the rich meanings humans bring to bear in perception, language, and reasoning. This lack of understanding is clearly revealed by the un-humanlike errors these systems can make; by their difficulties with abstracting and transferring what they have learned; by their lack of commonsense knowledge;</b> … The barrier of meaning between AI and human-level intelligence still stands today.”</p>
+</blockquote>
+
+<p>Even if we collect lots and lots and lots of examples, we are confronted with <strong><em>the long-tail problem</em></strong>:</p>
+
+<blockquote>
+  <p>“[T]he vast range of possible unexpected situations an AI system could be faced with.”</p>
+</blockquote>
+
+<p>For example, let’s say we trained our autonomous driving system to recognize a school zone by the warning sign painted on the road (<a href="https://virtualdriveoftexas.com/texas-school-zones/">source</a>):</p>
+
+<p><img src="/images/2021-04-10/school-spelled-right.png" alt="School warning" /></p>
+
+<p>Then, one day our autonomous driving system comes across these real-life examples (<a href="https://www.anyvan.com/blog/whats-going-on/back-to-shcool-for-some/">source 1</a>, <a href="https://www.wibw.com/content/news/School-misspelled-at-Florida-crosswalk-508798331.html?ref=331">source 2</a>):</p>
+
+<p><img src="/images/2021-04-10/school-spelled-wrong-1.png" alt="School warning mispelled" />
+<img src="/images/2021-04-10/school-spelled-wrong-2.png" alt="School warning mispelled" /></p>
+
+<p>Any (well, most) human beings would still identify them as warning signs for school zones (presumably, the human would chuckle, then - hopefully - slow down).</p>
+
+<p>Would the autonomous driving system identify them correctly? The honest answer is “we don’t know”. It depends on how it was trained. Was it given these examples in the training set? In enough quantities to identify the pattern? Did the test set have examples? Were they classified correctly?</p>
+
+<p>But no matter how comprehensive we make the training and test sets and how methodically we inspect the classification results, we are faced with the fundamental problem: <strong><em>the neural network does not understand the concept of “school zone warning”</em></strong>.</p>
+
+<p>The autonomous driving system lacks common sense.</p>
+
+<blockquote>
+  <p>“…humans also have a fundamental competence lacking in all current AI systems: common sense. We have vast background knowledge of the world, both its physical and its social aspects.”</p>
+</blockquote>
+
+<p>The neural network may be <em>learning</em>, but it is definitely not <em>understanding</em>.</p>
+
+<h1 id="not-understanding-squares---part-2">Not understanding “squares” - part 2</h1>
+
+<p>In the first section we changed the shape of an object. In this section we will not change the object. We will change the environment instead.</p>
+
+<p>We will train a neural network to classify squares and triangles again. This time they are in different environments, represented by different background colors. The squares are in a lighter background and the triangles are on a dark(er) background (we can think of the backgrounds as “twilight” and “night”).</p>
+
+<p>The picture below shows how they look like.</p>
+
+<p><img src="/images/2021-04-10/output_38_0.png" alt="Darker background" /></p>
+
+<p>Following the same steps we used in the first section, we train a neural network to classify the squares and triangles.</p>
+
+<p>Once the network is trained, we use the test set to calculate the neural network accuracy and find out that it is a perfect 100% accuracy score. All squares and triangles in the test set were classified correctly.</p>
+
+<p>If you would like to see the details of the training process, see the Jupyter notebook on <a href="https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding">this GitHub repository</a>.</p>
+
+<p>So far, so good, but…</p>
+
+<h2 id="in-the-dark-all-squares-are-triangles">In the dark, all squares are triangles</h2>
+
+<p>What happens if the squares are now in the same environment as the triangles (all squares are in the “night” environment)?</p>
+
+<p>This is how the squares look like in the darker environment.</p>
+
+<p><img src="/images/2021-04-10/output_47_0.png" alt="Squares in darker background" /></p>
+
+<p>When we ask the neural network to classify these squares, we find out that the performance is now abysmal. The accuracy is 0%. All squares are misclassified as triangles.</p>
+
+<p>To confirm, we can visualize the predictions. The wrong predictions have a red frame around them (all of them are wrong in this case).</p>
+
+<p><img src="/images/2021-04-10/output_52_0.png" alt="Squares in darker background wrongly predicted as triangles" /></p>
+
+<h2 id="why-does-this-experiment-matter-1">Why does this experiment matter?</h2>
+
+<p>The neural network we just trained fails in the same way the first neural network failed: it doesn’t understand the concepts of “square” and “triangle”. It is just looking for any sort of pattern in the training data. It doesn’t know if a pattern makes sense or not, it just knows there is a pattern there.</p>
+
+<p>In this case, the neural network is very likely learning not from the shape, but from the background (a case of <a href="https://arxiv.org/abs/1907.02893">spurious correlation</a>). It is assuming that a darker background means “triangle” because it doesn’t really understand the concept of what makes a triangle a triangle.</p>
+
+<p>Sometimes this leads to some funny examples, like the neural network that “learned” to classify land vs. water birds based on the background. The duck on the right was misclassified as a land bird, simply because it was not in its usual water environment (<a href="https://arxiv.org/abs/2005.04345">source</a>).</p>
+
+<p><img src="/images/2021-04-10/land-and-waterbirds.png" alt="Water birds vs. land birds" /></p>
+
+<p>Other times the mistakes are more consequential, for example, when neural networks misclassify X-rays based on markings left by radiologists in the images. Instead of learning actual attributes of a disease, the neural network “learned” from the marks left behind in the images. Images without such marks may be classified as “healthy”. The consequences can be catastrophic (<a href="https://storage.googleapis.com/cloud-ai-whitepapers/AI%20Explainability%20Whitepaper.pdf">source</a>).</p>
+
+<p><img src="/images/2021-04-10/x-ray-pen-marks.png" alt="X-ray with pen marks" /></p>
+
+<h1 id="should-we-be-concerned-that-deep-learning-is-not-understanding">Should we be concerned that deep “learning” is not “understanding”?</h1>
+
+<p>Mitchell asks the following question in her book:</p>
+
+<blockquote>
+  <p>“but the question remains: Will the fact that these systems lack humanlike understanding inevitably render them fragile, unreliable, and vulnerable to attacks? And how should this factor into our decisions about applying AI systems in the real world?”</p>
+</blockquote>
+
+<p>Until we achieve humanlike understanding, we should be concerned that neural networks do not generalize well.</p>
+
+<p>Does it mean we need to stop using neural networks until then? No.</p>
+
+<blockquote>
+  <p>“I think the most worrisome aspect of AI systems in the short term is that we will give them too much autonomy without being fully aware of their limitations and vulnerabilities.”</p>
+</blockquote>
+
+<p>Deep learning has successfully improved our lives. It’s “just” a matter of understanding its limitations, applying it judiciously, for the tasks that it’s well suited.</p>
+
+<p>To do that we need to educate the general public and, more importantly, the technical community. Too often we hype the next “AI has achieved humanlike performance in [<em>some task here</em>]”, when in fact we should say “under these specific circumstances, for this specific application, AI has performed well”.</p>
+
+<h1 id="source-code-for-the-experiments">Source code for the experiments</h1>
+
+<p>The source code for the experiments described here is on <a href="https://github.com/fau-masters-collected-works-cgarbin/machine-learning-but-not-understanding">this GitHub repository</a>. It uses small pictures to run quickly on a regular computer.</p>
+
+<p>Feel free to modify the pictures, the neural network model, and other parameters that affect the results.</p>
+
+<p>But remember that when the results improve, it’s not the neural network that is learning more all of a sudden. <em>You</em> are improving it.</p>
+
+<blockquote>
+  <p>“Because of the open-ended nature of designing these networks, in general it is not possible to automatically set all the parameters and designs, even with automated search. Often it takes a kind of cabalistic knowledge that students of machine learning gain both from their apprenticeships with experts and from hard-won experience.”</p>
+</blockquote>
+
+<p class="small"><cite>Melanie Mitchell</cite> — Artificial Intelligence, a guide for thinking humans</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/failure" class="page__taxonomy-item p-category" rel="tag">failure</a><span class="sep">, </span>
+    
+      <a href="/tags/machine-learning" class="page__taxonomy-item p-category" rel="tag">machine-learning</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-04-10T00:00:00-04:00">April 10, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Machine+learning%2C+but+not+understanding%20https%3A%2F%2Fcgarbin.github.io%2Fmachine-learning-but-not-understanding%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fcgarbin.github.io%2Fmachine-learning-but-not-understanding%2F&title=Machine learning, but not understanding" class="btn  btn--reddit" title="Share on Reddit"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcgarbin.github.io%2Fmachine-learning-but-not-understanding%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/decision-threshold-effect-on-accuracy/" class="pagination--pager" title="What is “model accuracy”, really?
+">Previous</a>
+    
+    
+      <a href="/shap-experiments-image-classification/" class="pagination--pager" title="Exploring SHAP explanations for image classification
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/how-to-read-and-write-a-paper/" rel="permalink">Improve writing by learning how to read
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Turn the advice in “How to Read a Paper” around to write a good paper.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/using-llms-for-summarization/" rel="permalink">Using LLMs to summarize GitHub issues
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          16 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A learning exercise on using large language models (LLMs) for summarization. It uses GitHub issues as a practical use case that we can relate to.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/writing-good-jupyter-notebooks/" rel="permalink">Writing good Jupyter notebooks
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How to write well-structured, understandable, flexible, and resilient Jupyter notebooks.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/vision-transformers-properties/" rel="permalink">Vision transformer properties
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Vision transformers are not just a replacement for CNNs and RNNs. They have some interesting properties.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 Christian Garbin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

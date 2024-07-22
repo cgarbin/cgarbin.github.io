@@ -1,0 +1,673 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Would you trust AI to do [X]? - Christian Garbin’s personal blog</title>
+<meta name="description" content="Exploring ‘robustness’ as a factor to trust AI products, with examples of how difficult it is to create robust AI products.">
+
+
+  <meta name="author" content="Christian Garbin">
+  
+  <meta property="article:author" content="Christian Garbin">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Christian Garbin's personal blog">
+<meta property="og:title" content="Would you trust AI to do [X]?">
+<meta property="og:url" content="https://cgarbin.github.io/would-you-trust-ai-to-do-x/">
+
+
+  <meta property="og:description" content="Exploring ‘robustness’ as a factor to trust AI products, with examples of how difficult it is to create robust AI products.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-02-07T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://cgarbin.github.io/would-you-trust-ai-to-do-x/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Christian Garbin",
+      "url": "https://cgarbin.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Christian Garbin's personal blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Christian Garbin's personal blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://cgarbin.github.io/" itemprop="url">Christian Garbin</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am a software engineer at <a href="https://www.mathworks.com/">MathWorks</a> and a Ph.D. candidate at <a href="https://www.fau.edu/">Florida Atlantic University</a>, focusing on machine learning <a href="https://cgarbin.github.io/about/">(more…)</a></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Would you trust AI to do [X]?">
+    <meta itemprop="description" content="Exploring ‘robustness’ as a factor to trust AI products, with examples of how difficult it is to create robust AI products.">
+    <meta itemprop="datePublished" content="2021-02-07T00:00:00-05:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://cgarbin.github.io/would-you-trust-ai-to-do-x/" class="u-url" itemprop="url">Would you trust AI to do [X]?
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          7 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#the-cost-of-robustness">The cost of robustness</a></li><li><a href="#robustness-for-ai-products">Robustness for AI products</a><ul><li><a href="#side-note-research-vs-production">Side note: research vs. production</a></li></ul></li><li><a href="#would-i-trust-ai-to-do-x">Would I trust AI to do [X]?</a></li><li><a href="#other-sources-for-ai-failures">Other sources for AI failures</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Taking a narrow definition of the question, where [X] is a reasonable application of AI for the current state of the technologies involved, “trust” can be formulated as “it is safe to assume that an AI product can do [X] consistently and that it also detects when it is working outside of its boundaries, reacting accordingly”.</p>
+
+<p>In other words, trust is related to “robustness”, the ability of an AI product to not only do what it is supposed to do, but also to withstand adverse, hostile, conflicting conditions.</p>
+
+<!--more-->
+
+<h2 id="the-cost-of-robustness">The cost of robustness</h2>
+
+<p>In software development we use the term “happy path” in the context of programs that do their job well when conditions are perfect but fail miserably if anything is even slightly out of the ordinary. In other words, they work well only when they are on their happy path. The opposite of that is robust programs. They detect that they are off the happy path and take corrective action, even if it is simply refusing to go further to avoid harm.</p>
+
+<p>Writing robust programs is not cheap. I read some time ago that about half of the lines of code in a program are to detect and handle error conditions. I lost the source but can speak from personal experience. In every product I worked on, dealing with what could go wrong and continuing operating, even if in a degraded mode, was at least half of the development time and costs. For mission-critical systems, the ones that need to run 24-7 unassisted, it was more than that. I would guess at least two-thirds of the time and the costs were dedicated to making sure they were robust systems.</p>
+
+<h2 id="robustness-for-ai-products">Robustness for AI products</h2>
+
+<p>AI products are software products. How do we develop robust AI products? We can approach in the same way we do with regular software products, starting from the other end: how can a product fail? Once we understand that, we put countermeasures in place and end up with a robust product.</p>
+
+<p>This goes by the name “failure mode analysis”, “threat modeling”, and similar terms. We are interested in anticipating what could go wrong, then adding code to handle it.</p>
+
+<p><a href="https://docs.microsoft.com/en-us/security/engineering/threat-modeling-aiml">Threat Modeling AI/ML Systems and Dependencies</a> is a comprehensive list of what can go wrong with an AI product (focusing on machine learning). As the name implies, it focuses on malicious attacks. A more practical list is the accompanying list of failure modes in machine learning. Besides malicious attacks, it has a list that they politely call “unintended failures”, also known as “bugs”. Some examples from the “unintended” list:</p>
+
+<ul>
+  <li><em>Reward hacking</em>: reinforcement learning systems whose reward is not modeled correctly. Some well-known examples include <a href="https://openai.com/blog/faulty-reward-functions/">maximizing the score to the detriment of finishing the course</a> (it’s in a game, but picture this reward function in a robot, where “score” is a wrongly-defined measure of success).</li>
+  <li><em>Side effects</em>: reinforcement learning systems that do not have proper constraints in place to achieve their goals. For example: if the goal is “move as fast as possible from point A to B”, a reinforcement-learning robot could knock everything in its way.</li>
+  <li><em>Distributional shifts</em>: the real-life environment does not match what the model was trained on. Sometimes it is simples things. For example, an x-ray imaging system trained on hospital x-ray images may perform significantly worse on images taken with portable x-ray machines (used for emergency cases and in remote clinics).</li>
+  <li><em>Natural adversarial examples</em>: the model is confused by naturally occurring examples. <a href="https://arxiv.org/abs/1907.07174">It’s sadly fairly simple to confuse classifiers</a>. See the example picture below (<a href="https://arxiv.org/abs/1907.07174">source</a>).</li>
+  <li><em>Common corruption</em>: changes to the input, such as zooming, cropping, or tilting images, confuse the system.</li>
+  <li><em>Incomplete testing in realistic conditions</em>: a polite way to say “the developers failed to account for how the world works”.</li>
+</ul>
+
+<p><img src="/images/2021-02-07/natural-adversaries-examples.png" alt="Natural Adversarial Examples" /></p>
+
+<h3 id="side-note-research-vs-production">Side note: research vs. production</h3>
+
+<p>Most research papers that publish the results of a model do not cover failure modes. These papers are great research work, but from the research paper to a product, we still need to go through “how to make it robust” work, which will cost the same amount of time and money spent to develop the model described in the paper (or more), based on the discussion of the cost of robustness above.</p>
+
+<p>Even peer-reviewed papers do not perform well, as <a href="https://www.bmj.com/content/368/bmj.m689">this review</a> of papers documented:</p>
+
+<blockquote>
+  <p>“Only 10 records were found for deep learning randomised clinical trials, two of which have been published (with low risk of bias, except for lack of blinding, and high adherence to reporting standards) and eight are ongoing. Of 81 non-randomised clinical trials identified, only nine were prospective and just six were tested in a real world clinical setting.”</p>
+</blockquote>
+
+<p class="small"><cite>M. Nagendran et al.</cite> — <a href="https://www.bmj.com/content/368/bmj.m689">Artificial intelligence versus clinicians: systematic review of design, reporting standards, and claims of deep learning studies</a></p>
+
+<p>Google’s <a href="https://storage.googleapis.com/pub-tools-public-publication-data/pdf/aad9f93b86b7addfea4c419b9100c6cdd26cacea.pdf">“production readiness” rubric</a> gives an idea of what it takes to take a machine learning model into production. It’s much more than training a model.</p>
+
+<h2 id="would-i-trust-ai-to-do-x">Would I trust AI to do [X]?</h2>
+
+<p>Given an AI product that is being used in its well-defined application, I would trust it if I could trust that the organization behind it is aware of robustness practices.</p>
+
+<p>These products come from paranoid organizations, the ones that assume every possible thing that could go wrong will most definitely go wrong sooner or later. They then proceed to protect their products against this hostile world. Those products I trust. Creating such products takes time and lots of money.</p>
+
+<p>Looking from another side, I distrust any product that makes large claims in their first version without backing it up with extended research and trial periods.</p>
+
+<h2 id="other-sources-for-ai-failures">Other sources for AI failures</h2>
+
+<p>A list of some papers and articles I came across on the topic of “AI failure”.</p>
+
+<p><a href="https://www.oreilly.com/radar/what-to-do-when-ai-fails/">What to Do When AI Fails – O’Reilly</a></p>
+<blockquote>
+  <p>“What is an incident when it comes to an AI system? When does AI create liability that organizations need to respond to? This article answers these questions, based on our combined experience as both a lawyer and a data scientist responding to cybersecurity incidents, crafting legal frameworks to manage the risks of AI, and building sophisticated interpretable models to mitigate risk.”</p>
+</blockquote>
+
+<p><a href="https://research.facebook.com/wp-content/uploads/2019/06/Does-Object-Recognition-Work-for-Everyone.pdf">Does Object Recognition Work for Everyone?</a></p>
+<blockquote>
+  <p>“The paper analyzes the accuracy of publicly available object-recognition systems on a geographically diverse dataset. This dataset contains household items and was designed to have a more representative geographical coverage than commonly used image datasets in object recognition. We find that the systems perform relatively poorly on household items that commonly occur in countries with a low household income”</p>
+</blockquote>
+
+<p><a href="https://www.nature.com/articles/s41746-019-0155-4">The “inconvenient truth” about AI in healthcare</a></p>
+<blockquote>
+  <p>“However, “the inconvenient truth” is that at present the algorithms that feature prominently in research literature are in fact not, for the most part, executable at the frontlines of clinical practice. This is for two reasons: first, these AI innovations by themselves do not re-engineer the incentives that support existing ways of working… Second, most healthcare organizations lack the data infrastructure required to collect the data needed to optimally train algorithms to (a) “fit” the local population and/or the local practice patterns, a requirement prior to deployment that is rarely highlighted by current AI publications, and (b) interrogate them for bias to guarantee that the algorithms perform consistently across patient cohorts, especially those who may not have been adequately represented in the training cohort.”</p>
+</blockquote>
+
+<p><a href="https://arxiv.org/abs/2001.08103">Secure and Robust Machine Learning for Healthcare: A Survey</a></p>
+<blockquote>
+  <p>“Notwithstanding the impressive performance of ML/DL, there are still lingering doubts regarding the robustness of ML/DL in healthcare settings (which is traditionally considered quite challenging due to the myriad security and privacy issues involved), especially in light of recent results that have shown that ML/DL are vulnerable to adversarial attacks. In this paper, we present an overview of various application areas in healthcare that leverage such techniques from security and privacy point of view and present associated challenges.”</p>
+</blockquote>
+
+<p><a href="https://arxiv.org/abs/1606.06565">Concrete Problems in AI Safety</a></p>
+<blockquote>
+  <p>“In this paper we discuss one such potential impact: the problem of accidents in machine learning systems, defined as unintended and harmful behavior that may emerge from poor design of real-world AI systems. We present a list of five practical research problems related to accident risk, categorized according to whether the problem originates from having the wrong objective function (“avoiding side effects” and “avoiding reward hacking”), an objective function that is too expensive to evaluate frequently (“scalable supervision”), or undesirable behavior during the learning process (“safe exploration” and “distributional shift”).”</p>
+</blockquote>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/failure" class="page__taxonomy-item p-category" rel="tag">failure</a><span class="sep">, </span>
+    
+      <a href="/tags/machine-learning" class="page__taxonomy-item p-category" rel="tag">machine-learning</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-02-07T00:00:00-05:00">February 7, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Would+you+trust+AI+to+do+%5BX%5D%3F%20https%3A%2F%2Fcgarbin.github.io%2Fwould-you-trust-ai-to-do-x%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fcgarbin.github.io%2Fwould-you-trust-ai-to-do-x%2F&title=Would you trust AI to do [X]?" class="btn  btn--reddit" title="Share on Reddit"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcgarbin.github.io%2Fwould-you-trust-ai-to-do-x%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/bias-data-science-machine-learning/" class="pagination--pager" title="Bias in data science and machine learning
+">Previous</a>
+    
+    
+      <a href="/explainability-user-considerations/" class="pagination--pager" title="Explainability: end-users considerations
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/how-to-read-and-write-a-paper/" rel="permalink">Improve writing by learning how to read
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Turn the advice in “How to Read a Paper” around to write a good paper.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/using-llms-for-summarization/" rel="permalink">Using LLMs to summarize GitHub issues
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          16 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A learning exercise on using large language models (LLMs) for summarization. It uses GitHub issues as a practical use case that we can relate to.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/writing-good-jupyter-notebooks/" rel="permalink">Writing good Jupyter notebooks
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How to write well-structured, understandable, flexible, and resilient Jupyter notebooks.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/vision-transformers-properties/" rel="permalink">Vision transformer properties
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Vision transformers are not just a replacement for CNNs and RNNs. They have some interesting properties.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 Christian Garbin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

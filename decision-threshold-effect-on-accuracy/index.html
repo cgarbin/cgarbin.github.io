@@ -1,0 +1,807 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>What is “model accuracy”, really? - Christian Garbin’s personal blog</title>
+<meta name="description" content="A model’s accuracy is an incomplete view of of the model’s performance. This article shows how it can be misleading.">
+
+
+  <meta name="author" content="Christian Garbin">
+  
+  <meta property="article:author" content="Christian Garbin">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Christian Garbin's personal blog">
+<meta property="og:title" content="What is “model accuracy”, really?">
+<meta property="og:url" content="https://cgarbin.github.io/decision-threshold-effect-on-accuracy/">
+
+
+  <meta property="og:description" content="A model’s accuracy is an incomplete view of of the model’s performance. This article shows how it can be misleading.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-03-21T00:00:00-04:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://cgarbin.github.io/decision-threshold-effect-on-accuracy/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Christian Garbin",
+      "url": "https://cgarbin.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Christian Garbin's personal blog Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Christian Garbin's personal blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://cgarbin.github.io/" itemprop="url">Christian Garbin</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am a software engineer at <a href="https://www.mathworks.com/">MathWorks</a> and a Ph.D. candidate at <a href="https://www.fau.edu/">Florida Atlantic University</a>, focusing on machine learning <a href="https://cgarbin.github.io/about/">(more…)</a></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">More...</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/machine-learning-but-not-understanding"><i class="fas fa-book-open" style="color:blue"></i> Machine learning, but not understanding</a></li>
+          
+            <li><a href="https://github.com/fau-masters-collected-works-cgarbin/decision-threshold-effect-on-accuracy"><i class="fas fa-code" style="color:blue""></i> Code for this article</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="What is “model accuracy”, really?">
+    <meta itemprop="description" content="A model’s accuracy is an incomplete view of of the model’s performance. This article shows how it can be misleading.">
+    <meta itemprop="datePublished" content="2021-03-21T00:00:00-04:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://cgarbin.github.io/decision-threshold-effect-on-accuracy/" class="u-url" itemprop="url">What is “model accuracy”, really?
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#effect-of-different-thresholds">Effect of different thresholds</a></li><li><a href="#asking-questions-about-accuracy">Asking questions about “accuracy”</a></li><li><a href="#what-to-use-instead-of-accuracy">What to use instead of accuracy?</a></li><li><a href="#experimenting-with-the-code">Experimenting with the code</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>In the book <a href="https://www.h2o.ai/resources/ebook/responsible-machine-learning/">Responsible Machine Learning</a>,
+when discussing trust and risk, the authors recommend a list of questions to ask to understand the
+risk of a machine learning (ML) deployment.</p>
+
+<p>One of the questions is <strong>“What is the quality of the model? (Accuracy, AUC/ROC, F1)”</strong>. These
+metrics compare correct and incorrect predictions of a model.</p>
+
+<p>But how exactly a model determines what a correct prediction is?</p>
+
+<!--more-->
+
+<p>Here we will analyze the effect of an important factor a model uses to decide the correct prediction (label) for classification problems, the <strong>decision threshold</strong>. We will see that without understanding how a model decides what “correct” is, talking about the model’s accuracy
+is premature.</p>
+
+<p>We use <em>accuracy</em> in this text as the number of correct predictions on the test set, divided by the number of instances in the test set.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                 Number of correct predictions
+   Accuracy = -----------------------------------
+                 Number of instances predicted
+</code></pre></div></div>
+
+<p>To illustrate the discussion, we will use an image classification model (simplification disclaimer: there are other types of problems, e.g. regression, and other types of models – we are making simplifications to expose the main concept.)</p>
+
+<p>A typical image classification problem, taught early in machine learning, is digit classification with the
+<a href="http://yann.lecun.com/exdb/mnist/">MNIST dataset</a>. The dataset looks like this (a small sample -
+the dataset has 70,000 images):</p>
+
+<p><img src="/images/2021-03-21/mnist.png" alt="Sample digits from the MNIST dataset" /></p>
+
+<p>In an image classification problem, we train a model to identify an image’s class (label).
+In this case, there are ten classes, one for each digit (from zero to nine).</p>
+
+<p><img src="/images/2021-03-21/digit-classification-model.png" alt="Digit classification model" /></p>
+
+<p>This is an actual digit from MNIST. The model correctly classifies it as the digit “2”.</p>
+
+<p><img src="/images/2021-03-21/digit-classification-example.png" alt="Classification example" /></p>
+
+<p>A neural network has several hidden layers to extract (“learn”) features from the images. The very
+last layer is the one that classifies the image. In this case, we are classifying ten classes (ten
+digits). Therefore the last layer has ten neurons, one for each digit.</p>
+
+<p><img src="/images/2021-03-21/classification-layer.png" alt="Classification layer" /></p>
+
+<p>Because we want to know what digit it is, we use <a href="https://www.tensorflow.org/api_docs/python/tf/keras/activations/softmax">softmax activation</a>
+in the last layer to give us a probability distribution of each class. The model
+is confident that the image is a number “2” in the case below.</p>
+
+<p><img src="/images/2021-03-21/model-classification-certain.png" alt="Model classification certain" /></p>
+
+<p>For other images, the model may not be so confident.</p>
+
+<p><img src="/images/2021-03-21/model-classification-not-certain.png" alt="Model classification not certain" /></p>
+
+<p>In those cases, how should we decide what the label is?</p>
+
+<p><img src="/images/2021-03-21/model-classification-how-to-decide.png" alt="Model classification - how to decide" /></p>
+
+<p>Most of the time, the class with the largest probability is used as the label. In this example, the
+model classifies the image as the digit “2”.</p>
+
+<p><img src="/images/2021-03-21/model-classification-use-largest.png" alt="Model classification - largest probability" /></p>
+
+<p>But what should the model do when the largest probability is not that high and is close to the
+probability of other classes?</p>
+
+<p><img src="/images/2021-03-21/model-classification-uncertain.png" alt="'Model classification - uncertain" /></p>
+
+<p>In the example below, the largest probability is for class “9”, but it is not even 50%, and the
+probability for class “4” is not too far behind. The model does not have high confidence in this
+prediction.</p>
+
+<p><img src="/images/2021-03-21/model-classification-uncertain2.png" alt="Model classification - uncertain" /></p>
+
+<p>What should we do in these cases?</p>
+
+<p>To solve those cases, we usually pick a threshold for the decision. Instead of simply using the class
+with the maximum probability, we select the largest probability above the threshold we chose. If we
+choose 50% as the threshold, in the number “2” example above we are still able to classify the image
+as the number “2”.</p>
+
+<p><img src="/images/2021-03-21/model-classification-threshold-above.png" alt="Model classification - above threshold" /></p>
+
+<p>But now we no longer classify the ambiguous image as a number “9”. In this case, we would not make
+a decision at all.</p>
+
+<p><img src="/images/2021-03-21/model-classification-threshold-below.png" alt="Model classification - below threshold" /></p>
+
+<p>But what threshold do we pick?</p>
+
+<p>It depends. For high-stakes applications where wrong decisions have severe consequences, we want to
+be very confident in the model’s prediction.</p>
+
+<p>For example, for an automatic check deposit application, we want the model to be at least 99%
+confident of the prediction. Any image below that threshold is sent for human review.</p>
+
+<p><img src="/images/2021-03-21/model-classification-high-stakes.png" alt="Model classification - high stakes" /></p>
+
+<h2 id="effect-of-different-thresholds">Effect of different thresholds</h2>
+
+<p>The higher the threshold for the decision, the fewer images the model can classify. For the model
+used in these examples, this is the effect of different thresholds on the model’s accuracy.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Threshold</th>
+      <th style="text-align: right">Accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">99.99%</td>
+      <td style="text-align: right">48.7%</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">99.9%</td>
+      <td style="text-align: right">75.6%</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">99%</td>
+      <td style="text-align: right">90.0%</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">90%</td>
+      <td style="text-align: right">96.4%</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">80%</td>
+      <td style="text-align: right">97.8%</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">75%</td>
+      <td style="text-align: right">97.8%</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">67%</td>
+      <td style="text-align: right">98.2%</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">50%</td>
+      <td style="text-align: right">98.8%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="asking-questions-about-accuracy">Asking questions about “accuracy”</h2>
+
+<p>The one-line takeaway: <em>to use a model responsibly <strong>we must ask questions</strong> about how its accuracy
+was measured and not just accept published numbers</em>.</p>
+
+<ol>
+  <li>How predictions are being made: is it probability-based (as in the examples above)? Something
+else?</li>
+  <li>What factors control the predictions: is it threshold-based or some other decision (e.g. argmax)?
+If it is threshold-based, what are the thresholds?</li>
+</ol>
+
+<p><em>“We achieved 99.9% accuracy on [some task here]”</em> means nothing if it’s not accompanied by a
+detailed description of what a “correct prediction” is for the model.</p>
+
+<h2 id="what-to-use-instead-of-accuracy">What to use instead of accuracy?</h2>
+
+<p>Balanced datasets have similar numbers of instances for each class. For these cases, a better alternative to <em>accuracy</em> is the <a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">receiver operating characteristic (ROC) curve</a> (for a simpler introduction, see <a href="https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc">this page</a>). The ROC curve shows, at a glance, how a model behaves with different thresholds.</p>
+
+<p>Imbalanced datasets have a large number of instances for one of the classes and a small number of instances for the other classes.  <em>Accuracy</em> is an especially flawed metric for imbalanced datasets with a small number of positive class instances. These datasets are typical in healthcare applications where a specific condition affects only a small portion of the population. For example, if a disease affects only 0.1% of the population, a “classifier” that always returns “no disease” without even looking at the data is 99.9% “accurate”. In these cases, <a href="https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall">precision and recall</a> are better metrics. <em><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0118432">The Precision-Recall Plot is More Informative than the ROC Plot when Evaluating Binary Classifiers on Imbalanced Datasets</a></em> explains in detail, with concrete examples why should prefer the precision-recall plot for imbalanced datasets with a small number of positive instances.</p>
+
+<p>Every scientific paper that describes a model should publish the ROC or precision-recall curve. Papers that publish only the accuracy for the model, and especially papers that publish the accuracy without specifying the threshold, are, at best, incomplete. At worst, they were written by uninformed machine learning novices.</p>
+
+<h2 id="experimenting-with-the-code">Experimenting with the code</h2>
+
+<p>The code is available on <a href="https://github.com/fau-masters-collected-works-cgarbin/decision-threshold-effect-on-accuracy">this GitHub repository</a>. You can experiment with different digits and classification thresholds to see the effect on the model’s accuracy.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/accuracy" class="page__taxonomy-item p-category" rel="tag">accuracy</a><span class="sep">, </span>
+    
+      <a href="/tags/machine-learning" class="page__taxonomy-item p-category" rel="tag">machine-learning</a><span class="sep">, </span>
+    
+      <a href="/tags/roc" class="page__taxonomy-item p-category" rel="tag">roc</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-03-21T00:00:00-04:00">March 21, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=What+is+%22model+accuracy%22%2C+really%3F%20https%3A%2F%2Fcgarbin.github.io%2Fdecision-threshold-effect-on-accuracy%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fcgarbin.github.io%2Fdecision-threshold-effect-on-accuracy%2F&title=What is "model accuracy", really?" class="btn  btn--reddit" title="Share on Reddit"><i class="fab fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcgarbin.github.io%2Fdecision-threshold-effect-on-accuracy%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/fairness-a-reading-list/" class="pagination--pager" title="Fairness in machine learning: a reading list
+">Previous</a>
+    
+    
+      <a href="/machine-learning-but-not-understanding/" class="pagination--pager" title="Machine learning, but not understanding
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/how-to-read-and-write-a-paper/" rel="permalink">Improve writing by learning how to read
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Turn the advice in “How to Read a Paper” around to write a good paper.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/using-llms-for-summarization/" rel="permalink">Using LLMs to summarize GitHub issues
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          16 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">A learning exercise on using large language models (LLMs) for summarization. It uses GitHub issues as a practical use case that we can relate to.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/writing-good-jupyter-notebooks/" rel="permalink">Writing good Jupyter notebooks
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How to write well-structured, understandable, flexible, and resilient Jupyter notebooks.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/vision-transformers-properties/" rel="permalink">Vision transformer properties
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Vision transformers are not just a replacement for CNNs and RNNs. They have some interesting properties.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/fau-masters-collected-works-cgarbin" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 Christian Garbin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
